@@ -1,0 +1,38 @@
+:root .Root__main-view {
+
+    // Music card
+    .main-card-card {
+        border-radius: var(--border-radius); padding: 0; overflow: hidden;
+
+        .main-card-imageContainer {
+            margin-bottom: -4px;
+
+            .main-cardImage-circular, img { border-radius: 0;}
+        }
+        .main-card-cardMetadata { padding: 16px}
+    }
+
+    // Home page
+    section[data-testid="home-page"] { }
+
+    // Search page
+    div[id="searchPage"] { }
+
+    // Library page
+    section.contentSpacing {}
+
+    // Header of playlists/Artists ...
+    .main-entityHeader-container {
+        padding: 32px; justify-content: center;
+
+        .playlist-playlist-playlistImageContainer, & > div:nth-last-of-type(2) { align-self: center;}
+
+        .main-entityHeader-imageContainer + .main-entityHeader-headerText, .playlist-playlist-playlistImageContainer + .main-entityHeader-headerText {
+            flex: unset; justify-content: center;
+
+            .main-entityHeader-title h1 { font-size: 50px !important;}
+        }
+    }
+
+    .playlist-playlist-playlistContent { .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;} }
+}

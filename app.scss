@@ -1,0 +1,51 @@
+@forward 'assets/main';
+@forward 'assets/navbar';
+@forward 'assets/now_playing';
+@forward 'assets/settings';
+@forward 'assets/top_bar';
+@forward 'assets/ads';
+
+:root {
+    --border-radius: 8px;
+    
+    button, input, img { border-radius: var(--border-radius);}
+
+    // -- Other --
+
+    .main-trackList-rowSectionIndex { display: none;}
+
+    .main-trackList-trackListRowGrid { grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;}
+
+    // Red hearths
+    .main-trackList-rowHeartButton *:not([fill=none]), .control-button-heart *:not([fill=none]) { color: #d25050 !important;  fill: #d25050 !important;}
+
+    #context-menu {
+        overflow: hidden;
+        
+        ul {
+            padding: 0;
+            background-color: var(--spice-player);
+
+            button, a {
+                border-radius: 0;
+
+                &::before, &::after { content: none;}
+                &:not(.main-contextMenu-disabled):focus, &:not(.main-contextMenu-disabled):hover, &[aria-expanded=true] { background-color: #5c6eb12a; transition: 150ms background-color;}
+            }
+        }
+    }
+
+    #bookmark-menu {
+        background-color: var(--spice-player);
+        border-radius: var(--border-radius);
+
+        .bookmark-filter { background-color: var(--spice-player);}
+
+        button, a {
+            border-radius: 0;
+
+            &::before, &::after { content: none;}
+            &:not(.main-contextMenu-disabled):focus, &:not(.main-contextMenu-disabled):hover, &[aria-expanded=true] { background-color: #5c6eb12a; transition: 150ms background-color;}
+        }
+    }
+}
