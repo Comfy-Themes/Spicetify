@@ -1,4 +1,19 @@
 :root .Root__main-view {
+    #mainImage {
+        position: absolute; // instead of background-attachment
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        will-change: transform; // creates a new paint layer
+        z-index: -1;
+        transition: 300ms background-image ease-in-out;
+        filter: blur(4px);
+    }
+
+    .main-view-container__scroll-node-child { padding-bottom: 0;}
 
     // Music card
     .main-card-card {
@@ -12,27 +27,64 @@
         .main-card-cardMetadata { padding: 16px}
     }
 
-    // Home page
-    section[data-testid="home-page"] { }
+    // Header
+    section.playlist-playlist-playlist .main-entityHeader-container .main-entityHeader-backgroundColor { background: none !important;}
 
-    // Search page
-    div[id="searchPage"] { }
-
-    // Library page
-    section.contentSpacing {}
-
-    // Header of playlists/Artists ...
     .main-entityHeader-container {
-        padding: 32px; justify-content: center;
+        padding: 32px;
+        justify-content: center;
 
-        .playlist-playlist-playlistImageContainer, & > div:nth-last-of-type(2) { align-self: center;}
+        & > div:nth-last-of-type(2) {
+            align-self: center;
 
-        .main-entityHeader-imageContainer + .main-entityHeader-headerText, .playlist-playlist-playlistImageContainer + .main-entityHeader-headerText {
-            flex: unset; justify-content: center;
+            & + .main-entityHeader-headerText {
+                flex: unset;
+                justify-content: center;
 
-            .main-entityHeader-title h1 { font-size: 50px !important;}
+                .main-entityHeader-title h1 { font-size: 50px !important;}
+            }
         }
     }
 
-    .playlist-playlist-playlistContent { .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;} }
+    // Playlist page
+    section.playlist-playlist-playlist {
+
+        // Content
+        .playlist-playlist-playlistContent {
+            background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
+
+            .main-actionBarBackground-background { background: none !important;}
+
+            .main-actionBar-ActionBar {
+                padding: 8px 16px;
+
+                .main-playButton-PlayButton {
+                    margin-top: -24px; margin-left: 8px;
+                    margin-right: 22px;
+                }
+
+                @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
+            }
+
+            .main-trackList-trackListRowGrid {
+                grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
+                border-radius: var(--border-radius); border: none;
+                padding-left: 10px; transition: 200ms background-color;
+
+                &.main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+                    position: absolute; z-index: 1000;
+                    top: 8px; left: 10px;
+                    width: 40px; height: 40px;
+                    justify-content: center;
+                    text-indent: -1000px;
+                }
+
+                .main-trackList-rowSubTitle a, .main-trackList-rowSectionVariable a { transition: 200ms color;}
+
+                &:hover { background-color: rgba(255, 255, 255, 0.05);}
+                &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
+            }
+            .main-trackList-trackListHeader { display: none;}
+        }
+    }
 }

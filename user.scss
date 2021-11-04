@@ -12,24 +12,9 @@
 
     // -- Other --
 
-    .main-trackList-trackListRowGrid {
-        grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
-        border-radius: var(--border-radius); border: none;
-        padding-left: 10px;
-
-        &.main-trackList-trackListRow > .main-trackList-rowSectionIndex {
-            position: absolute; z-index: 1000;
-            top: 8px; left: 10px;
-            width: 40px; height: 40px;
-            justify-content: center;
-            text-indent: -1000px;
-        }
-    }
-
-    .main-trackList-trackListHeader { display: none;}
-
     // Red hearths
     .main-trackList-rowHeartButton *:not([fill=none]), .control-button-heart *:not([fill=none]) { color: #d25050 !important;  fill: #d25050 !important;}
+    .playlist-playlist-playlistContent { .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;} }
 
     #context-menu {
         overflow: hidden;
