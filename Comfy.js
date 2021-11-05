@@ -17,8 +17,9 @@
 
         mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
     }
-        // Waiting for a switch between channels
-        Platform.History.listen(({ pathname }) => {
+
+    // Waiting for a switch between channels
+    Platform.History.listen(({ pathname }) => {
 
         // If the channel is a playlist
         if (pathname.startsWith('/playlist/')) {
@@ -33,5 +34,9 @@
     });
 
     // Change the song image on song change
-    Player.addEventListener("songchange", () => { mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";});
+    Player.addEventListener("songchange", () => {
+        if (Platform.History.location.pathname.startsWith('/playlist/')) {
+            mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+        }
+    });
 })();
