@@ -16,7 +16,7 @@ If you want to have the image header on a playlist, move the `Comfy.js` file to 
 ```
 
 ### ⚠️️ Warning
-I don't think I can't import an external stylesheet from the `user.css`, means that if I do an update, you'll need to `git pull` to stay up-to-date.
+I don't think I can import an external stylesheet from the `user.css`, means that if I do an update, you'll need to `git pull` to stay up-to-date.
 
 ### 🖌️ Customization
 Go into your theme folder and open either :
