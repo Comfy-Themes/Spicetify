@@ -28,4 +28,4 @@ Go into your theme folder and open either :
 ## 🖼️ More preview
 | Home | Friend list
 | :---------: | :---------: |
-| ![Preview](https://nyri4.github.io/Comfy/assets/home.png)  | ![Preview](https://nyri4.github.io/Comfy/assets/friend-list.png)  |
+| ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/home.png)  | ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/friend-list.png)  |
