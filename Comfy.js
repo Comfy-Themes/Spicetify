@@ -8,13 +8,12 @@
         return;
     }
 
+    const channels = Platform.History.location.pathname.startsWith('/playlist/') || Platform.History.location.pathname.startsWith('/album/') || Platform.History.location.pathname.startsWith('/collection/tracks');
     main.appendChild(mainChild);
     mainChild.id = "mainImage";
 
     // On a playlist
-    if (Platform.History.location.pathname.startsWith('/playlist/')) {
-        console.log("Dans une playlist")
-
+    if (channels) {
         mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
     }
 
@@ -22,20 +21,16 @@
     Platform.History.listen(({ pathname }) => {
 
         // If the channel is a playlist
-        if (pathname.startsWith('/playlist/')) {
-            console.log("Dans une playlist")
+        if (pathname.startsWith('/playlist/') || pathname.startsWith('/album/') || pathname.startsWith('/collection/tracks')) {
             mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
         }
 
-        else {
-            console.log("Pas dans une playlist" + pathname)
-            mainChild.style.backgroundImage = null;
-        }
+        else { mainChild.style.backgroundImage = null;}
     });
 
     // Change the song image on song change
     Player.addEventListener("songchange", () => {
-        if (Platform.History.location.pathname.startsWith('/playlist/')) {
+        if (channels) {
             mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
         }
     });

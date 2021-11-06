@@ -7,18 +7,18 @@
 
 :root {
     --border-radius: 8px;
-    
+
     button, input, img { border-radius: var(--border-radius);}
 
     // -- Other --
 
     // Red hearths
     .main-trackList-rowHeartButton *:not([fill=none]), .control-button-heart *:not([fill=none]) { color: #d25050 !important;  fill: #d25050 !important;}
-    .playlist-playlist-playlistContent { .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;} }
+    .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;}
 
     #context-menu {
         overflow: hidden;
-        
+
         ul {
             padding: 0;
             background-color: var(--spice-player);

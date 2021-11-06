@@ -11,6 +11,12 @@
   z-index: -1;
   transition: 300ms background-image ease-in-out;
   filter: blur(4px);
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+@media (max-width: 1500px) {
+  :root .Root__main-view #mainImage {
+    background-position: top;
+  }
 }
 :root .Root__main-view .main-view-container__scroll-node-child {
   padding-bottom: 0;
@@ -29,7 +35,7 @@
 :root .Root__main-view .main-card-card .main-card-cardMetadata {
   padding: 16px;
 }
-:root .Root__main-view section.playlist-playlist-playlist .main-entityHeader-container .main-entityHeader-backgroundColor {
+:root .Root__main-view .main-entityHeader-container .main-entityHeader-backgroundColor {
   background: none !important;
 }
 :root .Root__main-view .main-entityHeader-container {
@@ -46,33 +52,47 @@
 :root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
   font-size: 50px !important;
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent {
-  background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise);
-}
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-actionBarBackground-background {
+:root .Root__main-view .main-actionBarBackground-background {
   background: none !important;
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-actionBar-ActionBar {
-  padding: 8px 16px;
+:root .Root__main-view .playlist-playlist-playlist > div:last-child, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) {
+  background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise);
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-actionBar-ActionBar .main-playButton-PlayButton {
-  margin-top: -24px;
-  margin-left: 8px;
-  margin-right: 22px;
-}
-@media (min-width: 1024px) {
-  :root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-actionBar-ActionBar .main-playButton-PlayButton {
-    margin-left: 24px;
-  }
-}
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid {
-  grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+:root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
   padding-left: 10px;
   transition: 200ms background-color;
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid.main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad {
+  transition: 300ms color;
+}
+:root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListRowGrid:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+:root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+:root .Root__main-view .playlist-playlist-playlist > div:last-child .main-trackList-trackListHeader, :root .Root__main-view .x-album-album > .contentSpacing:nth-last-child(2) .main-trackList-trackListHeader {
+  display: none;
+}
+:root .Root__main-view .main-actionBar-ActionBar {
+  padding: 8px 16px 16px 16px;
+}
+:root .Root__main-view .main-actionBar-ActionBar .main-playButton-PlayButton {
+  margin-top: -24px;
+  margin-left: 8px;
+  margin-right: 22px;
+}
+@media (min-width: 1024px) {
+  :root .Root__main-view .main-actionBar-ActionBar .main-playButton-PlayButton {
+    margin-left: 24px;
+  }
+}
+:root .Root__main-view .playlist-playlist-playlist .main-trackList-trackListRow {
+  grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+}
+:root .Root__main-view .playlist-playlist-playlist .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -82,17 +102,15 @@
   justify-content: center;
   text-indent: -1000px;
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid .main-trackList-rowSubTitle a, :root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid .main-trackList-rowSectionVariable a {
-  transition: 200ms color;
+:root .Root__main-view .x-album-album .main-actionBar-ActionBar, :root .Root__main-view .playlist-playlist-playlist:not([data-test-uri]) > .main-actionBar-ActionBar {
+  background-color: rgba(var(--spice-rgb-shadow), 0.6);
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+:root .Root__main-view .x-album-album > .contentSpacing:last-child {
+  background-color: var(--spice-main);
 }
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-:root .Root__main-view section.playlist-playlist-playlist .playlist-playlist-playlistContent .main-trackList-trackListHeader {
-  display: none;
+:root .Root__main-view .x-album-album > .contentSpacing:last-child > section {
+  margin-top: 0;
+  padding-top: 48px;
 }
 
 :root .Root__nav-bar {
@@ -436,7 +454,7 @@
   color: #d25050 !important;
   fill: #d25050 !important;
 }
-:root .playlist-playlist-playlistContent .main-addButton-active, :root .playlist-playlist-playlistContent .main-addButton-active:focus, :root .playlist-playlist-playlistContent .main-addButton-active:hover {
+:root .main-addButton-active, :root .main-addButton-active:focus, :root .main-addButton-active:hover {
   color: #d25050;
 }
 :root #context-menu {
