@@ -127,7 +127,7 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list {
   display: grid;
-  grid-template-areas: "home home home home" "search search search search" "collection collection collection collection" "lyrics-plus lyrics-plus lyrics-plus lyrics-plus" "reddit reddit reddit reddit" "new-releases new-releases new-releases new-releases" "add tracks episodes .";
+  grid-template-areas: "home home home home" "search search search search" "collection collection collection collection" "lyrics-plus lyrics-plus lyrics-plus lyrics-plus" "reddit reddit reddit reddit" "new-releases new-releases new-releases new-releases" "marketplace marketplace marketplace marketplace" "add tracks episodes .";
   grid-template-columns: 25px 25px 25px 1fr;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/"] {
@@ -147,6 +147,9 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/new-releases"] {
   grid-area: new-releases;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/spicetify-marketplace"] {
+  grid-area: marketplace;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/add"] {
   grid-area: add;
@@ -227,6 +230,12 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-active-icon {
   background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-icon {
+  background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-active-icon {
+  background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
   display: grid;
@@ -454,7 +463,7 @@
   color: #d25050 !important;
   fill: #d25050 !important;
 }
-:root .main-addButton-active, :root .main-addButton-active:focus, :root .main-addButton-active:hover {
+:root .main-trackList-rowSectionEnd .main-addButton-active, :root .main-trackList-rowSectionEnd .main-addButton-active:focus, :root .main-trackList-rowSectionEnd .main-addButton-active:hover {
   color: #d25050;
 }
 :root #context-menu {

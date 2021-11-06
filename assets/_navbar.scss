@@ -11,6 +11,7 @@
                           "lyrics-plus lyrics-plus lyrics-plus lyrics-plus"
                           "reddit reddit reddit reddit"
                           "new-releases new-releases new-releases new-releases"
+                          "marketplace marketplace marketplace marketplace"
                           "add tracks episodes .";
       grid-template-columns: 25px 25px 25px 1fr;
 
@@ -20,6 +21,7 @@
       li[data-id="/lyrics-plus"] { grid-area: lyrics-plus;}
       li[data-id="/reddit"] { grid-area: reddit;}
       li[data-id="/new-releases"] { grid-area: new-releases;}
+      li[data-id="/spicetify-marketplace"] { grid-area: marketplace;}
       div[data-id="/add"] { grid-area: add;}
       div[data-id="/collection/episodes"] { grid-area: episodes;}
       div[data-id="/collection/tracks"] { grid-area: tracks;}
@@ -87,6 +89,11 @@
     a[href="/new-releases"] {
       .collection-icon { background: url("https://i.imgur.com/BgkCeDG.png") center/cover no-repeat;}
       .collection-active-icon { background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;}
+    }
+
+    a[href="/spicetify-marketplace"] {
+      .collection-icon { background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;}
+      .collection-active-icon { background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;}
     }
 
     &:not(#spicetify-sticky-list) + .main-rootlist-rootlist {

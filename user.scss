@@ -14,7 +14,7 @@
 
     // Red hearths
     .main-trackList-rowHeartButton *:not([fill=none]), .control-button-heart *:not([fill=none]) { color: #d25050 !important;  fill: #d25050 !important;}
-    .main-addButton-active, .main-addButton-active:focus, .main-addButton-active:hover { color: #d25050;}
+    .main-trackList-rowSectionEnd .main-addButton-active, .main-trackList-rowSectionEnd .main-addButton-active:focus, .main-trackList-rowSectionEnd .main-addButton-active:hover { color: #d25050;}
 
     #context-menu {
         overflow: hidden;
