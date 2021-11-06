@@ -11,7 +11,10 @@
         z-index: -1;
         transition: 300ms background-image ease-in-out;
         filter: blur(4px);
+        -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     }
+
+    @media (max-width: 1500px) { #mainImage { background-position: top;}}
 
     .main-view-container__scroll-node-child { padding-bottom: 0;}
 
@@ -28,7 +31,7 @@
     }
 
     // Header
-    section.playlist-playlist-playlist .main-entityHeader-container .main-entityHeader-backgroundColor { background: none !important;}
+    .main-entityHeader-container .main-entityHeader-backgroundColor { background: none !important;}
 
     .main-entityHeader-container {
         padding: 32px;
@@ -46,45 +49,55 @@
         }
     }
 
-    // Playlist page
-    section.playlist-playlist-playlist {
+    .main-actionBarBackground-background { background: none !important;}
 
-        // Content
-        .playlist-playlist-playlistContent {
-            background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
+    // Playlist, Album & Liked songs
+    .playlist-playlist-playlist > div:last-child, .x-album-album > .contentSpacing:nth-last-child(2) {
+        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
 
-            .main-actionBarBackground-background { background: none !important;}
+        .main-trackList-trackListRowGrid {
+            border-radius: var(--border-radius); border: none;
+            padding-left: 10px; transition: 200ms background-color;
 
-            .main-actionBar-ActionBar {
-                padding: 8px 16px;
+            .main-type-mesto, .main-type-ballad { transition: 300ms color;}
 
-                .main-playButton-PlayButton {
-                    margin-top: -24px; margin-left: 8px;
-                    margin-right: 22px;
-                }
-
-                @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
-            }
-
-            .main-trackList-trackListRowGrid {
-                grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
-                border-radius: var(--border-radius); border: none;
-                padding-left: 10px; transition: 200ms background-color;
-
-                &.main-trackList-trackListRow > .main-trackList-rowSectionIndex {
-                    position: absolute; z-index: 1000;
-                    top: 8px; left: 10px;
-                    width: 40px; height: 40px;
-                    justify-content: center;
-                    text-indent: -1000px;
-                }
-
-                .main-trackList-rowSubTitle a, .main-trackList-rowSectionVariable a { transition: 200ms color;}
-
-                &:hover { background-color: rgba(255, 255, 255, 0.05);}
-                &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
-            }
-            .main-trackList-trackListHeader { display: none;}
+            &:hover { background-color: rgba(255, 255, 255, 0.05);}
+            &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
         }
+        .main-trackList-trackListHeader { display: none;}
+    }
+
+    .main-actionBar-ActionBar {
+        padding: 8px 16px 16px 16px;
+
+        .main-playButton-PlayButton {
+            margin-top: -24px; margin-left: 8px;
+            margin-right: 22px;
+        }
+
+        @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
+    }
+
+    // Playlists
+    .playlist-playlist-playlist {
+        .main-trackList-trackListRow {
+            grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
+
+            & > .main-trackList-rowSectionIndex {
+                position: absolute; z-index: 1000;
+                top: 8px; left: 10px;
+                width: 40px; height: 40px;
+                justify-content: center;
+                text-indent: -1000px;
+            }
+        }
+    }
+
+    // Album & Liked songs
+    .x-album-album .main-actionBar-ActionBar, .playlist-playlist-playlist:not([data-test-uri]) > .main-actionBar-ActionBar { background-color: rgba(var(--spice-rgb-shadow),.6);}
+    .x-album-album > .contentSpacing:last-child {
+        background-color: var(--spice-main);
+
+        & > section { margin-top: 0; padding-top: 48px;}
     }
 }
