@@ -1,6 +1,7 @@
 :root .Root__now-playing-bar {
 
   .main-nowPlayingBar-container {
+    position: relative;
     border-top: none; background-color: transparent;
 
     .main-nowPlayingBar-nowPlayingBar { 
@@ -20,6 +21,16 @@
           }
         }
       } 
+    }
+
+    .main-connectBar-connectBar.PAw3O9haxIlR28X2bb4N {
+      position: absolute;
+      top: -15px; right: 15px;
+      padding: 4px 8px; box-sizing: content-box;
+      border-radius: var(--border-radius);
+      color: #fff; background-color: var(--spice-sidebar);
+
+      &::after { content: none;}
     }
   }
 
