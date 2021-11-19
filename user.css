@@ -121,7 +121,7 @@
   padding: 0 12px;
   box-sizing: content-box;
   transition: 350ms background-color;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: var(--border-radius);
   margin: 24px 12px 0 12px;
   background-color: rgba(0, 0, 0, 0.1);
 }
