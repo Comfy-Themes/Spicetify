@@ -5,6 +5,8 @@
 
 ### 📥 Installation
 
+---
+
 Go into your `Themes` folder in `.spicetify` then do :
 ```sh
 git clone https://github.com/NYRI4/Comfy-spicetify
@@ -48,9 +50,24 @@ spicetify apply
 ```
 
 ### ⚠️️ Warning
-I don't think I can import an external stylesheet from the `user.css`, means that if I do an update, you'll need to `git pull` to stay up-to-date.
+
+---
+
+The theme part is now updating itself, however, for the extesnion part if you have issues with it : 
+
+1. `git pull` or download the full repository again as a ZIP folder
+
+![chrome_EoSvJ89gsZ](https://user-images.githubusercontent.com/65369563/142741216-99763f53-b4a0-47a3-8cb1-050425dea382.png)
+
+2. Unzip it and copy the `Comfy.js` file
+3. Put it in the Spicetify extension folder (common path : `C:\Users\YOU_USERNAME\.spicetify\Extensions`)
+4. In a terminal, run `spicetify apply`
+5. Enjoy !
 
 ### 🖌️ Customization
+
+---
+
 Go into your theme folder and open either :
 
 `color.ini` for the colors
@@ -58,6 +75,7 @@ Go into your theme folder and open either :
 `user.css` to modify the code
 
 ## 🖼️ More preview
+
 | Home | Friend list
-| :---------: | :---------: |
-| ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/home.png)  | ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/friend-list.png)  |
+| :---------: | :---------:
+| ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/home.png)  | ![Preview](https://nyri4.github.io/Comfy-spicetify/assets/friend-list.png)
