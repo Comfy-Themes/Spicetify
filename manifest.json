@@ -1,0 +1,10 @@
+
+   
+{
+    "name": "Comfy",
+    "description": "Stay comfy while listening to music",
+    "preview": "assets/preview.png",
+    "readme": "README.md",
+    "usercss": "user.css",
+    "schemes": "color.ini"
+}
