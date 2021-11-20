@@ -10,9 +10,41 @@ Go into your `Themes` folder in `.spicetify` then do :
 git clone https://github.com/NYRI4/Comfy-spicetify
 ```
 
+#### Windows
+In **Powershell**:
+```powershell
+spicetify config current_theme Comfy-spicetify
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify apply
+```
+
+#### macOS and Linux
+In **Bash**:
+```bash
+spicetify config current_theme Comfy-spicetify
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify apply
+```
+
 If you want to have the image header on a playlist, move the `Comfy.js` file to the `Extensions` folder and do :
-```sh
- spicetify config extensions Comfy.js
+
+#### Windows
+In **Powershell**:
+```powershell
+cd "$(spicetify -c | Split-Path)\Themes\Comfy-spicetify"
+Copy-Item Comfy.js ..\..\Extensions
+spicetify config extensions Comfy.js
+spicetify apply
+```
+
+#### macOS and Linux
+In **Bash**:
+```bash
+cd "$(dirname "$(spicetify -c)")/Themes/Comfy-spicetify"
+mkdir -p ../../Extensions
+cp Comfy.js ../../Extensions/.
+spicetify config extensions Comfy.js
+spicetify apply
 ```
 
 ### ⚠️️ Warning
