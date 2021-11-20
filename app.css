@@ -254,7 +254,7 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
   display: grid;
-  grid-template-areas: "add tracks ." "playlists playlists playlists";
+  grid-template-areas: "add tracks episodes" "playlists playlists playlists";
   grid-template-columns: 25px 25px 1fr;
   grid-template-rows: 25px 1fr;
   -moz-column-gap: 16px;
@@ -289,6 +289,19 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(2) a .main-likedSongsButton-likedSongsIcon {
   border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) {
+  grid-area: episodes;
+  margin: -6px 0 0 12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a {
+  padding: 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a .main-yourEpisodesButton-yourEpisodesIcon {
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a .main-collectionLinkButton-collectionLinkText {
+  display: none;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:last-child {
   grid-area: playlists;

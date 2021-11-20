@@ -101,7 +101,7 @@
     &:not(#spicetify-sticky-list) + .main-rootlist-rootlist {
       & > div {
         display: grid;
-        grid-template-areas: 'add tracks .'
+        grid-template-areas: 'add tracks episodes'
                               'playlists playlists playlists';
         grid-template-columns: 25px 25px 1fr;
         grid-template-rows: 25px 1fr;
@@ -133,6 +133,18 @@
             padding: 0;
 
             .main-likedSongsButton-likedSongsIcon { border-radius: var(--border-radius);}
+          }
+        }
+
+        & > div:nth-child(3) {
+          grid-area: episodes; margin: -6px 0 0 12px;
+
+          a {
+            padding: 0;
+
+            .main-yourEpisodesButton-yourEpisodesIcon { border-radius: var(--border-radius);}
+
+            .main-collectionLinkButton-collectionLinkText { display: none;}
           }
         }
 
