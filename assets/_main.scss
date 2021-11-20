@@ -12,6 +12,7 @@
         transition: 300ms background-image ease-in-out;
         filter: blur(4px);
         -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     }
 
     @media (max-width: 1500px) { #mainImage { background-position: top;}}
@@ -49,33 +50,54 @@
         }
     }
 
+    .main-yourEpisodes-yourEpisodesContentWrapper { max-width: unset;}
     .main-actionBarBackground-background { background: none !important;}
 
     // Playlist, Album & Liked songs
-    .playlist-playlist-playlist > div:last-child, .x-album-album > .contentSpacing:nth-last-child(2) {
-        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
-
-        .main-trackList-trackListRowGrid {
-            border-radius: var(--border-radius); border: none;
-            padding-left: 10px; transition: 200ms background-color;
-
-            .main-type-mesto, .main-type-ballad { transition: 300ms color;}
-
-            &:hover { background-color: rgba(255, 255, 255, 0.05);}
-            &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
+    section { 
+        &[data-testid="playlist-page"] .main-actionBar-ActionBar, &[data-testid="album-page"] .main-actionBar-ActionBar, &[data-testid="your-episodes-page"] .main-actionBar-ActionBar {
+            padding: 8px 16px 16px 16px;
+    
+            .main-playButton-PlayButton {
+                margin-top: -24px; margin-left: 8px;
+                margin-right: 22px;
+            }
+    
+            @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
         }
-        .main-trackList-trackListHeader { display: none;}
+
+        &[data-testid="your-episodes-page"] > .contentSpacing > section { height: calc(100vh - 494px);}
+        &[data-testid="your-episodes-page"] > .main-yourEpisodes-yourEpisodesContentWrapper { 
+            height: calc(100vh - 438px);
+
+            [data-testid^="episode-"] { margin: 0;}
+        }
+        
+        &[data-testid="playlist-page"] > div:last-child, &[data-testid="album-page"] > div:nth-last-child(2), 
+        &[data-testid="episode"] > div:last-child, &[data-testid="your-episodes-page"] > div:last-child {
+            background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
+
+            .main-trackList-trackListRowGrid {
+                border-radius: var(--border-radius); border: none;
+                padding-left: 10px; transition: 200ms background-color;
+
+                .main-type-mesto, .main-type-ballad { transition: 300ms color;}
+
+                &:hover { background-color: rgba(255, 255, 255, 0.05);}
+                &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
+            }
+            .main-trackList-trackListHeader { display: none;}
+        }
+        
+        // Album & Liked songs
+        &:not([data-testid="your-episodes-page"]) > .main-actionBar-ActionBar, &:not([data-testid="your-episodes-page"]) > .main-yourEpisodes-yourEpisodesContentWrapper .main-actionBar-ActionBar { background-color: rgba(var(--spice-rgb-shadow),.6);}
     }
 
-    .main-actionBar-ActionBar {
-        padding: 8px 16px 16px 16px;
+    
+    section[data-testid="album-page"] > .contentSpacing:last-child {
+        background-color: var(--spice-main);
 
-        .main-playButton-PlayButton {
-            margin-top: -24px; margin-left: 8px;
-            margin-right: 22px;
-        }
-
-        @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
+        & > section { margin-top: 0; padding-top: 48px;}
     }
 
     // Playlists
@@ -91,13 +113,5 @@
                 text-indent: -1000px;
             }
         }
-    }
-
-    // Album & Liked songs
-    .x-album-album .main-actionBar-ActionBar, .playlist-playlist-playlist:not([data-test-uri]) > .main-actionBar-ActionBar { background-color: rgba(var(--spice-rgb-shadow),.6);}
-    .x-album-album > .contentSpacing:last-child {
-        background-color: var(--spice-main);
-
-        & > section { margin-top: 0; padding-top: 48px;}
     }
 }

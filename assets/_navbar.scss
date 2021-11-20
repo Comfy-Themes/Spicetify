@@ -25,6 +25,8 @@
       div[data-id="/add"] { grid-area: add;}
       div[data-id="/collection/episodes"] { grid-area: episodes;}
       div[data-id="/collection/tracks"] { grid-area: tracks;}
+
+      border-radius: var(--border-radius);
     }
 
     column-gap: 16px;
@@ -42,7 +44,7 @@
 
         &.main-navBar-navBarLinkActive { background-color: #5c6eb12a;}
 
-        svg { display: none}
+        svg > * { display: none}
       }
 
       &:first-child a { border-radius: var(--border-radius) var(--border-radius) 0 0;}
