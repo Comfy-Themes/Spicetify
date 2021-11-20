@@ -480,6 +480,7 @@
 :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar {
   width: 40px !important;
   height: 40px !important;
+  display: flex;
 }
 @media (min-width: 1024px) {
   :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar .main-avatar-image {
