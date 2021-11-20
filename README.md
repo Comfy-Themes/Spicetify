@@ -53,16 +53,16 @@ spicetify apply
 
 ---
 
-The theme part is now updating itself, however, for the extesnion part if you have issues with it : 
+The theme part is now updating itself for users using the version of Spicetify equals or greater than `2.8.2`, however, for the extesnion part if you have issues with it : 
 
-1. `git pull` or download the full repository again as a ZIP folder
-
-![chrome_EoSvJ89gsZ](https://user-images.githubusercontent.com/65369563/142741216-99763f53-b4a0-47a3-8cb1-050425dea382.png)
-
-2. Unzip it and copy the `Comfy.js` file
-3. Put it in the Spicetify extension folder (common path : `C:\Users\YOU_USERNAME\.spicetify\Extensions`)
-4. In a terminal, run `spicetify apply`
+1. Go [here](https://nyri4.github.io/Comfy-spicetify/Comfy.js)
+2. Copy the whole code (sorry for the flashbang)
+3. Go into the Spicetify extension folder
+4. Open the `Comfy.js` file, paste the code and **save it**
+4. Afterwards, in a terminal, run `spicetify apply`
 5. Enjoy !
+
+For the users that don't want to update Spicetify to the newest version, do the same with [this](https://nyri4.github.io/Comfy-spicetify/Comfy.js) and paste it in the `user.css` replacing the `@import`.
 
 ### 🖌️ Customization
 
