@@ -1,9 +1,9 @@
 {
     "name": "Comfy",
     "description": "Stay comfy while listening to music",
-    "preview": "https://nyri4.github.io/Comfy-spicetify/assets/preview.png",
+    "preview": "https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/assets/preview.png",
     "readme": "README.md",
     "usercss": "user.css",
     "schemes": "color.ini",
-    "include": ["https://nyri4.github.io/Comfy-spicetify/Comfy.js"]
+    "include": ["https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/Comfy.js"]
 }
