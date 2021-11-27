@@ -16,6 +16,14 @@
     .main-trackList-rowHeartButton *:not([fill=none]), .control-button-heart *:not([fill=none]) { color: #d25050 !important;  fill: #d25050 !important;}
     .main-trackList-rowSectionEnd .main-addButton-active, .main-trackList-rowSectionEnd .main-addButton-active:focus, .main-trackList-rowSectionEnd .main-addButton-active:hover { color: #d25050;}
 
+    // Lyrics plus
+    .lyrics-lyricsContainer-LyricsBackground { 
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    }
+
     #context-menu {
         overflow: hidden;
 

@@ -58,7 +58,12 @@
       button, a {
         padding: 0;
 
-        div { margin-right: 0; border-radius: var(--border-radius);}
+        div { 
+          margin-right: 0; border-radius: var(--border-radius);
+
+          &.main-rootlist-statusIcons { display: none;}
+        }
+
         span { display: none;}
       }
     }
@@ -176,7 +181,7 @@
 
         &:not(#spicetify-playlist-list) { margin: 12px 0 0 0;}
 
-        .main-rootlist-wrapper {
+        & > div {
           height: unset !important; contain: unset !important;
 
           .main-rootlist-rootlistItem {

@@ -1,6 +1,7 @@
 (function Comfy() {
     const { Player, Menu, LocalStorage, Platform } = Spicetify
     const main = document.querySelector('.Root__main-view')
+    const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
     const mainChild = document.createElement("div")
 
     if (!(Player && Menu && LocalStorage && Platform && main)) {
@@ -8,13 +9,12 @@
         return
     }
 
-    const channels = ['/playlist/', '/album/', '/collection/tracks', '/collection/episodes', '/episode/']
+    const channels = ['/playlist/', '/album/', '/collection/tracks', '/collection/episodes', '/episode/', '/lyrics-plus']
     main.appendChild(mainChild)
     mainChild.id = "mainImage"
 
-    // On a playlist
+    // Spotify launching on a playlist
     for (var i = 0; i < channels.length; i++) {
-
         if (Platform.History.location.pathname.startsWith(channels[i])) {
             mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")"
         }

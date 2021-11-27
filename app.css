@@ -57,18 +57,19 @@
   max-width: unset;
 }
 :root .Root__main-view .main-actionBarBackground-background {
-  background: none !important;
+  background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
+  height: calc(100% - 243px);
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar {
+:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
+:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
   margin-top: -24px;
   margin-left: 8px;
   margin-right: 22px;
 }
 @media (min-width: 1024px) {
-  :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
+  :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
     margin-left: 24px;
   }
 }
@@ -81,41 +82,34 @@
 :root .Root__main-view section[data-testid=your-episodes-page] > .main-yourEpisodes-yourEpisodesContentWrapper [data-testid^=episode-] {
   margin: 0;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2), :root .Root__main-view section[data-testid=episode] > div:last-child, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child {
-  background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise);
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2), :root .Root__main-view section[data-testid=episode] > div:last-child, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child {
+  background: none;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
   padding-left: 10px;
   transition: 200ms background-color;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid:hover {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
   background-color: rgba(255, 255, 255, 0.1);
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListHeader {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListHeader {
   display: none;
 }
-:root .Root__main-view section:not([data-testid=your-episodes-page]) > .main-actionBar-ActionBar, :root .Root__main-view section:not([data-testid=your-episodes-page]) > .main-yourEpisodes-yourEpisodesContentWrapper .main-actionBar-ActionBar {
-  background-color: rgba(var(--spice-rgb-shadow), 0.6);
+:root .Root__main-view section[data-testid] {
+  position: relative;
 }
-:root .Root__main-view section[data-testid=album-page] > .contentSpacing:last-child {
-  background-color: var(--spice-main);
-}
-:root .Root__main-view section[data-testid=album-page] > .contentSpacing:last-child > section {
-  margin-top: 0;
-  padding-top: 48px;
-}
-:root .Root__main-view .playlist-playlist-playlist .main-trackList-trackListRow {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view .playlist-playlist-playlist .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -206,6 +200,9 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button div, :root .Root__nav-bar ul.main-navBar-entryPoints > div a div {
   margin-right: 0;
   border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div button div.main-rootlist-statusIcons, :root .Root__nav-bar ul.main-navBar-entryPoints > div a div.main-rootlist-statusIcons {
+  display: none;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button span, :root .Root__nav-bar ul.main-navBar-entryPoints > div a span {
   display: none;
@@ -335,34 +332,34 @@
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"]:not(#spicetify-playlist-list) {
   margin: 12px 0 0 0;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div {
   height: unset !important;
   contain: unset !important;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem {
   padding: 0;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
   padding: 4px 12px;
   box-sizing: content-box;
   transition: 150ms background-color;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + button {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + button {
   border-radius: 0 !important;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + div > button {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + div > button {
   margin-left: 0;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
   background-color: #5c6eb12a;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
   -webkit-margin-start: 0;
           margin-inline-start: 0;
   padding: 4px 12px;
   transition: 150ms background-color;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] .main-rootlist-wrapper .main-rootlist-rootlistItem .main-rootlist-expandArrow {
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div .main-rootlist-rootlistItem .main-rootlist-expandArrow {
   height: unset;
   margin-left: 0;
   padding: 4px 12px;
@@ -393,7 +390,7 @@
   border-radius: var(--border-radius);
   overflow: hidden;
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar.PAw3O9haxIlR28X2bb4N {
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar {
   position: absolute;
   top: -15px;
   right: 15px;
@@ -403,7 +400,7 @@
   color: #fff;
   background-color: var(--spice-sidebar);
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar.PAw3O9haxIlR28X2bb4N::after {
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar::after {
   content: none;
 }
 :root .Root__now-playing-bar .playback-bar {
@@ -480,7 +477,6 @@
 :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar {
   width: 40px !important;
   height: 40px !important;
-  display: flex;
 }
 @media (min-width: 1024px) {
   :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar .main-avatar-image {
@@ -514,6 +510,12 @@
 }
 :root .main-trackList-rowSectionEnd .main-addButton-active, :root .main-trackList-rowSectionEnd .main-addButton-active:focus, :root .main-trackList-rowSectionEnd .main-addButton-active:hover {
   color: #d25050;
+}
+:root .lyrics-lyricsContainer-LyricsBackground {
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 :root #context-menu {
   overflow: hidden;

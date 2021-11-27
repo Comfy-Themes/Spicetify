@@ -51,11 +51,14 @@
     }
 
     .main-yourEpisodes-yourEpisodesContentWrapper { max-width: unset;}
-    .main-actionBarBackground-background { background: none !important;}
+    .main-actionBarBackground-background { 
+        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px), var(--background-noise) !important; 
+        height: calc(100% - 243px);
+    }
 
     // Playlist, Album & Liked songs
     section { 
-        &[data-testid="playlist-page"] .main-actionBar-ActionBar, &[data-testid="album-page"] .main-actionBar-ActionBar, &[data-testid="your-episodes-page"] .main-actionBar-ActionBar {
+        &[data-testid="playlist-page"] .main-actionBar-ActionBar, &[data-testid="album-page"] .main-actionBar-ActionBar, &[data-testid="your-episodes-page"] .main-actionBar-ActionBar, &[data-testid="artist-page"] .main-actionBar-ActionBar {
             padding: 8px 16px 16px 16px;
     
             .main-playButton-PlayButton {
@@ -74,8 +77,8 @@
         }
         
         &[data-testid="playlist-page"] > div:last-child, &[data-testid="album-page"] > div:nth-last-child(2), 
-        &[data-testid="episode"] > div:last-child, &[data-testid="your-episodes-page"] > div:last-child {
-            background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px),var(--background-noise);
+        &[data-testid="episode"] > div:last-child, &[data-testid="your-episodes-page"] > div:last-child, &[data-testid="artist-page"] > div > div:last-child {
+            background: none;
 
             .main-trackList-trackListRowGrid {
                 border-radius: var(--border-radius); border: none;
@@ -90,18 +93,11 @@
         }
         
         // Album & Liked songs
-        &:not([data-testid="your-episodes-page"]) > .main-actionBar-ActionBar, &:not([data-testid="your-episodes-page"]) > .main-yourEpisodes-yourEpisodesContentWrapper .main-actionBar-ActionBar { background-color: rgba(var(--spice-rgb-shadow),.6);}
-    }
-
-    
-    section[data-testid="album-page"] > .contentSpacing:last-child {
-        background-color: var(--spice-main);
-
-        & > section { margin-top: 0; padding-top: 48px;}
+        &[data-testid] { position: relative;}
     }
 
     // Playlists
-    .playlist-playlist-playlist {
+    section[data-testid="playlist-page"], section[data-testid="artist-page"] {
         .main-trackList-trackListRow {
             grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
 
