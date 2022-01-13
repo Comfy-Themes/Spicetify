@@ -109,5 +109,7 @@
                 text-indent: -1000px;
             }
         }
+
+        .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow { grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px,2fr) [last] minmax(120px,1fr) !important;}
     }
 }
