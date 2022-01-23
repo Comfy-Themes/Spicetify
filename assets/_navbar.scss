@@ -190,7 +190,10 @@
               padding: 0;
 
               .main-rootlist-rootlistItemLink {
-                padding: 4px 12px; box-sizing: content-box;
+                padding-top: 4px; padding-bottom: 4px; 
+                padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
+                padding-right: var(--left-sidebar-padding-right);
+                box-sizing: content-box;
                 transition: 150ms background-color;
 
                 & + button { border-radius: 0 !important;}

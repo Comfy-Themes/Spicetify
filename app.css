@@ -343,7 +343,10 @@
   padding: 0;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
-  padding: 4px 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
+  padding-right: var(--left-sidebar-padding-right);
   box-sizing: content-box;
   transition: 150ms background-color;
 }
