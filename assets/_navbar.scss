@@ -175,36 +175,45 @@
       }
 
       & > ul[tabindex="0"] {
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 8px; margin: 12px;
-        overflow: hidden;
+        margin: 12px;
 
         &:not(#spicetify-playlist-list) { margin: 12px 0 0 0;}
 
         & > div {
-          height: unset !important; contain: unset !important;
+          contain: unset;
+        
+          & > div:nth-child(2) {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 8px; 
 
-          .main-rootlist-rootlistItem {
-            padding: 0;
+            .main-rootlist-rootlistItem {
+              padding: 0;
 
-            .main-rootlist-rootlistItemLink {
-              padding: 4px 12px; box-sizing: content-box;
-              transition: 150ms background-color;
+              .main-rootlist-rootlistItemLink {
+                padding: 4px 12px; box-sizing: content-box;
+                transition: 150ms background-color;
 
-              & + button { border-radius: 0 !important;}
-              & + div > button { margin-left: 0;}
+                & + button { border-radius: 0 !important;}
+                & + div > button { margin-left: 0;}
 
-              &Active, &:focus, &:hover, &Active + *, &:focus + *, &:hover + * { background-color: #5c6eb12a;}
+                &Active, &:focus, &:hover, &Active + *, &:focus + *, &:hover + * { background-color: #5c6eb12a;}
+              }
+
+              .main-rootlist-statusIcons:not(:empty) {
+                margin-inline-start: 0; padding: 4px 12px;
+                transition: 150ms background-color;
+              }
+
+              .main-rootlist-expandArrow {
+                height: unset; margin-left: 0;
+                padding: 4px 12px; transition: 150ms background-color;
+              }
             }
 
-            .main-rootlist-statusIcons:not(:empty) {
-              margin-inline-start: 0; padding: 4px 12px;
-              transition: 150ms background-color;
-            }
-
-            .main-rootlist-expandArrow {
-              height: unset; margin-left: 0;
-              padding: 4px 12px; transition: 150ms background-color;
+            li:last-child::after { 
+              position: absolute;
+              content: "";
+              width: 100px; height: 40px;
             }
           }
         }
@@ -214,4 +223,12 @@
 
   // Cover art expanded
   .main-coverSlotExpanded-container .cover-art .cover-art-image { border-radius: 0;}
+
+  // Scrollbar
+  .os-scrollbar { 
+    top: 52px; bottom: 38px;
+    border-top-right-radius: calc(var(--border-radius) + 5px);
+    border-bottom-right-radius: calc(var(--border-radius) + 5px);
+    overflow: hidden;
+  }
 }
