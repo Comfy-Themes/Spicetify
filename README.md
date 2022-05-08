@@ -8,7 +8,7 @@
 
 ---
 
-#### Automatic Install - macOS and Linux Only
+#### Automatic Install
 
 This will install the theme and accompanying extension automatically.
 
