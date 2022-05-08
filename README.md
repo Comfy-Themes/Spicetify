@@ -12,6 +12,16 @@
 
 This will install the theme and accompanying extension automatically.
 
+##### Windows
+
+In **PowerShell**
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | iex
+```
+
+##### macOS and Linux
+
 In **Bash**
 
 ```bash
