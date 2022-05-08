@@ -17,7 +17,7 @@ This will install the theme and accompanying extension automatically.
 In **PowerShell**
 
 ```powershell
-iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | iex
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
 ```
 
 ##### macOS and Linux
