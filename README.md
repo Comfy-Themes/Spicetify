@@ -4,61 +4,25 @@
 
 ![Preview](https://comfy-themes.github.io/Spicetify/assets/preview.png)
 
-### 📥 Installation
-
+### 📥 Manual Installation
 ---
 
-#### Automatic Install
-
-##### Windows
-
-In **PowerShell**
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
-```
-
-##### macOS and Linux
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
-```
-
-#### Manual Install
-
-Go into your `Themes` folder in `.spicetify` then do :
-
+### Downloading Comfy.
+CD into your `Themes` folder in `.spicetify` and run :
 ```sh
 git clone https://github.com/Comfy-Themes/Spicetify
 ```
 
-Rename the folder to Comfy
-
-#### Windows
-
-In **Powershell**:
-
+Rename the folder to `Comfy` and run these commands to apply :
 ```powershell
 spicetify config current_theme Comfy
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
 ```
 
-#### macOS and Linux
+### Enabling the Comfy extension.
 
-In **Bash**:
-
-```bash
-spicetify config current_theme Comfy
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-spicetify apply
-```
-
-If you want to have the image header on a playlist, move the `Comfy.js` file to the `Extensions` folder and do :
-
-#### Windows
-
-In **Powershell**:
+Windows -> **Powershell**:
 
 ```powershell
 cd "$(spicetify -c | Split-Path)\Themes\Comfy"
@@ -67,9 +31,7 @@ spicetify config extensions Comfy.js
 spicetify apply
 ```
 
-#### macOS and Linux
-
-In **Bash**:
+macOS and Linux -> **Bash**:
 
 ```bash
 cd "$(dirname "$(spicetify -c)")/Themes/Comfy"
@@ -79,8 +41,22 @@ spicetify config extensions Comfy.js
 spicetify apply
 ```
 
-### ⚠️️ Warning
+### 📥 Automatic Installation
+---
 
+Windows -> **PowerShell**:
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
+```
+
+macOS and Linux -> **Bash**:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | sh
+```
+
+### ⚠️️ Warning
 ---
 
 The theme part is now updating itself for users using the version of Spicetify equals or greater than `2.8.2`, however, for the extesnion part if you have issues with it :
