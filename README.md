@@ -8,6 +8,24 @@
 
 ---
 
+#### Automatic Install
+
+##### Windows
+
+In **PowerShell**
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
+```
+
+##### macOS and Linux
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
+```
+
+#### Manual Install
+
 Go into your `Themes` folder in `.spicetify` then do :
 
 ```sh
