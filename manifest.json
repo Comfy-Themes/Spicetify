@@ -31,8 +31,8 @@
 	},
     {
         "name": "Comfy Chromatic",
-        "description": "Stay Comfy no matter the color",
-        "preview": "Comfy-Chromatic/Previews/Comfy-Sunset-Preview.png",
+        "description": "Stay comfy no matter the color",
+        "preview": "Comfy-Chromatic/assets/preview.gif",
         "readme": "Comfy-Chromatic/README.md",
         "usercss": "Comfy-Chromatic/user.css",
         "schemes": "Comfy-Chromatic/color.ini",

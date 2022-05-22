@@ -7,16 +7,16 @@
 
 |                                 Sunset                                 |                                 Sakura                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Comfy-Sunset-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/Previews/Comfy-Sunset-Preview.png) | ![Comfy-Sakura-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/Previews/Comfy-Sakura-Preview.png) |
+| ![Comfy-Sunset-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sunset.png) | ![Comfy-Sakura-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sakura.png) |
 
 |                                 Neon                                 |                                 Forest                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Comfy-Neon-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/Previews/Comfy-Neon-Preview.png) | ![Comfy-Forest-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/Previews/Comfy-Forest-Preview.png) |
+| ![Comfy-Neon-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Neon.png) | ![Comfy-Forest-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Forest.png) |
 
 ---
 
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/home.png) | ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/friend-list.png) |
+| ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/home.gif) | ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/friend-list.gif) |
 
 ---
