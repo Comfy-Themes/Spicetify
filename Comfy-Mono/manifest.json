@@ -1,0 +1,9 @@
+{
+    "name": "Comfy Mono",
+    "description": "Stay comfy in the comfort of your own mono.",
+    "preview": "https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/preview.png",
+    "readme": "README.md",
+    "usercss": "user.css",
+    "schemes": "color.ini",
+    "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Mono/Comfy-Mono.js"]
+}

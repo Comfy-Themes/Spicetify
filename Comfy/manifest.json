@@ -1,9 +1,9 @@
 {
     "name": "Comfy",
     "description": "Stay comfy while listening to music",
-    "preview": "https://comfy-themes.github.io/Spicetify/assets/preview.png",
+    "preview": "https://comfy-themes.github.io/Spicetify/Comfy/assets/preview.png",
     "readme": "README.md",
     "usercss": "user.css",
     "schemes": "color.ini",
-    "include": ["https://comfy-themes.github.io/Spicetify/Comfy.js"]
+    "include": ["https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js"]
 }
