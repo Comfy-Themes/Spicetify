@@ -1,0 +1,1063 @@
+/*/ REMOVE THIS LINE TO DISABLE HOVERING OF PANELS
+
+nav.Root__nav-bar { position: inherit !important; width: calc(var(--nav-bar-width) + 9px) !important; opacity: 1 !important; transition: none !important; } nav.Root__nav-bar:hover { position: inherit !important; width: calc(var(--nav-bar-width) + 9px) !important; opacity: 1 !important; transition: none !important; } .LayoutResizer__resize-bar { cursor: col-resize !important; } .Root__top-bar{ opacity: 1 !important; transition: none !important; } .Root__top-bar:hover { transition-delay: none !important; opacity: 1 !important; transition: none !important; } .main-topBar-container { padding-left: 32px !important; } aside.main-buddyFeed-buddyFeedRoot:hover { position: relative !important; width: var(--buddy-feed-width) !important; opacity: 1 !important; bottom: 0 !important; left: 0 !important; top: 0 !important; z-index: 1 !important; } aside.main-buddyFeed-buddyFeedRoot { position: relative !important; width: var(--buddy-feed-width) !important; opacity: 1 !important; bottom: 0 !important; left: 0 !important; top: 0 !important; z-index: 1 !important; }
+
+REMOVE THIS LINE TO DISABLE HOVERING OF PANELS /*/
+
+
+/*/ Nav Bar Mod /*/
+.main-likedSongsButton-likedSongsIcon {
+    background: linear-gradient(149.46deg, #666666, #000000 99.16%) !important;
+	padding: 2px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.main-yourEpisodesButton-yourEpisodesIcon {
+	padding: 2px;
+    border-style: solid;
+    border-width: 2px;
+    background: #2b2b2b;
+}
+
+.main-collectionLinkButton-collectionLinkButton {
+    text-decoration: none;
+}
+
+.Root__nav-bar {
+  position: absolute;
+  width: 40px;
+  opacity: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+nav.Root__nav-bar:hover {
+  position: inherit;
+  width: 225px;
+  opacity: 1;
+  transition: visibility 5s, opacity 0.5s linear;
+}
+
+.LayoutResizer__resize-bar {	
+    cursor: none;
+}
+
+/*/ Top Bar Mod /*/
+.main-topBar-background {
+    background-color: rgb(20,20,20) !important;
+    opacity: 30% !important;
+}
+
+.Root__top-bar{
+    opacity: 0;
+    transition: visibility 5s, opacity 1s linear;
+}
+
+.Root__top-bar:hover {
+	transition-delay: 0.5s;
+    opacity: 1;
+    transition: visibility 5s, opacity 0.5s linear;
+}
+
+
+.main-topBar-container {
+    -webkit-padding-end: 32px;
+    padding: 16px 85px;
+    padding-inline-end: 32px;
+	max-width: none;
+}
+
+
+.main-userWidget-box {
+	background-color: #2b2b2b87;
+}
+
+.main-userWidget-box:focus, .main-userWidget-box:hover, .main-userWidget-box[data-context-menu-open=true] {
+    background-color: #2b2b2b90;
+}
+
+/*/ Top playlist button recolors /*/
+div.main-actionBar-ActionBar.contentSpacing > div > button.HbKLiGoYM4dpuK8L4TMX > svg{
+  color: var(--spice-playlist-controls);
+}
+
+div.main-actionBar-ActionBar.contentSpacing > div > svg{
+  color: var(--spice-playlist-controls);
+}
+
+div.main-actionBar-ActionBar.contentSpacing > div > button.main-moreButton-button > svg{
+  color: var(--spice-playlist-controls);
+}
+
+div.main-actionBar-ActionBar.contentSpacing > div > div > div > button > svg{
+  color: var(--spice-playlist-controls);
+}
+
+div.main-actionBar-ActionBar.contentSpacing > div > div > button > span{
+  color: var(--spice-playlist-controls);
+}
+
+div.main-actionBar-ActionBar.contentSpacing > div > div > button > svg{
+  color: var(--spice-playlist-controls);
+}
+
+/*/ Top left play button /*/
+div.main-actionBar-ActionBar.contentSpacing > div > button.Button-qlcn5g-0.bqeOGM > div{
+  color: var(--spice-upper-play-in);
+}
+
+/*/ Progress Bar Recolor /*/
+.progress-bar {
+	--bg-color: var(--spice-player);
+}
+
+/*/ playlist description recolor /*/
+div.main-entityHeader-headerText > h2.main-entityHeader-subtitle.main-entityHeader-gray > button > p{
+  color: var(--spice-description);
+}  
+
+/*/ playlist length recolor /*/
+div.main-entityHeader-headerText > div > span:nth-child(3) > span{
+  color: var(--spice-text);
+}
+
+/*/ track length bottom right /*/
+div.main-nowPlayingBar-center > div > div.playback-bar > div.Type__TypeElement-goli3j-0.eHgQDo.main-playbackBarRemainingTime-container{
+  color: var(--spice-track-time);
+}
+
+/*/ track time bottom left /*/
+div.main-nowPlayingBar-center > div > div.playback-bar > div.Type__TypeElement-goli3j-0.eHgQDo.playback-bar__progress-time-elapsed{
+  color: var(--spice-track-time);  
+}
+
+/*/ Queue button recolor fix /*/
+div.main-nowPlayingBar-right > div > div.GlueDropTarget.GlueDropTarget--tracks.GlueDropTarget--local-tracks.GlueDropTarget--episodes > div > button > span > svg{
+  color: var(--spice-subtext);
+}
+
+/*/ Shuffle Button Recolor /*/
+.main-shuffleButton-button.pp1ooFGqFEUG5ucC6_KW:not([disabled]):focus:not(:focus-visible):not(:hover) {
+    color: var(--spice-subtext);
+}
+
+/*/ Track Length /*/
+div.main-trackList-trackList.main-trackList-indexable > div.JUa6JJNj7R_Y3i4P8YUX > div:nth-child(2) > div:nth-child(n) > div > div.main-trackList-rowSectionEnd > div {
+    color: var(--spice-subtext);
+}
+
+/*/ Date Added /*/
+div.main-trackList-trackList.main-trackList-indexable > div.JUa6JJNj7R_Y3i4P8YUX > div:nth-child(2) > div:nth-child(n) > div > div:nth-child(4) > span {
+    color: var(--spice-subtext);
+}
+
+.main-shuffleButton-button:focus:not(:focus-visible):not(:hover) {
+    color: var(--spice-subtext);
+}
+
+.main-shuffleButton-button.pp1ooFGqFEUG5ucC6_KW {
+    color: var(--spice-subtext);
+}
+
+.main-shuffleButton-button:focus, .main-shuffleButton-button:hover {
+    color: #ffffff;
+}
+
+.main-shuffleButton-button.pp1ooFGqFEUG5ucC6_KW:not([disabled]):focus, .main-shuffleButton-button.pp1ooFGqFEUG5ucC6_KW:not([disabled]):hover {
+    color: #ffffff;
+}
+
+/*/ Repeat Button Recolor /*/
+.main-repeatButton-button.yKo7LWUCQCEALszRxAaS:not([disabled]):focus:not(:focus-visible):not(:hover) {
+    color: var(--spice-subtext);
+}
+
+.main-repeatButton-button.yKo7LWUCQCEALszRxAaS:focus:not(:focus-visible):not(:hover) {
+    color: var(--spice-subtext);
+}
+
+.main-repeatButton-button.yKo7LWUCQCEALszRxAaS {
+    color: var(--spice-subtext);
+}
+
+.main-repeatButton-button.yKo7LWUCQCEALszRxAaS:focus, .main-repeatButton-button.yKo7LWUCQCEALszRxAaS:hover {
+    color: #ffffff;
+}
+
+.main-repeatButton-button.yKo7LWUCQCEALszRxAaS:not([disabled]):focus, .main-repeatButton-button.yKo7LWUCQCEALszRxAaS:not([disabled]):hover {
+    color: #ffffff;
+}
+
+/*/ Heart Recolor /*/
+:root .main-trackList-rowHeartButton *:not([fill=none]), :root .control-button-heart *:not([fill=none]) {
+    color: var(--spice-heart) !important;
+    fill: var(--spice-heart) !important;
+}
+
+.main-addButton-button:focus, .main-addButton-button:hover {
+    color: var(--spice-text) !important;
+}
+
+.main-addButton-active, .main-addButton-active:focus {
+	color: rgba(255,255,255,.7) !important;
+}
+
+/*/ Episode Recolor /*/
+#spicetify-sticky-list > div:nth-child(8) > a > div.main-collectionLinkButton-icon > div > svg > path {
+    fill: white !important;
+}
+
+#spicetify-sticky-list > div:nth-child(7) > a > div.main-collectionLinkButton-icon > div > svg > path {
+	fill: white !important;
+}
+
+/*/ Text Removal /*/
+:root p.lyrics-lyricsContainer-Provider {
+	font-size: 0;
+}
+
+/*/ Home Mod /*/
+.main-home-homeHeader {
+	display: none;
+}
+
+/*/ Cover Art Mod /*/
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
+    width: 115px !important;
+    height: 84px !important;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.cover-art.shadow {
+    box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow),.4);
+}
+
+.main-coverSlotCollapsed-expandButton:focus, .main-coverSlotCollapsed-expandButton {
+	color: rgb(0,0,0);
+}
+
+.main-coverSlotCollapsed-expandButton:focus, .main-coverSlotCollapsed-expandButton:hover {
+	color: rgb(0,0,0);
+}
+
+.main-editImageButton-icon.icon {
+	color: #000000;
+}
+
+svg.main-coverSlotExpandedCollapseButton-chevron {
+    color: rgb(0,0,0);
+}
+
+/*/ Activity Fix /*/
+.main-connectBar-connectBar {
+    overflow: visible !important;
+    --triangle-position: 147px !important;
+    align-items: unset !important;
+    height: 0px !important;
+    position: absolute !important;
+    left: 80% !important;
+    display: flex !important;
+    bottom: 2% !important;
+    padding: unset !important;
+
+}
+
+/*/ Scrollbar Removal /*/
+.os-scrollbar-vertical {
+	display: none;
+}
+
+.spotifyinternal-artistnpv .npv-background-color--gradient {
+	--spice-rgb-shadow: rgb(0,0,0);
+}
+
+/*/ Spotify Premium Fullscreen /*/
+.npv-has-background-image.npv-has-audio.spotifyinternal-artistnpv .npv-background-overlay {
+    background-color: rgba(var(--spice-rgb-main),.4);
+}
+
+.spotifyinternal-artistnpv .npv-background-image {
+	filter: blur(3px);
+    left: -40px;
+    width: 102%;
+    height: 104%;
+    top: -40px;
+}
+
+.progress-bar {
+    --bg-color: var(--spice-vol-prog-back);
+    --fg-color: var(--spice-subtext);
+    --is-active-fg-color: #ffffff;
+    --progress-bar-transform: 0%;
+    --progress-bar-height: 4px;
+    --progress-bar-radius: calc(var(--progress-bar-height)/2);
+    height: 100%;
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+    width: 100%;
+}
+
+.npv-cover-art {
+	box-shadow: 0 0 75px rgba(var(--spice-rgb-shadow),.4);
+}
+
+/*/ Friends Panel Mod /*/
+aside.main-buddyFeed-buddyFeedRoot:hover {
+    position: inherit;
+    width: var(--buddy-feed-width);
+    opacity: 1;
+    transition: visibility 5s, opacity 0.5s linear;
+    left: 0;
+}
+
+aside.main-buddyFeed-buddyFeedRoot {
+    position: absolute;
+    width: 65px;
+    opacity: 0;
+    bottom: 0;
+    left: -30px;
+    top: 0;
+    z-index: 1;
+}
+
+
+/*/ Tracklist /*/
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-selected, .main-trackList-trackListRow.main-trackList-selected:hover {
+    background-color: rgb(58 58 58 / 25%);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] button.main-trackList-rowImagePlayButton {
+    color: #000000d1;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active:hover .main-trackList-rowTitle, .main-trackList-trackListRow.main-trackList-active:hover .main-trackList-rowMarker {
+	color: rgb(255, 255, 255);
+	text-shadow: 0px 0px 6px white;
+	-webkit-text-stroke: thin;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle, .main-trackList-trackListRow.main-trackList-active .main-trackList-rowMarker {
+	color: rgb(255,255,255);
+	text-shadow: 0px 0px 6px white;
+	-webkit-text-stroke: thin;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active:focus-within .main-trackList-rowTitle, .main-trackList-trackListRow.main-trackList-active:focus-within .main-trackList-rowMarker {
+	color: rgb(255,255,255);
+	text-shadow: 0px 0px 6px white;
+	-webkit-text-stroke: thin;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-rowSectionIndex:hover {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);	
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);	
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid:hover .main-trackList-rowSectionIndex {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active:focus-within .main-trackList-rowSectionIndex {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex {
+	background: rgba(var(--spice-rgb-shadow),.5);
+	border-radius: var(--border-radius);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton  {
+	opacity: 1;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active:focus-within button.main-trackList-rowImagePlayButton  {
+	opacity: 1;
+}
+
+
+
+
+/*/ Play Button Fix /*/
+.JkEwH:hover .ButtonInner-sc-14ud5tc-0, .JkEwH:hover .ButtonFocus-sc-2hq6ey-0 {
+    transform: scale(1.00);
+}
+
+.JkEwH:hover {
+    transform: scale(1.04);
+	box-shadow: 0px 0px 6px white;
+	transition: none 33ms cubic-bezier(.3,0,0,1);
+	transition-property: all;
+}
+
+.JkEwH {
+    background-color: #ffffff;
+    border: 0;
+}
+
+.cSeieV {
+    border-radius: var(--border-radius);
+}
+.gOkZP {
+	border-radius: var(--border-radius);
+}
+
+/*/ upper left play button /*/
+.encore-dark-theme .encore-bright-accent-set {
+    --background-base: var(--spice-upper-play-out);
+    --background-highlight: var(--spice-upper-play-out);
+    --background-press: var(--spice-upper-play-out);
+}
+
+.main-actionBar-ActionBarRow>:first-child {
+	margin-right: 24px
+}
+
+.contentSpacing {
+    padding: inherit 34px;
+}
+
+/*/ Lyric button + Queue button Fix /*/
+
+.control-button--active {
+    fill: var(--spice-subtext) !important;
+    color: var(--spice-subtext) !important;
+}
+
+.control-button:hover {
+    fill: rgb(255,255,255) !important;
+    color: rgb(255,255,255)!important;
+}
+
+.control-button:focus {
+    fill: var(--spice-subtext) !important;
+    color: var(--spice-subtext) !important;
+}
+
+.control-button--active-dot:after {
+	background-color: var(--spice-subtext) !important;
+}
+
+.main-view-container__scroll-node-child-spacer {
+    height: 60px;
+}
+
+:root .Root__main-view #mainImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  will-change: transform;
+  z-index: -1;
+  transition: 300ms background-image ease-in-out;
+  filter: blur(4px);
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+@media (max-width: 1500px) {
+  :root .Root__main-view #mainImage {
+    background-position: top;
+  }
+}
+:root .Root__main-view .main-view-container__scroll-node-child {
+  padding-bottom: 0;
+}
+:root .Root__main-view .main-card-card {
+  border-radius: var(--border-radius);
+  padding: 0;
+  overflow: hidden;
+}
+:root .Root__main-view .main-card-card .main-card-imageContainer {
+  margin-bottom: -4px;
+}
+:root .Root__main-view .main-card-card .main-card-imageContainer .main-cardImage-circular, :root .Root__main-view .main-card-card .main-card-imageContainer img {
+  border-radius: 0;
+}
+:root .Root__main-view .main-card-card .main-card-cardMetadata {
+  padding: 16px;
+}
+:root .Root__main-view .main-entityHeader-container .main-entityHeader-backgroundColor {
+  background: none !important;
+}
+:root .Root__main-view .main-entityHeader-container {
+  padding: 32px;
+  justify-content: center;
+}
+:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) {
+  align-self: center;
+}
+:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText {
+  flex: unset;
+  justify-content: center;
+}
+:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
+  font-size: 50px !important;
+}
+:root .Root__main-view .main-yourEpisodes-yourEpisodesContentWrapper {
+  max-width: unset;
+}
+#main > div > div.Root__top-container > div.Root__main-view > main > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.main-view-container__scroll-node.os-host-transition.os-host-overflow.os-host-overflow-y > div.os-padding > div > div > div.main-view-container__scroll-node-child > section > div > div.iB16LxoPzDeVZo8zPhPQ > div.main-actionBarBackground-background {
+  background: linear-gradient(rgba(255, 255, 255, 0.8) 0, 
+  var(--spice-main) 232px), 
+  var(--background-noise) !important;
+  height: calc(100% - 243px);
+  
+}
+
+:root .Root__main-view .main-actionBarBackground-background {
+  background: linear-gradient(rgba(0, 0, 0, 0.6) 0, 
+  var(--spice-main) 232px), 
+  var(--background-noise) !important;
+  height: calc(100% - 243px);
+  
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
+  margin-top: -24px;
+  margin-left: 8px;
+  margin-right: 22px;
+}
+@media (min-width: 1024px) {
+  :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
+    margin-left: 24px;
+  }
+}
+:root .Root__main-view section[data-testid=your-episodes-page] > .contentSpacing > section {
+  height: calc(100vh - 494px);
+}
+:root .Root__main-view section[data-testid=your-episodes-page] > .main-yourEpisodes-yourEpisodesContentWrapper {
+  height: calc(100vh - 438px);
+}
+:root .Root__main-view section[data-testid=your-episodes-page] > .main-yourEpisodes-yourEpisodesContentWrapper [data-testid^=episode-] {
+  margin: 0;
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2), :root .Root__main-view section[data-testid=episode] > div:last-child, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child {
+  background: none;
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid {
+  border-radius: var(--border-radius);
+  border: none;
+  padding-left: 10px;
+  transition: 200ms background-color;
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-ballad {
+  transition: 300ms color;
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid:hover {
+  background-color: #3A3A3A40;
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListHeader, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListHeader {
+  display: none;
+}
+:root .Root__main-view section[data-testid] {
+  position: relative;
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+  position: absolute;
+  z-index: 1000;
+  top: 8px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  text-indent: -1000px;
+}
+
+.main-entityHeader-background.main-entityHeader-gradient {
+    -webkit-animation: background-animation 1s linear;
+    animation: background-animation 1s linear;
+    -webkit-animation-delay: calc(var(--scroll)*-1s);
+    animation-delay: calc(var(--scroll)*-1s);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.0);
+}
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+  grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
+}
+
+
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow {
+    grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+}
+
+
+
+:root .Root__nav-bar {
+  overflow: hidden;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints {
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  padding: 0 12px;
+  box-sizing: content-box;
+  transition: 350ms background-color;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin: 24px 12px 0 12px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list {
+  display: grid;
+  grid-template-areas: "home home home home" "search search search search" "collection collection collection collection" "lyrics-plus lyrics-plus lyrics-plus lyrics-plus" "reddit reddit reddit reddit" "new-releases new-releases new-releases new-releases" "marketplace marketplace marketplace marketplace" "add tracks episodes .";
+  grid-template-columns: 25px 25px 25px 1fr;
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/"] {
+  grid-area: home;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/search"] {
+  grid-area: search;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/collection"] {
+  grid-area: collection;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/lyrics-plus"] {
+  grid-area: lyrics-plus;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/reddit"] {
+  grid-area: reddit;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/new-releases"] {
+  grid-area: new-releases;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/spicetify-marketplace"] {
+  grid-area: marketplace;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/add"] {
+  grid-area: add;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/collection/episodes"] {
+  grid-area: episodes;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/collection/tracks"] {
+  grid-area: tracks;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > li {
+  padding: 0;
+  margin: 0 -12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > li a {
+  padding: 0 12px;
+  border-radius: 0;
+  background-color: transparent;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > li a.main-navBar-navBarLinkActive {
+  background-color: #5c6eb12a;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > li a svg > * {
+  display: none;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > li:first-child a {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div {
+  padding: 0;
+  margin: 2px 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div > *.active {
+  background: none;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div button, :root .Root__nav-bar ul.main-navBar-entryPoints > div a {
+  padding: 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div button div, :root .Root__nav-bar ul.main-navBar-entryPoints > div a div {
+  margin-right: 0;
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div button div.main-rootlist-statusIcons, :root .Root__nav-bar ul.main-navBar-entryPoints > div a div.main-rootlist-statusIcons {
+  display: none;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints > div button span, :root .Root__nav-bar ul.main-navBar-entryPoints > div a span {
+  display: none;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/"] .home-icon {
+  background: url("https://i.imgur.com/jqDH9TQ.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/"] .home-active-icon {
+  background: url("https://i.imgur.com/60h58oZ.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/search"] .search-icon {
+  background: url("https://i.imgur.com/UV5JQpE.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/search"] .search-active-icon {
+  background: url("https://i.imgur.com/CTVdQ3d.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/collection"] .collection-icon {
+  background: url("https://i.imgur.com/alXGfxW.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/collection"] .collection-active-icon {
+  background: url("https://i.imgur.com/SzvrAfr.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/lyrics-plus"] .collection-icon {
+  background: url("https://i.imgur.com/91fuU3P.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/lyrics-plus"] .collection-active-icon {
+  background: url("https://i.imgur.com/EgRCYe8.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/reddit"] .collection-icon {
+  background: url("https://i.imgur.com/6N6ev2V.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/reddit"] .collection-active-icon {
+  background: url("https://i.imgur.com/UENFDdo.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-icon {
+  background: url("https://i.imgur.com/BgkCeDG.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-active-icon {
+  background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-icon {
+  background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;
+}
+
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-active-icon {
+  background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
+  display: grid;
+  grid-template-areas: "add tracks episodes" "playlists playlists playlists";
+  grid-template-columns: 25px 25px 1fr;
+  grid-template-rows: 25px 1fr;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  margin: 12px 12px 0 12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child {
+  grid-area: add;
+  margin: -6px 0 0 12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child::before {
+  content: "";
+  position: absolute;
+  width: calc(100% - 24px);
+  height: 40px;
+  margin: -6px 0 0 -12px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child button {
+  padding: 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child button .main-createPlaylistButton-createPlaylistIcon {
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(2) {
+  grid-area: tracks;
+  margin: -6px 0 0 12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(2) a {
+  padding: 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(2) a .main-likedSongsButton-likedSongsIcon {
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) {
+  grid-area: episodes;
+  margin: -6px 0 0 12px;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a {
+  padding: 0;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a .main-yourEpisodesButton-yourEpisodesIcon {
+  border-radius: var(--border-radius);
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:nth-child(3) a .main-collectionLinkButton-collectionLinkText {
+  display: none;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:last-child {
+  grid-area: playlists;
+}
+:root .Root__nav-bar .main-rootlist-rootlistDividerContainer {
+  display: none;
+}
+:root .Root__nav-bar .main-rootlist-rootlist {
+  margin-top: 0;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content {
+  padding-top: 16px !important;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content::before {
+  content: "Playlists";
+  visibility: visible;
+  width: unset;
+  height: unset;
+  line-height: unset;
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] {
+  margin: 12px;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"]:not(#spicetify-playlist-list) {
+  margin: 12px 0 0 0;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div {
+  contain: unset;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem {
+  padding: 0;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
+  padding-right: var(--left-sidebar-padding-right);
+  box-sizing: content-box;
+  transition: 150ms background-color;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + button {
+  border-radius: 0 !important;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + div > button {
+  margin-left: 0;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
+  background-color: #3A3A3A40;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  padding: 4px 12px;
+  transition: 150ms background-color;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-expandArrow {
+  height: unset;
+  margin-left: 0;
+  padding: 4px 12px;
+  transition: 150ms background-color;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) li:last-child::after {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 40px;
+}
+:root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
+  border-radius: 0;
+}
+:root .Root__nav-bar .os-scrollbar {
+  top: 52px;
+  bottom: 38px;
+  border-top-right-radius: calc(var(--border-radius) + 5px);
+  border-bottom-right-radius: calc(var(--border-radius) + 5px);
+  overflow: hidden;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container {
+  position: relative;
+  border-top: none;
+  background-color: transparent;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar {
+  box-sizing: content-box;
+  padding-bottom: 16px;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
+    transform: translateX(-125px);
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded .main-coverSlotCollapsed-container {
+	opacity: 0;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
+  top: -20px;
+}
+
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  padding: 4px 8px;
+  box-sizing: content-box;
+  border-radius: var(--border-radius);
+  color: #fff;
+  background-color: var(--spice-sidebar);
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar::after {
+  content: none;
+}
+:root .Root__now-playing-bar .playback-bar {
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "time-left time-right" "bar bar";
+  bottom: 0;
+}
+:root .Root__now-playing-bar .playback-bar .saber-hilt {
+  height: 0;
+}
+:root .Root__now-playing-bar .playback-bar .playback-progressbar {
+  grid-column: 1/3;
+  grid-area: bar;
+}
+:root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div {
+  --progress-bar-height: 12px;
+  --progress-bar-radius: 0;
+}
+:root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div > div > div {
+  width: 105%;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--spice-progress-bar) 93%, transparent 100%);
+}
+:root .Root__now-playing-bar .playback-bar .playback-progressbar .progress-bar__slider {
+  display: none;
+}
+:root .Root__now-playing-bar .playback-bar > div:first-of-type {
+  grid-area: time-left;
+}
+:root .Root__now-playing-bar .playback-bar > div:last-of-type {
+  grid-area: time-right;
+}
+:root .Root__now-playing-bar .playback-bar button {
+  width: 0;
+}
+
+.x-settings-container {
+  max-width: unset;
+}
+.x-settings-container .x-toggle-indicatorWrapper {
+  border-radius: var(--border-radius);
+}
+
+:root .Root__top-bar header button {
+  border-radius: var(--border-radius);
+}
+:root .Root__top-bar header button[title="Popup Lyrics"] {
+  background-image: url("https://i.imgur.com/91fuU3P.png");
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root .Root__top-bar header button[title="Popup Lyrics"] svg {
+  display: none;
+}
+:root .Root__top-bar header .main-topBar-historyButtons button, :root .Root__top-bar header .lyrics-tabBar-active {
+  background-color: rgba(11, 11, 17, 0.32);
+}
+:root .Root__top-bar header .main-topBar-UpgradeButton {
+  font-size: 0;
+  overflow: hidden;
+  background: url("https://i.imgur.com/nzAfcIL.png") 50%/contain no-repeat;
+  border: none;
+  padding: 5px;
+  box-sizing: content-box;
+}
+:root .Root__top-bar header .main-userWidget-box {
+  height: unset;
+  padding: 0;
+  gap: 12px;
+}
+:root .Root__top-bar header .main-userWidget-box .main-avatar-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex;
+}
+@media (min-width: 1024px) {
+  :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar .main-avatar-image {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+}
+:root .Root__top-bar header .main-userWidget-box .main-avatar-avatar > div {
+  width: unset !important;
+  height: unset !important;
+}
+:root .Root__top-bar header .main-userWidget-box .main-userWidget-displayName {
+  padding-right: 12px;
+}
+:root .Root__top-bar header .main-userWidget-box .main-userWidget-chevron {
+  display: none;
+}
+
+.Root__main-view > div:first-of-type > div, .desktoproutes-homepage-takeover-ad-hptoComponent-parentContainer {
+  display: block;
+}
+
+:root {
+  --border-radius: 8px;
+}
+:root button, :root input, :root img {
+  border-radius: var(--border-radius);
+}
+
+:root .main-trackList-rowSectionEnd .main-addButton-active, :root .main-trackList-rowSectionEnd .main-addButton-active:focus, :root .main-trackList-rowSectionEnd .main-addButton-active:hover {
+  color: #d25050;
+}
+:root .lyrics-lyricsContainer-LyricsBackground {
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+:root #context-menu {
+  overflow: hidden;
+}
+:root #context-menu ul {
+  padding: 0;
+  background-color: var(--spice-player);
+}
+:root #context-menu ul button, :root #context-menu ul a {
+  border-radius: 0;
+}
+:root #context-menu ul button::before, :root #context-menu ul button::after, :root #context-menu ul a::before, :root #context-menu ul a::after {
+  content: none;
+}
+:root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true], :root #context-menu ul a:not(.main-contextMenu-disabled):focus, :root #context-menu ul a:not(.main-contextMenu-disabled):hover, :root #context-menu ul a[aria-expanded=true] {
+  background-color: #5c6eb12a;
+  transition: 150ms background-color;
+}
+:root #bookmark-menu {
+  background-color: var(--spice-player);
+  border-radius: var(--border-radius);
+}
+:root #bookmark-menu .bookmark-filter {
+  background-color: var(--spice-player);
+}
+:root #bookmark-menu button, :root #bookmark-menu a {
+  border-radius: 0;
+}
+:root #bookmark-menu button::before, :root #bookmark-menu button::after, :root #bookmark-menu a::before, :root #bookmark-menu a::after {
+  content: none;
+}
+:root #bookmark-menu button:not(.main-contextMenu-disabled):focus, :root #bookmark-menu button:not(.main-contextMenu-disabled):hover, :root #bookmark-menu button[aria-expanded=true], :root #bookmark-menu a:not(.main-contextMenu-disabled):focus, :root #bookmark-menu a:not(.main-contextMenu-disabled):hover, :root #bookmark-menu a[aria-expanded=true] {
+  background-color: #5c6eb12a;
+  transition: 150ms background-color;
+}
+
+

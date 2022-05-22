@@ -1,0 +1,115 @@
+:root .Root__main-view {
+    #mainImage {
+        position: absolute; // instead of background-attachment
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        will-change: transform; // creates a new paint layer
+        z-index: -1;
+        transition: 300ms background-image ease-in-out;
+        filter: blur(4px);
+        -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    }
+
+    @media (max-width: 1500px) { #mainImage { background-position: top;}}
+
+    .main-view-container__scroll-node-child { padding-bottom: 0;}
+
+    // Music card
+    .main-card-card {
+        border-radius: var(--border-radius); padding: 0; overflow: hidden;
+
+        .main-card-imageContainer {
+            margin-bottom: -4px;
+
+            .main-cardImage-circular, img { border-radius: 0;}
+        }
+        .main-card-cardMetadata { padding: 16px}
+    }
+
+    // Header
+    .main-entityHeader-container .main-entityHeader-backgroundColor { background: none !important;}
+
+    .main-entityHeader-container {
+        padding: 32px;
+        justify-content: center;
+
+        & > div:nth-last-of-type(2) {
+            align-self: center;
+
+            & + .main-entityHeader-headerText {
+                flex: unset;
+                justify-content: center;
+
+                .main-entityHeader-title h1 { font-size: 50px !important;}
+            }
+        }
+    }
+
+    .main-yourEpisodes-yourEpisodesContentWrapper { max-width: unset;}
+    .main-actionBarBackground-background { 
+        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px), var(--background-noise) !important; 
+        height: calc(100% - 243px);
+    }
+
+    // Playlist, Album & Liked songs
+    section { 
+        &[data-testid="playlist-page"] .main-actionBar-ActionBar, &[data-testid="album-page"] .main-actionBar-ActionBar, &[data-testid="your-episodes-page"] .main-actionBar-ActionBar, &[data-testid="artist-page"] .main-actionBar-ActionBar {
+            padding: 8px 16px 16px 16px;
+    
+            .main-playButton-PlayButton {
+                margin-top: -24px; margin-left: 8px;
+                margin-right: 22px;
+            }
+    
+            @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
+        }
+
+        &[data-testid="your-episodes-page"] > .contentSpacing > section { height: calc(100vh - 494px);}
+        &[data-testid="your-episodes-page"] > .main-yourEpisodes-yourEpisodesContentWrapper { 
+            height: calc(100vh - 438px);
+
+            [data-testid^="episode-"] { margin: 0;}
+        }
+        
+        &[data-testid="playlist-page"] > div:last-child, &[data-testid="album-page"] > div:nth-last-child(2), 
+        &[data-testid="episode"] > div:last-child, &[data-testid="your-episodes-page"] > div:last-child, &[data-testid="artist-page"] > div > div:last-child {
+            background: none;
+
+            .main-trackList-trackListRowGrid {
+                border-radius: var(--border-radius); border: none;
+                padding-left: 10px; transition: 200ms background-color;
+
+                .main-type-mesto, .main-type-ballad { transition: 300ms color;}
+
+                &:hover { background-color: rgba(255, 255, 255, 0.05);}
+                &.vMOFJ7EasQXUloRrStEe { background-color: rgba(255, 255, 255, 0.1);}
+            }
+            .main-trackList-trackListHeader { display: none;}
+        }
+        
+        // Album & Liked songs
+        &[data-testid] { position: relative;}
+    }
+
+    // Playlists
+    section[data-testid="playlist-page"], section[data-testid="artist-page"] {
+        .main-trackList-trackListRow {
+            grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr) !important;
+
+            & > .main-trackList-rowSectionIndex {
+                position: absolute; z-index: 1000;
+                top: 8px; left: 10px;
+                width: 40px; height: 40px;
+                justify-content: center;
+                text-indent: -1000px;
+            }
+        }
+
+        .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow { grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px,2fr) [last] minmax(120px,1fr) !important;}
+    }
+}

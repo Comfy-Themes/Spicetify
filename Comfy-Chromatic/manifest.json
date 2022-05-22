@@ -1,0 +1,9 @@
+{
+    "name": "Comfy Sunset",
+    "description": "Clean theme based on Comfy and Comfy Shadow from created by NYRI4 and ohitsom respectively.",
+    "preview": "Previews/Comfy-Sunset-Preview.png",
+    "readme": "README.md",
+    "usercss": "user.css",
+    "schemes": "color.ini",
+    "include": ["https://github.com/Pownque/Comfy-Sunset/blob/main/Comfy_Sunset.js"]
+}
