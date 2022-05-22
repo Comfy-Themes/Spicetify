@@ -2,7 +2,7 @@
 
 ---
 
-![Preview](https://comfy-themes.github.io/Spicetify/Comfy/preview.png)
+![Preview](https://comfy-themes.github.io/Spicetify/Comfy/assets/preview.png)
 
 ### 📥 Manual Installation
 ---
