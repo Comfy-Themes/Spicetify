@@ -1,8 +1,8 @@
-![Banner](https://comfy-themes.github.io/Spicetify/assets/banner.png)
+![Banner](https://comfy-themes.github.io/Spicetify/banner.png)
 
 ---
 
-![Preview](https://comfy-themes.github.io/Spicetify/assets/preview.png)
+![Preview](https://comfy-themes.github.io/Spicetify/Comfy/preview.png)
 
 ### 📥 Manual Installation
 ---
@@ -61,14 +61,14 @@ curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.
 
 The theme part is now updating itself for users using the version of Spicetify equals or greater than `2.8.2`, however, for the extesnion part if you have issues with it :
 
-1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy.js)
+1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js)
 2. Copy the whole code (sorry for the flashbang)
 3. Go into the Spicetify extension folder
 4. Open the `Comfy.js` file, paste the code and **save it**
 5. Afterwards, in a terminal, run `spicetify apply`
 6. Enjoy !
 
-For the users that don't want to update Spicetify to the newest version, do the same with [this](https://comfy-themes.github.io/Spicetify/Comfy.js) and paste it in the `user.css` replacing the `@import`.
+For the users that don't want to update Spicetify to the newest version, do the same with [this](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js) and paste it in the `user.css` replacing the `@import`.
 
 ### 🖌️ Customization
 
@@ -79,9 +79,3 @@ Go into your theme folder and open either :
 `color.ini` for the colors
 
 `user.css` to modify the code
-
-## 🖼️ More preview
-
-|                                 Home                                 |                                 Friend list                                 |
-| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Preview](https://comfy-themes.github.io/Spicetify/assets/home.png) | ![Preview](https://comfy-themes.github.io/Spicetify/assets/friend-list.png) |

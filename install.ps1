@@ -36,17 +36,9 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
     Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.ps1" | Invoke-Expression
   }
 
-  # Check ~\spicetify-cli\Themes directory already exists
-  $sp_dir = "${HOME}\spicetify-cli\Themes"
-  if (-not (Test-Path $sp_dir)) {
-    Write-Part "MAKING FOLDER  "; Write-Emphasized $sp_dir
-    New-Item -Path $sp_dir -ItemType Directory | Out-Null
-    Write-Done
-  }
-
-  # Check ~\.spicetify.\Themes directory already exists
+  # Check ~\.spicetify\Themes directory already exists
   $spicePath = spicetify -c | Split-Path
-  $sp_dot_dir = "$spicePath\Themes\Comfy-spicetify"
+  $sp_dot_dir = "$spicePath\Themes\Comfy"
   if (-not (Test-Path $sp_dot_dir)) {
     Write-Part "MAKING FOLDER  "; Write-Emphasized $sp_dot_dir
     New-Item -Path $sp_dot_dir -ItemType Directory | Out-Null
@@ -55,15 +47,15 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
 
   # Clone to .spicetify.
   Write-Part "DOWNLOADING    "; Write-Emphasized $sp_dot_dir
-  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/color.ini" -UseBasicParsing -OutFile "$sp_dot_dir\color.ini"
-  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/user.css" -UseBasicParsing -OutFile "$sp_dot_dir\user.css"
-  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy.js" -UseBasicParsing -OutFile "$spicePath\Extensions\Comfy.js"
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/color.ini" -UseBasicParsing -OutFile "$sp_dot_dir\color.ini"
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy/user.css" -UseBasicParsing -OutFile "$sp_dot_dir\user.css"
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy/Comfy.js" -UseBasicParsing -OutFile "$spicePath\Extensions\Comfy.js"
   Write-Done
 
   # Installing.
   Write-Part "INSTALLING";
   spicetify config extensions Comfy.js
-  spicetify config current_theme Comfy-spicetify color_scheme Comfy-spicetify
+  spicetify config current_theme Comfy color_scheme Comfy
   spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
   Write-Done
 

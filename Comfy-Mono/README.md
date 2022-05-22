@@ -1,11 +1,16 @@
-![Preview](https://user-images.githubusercontent.com/22730962/146606899-d3a1a2a9-b03f-43e2-91d1-b32dce219c2f.png)
-
- 🖌️ Customization
 
 ---
 
-Go into your theme folder and open either :
+### To enable hoverable panels, remove lines 3 and 7 in your user.css or enable the snippet in marketplace.
 
-`color.ini` for the colors
+---
 
-`user.css` and scroll to the bottom to modify the code
+![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/preview.png)
+
+---
+
+|                                 Home                                 |                                 Friend list                                 |
+| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/home.png) | ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/friend-list.png) |
+
+---
