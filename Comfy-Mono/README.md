@@ -11,6 +11,6 @@
 
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/home.png) | ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/friend-list.png) |
+| ![Home](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy-Mono/assets/friend-list.png) |
 
 ---

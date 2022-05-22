@@ -7,16 +7,16 @@
 
 |                                 Sunset                                 |                                 Sakura                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Comfy-Sunset-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sunset.png) | ![Comfy-Sakura-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sakura.png) |
+| ![Sunset](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sunset.png) | ![Sakura](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Sakura.png) |
 
 |                                 Neon                                 |                                 Forest                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Comfy-Neon-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Neon.png) | ![Comfy-Forest-Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Forest.png) |
+| ![Neon](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Neon.png) | ![Forest](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Forest.png) |
 
 ---
 
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/home.gif) | ![Preview](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/friend-list.gif) |
+| ![Home](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/home.gif) | ![Friend-List](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/friend-list.gif) |
 
 ---
