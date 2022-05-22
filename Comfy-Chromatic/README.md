@@ -13,13 +13,12 @@
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![Neon](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Neon.png) | ![Forest](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Forest.png) |
 
-|                                 Vaporwave                            |                                                                             |
-| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-|
+|                                 Vaporwave                            |
+| :------------------------------------------------------------------: |
+| ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Vaporwave.png)
 
 ---
 
-|
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![Home](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/home.gif) | ![Friend-List](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/assets/friend-list.gif) |
