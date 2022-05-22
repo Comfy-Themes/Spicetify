@@ -56,6 +56,10 @@ div.main-actionBar-ActionBar.contentSpacing > div > div > button > svg{
 color: var(--spice-playlist-controls);
 }
 
+div.main-actionBar-ActionBar.contentSpacing > div > button.main-addButton-button > svg{
+color: var(--spice-playlist-controls);
+}
+
 /*/ Top left play button /*/
 div.main-actionBar-ActionBar.contentSpacing > div > button.Button-qlcn5g-0.bqeOGM > div{
 color: var(--spice-upper-play-in);
