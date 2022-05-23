@@ -22,3 +22,13 @@
 |                                 Vaporwave                            |
 | :------------------------------------------------------------------: |
 | ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Vaporwave.png)
+=======
+| ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/colors/Vaporwave.png)
+
+---
+
+|                                 Home                                 |                                 Friend list                                 |
+| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| ![Home](https://github.com/comfy-themes/Spicetify/blob/main/Comfy-Chromatic/assets/home.gif?raw=true) | ![Friend-List](https://github.com/comfy-themes/Spicetify/blob/main/Comfy-Chromatic/assets/friend-list.gif?raw=true) |
+
+---
