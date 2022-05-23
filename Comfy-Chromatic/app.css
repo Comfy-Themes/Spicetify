@@ -209,6 +209,10 @@ svg.main-coverSlotExpandedCollapseButton-chevron {
 }
 
 /*/ Scrollbar Removal /*/
+::-webkit-scrollbar {
+	display: none !important;
+}
+
 .os-scrollbar-vertical {
 display: none;
 }
@@ -315,22 +319,19 @@ opacity: 1;
 opacity: 1;
 }
 
-
-
-
 /*/ Play Button Fix /*/
-.JkEwH:hover .ButtonInner-sc-14ud5tc-0, .JkEwH:hover .ButtonFocus-sc-2hq6ey-0 {
+button.Button-qlcn5g-0.iaAUvZ:hover .ButtonInner-sc-14ud5tc-0, button.Button-qlcn5g-0.iaAUvZ:hover .ButtonFocus-sc-2hq6ey-0 {
   transform: scale(1.00);
 }
 
-.JkEwH:hover {
+button.Button-qlcn5g-0.iaAUvZ:hover {
   transform: scale(1.04);
-box-shadow: 0px 0px 6px var(--spice-description);
-transition: none 33ms cubic-bezier(.3,0,0,1);
-transition-property: all;
+  box-shadow: 0px 0px 6px var(--spice-description);
+  transition: none 33ms cubic-bezier(.3,0,0,1);
+  transition-property: all;
 }
 
-.JkEwH {
+button.Button-qlcn5g-0.iaAUvZ {
   background-color: var(--spice-upper-play-out);
   border: 0;
 }

@@ -158,6 +158,10 @@ svg.main-coverSlotExpandedCollapseButton-chevron {
 }
 
 /*/ Scrollbar Removal /*/
+::-webkit-scrollbar {
+	display: none !important;
+}
+
 .os-scrollbar-vertical {
 	display: none;
 }
@@ -264,42 +268,43 @@ svg.main-coverSlotExpandedCollapseButton-chevron {
 }
 
 /*/ Play Button Fix /*/
-.JkEwH:hover .ButtonInner-sc-14ud5tc-0, .JkEwH:hover .ButtonFocus-sc-2hq6ey-0 {
-    transform: scale(1.00);
+button.Button-qlcn5g-0.iaAUvZ:hover .ButtonInner-sc-14ud5tc-0, button.Button-qlcn5g-0.iaAUvZ:hover .ButtonFocus-sc-2hq6ey-0 {
+  transform: scale(1.00);
 }
 
-.JkEwH:hover {
-    transform: scale(1.04);
-	box-shadow: 0px 0px 6px white;
-	transition: none 33ms cubic-bezier(.3,0,0,1);
-	transition-property: all;
+button.Button-qlcn5g-0.iaAUvZ:hover {
+  transform: scale(1.04);
+box-shadow: 0px 0px 6px white;
+transition: none 33ms cubic-bezier(.3,0,0,1);
+transition-property: all;
 }
 
-.JkEwH {
-    background-color: #ffffff;
-    border: 0;
+button.Button-qlcn5g-0.iaAUvZ {
+  background-color: #ffffff;
+  border: 0;
 }
 
 .cSeieV {
-    border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
 }
 .gOkZP {
-	border-radius: var(--border-radius);
+border-radius: var(--border-radius);
 }
 
 .encore-dark-theme .encore-bright-accent-set {
-    --background-base: #ffffff;
-    --background-highlight: #ffffff;
-    --background-press: #ffffff;
+  --background-base: #ffffff;
+  --background-highlight: #ffffff;
+  --background-press: #ffffff;
 }
 
 .main-actionBar-ActionBarRow>:first-child {
-	margin-right: 24px
+margin-right: 24px
 }
 
 .contentSpacing {
-    padding: inherit 34px;
+  padding: inherit 34px;
 }
+
 
 /*/ Lyric button + Queue button Fix /*/
 

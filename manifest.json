@@ -6,7 +6,7 @@
         "readme": "Comfy/README.md",
         "usercss": "Comfy/user.css",
         "schemes": "Comfy/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js"],
+        "include": ["https://comfy-themes.github.io/Spicetify/Comfy/comfy.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
@@ -21,8 +21,12 @@
         "readme": "Comfy-Mono/README.md",
         "usercss": "Comfy-Mono/user.css",
         "schemes": "Comfy-Mono/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Mono/Comfy-Mono.js"],
+        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Mono/comfy-mono.js"],
 		"authors": [
+			{
+				"name": "NYRI4",
+				"url": "https://github.com/NYRI4"
+			},
 			{
 				"name": "OhItsTom",
 				"url": "https://github.com/OhItsTom"
@@ -36,8 +40,12 @@
         "readme": "Comfy-Chromatic/README.md",
         "usercss": "Comfy-Chromatic/user.css",
         "schemes": "Comfy-Chromatic/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/Comfy-Chromatic.js"],
+        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/comfy-chromatic.js"],
 		"authors": [
+			{
+				"name": "NYRI4",
+				"url": "https://github.com/NYRI4"
+			},
 			{
 				"name": "Pownque",
 				"url": "https://github.com/Pownque"
