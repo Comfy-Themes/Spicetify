@@ -1,9 +1,26 @@
+### ✅ Supported -> Spicetify 2.9.8, Spotify 1.1.83.
+---
+
 ![Banner](https://comfy-themes.github.io/Spicetify/banner.png)
 
 ---
 
 ![Preview](https://comfy-themes.github.io/Spicetify/Comfy/assets/preview.png)
 
+### 📥 Automatic Installation
+---
+
+Windows -> **PowerShell**:
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
+```
+
+macOS and Linux -> **Bash**:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | sh
+```
 ### 📥 Manual Installation
 ---
 
@@ -39,21 +56,6 @@ mkdir -p ../../Extensions
 cp Comfy.js ../../Extensions/.
 spicetify config extensions Comfy.js
 spicetify apply
-```
-
-### 📥 Automatic Installation
----
-
-Windows -> **PowerShell**:
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
-```
-
-macOS and Linux -> **Bash**:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | sh
 ```
 
 ### ⚠️️ Warning
