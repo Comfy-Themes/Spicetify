@@ -2,7 +2,7 @@
     const { Player, Menu, LocalStorage, Platform } = Spicetify
 	const mainChild = document.createElement("div")
     const main = document.querySelector('.Root__main-view')
-    // const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
+    const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
 	const activityquery = document.querySelector("aside.main-buddyFeed-buddyFeedRoot")
     const topbar = document.querySelector("header.main-topBar-container")
 

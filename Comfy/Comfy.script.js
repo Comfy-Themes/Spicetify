@@ -1,7 +1,7 @@
 (function Comfy() {
     const { Player, Menu, LocalStorage, Platform } = Spicetify
     const main = document.querySelector('.Root__main-view')
-    // const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
+    const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
     const mainChild = document.createElement("div")
 
     if (!(Player && Menu && LocalStorage && Platform && main)) {
