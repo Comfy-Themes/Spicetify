@@ -61,7 +61,7 @@ spicetify apply
 ### ⚠️️ Warning
 ---
 
-The theme part is now updating itself for users using the version of Spicetify equals or greater than `2.8.2`, however, for the extesnion part if you have issues with it :
+The theme automatically updates for users using the version of Spicetify equals or greater than `2.8.2`, however, for the users that don't want to update Spicetify to the newest version:
 
 1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js)
 2. Copy the whole code (sorry for the flashbang)
@@ -70,7 +70,7 @@ The theme part is now updating itself for users using the version of Spicetify e
 5. Afterwards, in a terminal, run `spicetify apply`
 6. Enjoy !
 
-For the users that don't want to update Spicetify to the newest version, do the same with [this](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.js) and paste it in the `user.css` replacing the `@import`.
+For the users that don't want to update Spicetify to the newest version, do the same with [this](https://comfy-themes.github.io/Spicetify/Comfy/app.css) and paste it in the `user.css` replacing the `@import`.
 
 ### 🖌️ Customization
 
