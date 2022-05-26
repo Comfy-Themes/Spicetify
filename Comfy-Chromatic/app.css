@@ -209,8 +209,9 @@ svg.main-coverSlotExpandedCollapseButton-chevron {
 }
 
 /*/ Scrollbar Removal /*/
-::-webkit-scrollbar {
-	display: none !important;
+#main{
+  background-color: var(--spice-main);
+  overflow: hidden;
 }
 
 .os-scrollbar-vertical {

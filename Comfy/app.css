@@ -388,8 +388,9 @@
   overflow: hidden;
 }
 
-::-webkit-scrollbar {
-	display: none !important;
+#main{
+  background-color: var(--spice-main);
+  overflow: hidden;
 }
 
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
