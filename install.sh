@@ -8,7 +8,7 @@ theme_dir="$(dirname "$(spicetify -c)")/Themes"
 ext_dir="$(dirname "$(spicetify -c)")/Extensions"
 
 # Make directories if needed
-mkdir -p "${theme_dir}"
+mkdir -p "${theme_dir}/Comfy"{,-Mono,-Chromatic}
 mkdir -p "${ext_dir}"
 
 # Download latest tagged files into correct directories
@@ -25,7 +25,7 @@ curl --progress-bar --output "${theme_dir}/Comfy-Chromatic/user.css" "https://ra
 curl --progress-bar --output "${ext_dir}/comfy-chromatic.js" "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy-Chromatic/comfy-chromatic.js"
 
 echo "Applying theme"
-spicetify config extensions Comfy.js
+spicetify config extensions comfy.js
 spicetify config current_theme Comfy color_scheme Comfy
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
