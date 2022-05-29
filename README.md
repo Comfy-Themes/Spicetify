@@ -43,8 +43,8 @@ Windows -> **Powershell**:
 
 ```powershell
 cd "$(spicetify -c | Split-Path)\Themes\Comfy"
-Copy-Item Comfy.js ..\..\Extensions
-spicetify config extensions Comfy.js
+Copy-Item comfy.js ..\..\Extensions
+spicetify config extensions comfy.js
 spicetify apply
 ```
 
@@ -53,8 +53,8 @@ macOS and Linux -> **Bash**:
 ```bash
 cd "$(dirname "$(spicetify -c)")/Themes/Comfy"
 mkdir -p ../../Extensions
-cp Comfy.js ../../Extensions/.
-spicetify config extensions Comfy.js
+cp comfy.js ../../Extensions/.
+spicetify config extensions comfy.js
 spicetify apply
 ```
 
@@ -66,7 +66,7 @@ The theme automatically updates for users using the version of Spicetify equals 
 1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.script.js)
 2. Copy the whole code (sorry for the flashbang)
 3. Go into the Spicetify extension folder
-4. Open the `Comfy.js` file, paste the code and **save it**
+4. Open the `comfy.js` file, paste the code and **save it**
 5. Afterwards, in a terminal, run `spicetify apply`
 6. Enjoy !
 

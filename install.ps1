@@ -49,12 +49,12 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   Write-Part "DOWNLOADING    "; Write-Emphasized $sp_dot_dir
   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/color.ini" -UseBasicParsing -OutFile "$sp_dot_dir\color.ini"
   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy/user.css" -UseBasicParsing -OutFile "$sp_dot_dir\user.css"
-  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy/Comfy.js" -UseBasicParsing -OutFile "$spicePath\Extensions\Comfy.js"
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/comfy-themes/Spicetify/main/Comfy/comfy.js" -UseBasicParsing -OutFile "$spicePath\Extensions\comfy.js"
   Write-Done
 
   # Installing.
   Write-Part "INSTALLING";
-  spicetify config extensions Comfy.js
+  spicetify config extensions comfy.js
   spicetify config current_theme Comfy color_scheme Comfy
   spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
   Write-Done

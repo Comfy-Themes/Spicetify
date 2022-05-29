@@ -6,7 +6,7 @@ cd "$(dirname "$(spicetify -c)")"
 
 echo "Uninstalling"
 cd "$(dirname "$(spicetify -c)")"
-spicetify config current_theme "SpicetifyDefault" color_scheme "green-dark" extensions Comfy.js-
+spicetify config current_theme "SpicetifyDefault" color_scheme "green-dark" extensions comfy.js-
 
 echo "Deleting files"
 while true; do
@@ -17,7 +17,7 @@ while true; do
         ext_dir="$(dirname "$(spicetify -c)")/Extensions"
         rm -rf "$theme_dir"
         # Use -f to ignore if missing
-        rm -f "$ext_dir/Comfy.js"
+        rm -f "$ext_dir/comfy.js"
         break
         ;;
     [Nn]*)

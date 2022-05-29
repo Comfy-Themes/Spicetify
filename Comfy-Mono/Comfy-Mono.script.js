@@ -6,32 +6,34 @@
 	const activityquery = document.querySelector("aside.main-buddyFeed-buddyFeedRoot")
     const topbar = document.querySelector("header.main-topBar-container")
 
-    if (!(Player && Menu && LocalStorage && Platform && main && topbar)) {
+    if (!(Player && Menu && LocalStorage && Platform && main && topbar && activityquery)) {
         setTimeout(Comfy, 1000)
         return
     }
 
-	function computedStyleCondition(topbar, activityquery) {
-		if (getComputedStyle(activityquery).position == "relative") {
-			topbar.style.paddingInlineEnd = "32px"
+	// Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
+	// Once checked it will make the changes to topbar as needed.
+	function ComputedStyleCondition(topbar, activityquery) {
+		if (getComputedStyle(activityquery).position == "absolute") {
+			topbar.style.paddingInlineEnd = "162px"
 		}
 		else {
-			topbar.style.paddingInlineEnd = "162px"
+			topbar.style.paddingInlineEnd = "32px"
 		}
 	}
 
     // Setting of topbar
-	!activityquery ? topbar.style.paddingInlineEnd = "162px" : (function(){computedStyleCondition(topbar, activityquery);
+	ComputedStyleCondition(topbar, activityquery) // Startup Initialization
+	
+		// Hover Events - Adds lag might need a rework
+		activityquery.addEventListener("mouseover", function( event ) {
+		   ComputedStyleCondition(topbar, activityquery);
+		}, false);
 
-	activityquery.addEventListener("mouseover", function( event ) {
-	   computedStyleCondition(topbar, activityquery);
-	}, false);
+		activityquery.addEventListener("mouseout", function( event ) {
+			ComputedStyleCondition(topbar, activityquery);
+		}, false);
 
-	activityquery.addEventListener("mouseout", function( event ) {
-		computedStyleCondition(topbar, activityquery);
-	}, false);
-
-	})();
 
     // Spotify launching on a playlist
     const channels = ['/playlist/', '/album/', '/collection/tracks', '/collection/episodes', '/episode/', '/lyrics-plus']
@@ -58,8 +60,6 @@
             else { mainChild.style.backgroundImage = null}
         }
     })
-
-
 
     // Change the song image on song change
     Player.addEventListener("songchange", () => {

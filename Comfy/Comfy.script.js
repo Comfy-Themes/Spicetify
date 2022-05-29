@@ -1,19 +1,45 @@
 (function Comfy() {
     const { Player, Menu, LocalStorage, Platform } = Spicetify
+	const mainChild = document.createElement("div")
     const main = document.querySelector('.Root__main-view')
     const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
-    const mainChild = document.createElement("div")
+	const activityquery = document.querySelector("aside.main-buddyFeed-buddyFeedRoot")
+    const topbar = document.querySelector("header.main-topBar-container")
 
-    if (!(Player && Menu && LocalStorage && Platform && main)) {
+    if (!(Player && Menu && LocalStorage && Platform && main && topbar && activityquery)) {
         setTimeout(Comfy, 1000)
         return
     }
 
+	// Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
+	// Once checked it will make the changes to topbar as needed.
+	function ComputedStyleCondition(topbar, activityquery) {
+		if (getComputedStyle(activityquery).position == "absolute") {
+			topbar.style.paddingInlineEnd = "162px"
+		}
+		else {
+			topbar.style.paddingInlineEnd = "32px"
+		}
+	}
+
+    // Setting of topbar
+	ComputedStyleCondition(topbar, activityquery) // Startup Initialization
+	
+		// Hover Events - Adds lag might need a rework
+		activityquery.addEventListener("mouseover", function( event ) {
+		   ComputedStyleCondition(topbar, activityquery);
+		}, false);
+
+		activityquery.addEventListener("mouseout", function( event ) {
+			ComputedStyleCondition(topbar, activityquery);
+		}, false);
+
+
+    // Spotify launching on a playlist
     const channels = ['/playlist/', '/album/', '/collection/tracks', '/collection/episodes', '/episode/', '/lyrics-plus']
     main.appendChild(mainChild)
     mainChild.id = "mainImage"
 
-    // Spotify launching on a playlist
     for (var i = 0; i < channels.length; i++) {
         if (Platform.History.location.pathname.startsWith(channels[i])) {
             mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")"
