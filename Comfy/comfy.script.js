@@ -69,7 +69,7 @@
     if (Platform.History.location.pathname.startsWith(channels[i])) {
       preloadChild.style.content =
         "url(" + Player.data.track.metadata.image_xlarge_url + ")";
-      setInterval(() => {
+      setTimeout(() => {
         mainChild.style.backgroundImage =
           "url(" + Player.data.track.metadata.image_xlarge_url + ")";
       }, 1000);
@@ -83,7 +83,7 @@
       if (pathname.startsWith(channels[i])) {
         preloadChild.style.content =
           "url(" + Player.data.track.metadata.image_xlarge_url + ")";
-        setInterval(() => {
+        setTimeout(() => {
           mainChild.style.backgroundImage =
             "url(" + Player.data.track.metadata.image_xlarge_url + ")";
         }, 1000);
@@ -100,7 +100,7 @@
       if (Platform.History.location.pathname.startsWith(channels[i])) {
         preloadChild.style.content =
           "url(" + Player.data.track.metadata.image_xlarge_url + ")";
-        setInterval(() => {
+        setTimeout(() => {
           mainChild.style.backgroundImage =
             "url(" + Player.data.track.metadata.image_xlarge_url + ")";
         }, 1000);
