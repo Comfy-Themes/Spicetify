@@ -1,6 +1,7 @@
 (function Comfy() {
     const { Player, Menu, LocalStorage, Platform } = Spicetify
 	const mainChild = document.createElement("div")
+    const preloadChild = document.createElement("div")
     const main = document.querySelector('.Root__main-view')
     const LyricsBackground = document.querySelector('.lyrics-lyricsContainer-LyricsBackground')
 	const activityquery = document.querySelector("aside.main-buddyFeed-buddyFeedRoot")
@@ -24,7 +25,7 @@
 
     // Setting of topbar
 	ComputedStyleCondition(topbar, activityquery) // Startup Initialization
-	
+
 		// Hover Events - Adds lag might need a rework
 		activityquery.addEventListener("mouseover", function( event ) {
 		   ComputedStyleCondition(topbar, activityquery);
@@ -40,9 +41,16 @@
     main.appendChild(mainChild)
     mainChild.id = "mainImage"
 
+    main.appendChild(preloadChild)
+    preloadChild.id = "preloadImage"
+
     for (var i = 0; i < channels.length; i++) {
         if (Platform.History.location.pathname.startsWith(channels[i])) {
-            mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")"
+            preloadChild.style.content = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+            setInterval(() => {
+                mainChild.style.backgroundImage =
+                "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+            }, 1000);
         }
     }
 
@@ -53,7 +61,11 @@
         for (var i = 0; i < channels.length; i++) {
 
             if (pathname.startsWith(channels[i])) {
-                mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")"
+                preloadChild.style.content = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+                setInterval(() => {
+                    mainChild.style.backgroundImage =
+                    "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+                }, 1000);
                 return
             }
 
@@ -65,7 +77,11 @@
     Player.addEventListener("songchange", () => {
         for (var i = 0; i < channels.length; i++) {
             if (Platform.History.location.pathname.startsWith(channels[i])) {
-                mainChild.style.backgroundImage = "url(" + Player.data.track.metadata.image_xlarge_url + ")"
+                preloadChild.style.content = "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+                setInterval(() => {
+                    mainChild.style.backgroundImage =
+                    "url(" + Player.data.track.metadata.image_xlarge_url + ")";
+                }, 1000);
             }
         }
     })
