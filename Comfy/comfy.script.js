@@ -19,9 +19,10 @@
   // Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
   // Once checked it will make the changes to topbar as needed.
   function ComputedStyleCondition() {
-    if (!activityquery) {
-      topbar.style.paddingInlineEnd = "162px";
-    } else if (getComputedStyle(activityquery).position == "absolute") {
+    if (
+      !activityquery ||
+      getComputedStyle(activityquery).position == "absolute"
+    ) {
       topbar.style.paddingInlineEnd = "162px";
     } else {
       topbar.style.paddingInlineEnd = "32px";
