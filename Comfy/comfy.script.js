@@ -6,8 +6,8 @@
   const LyricsBackground = document.querySelector(
     ".lyrics-lyricsContainer-LyricsBackground"
   );
-  const activityquery = document.querySelector(
-    "aside.main-buddyFeed-buddyFeedRoot"
+  let activityquery = document.querySelector(
+    "aside[aria-label='Friend Activity']"
   );
   const topbar = document.querySelector("header.main-topBar-container");
 
@@ -18,10 +18,11 @@
 
   // Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
   // Once checked it will make the changes to topbar as needed.
-  function ComputedStyleCondition(topbar, activityquery) {
-    if (!activityquery) {
-      topbar.style.paddingInlineEnd = "32px";
-    } else if (getComputedStyle(activityquery).position == "absolute") {
+  function ComputedStyleCondition() {
+    if (
+      !activityquery ||
+      getComputedStyle(activityquery).position == "absolute"
+    ) {
       topbar.style.paddingInlineEnd = "162px";
     } else {
       topbar.style.paddingInlineEnd = "32px";
@@ -29,26 +30,38 @@
   }
 
   // Setting of topbar
-  ComputedStyleCondition(topbar, activityquery); // Startup Initialization
+  ComputedStyleCondition(); // Startup Initialization
 
   // Hover Events - Adds lag might need a rework
-  if (activityquery) {
-    activityquery.addEventListener(
-      "mouseover",
-      function (event) {
-        ComputedStyleCondition(topbar, activityquery);
-      },
-      false
+  // Calls function until condition is met
+  waitActivityPanel = setInterval(() => {
+    // console.log("Activity Panel not found");
+
+    // Reassign variable
+    activityquery = document.querySelector(
+      "aside[aria-label='Friend Activity']"
     );
 
-    activityquery.addEventListener(
-      "mouseout",
-      function (event) {
-        ComputedStyleCondition(topbar, activityquery);
-      },
-      false
-    );
-  }
+    if (activityquery) {
+      // console.log("Activity Panel found!");
+      activityquery.addEventListener(
+        "mouseover",
+        () => {
+          ComputedStyleCondition();
+        },
+        false
+      );
+
+      activityquery.addEventListener(
+        "mouseout",
+        () => {
+          ComputedStyleCondition();
+        },
+        false
+      );
+      clearInterval(waitActivityPanel);
+    }
+  }, 1000);
 
   // Spotify launching on a playlist
   const channels = [
