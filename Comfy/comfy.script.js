@@ -7,7 +7,7 @@
 	const activityquery = document.querySelector("aside.main-buddyFeed-buddyFeedRoot")
     const topbar = document.querySelector("header.main-topBar-container")
 
-    if (!(Player && Menu && LocalStorage && Platform && main && topbar && activityquery)) {
+    if (!(Player && Menu && LocalStorage && Platform && main && topbar)) {
         setTimeout(Comfy, 1000)
         return
     }
@@ -15,7 +15,10 @@
 	// Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
 	// Once checked it will make the changes to topbar as needed.
 	function ComputedStyleCondition(topbar, activityquery) {
-		if (getComputedStyle(activityquery).position == "absolute") {
+        if (!activityquery) {
+            topbar.style.paddingInlineEnd = "32px"
+        }
+		else if (getComputedStyle(activityquery).position == "absolute") {
 			topbar.style.paddingInlineEnd = "162px"
 		}
 		else {
@@ -27,13 +30,15 @@
 	ComputedStyleCondition(topbar, activityquery) // Startup Initialization
 
 		// Hover Events - Adds lag might need a rework
-		activityquery.addEventListener("mouseover", function( event ) {
-		   ComputedStyleCondition(topbar, activityquery);
-		}, false);
+		if (activityquery) {
+            activityquery.addEventListener("mouseover", function( event ) {
+		        ComputedStyleCondition(topbar, activityquery);
+		    }, false);
 
-		activityquery.addEventListener("mouseout", function( event ) {
-			ComputedStyleCondition(topbar, activityquery);
-		}, false);
+		    activityquery.addEventListener("mouseout", function( event ) {
+			    ComputedStyleCondition(topbar, activityquery);
+		    }, false);
+        }
 
 
     // Spotify launching on a playlist
