@@ -1,3 +1,10 @@
+:root .Root__main-view #preloadImage {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
 :root .Root__main-view #mainImage {
   position: absolute;
   width: 100%;
