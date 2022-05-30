@@ -1,4 +1,12 @@
 :root .Root__main-view {
+    #preloadImage {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        z-index: -1;
+    }
+
     #mainImage {
         position: absolute; // instead of background-attachment
         width: 100%;
@@ -51,32 +59,32 @@
     }
 
     .main-yourEpisodes-yourEpisodesContentWrapper { max-width: unset;}
-    .main-actionBarBackground-background { 
-        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px), var(--background-noise) !important; 
+    .main-actionBarBackground-background {
+        background: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
         height: calc(100% - 243px);
     }
 
     // Playlist, Album & Liked songs
-    section { 
+    section {
         &[data-testid="playlist-page"] .main-actionBar-ActionBar, &[data-testid="album-page"] .main-actionBar-ActionBar, &[data-testid="your-episodes-page"] .main-actionBar-ActionBar, &[data-testid="artist-page"] .main-actionBar-ActionBar {
             padding: 8px 16px 16px 16px;
-    
+
             .main-playButton-PlayButton {
                 margin-top: -24px; margin-left: 8px;
                 margin-right: 22px;
             }
-    
+
             @media (min-width: 1024px) { .main-playButton-PlayButton { margin-left: 24px;}}
         }
 
         &[data-testid="your-episodes-page"] > .contentSpacing > section { height: calc(100vh - 494px);}
-        &[data-testid="your-episodes-page"] > .main-yourEpisodes-yourEpisodesContentWrapper { 
+        &[data-testid="your-episodes-page"] > .main-yourEpisodes-yourEpisodesContentWrapper {
             height: calc(100vh - 438px);
 
             [data-testid^="episode-"] { margin: 0;}
         }
-        
-        &[data-testid="playlist-page"] > div:last-child, &[data-testid="album-page"] > div:nth-last-child(2), 
+
+        &[data-testid="playlist-page"] > div:last-child, &[data-testid="album-page"] > div:nth-last-child(2),
         &[data-testid="episode"] > div:last-child, &[data-testid="your-episodes-page"] > div:last-child, &[data-testid="artist-page"] > div > div:last-child {
             background: none;
 
@@ -91,7 +99,7 @@
             }
             .main-trackList-trackListHeader { display: none;}
         }
-        
+
         // Album & Liked songs
         &[data-testid] { position: relative;}
     }
