@@ -70,6 +70,17 @@
 :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
 }
+.fpCtYO {
+  border-radius: var(--border-radius);
+}
+
+.main-card-PlayButtonContainer {
+  border-radius: var(--border-radius);
+}
+
+.ButtonInner-sc-14ud5tc-0.bxzzGk.encore-inverted-light-set {
+	border-radius: var(--border-radius);
+}
 :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
   margin-top: -24px;
   margin-left: 8px;
