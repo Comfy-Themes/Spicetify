@@ -273,6 +273,18 @@ button.Button-qlcn5g-0.iaAUvZ:hover .ButtonInner-sc-14ud5tc-0, button.Button-qlc
   transform: scale(1.00);
 }
 
+.fpCtYO {
+  border-radius: var(--border-radius);
+}
+
+.main-card-PlayButtonContainer {
+  border-radius: var(--border-radius);
+}
+
+.ButtonInner-sc-14ud5tc-0.bxzzGk.encore-inverted-light-set {
+	border-radius: var(--border-radius);
+}
+
 button.Button-qlcn5g-0.iaAUvZ:hover {
   transform: scale(1.04);
 box-shadow: 0px 0px 6px white;
