@@ -1,0 +1,61 @@
+.Root__nav-bar {
+	position: absolute;
+	width: 40px;
+	opacity: 0;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	transition: opacity 0.25s linear, width 0.3s;
+	transition-delay: 0.25s;
+}
+
+nav.Root__nav-bar:hover {
+	position: absolute;
+	width: 225px;
+	opacity: 1;
+	transition-delay: 0s;
+}
+
+.LayoutResizer__resize-bar {
+	cursor: none;
+}
+
+.Root__top-bar {
+	opacity: 0;
+	transition: opacity 0.5s linear;
+	transition-delay: 0.25s;
+}
+
+.Root__top-bar:hover {
+	opacity: 1;
+	transition: opacity 0.25s linear;
+	transition-delay: 0s;
+}
+
+.main-topBar-container {
+	-webkit-padding-end: 32px;
+	padding: 16px 85px;
+	padding-inline-end: 32px;
+	max-width: none;
+}
+
+aside[aria-label='Friend Activity']:hover {
+	position: absolute;
+	width: var(--buddy-feed-width);
+	opacity: 1;
+	left: calc(var(--buddy-feed-width) * -1);
+	transition-delay: 0s;
+}
+
+aside[aria-label='Friend Activity'] {
+	position: absolute;
+	width: 65px;
+	opacity: 0;
+	bottom: 0;
+	left: -30px;
+	top: 0;
+	z-index: 1;
+	transition: opacity 0.25s linear, width 0.3s, left 0.3s;
+	transition-delay: 0.25s;
+}
