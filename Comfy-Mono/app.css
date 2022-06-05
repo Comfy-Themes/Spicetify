@@ -351,6 +351,7 @@ margin-right: 24px
   overflow: hidden;
   z-index: -1;
 }
+
 :root .Root__main-view #mainImage {
   position: absolute;
   width: 100%;
@@ -414,14 +415,17 @@ margin-right: 24px
   var(--spice-main) 232px),
   var(--background-noise) !important;
   height: calc(100% - 243px);
+
 }
+
 :root .Root__main-view .main-actionBarBackground-background {
-  background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
+  background: linear-gradient(rgba(255, 255, 255, 0.6) 0,
+  var(--spice-main) 232px),
+  var(--background-noise) !important;
   height: calc(100% - 243px);
+
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar {
-  padding: 8px 16px 16px 16px;
-}
+
 :root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
   margin-top: -24px;
   margin-left: 8px;
@@ -441,7 +445,7 @@ margin-right: 24px
 :root .Root__main-view section[data-testid=your-episodes-page] > .main-yourEpisodes-yourEpisodesContentWrapper [data-testid^=episode-] {
   margin: 0;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2), :root .Root__main-view section[data-testid=episode] > div:last-child, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2), :root .Root__main-view section[data-testid=episode] > div:last-child, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child {
   background: none;
 }
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid {
@@ -454,7 +458,7 @@ margin-right: 24px
   transition: 300ms color;
 }
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #3A3A3A40;
 }
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid.vMOFJ7EasQXUloRrStEe {
   background-color: rgba(255, 255, 255, 0.1);
@@ -465,10 +469,8 @@ margin-right: 24px
 :root .Root__main-view section[data-testid] {
   position: relative;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow {
-  grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
-}
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -478,6 +480,7 @@ margin-right: 24px
   justify-content: center;
   text-indent: -1000px;
 }
+
 .main-entityHeader-background.main-entityHeader-gradient {
     -webkit-animation: background-animation 1s linear;
     animation: background-animation 1s linear;
@@ -493,17 +496,25 @@ margin-right: 24px
     -webkit-transform: scale(1.1);
     transform: scale(1.0);
 }
+
 :root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
+
+
+
 :root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow {
     grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
+
+
+
 :root .Root__nav-bar {
   overflow: hidden;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints {
-  column-gap: 16px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
   padding: 0 12px;
   box-sizing: content-box;
   transition: 350ms background-color;
@@ -535,7 +546,7 @@ margin-right: 24px
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/new-releases"] {
   grid-area: new-releases;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id$=marketplace] {
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id$="marketplace"] {
   grid-area: marketplace;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/add"] {
@@ -557,7 +568,7 @@ margin-right: 24px
   background-color: transparent;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a.main-navBar-navBarLinkActive {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: #5c6eb12a;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a svg > * {
   display: none;
@@ -621,10 +632,11 @@ margin-right: 24px
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-active-icon {
   background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-icon {
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href$="marketplace"] .collection-icon {
   background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-active-icon {
+
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href$="marketplace"] .collection-active-icon {
   background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
@@ -632,7 +644,8 @@ margin-right: 24px
   grid-template-areas: "add tracks episodes" "playlists playlists playlists";
   grid-template-columns: 25px 25px 1fr;
   grid-template-rows: 25px 1fr;
-  column-gap: 16px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
   margin: 12px 12px 0 12px;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child {
@@ -719,7 +732,7 @@ margin-right: 24px
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: calc(12px + var(--indentation) * var(--left-sidebar-item-indentation-width));
+  padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
   padding-right: var(--left-sidebar-padding-right);
   box-sizing: content-box;
   transition: 150ms background-color;
@@ -731,10 +744,11 @@ margin-right: 24px
   margin-left: 0;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: #3A3A3A40;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
-  margin-inline-start: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
   padding: 4px 12px;
   transition: 150ms background-color;
 }
@@ -760,7 +774,6 @@ margin-right: 24px
   border-bottom-right-radius: calc(var(--border-radius) + 5px);
   overflow: hidden;
 }
-
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
   position: relative;
   border-top: none;
@@ -779,12 +792,7 @@ margin-right: 24px
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
   top: -20px;
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
-  width: 84px !important;
-  height: 84px !important;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-}
+
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar {
   position: absolute;
   top: -15px;
@@ -891,7 +899,7 @@ margin-right: 24px
 }
 
 .Root__main-view > div:first-of-type > div, .desktoproutes-homepage-takeover-ad-hptoComponent-parentContainer {
-  display: none;
+  display: block;
 }
 
 :root {
@@ -900,10 +908,7 @@ margin-right: 24px
 :root button, :root input, :root img {
   border-radius: var(--border-radius);
 }
-:root .main-trackList-rowHeartButton *:not([fill=none]), :root .control-button-heart *:not([fill=none]) {
-  color: #d25050 !important;
-  fill: #d25050 !important;
-}
+
 :root .main-trackList-rowSectionEnd .main-addButton-active, :root .main-trackList-rowSectionEnd .main-addButton-active:focus, :root .main-trackList-rowSectionEnd .main-addButton-active:hover {
   color: #d25050;
 }
@@ -927,7 +932,7 @@ margin-right: 24px
   content: none;
 }
 :root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true], :root #context-menu ul a:not(.main-contextMenu-disabled):focus, :root #context-menu ul a:not(.main-contextMenu-disabled):hover, :root #context-menu ul a[aria-expanded=true] {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: #5c6eb12a;
   transition: 150ms background-color;
 }
 :root #bookmark-menu {
@@ -944,6 +949,6 @@ margin-right: 24px
   content: none;
 }
 :root #bookmark-menu button:not(.main-contextMenu-disabled):focus, :root #bookmark-menu button:not(.main-contextMenu-disabled):hover, :root #bookmark-menu button[aria-expanded=true], :root #bookmark-menu a:not(.main-contextMenu-disabled):focus, :root #bookmark-menu a:not(.main-contextMenu-disabled):hover, :root #bookmark-menu a[aria-expanded=true] {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: #5c6eb12a;
   transition: 150ms background-color;
 }
