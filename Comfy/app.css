@@ -77,7 +77,6 @@
 .main-card-PlayButtonContainer {
   border-radius: var(--border-radius);
 }
-
 .ButtonInner-sc-14ud5tc-0.bxzzGk.encore-inverted-light-set {
 	border-radius: var(--border-radius);
 }
@@ -145,8 +144,7 @@
   overflow: hidden;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints {
-  -moz-column-gap: 16px;
-       column-gap: 16px;
+  column-gap: 16px;
   padding: 0 12px;
   box-sizing: content-box;
   transition: 350ms background-color;
@@ -178,7 +176,7 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/new-releases"] {
   grid-area: new-releases;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id="/spicetify-marketplace"] {
+:root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list li[data-id$=marketplace] {
   grid-area: marketplace;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list div[data-id="/add"] {
@@ -200,7 +198,7 @@
   background-color: transparent;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a.main-navBar-navBarLinkActive {
-  background-color: #5c6eb12a;
+  background-color: rgba(92, 110, 177, 0.1647058824);
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a svg > * {
   display: none;
@@ -264,10 +262,10 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-active-icon {
   background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-icon {
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-icon {
   background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/spicetify-marketplace"] .collection-active-icon {
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-active-icon {
   background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
@@ -275,8 +273,7 @@
   grid-template-areas: "add tracks episodes" "playlists playlists playlists";
   grid-template-columns: 25px 25px 1fr;
   grid-template-rows: 25px 1fr;
-  -moz-column-gap: 16px;
-       column-gap: 16px;
+  column-gap: 16px;
   margin: 12px 12px 0 12px;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div > div:first-child {
@@ -363,7 +360,7 @@
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink {
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
+  padding-left: calc(12px + var(--indentation) * var(--left-sidebar-item-indentation-width));
   padding-right: var(--left-sidebar-padding-right);
   box-sizing: content-box;
   transition: 150ms background-color;
@@ -375,11 +372,10 @@
   margin-left: 0;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
-  background-color: #5c6eb12a;
+  background-color: rgba(92, 110, 177, 0.1647058824);
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
-  -webkit-margin-start: 0;
-          margin-inline-start: 0;
+  margin-inline-start: 0;
   padding: 4px 12px;
   transition: 150ms background-color;
 }
@@ -403,11 +399,6 @@
   bottom: 38px;
   border-top-right-radius: calc(var(--border-radius) + 5px);
   border-bottom-right-radius: calc(var(--border-radius) + 5px);
-  overflow: hidden;
-}
-
-#main{
-  background-color: var(--spice-main);
   overflow: hidden;
 }
 
@@ -570,7 +561,7 @@
   content: none;
 }
 :root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true], :root #context-menu ul a:not(.main-contextMenu-disabled):focus, :root #context-menu ul a:not(.main-contextMenu-disabled):hover, :root #context-menu ul a[aria-expanded=true] {
-  background-color: #5c6eb12a;
+  background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
 :root #bookmark-menu {
@@ -587,6 +578,6 @@
   content: none;
 }
 :root #bookmark-menu button:not(.main-contextMenu-disabled):focus, :root #bookmark-menu button:not(.main-contextMenu-disabled):hover, :root #bookmark-menu button[aria-expanded=true], :root #bookmark-menu a:not(.main-contextMenu-disabled):focus, :root #bookmark-menu a:not(.main-contextMenu-disabled):hover, :root #bookmark-menu a[aria-expanded=true] {
-  background-color: #5c6eb12a;
+  background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
