@@ -952,3 +952,6 @@ margin-right: 24px
   background-color: #5c6eb12a;
   transition: 150ms background-color;
 }
+.iUSAh1wdhXLk9hHSbkCA:after{
+  display:none !important; /*Removes the small triangle over the play bar when playing on a sepret device*/ 
+}
