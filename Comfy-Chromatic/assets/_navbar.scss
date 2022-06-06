@@ -21,7 +21,7 @@
       li[data-id="/lyrics-plus"] { grid-area: lyrics-plus;}
       li[data-id="/reddit"] { grid-area: reddit;}
       li[data-id="/new-releases"] { grid-area: new-releases;}
-      li[data-id="/spicetify-marketplace"] { grid-area: marketplace;}
+      li[data-id$="marketplace"] { grid-area: marketplace;}
       div[data-id="/add"] { grid-area: add;}
       div[data-id="/collection/episodes"] { grid-area: episodes;}
       div[data-id="/collection/tracks"] { grid-area: tracks;}
@@ -58,7 +58,7 @@
       button, a {
         padding: 0;
 
-        div { 
+        div {
           margin-right: 0; border-radius: var(--border-radius);
 
           &.main-rootlist-statusIcons { display: none;}
@@ -98,7 +98,7 @@
       .collection-active-icon { background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;}
     }
 
-    a[href="/spicetify-marketplace"] {
+    a[href$="marketplace"] {
       .collection-icon { background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;}
       .collection-active-icon { background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;}
     }
@@ -181,16 +181,16 @@
 
         & > div {
           contain: unset;
-        
+
           & > div:nth-child(2) {
             background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 8px; 
+            border-radius: 8px;
 
             .main-rootlist-rootlistItem {
               padding: 0;
 
               .main-rootlist-rootlistItemLink {
-                padding-top: 4px; padding-bottom: 4px; 
+                padding-top: 4px; padding-bottom: 4px;
                 padding-left: calc(12px + var(--indentation)*var(--left-sidebar-item-indentation-width));
                 padding-right: var(--left-sidebar-padding-right);
                 box-sizing: content-box;
@@ -213,7 +213,7 @@
               }
             }
 
-            li:last-child::after { 
+            li:last-child::after {
               position: absolute;
               content: "";
               width: 100px; height: 40px;
@@ -228,7 +228,7 @@
   .main-coverSlotExpanded-container .cover-art .cover-art-image { border-radius: 0;}
 
   // Scrollbar
-  .os-scrollbar { 
+  .os-scrollbar {
     top: 52px; bottom: 38px;
     border-top-right-radius: calc(var(--border-radius) + 5px);
     border-bottom-right-radius: calc(var(--border-radius) + 5px);
