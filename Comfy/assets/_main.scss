@@ -48,6 +48,7 @@
 
         & > div:nth-last-of-type(2) {
             align-self: center;
+            flex-shrink: 0;
 
             & + .main-entityHeader-headerText {
                 flex: unset;
