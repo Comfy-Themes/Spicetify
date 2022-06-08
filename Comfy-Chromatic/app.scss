@@ -17,7 +17,7 @@
     .main-trackList-rowSectionEnd .main-addButton-active, .main-trackList-rowSectionEnd .main-addButton-active:focus, .main-trackList-rowSectionEnd .main-addButton-active:hover { color: #d25050;}
 
     // Lyrics plus
-    .lyrics-lyricsContainer-LyricsBackground { 
+    .lyrics-lyricsContainer-LyricsBackground {
         background-repeat: no-repeat;
         background-size: cover;
         -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
@@ -28,7 +28,6 @@
         overflow: hidden;
 
         ul {
-            padding: 0;
             background-color: var(--spice-player);
 
             button, a {
@@ -53,5 +52,5 @@
             &:not(.main-contextMenu-disabled):focus, &:not(.main-contextMenu-disabled):hover, &[aria-expanded=true] { background-color: #5c6eb12a; transition: 150ms background-color;}
         }
     }
-	
+
 }

@@ -973,7 +973,6 @@ mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 overflow: hidden;
 }
 :root #context-menu ul {
-padding: 0;
 background-color: var(--spice-player);
 }
 :root #context-menu ul button, :root #context-menu ul a {

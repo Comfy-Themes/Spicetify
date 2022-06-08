@@ -923,7 +923,6 @@ margin-right: 24px
   overflow: hidden;
 }
 :root #context-menu ul {
-  padding: 0;
   background-color: var(--spice-player);
 }
 :root #context-menu ul button, :root #context-menu ul a {
