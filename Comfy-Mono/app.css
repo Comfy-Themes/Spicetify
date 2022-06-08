@@ -399,6 +399,7 @@ margin-right: 24px
 }
 :root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) {
   align-self: center;
+  flex-shrink: 0;
 }
 :root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText {
   flex: unset;
@@ -922,7 +923,6 @@ margin-right: 24px
   overflow: hidden;
 }
 :root #context-menu ul {
-  padding: 0;
   background-color: var(--spice-player);
 }
 :root #context-menu ul button, :root #context-menu ul a {
@@ -953,5 +953,5 @@ margin-right: 24px
   transition: 150ms background-color;
 }
 .iUSAh1wdhXLk9hHSbkCA:after{
-  display:none !important; /*Removes the small triangle over the play bar when playing on a sepret device*/ 
+  display:none !important; /*Removes the small triangle over the play bar when playing on a sepret device*/
 }
