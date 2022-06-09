@@ -406,12 +406,16 @@
   border-bottom-right-radius: calc(var(--border-radius) + 5px);
   overflow: hidden;
 }
-
 #main{
   background-color: var(--spice-main);
   overflow: hidden;
 }
-
+:root .Root__now-playing-bar .OCY4jHBlCVZEyGvtSv0J {
+  height: 110px;
+}
+:root .Root__now-playing-bar [class^=main-nowPlayingBar-] {
+  padding-bottom: 30px;
+}
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
   position: relative;
   border-top: none;
@@ -424,10 +428,13 @@
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-100px);
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
+:root .Root__now-playing-bar .main-nowPlayingBar-left .qWcH8e2laY9sYOuCsOAx {
+  top: -15px;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-left .BFR9Zt3zpL8BATBMiwQB {
   top: -20px;
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
+:root .Root__now-playing-bar .main-nowPlayingBar-left a:not([tabindex="-1"]) > .BFR9Zt3zpL8BATBMiwQB .cover-art {
   width: 84px !important;
   height: 84px !important;
   border-radius: var(--border-radius);
