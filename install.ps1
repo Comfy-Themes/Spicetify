@@ -43,7 +43,7 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   Remove-Item -Recurse -Force "$sp_dot_dir\Comfy" -ErrorAction Ignore
   New-Item -Path "$sp_dot_dir\Comfy" -ItemType Directory | Out-Null
   Write-Done
-  
+
   Write-Part "MAKING FOLDER  "; Write-Emphasized "$sp_dot_dir\Comfy-Chromatic"
   Remove-Item -Recurse -Force "$sp_dot_dir\Comfy-Chromatic" -ErrorAction Ignore
   New-Item -Path "$sp_dot_dir\Comfy-Chromatic" -ItemType Directory | Out-Null
@@ -74,11 +74,81 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   Write-Done
 
   # Installing.
-  Write-Part "INSTALLING";
+  Write-Part "INSTALLING `r`n"
   spicetify config extensions comfy.js
-  spicetify config current_theme Comfy color_scheme Comfy
-  spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-  Write-Done
+  # Pause execution and let user choose which theme they want
+  Add-Type -AssemblyName System.Windows.Forms
+  Add-Type -AssemblyName System.Drawing
+
+  $form = New-Object System.Windows.Forms.Form
+  $form.Text = 'Choose a theme'
+  $form.Size = New-Object System.Drawing.Size(300,200)
+  $form.StartPosition = 'CenterScreen'
+
+  $okButton = New-Object System.Windows.Forms.Button
+  $okButton.Location = New-Object System.Drawing.Point(75,120)
+  $okButton.Size = New-Object System.Drawing.Size(75,23)
+  $okButton.Text = 'OK'
+  $okButton.DialogResult = [System.Windows.Forms.DialogResult]::OK
+  $form.AcceptButton = $okButton
+  $form.Controls.Add($okButton)
+
+  $cancelButton = New-Object System.Windows.Forms.Button
+  $cancelButton.Location = New-Object System.Drawing.Point(150,120)
+  $cancelButton.Size = New-Object System.Drawing.Size(75,23)
+  $cancelButton.Text = 'Cancel'
+  $cancelButton.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
+  $form.CancelButton = $cancelButton
+  $form.Controls.Add($cancelButton)
+
+  $label = New-Object System.Windows.Forms.Label
+  $label.Location = New-Object System.Drawing.Point(10,20)
+  $label.Size = New-Object System.Drawing.Size(280,20)
+  $label.Text = 'Please choose the theme you wish to apply:'
+  $form.Controls.Add($label)
+
+  $listBox = New-Object System.Windows.Forms.ListBox
+  $listBox.Location = New-Object System.Drawing.Point(10,40)
+  $listBox.Size = New-Object System.Drawing.Size(260,20)
+  $listBox.Height = 80
+
+  [void] $listBox.Items.Add('Comfy')
+  [void] $listBox.Items.Add('Comfy-Mono')
+  [void] $listBox.Items.Add('Comfy-Chromatic')
+
+  $form.Controls.Add($listBox)
+
+  $form.Topmost = $true
+
+  $result = $form.ShowDialog()
+
+  if ($result -eq [System.Windows.Forms.DialogResult]::OK)
+  {
+    $x = $listBox.SelectedItem
+    if ($x -eq 'Comfy')
+    {
+      $theme = 'Comfy'
+    }
+    elseif ($x -eq 'Comfy-Mono')
+    {
+      $theme = 'Comfy-Mono'
+    }
+    elseif ($x -eq 'Comfy-Chromatic')
+    {
+      $theme = 'Comfy-Chromatic'
+    }
+    else
+    {
+      $theme = 'Comfy'
+    }
+    spicetify config current_theme $theme color_scheme $theme
+  }
+  elseif ($result -eq [System.Windows.Forms.DialogResult]::Cancel)
+  {
+    Write-Part "CANCELLED `r`n"
+    Write-Done
+    Exit
+  }
 
   Write-Part "APPLYING";
   $configFile = Get-Content "$spicePath\config-xpui.ini"
