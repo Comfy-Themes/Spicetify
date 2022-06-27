@@ -39,8 +39,7 @@ if [ -z "${choice}" ]; then
     choice=1
 fi
 case $choice in
-    1) theme="Comfy"
-    spicetify config current_theme Comfy color_scheme Comfy
+    1) spicetify config current_theme Comfy color_scheme Comfy
     ;;
     2) spicetify config current_theme Comfy-Mono color_scheme Mono
     ;;
