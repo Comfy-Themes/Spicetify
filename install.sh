@@ -38,15 +38,20 @@ read -p "Choice: " choice
 if [ -z "${choice}" ]; then
     choice=1
 fi
-case $choice in
-    1) spicetify config current_theme Comfy color_scheme Comfy
-    ;;
-    2) spicetify config current_theme Comfy-Mono color_scheme Mono
-    ;;
-    3) spicetify config current_theme Comfy-Chromatic color_scheme Sunset
-    ;;
-    *) echo "Invalid choice, please try again"; read -p "Choice: " choice;;
-esac
+while true; do
+    case $choice in
+        1) spicetify config current_theme Comfy color_scheme Comfy
+        break
+        ;;
+        2) spicetify config current_theme Comfy-Mono color_scheme Mono
+        break
+        ;;
+        3) spicetify config current_theme Comfy-Chromatic color_scheme Sunset
+        break
+        ;;
+        *) echo "Invalid choice, please try again"; read -p "Choice: " choice;;
+    esac
+done
 # Apply theme
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
