@@ -127,15 +127,15 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
     $x = $listBox.SelectedItem
     if ($x -eq 'Comfy')
     {
-      $theme = 'Comfy'
+      spicetify config current_theme Comfy color_scheme Comfy
     }
     elseif ($x -eq 'Comfy-Mono')
     {
-      $theme = 'Comfy-Mono'
+      spicetify config current_theme Comfy-Mono color_scheme Mono
     }
     elseif ($x -eq 'Comfy-Chromatic')
     {
-      $theme = 'Comfy-Chromatic'
+      spicetify config current_theme Comfy-Chromatic color_scheme Sunset
     }
     else
     {
