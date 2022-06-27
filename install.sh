@@ -8,7 +8,9 @@ theme_dir="$(dirname "$(spicetify -c)")/Themes"
 ext_dir="$(dirname "$(spicetify -c)")/Extensions"
 
 # Make directories if needed
-mkdir -p "${theme_dir}/Comfy"{,-Mono,-Chromatic}
+mkdir -p "${theme_dir}/Comfy"
+mkdir -p "${theme_dir}/Comfy-Mono"
+mkdir -p "${theme_dir}/Comfy-Chromatic"
 mkdir -p "${ext_dir}"
 
 # Download latest tagged files into correct directories
@@ -26,7 +28,31 @@ curl --progress-bar --output "${ext_dir}/comfy-chromatic.js" "https://raw.github
 
 echo "Applying theme"
 spicetify config extensions comfy.js
-spicetify config current_theme Comfy color_scheme Comfy
+# Let users choose which theme they want to apply
+echo "Please select a theme to apply:"
+echo "1. Comfy [default]"
+echo "2. Comfy-Mono"
+echo "3. Comfy-Chromatic"
+read -p "Choice: " choice
+# Choose 1 if no input is given
+if [ -z "${choice}" ]; then
+    choice=1
+fi
+while true; do
+    case $choice in
+        1) spicetify config current_theme Comfy color_scheme Comfy
+        break
+        ;;
+        2) spicetify config current_theme Comfy-Mono color_scheme Mono
+        break
+        ;;
+        3) spicetify config current_theme Comfy-Chromatic color_scheme Sunset
+        break
+        ;;
+        *) echo "Invalid choice, please try again"; read -p "Choice: " choice;;
+    esac
+done
+# Apply theme
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
 

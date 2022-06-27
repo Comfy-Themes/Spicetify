@@ -13,9 +13,11 @@ while true; do
     read -p "Do you wish to delete theme files? [y/n] " yn </dev/tty
     case $yn in
     [Yy]*)
-        theme_dir="$(dirname "$(spicetify -c)")/Themes/Comfy"
         ext_dir="$(dirname "$(spicetify -c)")/Extensions"
-        rm -rf "$theme_dir"
+
+        rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy"
+        rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy-Mono"
+        rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy-Chromatic"
         # Use -f to ignore if missing
         rm -f "$ext_dir/comfy.js"
         break
