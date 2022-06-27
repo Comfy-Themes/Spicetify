@@ -139,7 +139,7 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
     }
     else
     {
-      $theme = 'Comfy'
+      spicetify config current_theme Comfy color_scheme Comfy
     }
     spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
     Write-Done
