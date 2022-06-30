@@ -76,7 +76,7 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   # Installing.
   Write-Part "INSTALLING `r`n"
   spicetify config extensions comfy.js
-  # Pause execution and let user choose which theme they want
+  #region Pause execution and let user choose which theme they want
   Add-Type -AssemblyName System.Windows.Forms
   Add-Type -AssemblyName System.Drawing
 
@@ -119,6 +119,9 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   $form.Controls.Add($listBox)
 
   $form.Topmost = $true
+  $form.Add_Load({
+    $form.Activate()
+  })
 
   $result = $form.ShowDialog()
 
@@ -150,6 +153,7 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
     Write-Done
     Exit
   }
+  #endregion
 
   Write-Part "APPLYING";
   $configFile = Get-Content "$spicePath\config-xpui.ini"
