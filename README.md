@@ -63,7 +63,7 @@ spicetify apply
 
 The theme automatically updates for users using the version of Spicetify equals or greater than `2.8.2`, however, for the users that don't want to update Spicetify to the newest version:
 
-1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/Comfy.script.js)
+1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/comfy.script.js)
 2. Copy the whole code (sorry for the flashbang)
 3. Go into the Spicetify extension folder
 4. Open the `comfy.js` file, paste the code and **save it**
