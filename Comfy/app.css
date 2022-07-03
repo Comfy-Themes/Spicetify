@@ -390,11 +390,8 @@
   padding: 4px 12px;
   transition: 150ms background-color;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) li:last-child::after {
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 40px;
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .AINMAUImkAYJd4ertQxy {
+ display: none;
 }
 :root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
   border-radius: 0;
