@@ -1,4 +1,4 @@
-### ✅ Supported -> Spicetify 2.9.8, Spotify 1.1.83.
+### ✅ Supported -> Spicetify 2.10.2, Spotify 1.1.88.
 ---
 
 ![Banner](https://comfy-themes.github.io/Spicetify/banner.png)
