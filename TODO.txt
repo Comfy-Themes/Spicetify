@@ -1,4 +1,3 @@
-install.ps1 -> install other variants.
 uninstall.ps1 -> Needs making
 
 uninstall.sh -> uninstall other variants
