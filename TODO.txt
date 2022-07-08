@@ -1,3 +1,0 @@
-uninstall.ps1 -> Needs making
-
-uninstall.sh -> uninstall other variants
