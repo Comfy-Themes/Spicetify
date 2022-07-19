@@ -825,7 +825,6 @@ overflow: hidden;
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
 position: relative;
 border-top: none;
-background-color: transparent;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar {
 box-sizing: content-box;
