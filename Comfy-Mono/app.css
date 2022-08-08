@@ -874,6 +874,9 @@ margin-right: 24px
   padding: 0;
   gap: 12px;
 }
+:root .Root__top-bar header .main-userWidget-box > div:last-child {
+  display: none;
+}
 :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar {
   width: 40px !important;
   height: 40px !important;
