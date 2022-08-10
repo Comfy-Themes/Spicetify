@@ -122,12 +122,10 @@
 :root .Root__main-view section[data-testid] {
   position: relative;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow,
-:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -137,8 +135,7 @@
   justify-content: center;
   text-indent: -1000px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
 

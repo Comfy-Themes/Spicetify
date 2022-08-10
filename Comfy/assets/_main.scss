@@ -164,8 +164,7 @@
   }
 
   // Playlists
-  section[data-testid="playlist-page"],
-  section[data-testid="artist-page"] {
+  section[data-testid="playlist-page"] {
     .main-trackList-trackListRow {
       grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
           120px,
