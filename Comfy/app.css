@@ -131,7 +131,7 @@
   position: absolute;
   z-index: 1000;
   top: 8px;
-  left: 10px;
+  left: 18px;
   width: 40px;
   height: 40px;
   justify-content: center;
@@ -355,7 +355,6 @@
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding-bottom: 40px;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem {
   padding: 0;
