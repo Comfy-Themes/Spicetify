@@ -24,7 +24,11 @@
 
   .main-userWidget-box  {
     height: unset; padding: 0; gap: 12px;
-
+  	
+	>div {
+	  &:last-child { display: none;}
+	}
+	
     .main-avatar-avatar {
       width: 40px !important; height: 40px !important; display: flex;
 
