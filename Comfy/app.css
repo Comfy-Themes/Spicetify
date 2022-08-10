@@ -357,6 +357,7 @@
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  padding-bottom: 40px;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem {
   padding: 0;
@@ -412,7 +413,6 @@
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
   position: relative;
   border-top: none;
-  background-color: transparent;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar {
   box-sizing: content-box;
@@ -513,6 +513,9 @@
   height: unset;
   padding: 0;
   gap: 12px;
+}
+:root .Root__top-bar header .main-userWidget-box > div:last-child {
+  display: none;
 }
 :root .Root__top-bar header .main-userWidget-box .main-avatar-avatar {
   width: 40px !important;

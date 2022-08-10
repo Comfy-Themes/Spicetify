@@ -2,9 +2,9 @@
 
   .main-nowPlayingBar-container {
     position: relative;
-    border-top: none; background-color: transparent;
+    border-top: none;
 
-    .main-nowPlayingBar-nowPlayingBar { 
+    .main-nowPlayingBar-nowPlayingBar {
       box-sizing: content-box;
       padding-bottom: 16px;
 
@@ -14,13 +14,13 @@
 
         .main-coverSlotCollapsed-container {
           top: -20px;
-            
-          .cover-art { 
+
+          .cover-art {
             width: 84px !important; height: 84px !important;
             border-radius: var(--border-radius); overflow: hidden;
           }
         }
-      } 
+      }
     }
 
     .main-connectBar-connectBar {
@@ -34,15 +34,15 @@
     }
   }
 
-  .playback-bar { 
+  .playback-bar {
     position: absolute; display: grid;
     grid-template-columns: auto auto;
     grid-template-areas: "time-left time-right"
                           "bar bar";
     bottom: 0;
-    
+
       .saber-hilt { height: 0;}
-  
+
       .playback-progressbar {
         grid-column: 1/3;
         grid-area: bar;
@@ -59,7 +59,7 @@
         .progress-bar__slider { display: none;}
       }
 
-    & > div:first-of-type { grid-area: time-left;} 
+    & > div:first-of-type { grid-area: time-left;}
     & > div:last-of-type { grid-area: time-right;}
 
     // Cursor
