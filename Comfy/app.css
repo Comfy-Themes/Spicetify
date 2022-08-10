@@ -37,7 +37,8 @@
 :root .Root__main-view .main-card-card .main-card-imageContainer {
   margin-bottom: -4px;
 }
-:root .Root__main-view .main-card-card .main-card-imageContainer .main-cardImage-circular, :root .Root__main-view .main-card-card .main-card-imageContainer img {
+:root .Root__main-view .main-card-card .main-card-imageContainer .main-cardImage-circular,
+:root .Root__main-view .main-card-card .main-card-imageContainer img {
   border-radius: 0;
 }
 :root .Root__main-view .main-card-card .main-card-cardMetadata {
@@ -68,15 +69,18 @@
   background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
   height: calc(100% - 243px);
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar {
+:root .Root__main-view section[data-testid=playlist-page] .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-viewport {
+  overflow: visible;
+}
+:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow {
+:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow {
   margin-bottom: -8px;
   margin-left: 8px;
   margin-right: 22px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .main-actionBar-ActionBar .main-playButton-PlayButton {
+:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton {
   margin-left: 24px;
   margin-top: -24px;
 }
@@ -98,7 +102,12 @@
   padding-left: 18px;
   transition: 200ms background-color;
 }
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-mesto, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-ballad {
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
 }
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=episode] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=your-episodes-page] > div:last-child .main-trackList-trackListRowGrid:hover, :root .Root__main-view section[data-testid=artist-page] > div > div:last-child .main-trackList-trackListRowGrid:hover {
@@ -113,10 +122,12 @@
 :root .Root__main-view section[data-testid] {
   position: relative;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow,
+:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -126,7 +137,8 @@
   justify-content: center;
   text-indent: -1000px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow, :root .Root__main-view section[data-testid=artist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view section[data-testid=artist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
 
@@ -520,14 +532,20 @@
 :root {
   --border-radius: 8px;
 }
-:root button, :root input, :root img {
+:root button,
+:root button span,
+:root input,
+:root img {
   border-radius: var(--border-radius);
 }
-:root .main-trackList-rowHeartButton *:not([fill=none]), :root .control-button-heart *:not([fill=none]) {
+:root .main-trackList-rowHeartButton *:not([fill=none]),
+:root .control-button-heart *:not([fill=none]) {
   color: #d25050 !important;
   fill: #d25050 !important;
 }
-:root .main-trackList-rowSectionEnd .main-addButton-active, :root .main-trackList-rowSectionEnd .main-addButton-active:focus, :root .main-trackList-rowSectionEnd .main-addButton-active:hover {
+:root .main-trackList-rowSectionEnd .main-addButton-active,
+:root .main-trackList-rowSectionEnd .main-addButton-active:focus,
+:root .main-trackList-rowSectionEnd .main-addButton-active:hover {
   color: #d25050;
 }
 :root .lyrics-lyricsContainer-LyricsBackground {
@@ -542,13 +560,19 @@
 :root #context-menu ul {
   background-color: var(--spice-player);
 }
-:root #context-menu ul button, :root #context-menu ul a {
+:root #context-menu ul button,
+:root #context-menu ul a {
   border-radius: 0;
 }
-:root #context-menu ul button::before, :root #context-menu ul button::after, :root #context-menu ul a::before, :root #context-menu ul a::after {
+:root #context-menu ul button::before, :root #context-menu ul button::after,
+:root #context-menu ul a::before,
+:root #context-menu ul a::after {
   content: none;
 }
-:root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true], :root #context-menu ul a:not(.main-contextMenu-disabled):focus, :root #context-menu ul a:not(.main-contextMenu-disabled):hover, :root #context-menu ul a[aria-expanded=true] {
+:root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true],
+:root #context-menu ul a:not(.main-contextMenu-disabled):focus,
+:root #context-menu ul a:not(.main-contextMenu-disabled):hover,
+:root #context-menu ul a[aria-expanded=true] {
   background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
@@ -559,13 +583,21 @@
 :root #bookmark-menu .bookmark-filter {
   background-color: var(--spice-player);
 }
-:root #bookmark-menu button, :root #bookmark-menu a {
+:root #bookmark-menu button,
+:root #bookmark-menu a {
   border-radius: 0;
 }
-:root #bookmark-menu button::before, :root #bookmark-menu button::after, :root #bookmark-menu a::before, :root #bookmark-menu a::after {
+:root #bookmark-menu button::before, :root #bookmark-menu button::after,
+:root #bookmark-menu a::before,
+:root #bookmark-menu a::after {
   content: none;
 }
-:root #bookmark-menu button:not(.main-contextMenu-disabled):focus, :root #bookmark-menu button:not(.main-contextMenu-disabled):hover, :root #bookmark-menu button[aria-expanded=true], :root #bookmark-menu a:not(.main-contextMenu-disabled):focus, :root #bookmark-menu a:not(.main-contextMenu-disabled):hover, :root #bookmark-menu a[aria-expanded=true] {
+:root #bookmark-menu button:not(.main-contextMenu-disabled):focus, :root #bookmark-menu button:not(.main-contextMenu-disabled):hover, :root #bookmark-menu button[aria-expanded=true],
+:root #bookmark-menu a:not(.main-contextMenu-disabled):focus,
+:root #bookmark-menu a:not(.main-contextMenu-disabled):hover,
+:root #bookmark-menu a[aria-expanded=true] {
   background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
+
+/*# sourceMappingURL=app.css.map */
