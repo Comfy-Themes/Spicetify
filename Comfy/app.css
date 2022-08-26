@@ -533,7 +533,7 @@
 :root button span,
 :root input,
 :root img {
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) !important;
 }
 :root .main-trackList-rowHeartButton *:not([fill=none]),
 :root .control-button-heart *:not([fill=none]) {
