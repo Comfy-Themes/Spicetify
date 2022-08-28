@@ -54,6 +54,9 @@
   }
 
   // Header
+  .main-home-homeHeader {
+    display: none !important;
+  }
   .main-entityHeader-container .main-entityHeader-backgroundColor {
     background: none !important;
   }
@@ -82,7 +85,7 @@
   }
   .main-actionBarBackground-background {
     background: linear-gradient(
-        rgba(var(--spice-rgb-shadow), 0.6) 0,
+        rgba(var(--spice-rgb-main-transition), 0.6) 0,
         var(--spice-main) 232px
       ),
       var(--background-noise) !important;
@@ -164,8 +167,7 @@
   }
 
   // Playlists
-  section[data-testid="playlist-page"],
-  section[data-testid="artist-page"] {
+  section[data-testid="playlist-page"] {
     .main-trackList-trackListRow {
       grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
           120px,
@@ -176,7 +178,7 @@
         position: absolute;
         z-index: 1000;
         top: 8px;
-        left: 10px;
+        left: 18px;
         width: 40px;
         height: 40px;
         justify-content: center;

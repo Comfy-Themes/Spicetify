@@ -11,25 +11,36 @@
   button span,
   input,
   img {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius) !important;
   }
 
   // -- Other --
 
-  // Red hearths
+  // Play Buttons
+  .encore-bright-accent-set {
+    --background-base: var(--spice-play-button);
+    --background-highlight: var(--spice-play-button-active);
+    --background-press: var(--spice-play-button-active);
+  }
+
+  // Coloured hearts
   .main-trackList-rowHeartButton *:not([fill="none"]),
   .control-button-heart *:not([fill="none"]) {
-    color: #d25050 !important;
-    fill: #d25050 !important;
+    color: var(--spice-heart) !important;
+    fill: var(--spice-heart) !important;
   }
   .main-trackList-rowSectionEnd .main-addButton-active,
   .main-trackList-rowSectionEnd .main-addButton-active:focus,
   .main-trackList-rowSectionEnd .main-addButton-active:hover {
-    color: #d25050;
+    color: var(--spice-heart);
   }
 
   // Lyrics plus
+  .lyrics-lyricsContainer-Provider {
+    font-size: 0;
+  }
   .lyrics-lyricsContainer-LyricsBackground {
+    z-index: -1;
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
