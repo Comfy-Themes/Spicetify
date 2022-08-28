@@ -34,6 +34,14 @@
     padding-bottom: 0;
   }
 
+  // Home playlist cards
+  .view-homeShortcutsGrid-shortcut {
+    border-radius: var(--border-radius);
+    .view-homeShortcutsGrid-imageWrapper {
+      border-radius: calc(var(--border-radius) + 15px);
+    }
+  }
+
   // Music card
   .main-card-card {
     border-radius: var(--border-radius);

@@ -29,6 +29,12 @@
 :root .Root__main-view .main-view-container__scroll-node-child {
   padding-bottom: 0;
 }
+:root .Root__main-view .view-homeShortcutsGrid-shortcut {
+  border-radius: var(--border-radius);
+}
+:root .Root__main-view .view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-imageWrapper {
+  border-radius: calc(var(--border-radius) + 15px);
+}
 :root .Root__main-view .main-card-card {
   border-radius: var(--border-radius);
   padding: 0;
@@ -202,7 +208,7 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button div.main-likedSongsButton-likedSongsIcon,
 :root .Root__nav-bar ul.main-navBar-entryPoints > div a div.main-likedSongsButton-likedSongsIcon {
-  background: linear-gradient(135deg, var(--spice-liked-left), var(--spice-liked-right));
+  background: linear-gradient(149.46deg, var(--spice-liked-left) 35%, var(--spice-liked-right) 99.16%);
   border-style: solid;
   border-width: 2px;
 }
@@ -336,7 +342,7 @@
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) {
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem {
   padding: 0;
@@ -356,7 +362,7 @@
   margin-left: 0;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: rgba(var(--spice-rgb-playlist-hover), 0.16);
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
   margin-inline-start: 0;
@@ -376,11 +382,7 @@
   border-radius: 0;
 }
 :root .Root__nav-bar .os-scrollbar {
-  top: 52px;
-  bottom: 38px;
-  border-top-right-radius: calc(var(--border-radius) + 5px);
-  border-bottom-right-radius: calc(var(--border-radius) + 5px);
-  overflow: hidden;
+  display: none;
 }
 
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
@@ -596,4 +598,4 @@
   transition: 150ms background-color;
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=user.css.map */
