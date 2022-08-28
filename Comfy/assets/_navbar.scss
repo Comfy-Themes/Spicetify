@@ -3,30 +3,13 @@
 
   ul.main-navBar-entryPoints {
     &#spicetify-sticky-list {
-      display: grid;
-      grid-template-areas:
-        "home home home home"
-        "search search search search"
-        "collection collection collection collection"
-        "lyrics-plus lyrics-plus lyrics-plus lyrics-plus"
-        "reddit reddit reddit reddit"
-        "new-releases new-releases new-releases new-releases"
-        "marketplace marketplace marketplace marketplace"
-        "add tracks episodes .";
-      grid-template-columns: 25px 25px 25px 1fr;
-
-      li[data-id="/"] { grid-area: home;}
-      li[data-id="/search"] { grid-area: search;}
-      li[data-id="/collection"] { grid-area: collection;}
-      li[data-id="/lyrics-plus"] { grid-area: lyrics-plus;}
-      li[data-id="/reddit"] { grid-area: reddit;}
-      li[data-id="/new-releases"] { grid-area: new-releases;}
-      li[data-id$="marketplace"] { grid-area: marketplace;}
-      div[data-id="/add"] { grid-area: add;}
-      div[data-id="/collection/episodes"] { grid-area: episodes;}
-      div[data-id="/collection/tracks"] { grid-area: tracks;}
-
+      white-space: nowrap;
       border-radius: var(--border-radius);
+
+      > div {
+        display: inline-block;
+        margin-right: 18px;
+      }
     }
 
     column-gap: 16px;
