@@ -77,6 +77,7 @@
 
   main.appendChild(preloadChild);
   preloadChild.id = "preloadImage";
+  preloadChild.style.display = "none";
 
   for (var i = 0; i < channels.length; i++) {
     if (Platform.History.location.pathname.startsWith(channels[i])) {

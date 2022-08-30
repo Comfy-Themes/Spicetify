@@ -1,55 +1,23 @@
-[
-	{
-        "name": "Comfy",
-        "description": "Stay comfy while listening to music",
-        "preview": "Comfy/assets/preview.png",
-        "readme": "Comfy/README.md",
-        "usercss": "Comfy/user.css",
-        "schemes": "Comfy/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy/comfy.js"],
-		"authors": [
-			{
-				"name": "NYRI4",
-				"url": "https://github.com/NYRI4"
-			}
-		]
-	},
-    {
-        "name": "Comfy Mono",
-        "description": "Stay comfy in your own mono space",
-        "preview": "Comfy-Mono/assets/preview.png",
-        "readme": "Comfy-Mono/README.md",
-        "usercss": "Comfy-Mono/user.css",
-        "schemes": "Comfy-Mono/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Mono/comfy-mono.js"],
-		"authors": [
-			{
-				"name": "NYRI4",
-				"url": "https://github.com/NYRI4"
-			},
-			{
-				"name": "OhItsTom",
-				"url": "https://github.com/OhItsTom"
-			}
-		]
-	},
-    {
-        "name": "Comfy Chromatic",
-        "description": "Stay comfy no matter the color",
-        "preview": "Comfy-Chromatic/assets/preview.gif",
-        "readme": "Comfy-Chromatic/README.md",
-        "usercss": "Comfy-Chromatic/user.css",
-        "schemes": "Comfy-Chromatic/color.ini",
-        "include": ["https://comfy-themes.github.io/Spicetify/Comfy-Chromatic/comfy-chromatic.js"],
-		"authors": [
-			{
-				"name": "NYRI4",
-				"url": "https://github.com/NYRI4"
-			},
-			{
-				"name": "Pownque",
-				"url": "https://github.com/Pownque"
-			}
-		]
-    }
-]
+{
+	"name": "Comfy",
+	"description": "Stay comfy while listening to music",
+	"preview": "Comfy/assets/preview.png",
+	"readme": "Comfy/README.md",
+	"usercss": "Comfy/user.css",
+	"schemes": "Comfy/color.ini",
+	"include": ["https://comfy-themes.github.io/Spicetify/Comfy/comfy.js"],
+	"authors": [
+		{
+			"name": "NYRI4",
+			"url": "https://github.com/NYRI4"
+		},
+		{
+			"name": "kyrie25",
+			"url": "https://github.com/kyrie25"			
+		},
+		{
+			"name": "OhItsTom",
+			"url": "https://github.com/OhItsTom"			
+		}
+	]
+}

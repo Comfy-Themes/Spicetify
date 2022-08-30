@@ -16,8 +16,6 @@ while true; do
         ext_dir="$(dirname "$(spicetify -c)")/Extensions"
 
         rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy"
-        rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy-Mono"
-        rm -rf "$(dirname "$(spicetify -c)")/Themes/Comfy-Chromatic"
         # Use -f to ignore if missing
         rm -f "$ext_dir/comfy.js"
         break

@@ -34,6 +34,14 @@
     padding-bottom: 0;
   }
 
+  // Home playlist cards
+  .view-homeShortcutsGrid-shortcut {
+    border-radius: var(--border-radius);
+    .view-homeShortcutsGrid-imageWrapper {
+      border-radius: calc(var(--border-radius) + 15px);
+    }
+  }
+
   // Music card
   .main-card-card {
     border-radius: var(--border-radius);
@@ -54,6 +62,9 @@
   }
 
   // Header
+  .main-home-homeHeader {
+    display: none !important;
+  }
   .main-entityHeader-container .main-entityHeader-backgroundColor {
     background: none !important;
   }
@@ -82,10 +93,11 @@
   }
   .main-actionBarBackground-background {
     background: linear-gradient(
-        rgba(var(--spice-rgb-shadow), 0.6) 0,
+        rgba(var(--spice-rgb-main-transition), 0.6) 0,
         var(--spice-main) 232px
       ),
       var(--background-noise) !important;
+    top: 3.45%;
     height: calc(100% - 243px);
   }
 
