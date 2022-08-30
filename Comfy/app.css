@@ -29,6 +29,9 @@
 :root .Root__main-view .main-view-container__scroll-node-child {
   padding-bottom: 0;
 }
+:root .Root__main-view input:checked ~ .x-toggle-indicatorWrapper {
+  background-color: var(--spice-radio-btn-active);
+}
 :root .Root__main-view .view-homeShortcutsGrid-shortcut {
   border-radius: var(--border-radius);
 }
@@ -506,6 +509,7 @@
   border: none;
   padding: 5px;
   box-sizing: content-box;
+  width: 12px;
 }
 :root .Root__top-bar header .main-userWidget-box {
   height: unset;
