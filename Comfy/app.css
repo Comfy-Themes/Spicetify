@@ -76,7 +76,7 @@
 }
 :root .Root__main-view .main-actionBarBackground-background {
   background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
-  top: 3.45%;
+  top: 338px;
   height: calc(100% - 243px);
 }
 :root .Root__main-view section[data-testid=playlist-page] .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-viewport {
