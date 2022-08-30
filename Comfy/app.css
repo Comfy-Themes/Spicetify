@@ -76,6 +76,7 @@
 }
 :root .Root__main-view .main-actionBarBackground-background {
   background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
+  top: 3.45%;
   height: calc(100% - 243px);
 }
 :root .Root__main-view section[data-testid=playlist-page] .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-viewport {
@@ -178,7 +179,7 @@
   background-color: transparent;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a.main-navBar-navBarLinkActive {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.1647058824);
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a svg > * {
   display: none;
@@ -353,7 +354,7 @@
   padding-left: calc(12px + var(--indentation) * var(--left-sidebar-item-indentation-width));
   padding-right: var(--left-sidebar-padding-right);
   box-sizing: content-box;
-  transition: 150ms background-color;
+  transition: color 350ms ease, background-color 150ms;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + button {
   border-radius: 0 !important;
@@ -361,8 +362,13 @@
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + div > button {
   margin-left: 0;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
-  background-color: rgba(var(--spice-rgb-playlist-hover), 0.16);
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
+  transition: 350ms color;
+  cursor: pointer;
+}
+:root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + * {
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.1647058824);
+  cursor: default !important;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-statusIcons:not(:empty) {
   margin-inline-start: 0;
@@ -476,6 +482,18 @@
 }
 :root .Root__top-bar header button[title="Popup Lyrics"] svg {
   display: none;
+}
+:root .Root__top-bar header .main-entityHeader-topbarTitle {
+  padding: 0 0px;
+}
+:root .Root__top-bar header .main-playButton-PlayButton {
+  display: none !important;
+}
+:root .Root__top-bar header .main-topBar-background {
+  background-color: rgba(var(--spice-rgb-sidebar), 0.95) !important;
+}
+:root .Root__top-bar header .main-topBar-overlay {
+  background-color: transparent !important;
 }
 :root .Root__top-bar header .main-topBar-historyButtons button,
 :root .Root__top-bar header .lyrics-tabBar-active {
@@ -597,5 +615,3 @@
   background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
-
-/*# sourceMappingURL=user.css.map */

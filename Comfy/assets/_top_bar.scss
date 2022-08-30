@@ -14,6 +14,20 @@
     }
   }
 
+  .main-entityHeader-topbarTitle {
+    padding: 0 0px;
+  }
+
+  .main-playButton-PlayButton {
+    display: none !important;
+  }
+  .main-topBar-background {
+    background-color: rgba(var(--spice-rgb-sidebar), 0.95) !important;
+  }
+  .main-topBar-overlay {
+    background-color: transparent !important;
+  }
+
   .main-topBar-historyButtons button,
   .lyrics-tabBar-active {
     background-color: rgba(11, 11, 17, 0.32);

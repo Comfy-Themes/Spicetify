@@ -30,7 +30,10 @@
         background-color: transparent;
 
         &.main-navBar-navBarLinkActive {
-          background-color: #5c6eb12a;
+          background-color: rgba(
+            var(--spice-rgb-pagelink-active),
+            0.1647058824
+          );
         }
 
         svg > * {
@@ -274,7 +277,7 @@
                 );
                 padding-right: var(--left-sidebar-padding-right);
                 box-sizing: content-box;
-                transition: 150ms background-color;
+                transition: color 350ms ease, background-color 150ms;
 
                 & + button {
                   border-radius: 0 !important;
@@ -283,13 +286,21 @@
                   margin-left: 0;
                 }
 
+                &:hover,
+                &:hover + * {
+                  transition: 350ms color;
+                  cursor: pointer;
+                }
+
                 &Active,
                 &:focus,
-                &:hover,
                 &Active + *,
-                &:focus + *,
-                &:hover + * {
-                  background-color: rgba(var(--spice-rgb-playlist-hover), 0.16);
+                &:focus + * {
+                  background-color: rgba(
+                    var(--spice-rgb-pagelink-active),
+                    0.1647058824
+                  );
+                  cursor: default !important;
                 }
               }
 
