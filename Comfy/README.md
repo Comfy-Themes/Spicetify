@@ -18,6 +18,6 @@
 
 |                                   Vaporwave                                   |                                    Sunset                                    |
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
-| ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy/preview/Neon.png) | ![Sunset](https://comfy-themes.github.io/Spicetify/Comfy/preview/Sunset.png) |
+| ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy/preview/Vaporwave.png) | ![Sunset](https://comfy-themes.github.io/Spicetify/Comfy/preview/Sunset.png) |
 
 ---
