@@ -4,7 +4,7 @@
 
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Home](https://comfy-themes.github.io/Spicetify/Comfy/assets/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy/assets/friend-list.png) |
+| ![Home](https://comfy-themes.github.io/Spicetify/Comfy/preview/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy/preview/friend-list.png) |
 
 ---
 
