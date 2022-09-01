@@ -29,6 +29,9 @@
 :root .Root__main-view .main-view-container__scroll-node-child {
   padding-bottom: 0;
 }
+:root .Root__main-view #main > div > div.Root__top-container > div.Root__top-bar > header > div.main-topBar-topbarContentWrapper > div > div > button > span > span {
+  fill: var(--spice-selected-row) !important;
+}
 :root .Root__main-view input:checked ~ .x-toggle-indicatorWrapper {
   background-color: var(--spice-radio-btn-active);
 }
@@ -135,10 +138,10 @@
 :root .Root__main-view section[data-testid] {
   position: relative;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow {
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -148,8 +151,36 @@
   justify-content: center;
   text-indent: -1000px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
+}
+:root .Root__main-view section:not([data-testid=artist-page]) button.main-trackList-rowImagePlayButton {
+  color: black;
+}
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, :root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
+  background: rgba(var(--spice-rgb-play-button), 0.5);
+  border-radius: var(--border-radius);
+}
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, :root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
+  opacity: 1;
+}
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle {
+  color: var(--spice-text);
+  text-shadow: 0px 0px 6px var(--spice-text);
+  -webkit-text-stroke: thin;
+}
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex {
+  background: rgba(var(--spice-rgb-play-button), 0.5);
+  border-radius: var(--border-radius);
+}
+:root .Root__main-view section:not([data-testid=artist-page]) .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton {
+  opacity: 1;
+}
+:root .Root__main-view .main-entityHeader-background {
+  height: 80%;
+}
+:root .Root__main-view .main-entityHeader-background.main-entityHeader-overlay:after {
+  height: 100%;
 }
 
 :root .Root__nav-bar {
@@ -212,7 +243,7 @@
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button div.main-likedSongsButton-likedSongsIcon,
 :root .Root__nav-bar ul.main-navBar-entryPoints > div a div.main-likedSongsButton-likedSongsIcon {
-  background: linear-gradient(149.46deg, var(--spice-liked-left) 35%, var(--spice-liked-right) 99.16%);
+  background: linear-gradient(135deg, var(--spice-liked-left), var(--spice-liked-right));
   border-style: solid;
   border-width: 2px;
 }
@@ -548,6 +579,16 @@
 :root input,
 :root img {
   border-radius: var(--border-radius) !important;
+}
+:root .os-scrollbar-vertical {
+  background: none;
+}
+:root .os-scrollbar-vertical .os-scrollbar-track {
+  width: 10px;
+}
+:root .os-scrollbar-vertical .os-scrollbar-handle {
+  border: 2px solid rgba(200, 200, 200, 0.275);
+  border-radius: 4.5px;
 }
 :root .encore-bright-accent-set {
   --background-base: var(--spice-play-button);

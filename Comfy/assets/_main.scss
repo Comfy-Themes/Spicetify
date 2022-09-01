@@ -34,11 +34,26 @@
     padding-bottom: 0;
   }
 
-  // Settings radio buttons
-  input:checked~.x-toggle-indicatorWrapper {
-	background-color: var(--spice-radio-btn-active);
+  // Now playing bar queue button
+  #main
+    > div
+    > div.Root__top-container
+    > div.Root__top-bar
+    > header
+    > div.main-topBar-topbarContentWrapper
+    > div
+    > div
+    > button
+    > span
+    > span {
+    fill: var(--spice-selected-row) !important;
   }
-	
+
+  // Settings radio buttons
+  input:checked ~ .x-toggle-indicatorWrapper {
+    background-color: var(--spice-radio-btn-active);
+  }
+
   // Home playlist cards
   .view-homeShortcutsGrid-shortcut {
     border-radius: var(--border-radius);
@@ -180,8 +195,8 @@
     }
   }
 
-  // Playlists
-  section[data-testid="playlist-page"] {
+  // Tracklists
+  section:not([data-testid="artist-page"]) {
     .main-trackList-trackListRow {
       grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
           120px,
@@ -204,6 +219,48 @@
       grid-template-columns:
         [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
         [last] minmax(120px, 1fr) !important;
+    }
+
+    button.main-trackList-rowImagePlayButton {
+      color: black;
+    }
+
+    // Image overlay + visible play buttons on interact
+    .main-trackList-trackListRow {
+      &:hover,
+      &:focus-within {
+        .main-trackList-rowSectionIndex {
+          background: rgba(var(--spice-rgb-play-button), 0.5);
+          border-radius: var(--border-radius);
+        }
+        button.main-trackList-rowImagePlayButton {
+          opacity: 1;
+        }
+      }
+
+      // Title highlight of active song
+      &.main-trackList-active {
+        .main-trackList-rowTitle {
+          color: var(--spice-text);
+          text-shadow: 0px 0px 6px var(--spice-text);
+          -webkit-text-stroke: thin;
+        }
+        .main-trackList-rowSectionIndex {
+          background: rgba(var(--spice-rgb-play-button), 0.5);
+          border-radius: var(--border-radius);
+        }
+        button.main-trackList-rowImagePlayButton {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // Artist page art fix
+  .main-entityHeader-background {
+    height: 80%;
+    &.main-entityHeader-overlay:after {
+      height: 100%;
     }
   }
 }

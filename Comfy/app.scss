@@ -16,6 +16,20 @@
 
   // -- Other --
 
+  // Scrollbar
+  .os-scrollbar-vertical {
+    background: none;
+
+    .os-scrollbar-track {
+      width: 10px;
+    }
+
+    .os-scrollbar-handle {
+      border: 2px solid rgba(200, 200, 200, 0.275);
+      border-radius: 4.5px;
+    }
+  }
+
   // Play Buttons
   .encore-bright-accent-set {
     --background-base: var(--spice-play-button);
