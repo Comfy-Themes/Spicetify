@@ -20,6 +20,13 @@
   // Once checked it will make the changes to topbar as needed.
   function ComputedStyleCondition() {
     if (
+      !document
+        .querySelector("html")
+        .classList.contains("spotify__os--is-windows")
+    )
+      return;
+
+    if (
       !activityquery ||
       getComputedStyle(activityquery).position == "absolute"
     ) {
