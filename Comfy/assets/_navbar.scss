@@ -35,10 +35,6 @@
             0.1647058824
           );
         }
-
-        svg > * {
-          display: none;
-        }
       }
 
       &:first-child a {
@@ -90,6 +86,9 @@
         background: url("https://i.imgur.com/60h58oZ.png") center/cover
           no-repeat;
       }
+      svg > * {
+        display: none;
+      }
     }
 
     a[href="/search"] {
@@ -100,6 +99,9 @@
       .search-active-icon {
         background: url("https://i.imgur.com/CTVdQ3d.png") center/cover
           no-repeat;
+      }
+      svg > * {
+        display: none;
       }
     }
 
@@ -112,6 +114,9 @@
         background: url("https://i.imgur.com/SzvrAfr.png") center/cover
           no-repeat;
       }
+      svg > * {
+        display: none;
+      }
     }
 
     a[href="/lyrics-plus"] {
@@ -122,6 +127,9 @@
       .collection-active-icon {
         background: url("https://i.imgur.com/EgRCYe8.png") center/cover
           no-repeat;
+      }
+      svg > * {
+        display: none;
       }
     }
 
@@ -134,6 +142,9 @@
         background: url("https://i.imgur.com/UENFDdo.png") center/cover
           no-repeat;
       }
+      svg > * {
+        display: none;
+      }
     }
 
     a[href="/new-releases"] {
@@ -145,6 +156,9 @@
         background: url("https://i.imgur.com/CTRVDwF.png") center/cover
           no-repeat;
       }
+      svg > * {
+        display: none;
+      }
     }
 
     a[href$="marketplace"] {
@@ -155,6 +169,9 @@
       .collection-active-icon {
         background: url("https://i.imgur.com/rKmXQ6V.png") center/cover
           no-repeat;
+      }
+      svg > * {
+        display: none;
       }
     }
 
