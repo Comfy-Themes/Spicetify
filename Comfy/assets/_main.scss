@@ -196,7 +196,16 @@
   }
 
   // Tracklists
-  section:not([data-testid="artist-page"]) {
+  section[class="rHpv7osDRvs3SUPMpQ_g"],
+  section[class="contentSpacing"] {
+    .main-trackList-rowSectionIndex {
+      top: 7px !important;
+      left: 16px !important;
+    }
+  }
+
+  section:not([data-testid="album-page"]):not([data-testid="artist-page"]),
+  .NLaDALU71zxOtBUbsrfH {
     .main-trackList-trackListRow {
       grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
           120px,
