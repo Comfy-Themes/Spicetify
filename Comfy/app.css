@@ -231,9 +231,6 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints > li a.main-navBar-navBarLinkActive {
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.1647058824);
 }
-:root .Root__nav-bar ul.main-navBar-entryPoints > li a svg > * {
-  display: none;
-}
 :root .Root__nav-bar ul.main-navBar-entryPoints > li:first-child a {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
@@ -273,11 +270,17 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/"] .home-active-icon {
   background: url("https://i.imgur.com/60h58oZ.png") center/cover no-repeat;
 }
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/"] svg > * {
+  display: none;
+}
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/search"] .search-icon {
   background: url("https://i.imgur.com/UV5JQpE.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/search"] .search-active-icon {
   background: url("https://i.imgur.com/CTVdQ3d.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/search"] svg > * {
+  display: none;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/collection"] .collection-icon {
   background: url("https://i.imgur.com/alXGfxW.png") center/cover no-repeat;
@@ -285,11 +288,17 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/collection"] .collection-active-icon {
   background: url("https://i.imgur.com/SzvrAfr.png") center/cover no-repeat;
 }
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/collection"] svg > * {
+  display: none;
+}
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/lyrics-plus"] .collection-icon {
   background: url("https://i.imgur.com/91fuU3P.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/lyrics-plus"] .collection-active-icon {
   background: url("https://i.imgur.com/EgRCYe8.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/lyrics-plus"] svg > * {
+  display: none;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/reddit"] .collection-icon {
   background: url("https://i.imgur.com/6N6ev2V.png") center/cover no-repeat;
@@ -297,17 +306,26 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/reddit"] .collection-active-icon {
   background: url("https://i.imgur.com/UENFDdo.png") center/cover no-repeat;
 }
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/reddit"] svg > * {
+  display: none;
+}
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-icon {
   background: url("https://i.imgur.com/BgkCeDG.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] .collection-active-icon {
   background: url("https://i.imgur.com/CTRVDwF.png") center/cover no-repeat;
 }
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href="/new-releases"] svg > * {
+  display: none;
+}
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-icon {
   background: url("https://i.imgur.com/2pWNa48.png") center/cover no-repeat;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] .collection-active-icon {
   background: url("https://i.imgur.com/rKmXQ6V.png") center/cover no-repeat;
+}
+:root .Root__nav-bar ul.main-navBar-entryPoints a[href$=marketplace] svg > * {
+  display: none;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints:not(#spicetify-sticky-list) + .main-rootlist-rootlist > div {
   display: grid;
