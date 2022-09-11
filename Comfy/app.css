@@ -86,7 +86,7 @@
   height: calc(100% - 243px);
 }
 :root .Root__main-view section[data-testid=playlist-page] .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-viewport {
-  overflow: visible;
+  overflow: visible !important;
 }
 :root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
@@ -629,23 +629,19 @@
   --background-highlight: var(--spice-play-button-active);
   --background-press: var(--spice-play-button-active);
 }
+:root .main-addButton-active {
+  color: var(--spice-heart);
+}
+:root .main-addButton-active:hover {
+  color: rgba(var(--spice-rgb-heart), 0.7);
+}
+:root #_R_G *:not([stroke=none]) {
+  stroke: var(--spice-heart);
+}
 :root .main-trackList-rowHeartButton *:not([fill=none]),
-:root .control-button-heart *:not([fill=none]) {
+:root .control-button-heart *:not([fill=none]),
+:root #_R_G *:not([fill=none]) {
   fill: var(--spice-heart) !important;
-}
-:root #_R_G_L_1_G_D_0_P_1,
-:root #_R_G_L_5_G_D_0_P_0,
-:root #_R_G_L_4_G_D_0_P_0,
-:root #_R_G_L_3_G_D_0_P_0,
-:root #_R_G_L_2_G_D_0_P_0,
-:root #_R_G_L_1_G_D_0_P_0,
-:root #_R_G_L_0_G_D_0_P_0 {
-  stroke: var(--spice-heart);
-}
-:root #_R_G_L_7_G_D_0_P_0,
-:root #_R_G_L_6_G_D_0_P_0,
-:root #_R_G_L_0_G_D_1_P_0 {
-  stroke: var(--spice-heart);
 }
 :root .lyrics-lyricsContainer-Provider {
   font-size: 0;

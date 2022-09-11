@@ -128,7 +128,7 @@
     &[data-testid="your-episodes-page"],
     &[data-testid="artist-page"] {
       .os-viewport {
-        overflow: visible;
+        overflow: visible !important;
 
         .main-actionBar-ActionBar {
           padding: 8px 16px 16px 16px;

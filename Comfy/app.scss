@@ -38,25 +38,23 @@
   }
 
   // Coloured hearts
-  .main-trackList-rowHeartButton *:not([fill="none"]),
-  .control-button-heart *:not([fill="none"]) {
-    fill: var(--spice-heart) !important;
+  .main-addButton-active {
+    color: var(--spice-heart);
+    &:hover {
+      color: rgba(var(--spice-rgb-heart), 0.7);
+    }
   }
 
-  #_R_G_L_1_G_D_0_P_1,
-  #_R_G_L_5_G_D_0_P_0,
-  #_R_G_L_4_G_D_0_P_0,
-  #_R_G_L_3_G_D_0_P_0,
-  #_R_G_L_2_G_D_0_P_0,
-  #_R_G_L_1_G_D_0_P_0,
-  #_R_G_L_0_G_D_0_P_0 {
+  #_R_G *:not([stroke="none"]) {
     stroke: var(--spice-heart);
   }
 
-  #_R_G_L_7_G_D_0_P_0,
-  #_R_G_L_6_G_D_0_P_0,
-  #_R_G_L_0_G_D_1_P_0 {
-    stroke: var(--spice-heart);
+  .main-trackList-rowHeartButton,
+  .control-button-heart,
+  #_R_G {
+    & *:not([fill="none"]) {
+      fill: var(--spice-heart) !important;
+    }
   }
 
   // Lyrics plus
