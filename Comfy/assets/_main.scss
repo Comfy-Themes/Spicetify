@@ -127,20 +127,28 @@
     &[data-testid="album-page"],
     &[data-testid="your-episodes-page"],
     &[data-testid="artist-page"] {
-      .os-viewport {
+      .os-host-overflow {
+        overflow: visible !important;
+      }
+
+      .os-padding {
         overflow: visible !important;
 
-        .main-actionBar-ActionBar {
-          padding: 8px 16px 16px 16px;
+        .os-viewport {
+          overflow: visible !important;
 
-          .main-actionBar-ActionBarRow {
-            margin-bottom: -8px;
-            margin-left: 8px;
-            margin-right: 22px;
+          .main-actionBar-ActionBar {
+            padding: 8px 16px 16px 16px;
 
-            .main-playButton-PlayButton {
-              margin-left: 24px;
-              margin-top: -24px;
+            .main-actionBar-ActionBarRow {
+              margin-bottom: -8px;
+              margin-left: 8px;
+              margin-right: 22px;
+
+              .main-playButton-PlayButton {
+                margin-left: 24px;
+                margin-top: -24px;
+              }
             }
           }
         }

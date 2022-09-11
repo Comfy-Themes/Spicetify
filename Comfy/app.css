@@ -85,18 +85,24 @@
   top: 338px;
   height: calc(100% - 243px);
 }
-:root .Root__main-view section[data-testid=playlist-page] .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-viewport {
+:root .Root__main-view section[data-testid=playlist-page] .os-host-overflow, :root .Root__main-view section[data-testid=album-page] .os-host-overflow, :root .Root__main-view section[data-testid=your-episodes-page] .os-host-overflow, :root .Root__main-view section[data-testid=artist-page] .os-host-overflow {
   overflow: visible !important;
 }
-:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar {
+:root .Root__main-view section[data-testid=playlist-page] .os-padding, :root .Root__main-view section[data-testid=album-page] .os-padding, :root .Root__main-view section[data-testid=your-episodes-page] .os-padding, :root .Root__main-view section[data-testid=artist-page] .os-padding {
+  overflow: visible !important;
+}
+:root .Root__main-view section[data-testid=playlist-page] .os-padding .os-viewport, :root .Root__main-view section[data-testid=album-page] .os-padding .os-viewport, :root .Root__main-view section[data-testid=your-episodes-page] .os-padding .os-viewport, :root .Root__main-view section[data-testid=artist-page] .os-padding .os-viewport {
+  overflow: visible !important;
+}
+:root .Root__main-view section[data-testid=playlist-page] .os-padding .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=album-page] .os-padding .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=your-episodes-page] .os-padding .os-viewport .main-actionBar-ActionBar, :root .Root__main-view section[data-testid=artist-page] .os-padding .os-viewport .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow {
+:root .Root__main-view section[data-testid=playlist-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=album-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=your-episodes-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow, :root .Root__main-view section[data-testid=artist-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow {
   margin-bottom: -8px;
   margin-left: 8px;
   margin-right: 22px;
 }
-:root .Root__main-view section[data-testid=playlist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton {
+:root .Root__main-view section[data-testid=playlist-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=album-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=your-episodes-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton, :root .Root__main-view section[data-testid=artist-page] .os-padding .os-viewport .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton {
   margin-left: 24px;
   margin-top: -24px;
 }
