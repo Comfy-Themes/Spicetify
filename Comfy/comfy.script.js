@@ -11,47 +11,68 @@
     "aside[aria-label='Friend Activity']"
   );
 
-  if (!(Player && Menu && LocalStorage && Platform && main && topbar)) {
+  if (!(Player?.data && Menu && LocalStorage && Platform && main && topbar)) {
     setTimeout(Comfy, 1000);
     return;
   }
 
-  // Hover Panels
-  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/hover-panels.css`;
-  const hoverClassname = `Hover-Panels-Snippet`;
-  const lsBool = Spicetify.LocalStorage.get(hoverClassname) === "1";
-  hotload(lsBool, hoverUrl, hoverClassname);
-  MenuItem(`Comfy hover panels`, lsBool, hoverUrl, hoverClassname);
+  let content = document.createElement("div");
+  let style = document.createElement("style");
+  style.innerHTML = `
+.setting-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.setting-row {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+}
+.setting-row .col.description {
+  float: left;
+  padding-right: 15px;
+  width: 100%;
+}
+.setting-row .col.action {
+  float: right;
+  text-align: right;
+}
+button.switch {
+  align-items: center;
+  border: 0px;
+  border-radius: 50%;
+  background-color: rgba(var(--spice-rgb-shadow), .7);
+  color: var(--spice-text);
+  cursor: pointer;
+  display: flex;
+  margin-inline-start: 12px;
+  padding: 8px;
+}
+button.switch.disabled,
+button.switch[disabled] {
+  color: rgba(var(--spice-rgb-text), .3);
+}
+button.reset {
+  font-weight: 700;
+  background-color: var(--spice-text);
+  color: var(--spice-main);
+  border-radius: 500px;
+  font-size: inherit;
+  padding-block: 12px;
+  padding-inline: 32px;
+}
+button.reset:hover {
+  transform: scale(1.04);
+}`;
+  content.appendChild(style);
 
-  // ColorScheme Snippets
-  const colorScheme = Spicetify.Config.color_scheme;
-  const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/${colorScheme}.css`;
-  const addonClassname = `Comfy-${colorScheme}-Snippet`;
-  if ((await fetch(addonUrl)).ok) {
-    let lsBool =
-      Spicetify.LocalStorage.get(`Comfy-${colorScheme}-Snippet`) === "1";
-    if (Spicetify.LocalStorage.get(`Comfy-${colorScheme}-Snippet`) === null) {
-      lsBool = "1";
-    }
-    hotload(lsBool, addonUrl, addonClassname);
-    MenuItem(
-      `Comfy-${
-        colorScheme.charAt(0).toUpperCase() + colorScheme.slice(1)
-      } css addons`,
-      lsBool,
-      addonUrl,
-      addonClassname
-    );
-  }
-
-  function MenuItem(label, bool, url, classname) {
-    new Spicetify.Menu.Item(label, bool, (self) => {
-      bool = !bool;
-      Spicetify.LocalStorage.set(classname, bool ? "1" : "0");
-      self.setState(bool);
-      hotload(bool, url, classname);
-    }).register();
-  }
+  new Spicetify.Menu.Item("Comfy settings", false, () => {
+    Spicetify.PopupModal.display({
+      title: "Comfy Settings",
+      content,
+    });
+  }).register();
 
   function hotload(bool, url, classname) {
     if (bool) {
@@ -61,21 +82,82 @@
     }
   }
 
-  async function loadCSS(url, classname) {
-    const response = await fetch(url);
-    const data = await response.text();
-    const head = document.getElementsByTagName("head")[0];
-    const style = document.createElement("style");
-    style.textContent = data;
-    style.className = classname;
-    head.append(style);
+  function getConfig(key) {
+    try {
+      return JSON.parse(Spicetify.LocalStorage.get(key));
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   }
 
-  async function unloadCSS(classname) {
-    const element = document.getElementsByClassName(classname);
-    while (element.length > 0) {
-      element[0].parentNode.removeChild(element[0]);
-    }
+  function createSlider(name, desc, defaultVal, url = null) {
+    const container = document.createElement("div");
+    container.classList.add("setting-row");
+    container.innerHTML = `
+<label class="col description">${desc}</label>
+<div class="col action"><button class="switch">
+<svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+${Spicetify.SVGIcons.check}
+</svg>
+</button></div>`;
+
+    const slider = container.querySelector("button.switch");
+    slider.classList.toggle("disabled", !defaultVal);
+
+    slider.onclick = () => {
+      const state = slider.classList.contains("disabled");
+      slider.classList.toggle("disabled");
+      Spicetify.LocalStorage.set(name, state);
+      url && hotload(state, url, name);
+      console.log(name, getConfig(name));
+    };
+
+    return container;
+  }
+
+  // Hover Panels
+  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/hover-panels.css`;
+  const hoverClassname = `Hover-Panels-Snippet`;
+  const lsBool = getConfig(hoverClassname) ?? false;
+  hotload(lsBool, hoverUrl, hoverClassname);
+  content.appendChild(
+    createSlider(hoverClassname, "Hover Panels", lsBool, hoverUrl)
+  );
+
+  // ColorScheme Snippets
+  const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
+  const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/${colorScheme}.css`;
+  const addonClassname = `Comfy-${colorScheme}-Snippet`;
+  if ((await fetch(addonUrl)).ok) {
+    let lsBool = getConfig(`Comfy-${colorScheme}-Snippet`) ?? true;
+    hotload(lsBool, addonUrl, addonClassname);
+    content.appendChild(
+      createSlider(
+        addonClassname,
+        `Comfy-${
+          colorScheme.charAt(0).toUpperCase() + colorScheme.slice(1)
+        } additional features`,
+        lsBool,
+        addonUrl
+      )
+    );
+  }
+
+  async function loadCSS(url, classname) {
+    await fetch(url)
+      .then((res) => res.text())
+      .then((css) => {
+        const style = document.createElement("style");
+        style.innerHTML = css;
+        style.classList.add(classname);
+        document.head.appendChild(style);
+      })
+      .catch((e) => console.error(e));
+  }
+
+  function unloadCSS(classname) {
+    return document.querySelector(`.${classname}`)?.remove();
   }
 
   // Function that checks [if activityquery.position == absolute (Hover Panels Enabled)] or [activityquery.position == default].
