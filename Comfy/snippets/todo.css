@@ -1,0 +1,80 @@
+.main-topBar-historyButtons .main-topBar-button,
+.main-topBar-button,
+.nav-alt .x-searchInput-searchInputInput {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.1);
+}
+
+.main-topBar-historyButtons .main-topBar-button:hover,
+.main-topBar-button:hover {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+}
+.nav-alt .x-searchInput-searchInputInput:hover {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+}
+
+.nav-alt .main-entityHeader-container.main-entityHeader-nonWrapped {
+    min-height: 310px !important;
+}
+:root .Root__main-view .main-entityHeader-container {
+	padding-top: 90px !important;
+}
+
+:root .Root__main-view #mainImage {
+    z-index: 0 !important;
+}
+.main-view-container {
+    z-index: 1 !important;
+}
+
+@media (max-width: 850px) {
+	.main-actionBar-ActionBarRow {
+			margin-left: -6px !important;
+	}
+}
+@media (min-width: 850px) {
+	.contentSpacing {
+		padding: 0 29px;
+	}
+}
+:root .Root__main-view .main-actionBarBackground-background {
+	top: 310px !important;
+}
+
+@media (min-width: 1280px) {
+	.playlist-playlist-playlistImageContainer {
+		height: 192px; 
+		min-width: 192px; 
+		width: 192px; 
+	}
+}
+
+:root .Root__now-playing-bar .playback-bar {
+    right: 0px !important;
+    position: fixed !important;
+}
+
+.nav-alt .main-navBar-navBar {
+    padding-top: 0px;
+}
+
+:root .Root__nav-bar ul.main-navBar-entryPoints {
+	padding: 5px 12px !important;
+	margin: 10px 12px 0 12px !important;
+}
+
+.main-navBar-navBar::before {
+	content: "Pages";
+    visibility: visible;
+    width: unset;
+    height: unset;
+    line-height: unset;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+	padding-top: 10px;
+}
+
+#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-scrollbar-vertical-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition > div.os-padding > div > div {
+    padding-top: 12px !important;
+}
