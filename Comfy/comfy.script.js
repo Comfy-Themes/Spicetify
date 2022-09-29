@@ -117,7 +117,7 @@ ${Spicetify.SVGIcons.check}
   }
 
   // Hover Panels
-  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/hover-panels.css`;
+  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/hover-panels.css`;
   const hoverClassname = `Hover-Panels-Snippet`;
   const lsBool = getConfig(hoverClassname) ?? false;
   hotload(lsBool, hoverUrl, hoverClassname);
@@ -127,7 +127,7 @@ ${Spicetify.SVGIcons.check}
 
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
-  const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/dev/Comfy/snippets/${colorScheme}.css`;
+  const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${colorScheme}.css`;
   const addonClassname = `Comfy-${colorScheme}-Snippet`;
   if ((await fetch(addonUrl)).ok) {
     let lsBool = getConfig(`Comfy-${colorScheme}-Snippet`) ?? true;
