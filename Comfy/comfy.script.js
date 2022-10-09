@@ -116,22 +116,22 @@ ${Spicetify.SVGIcons.check}
     return container;
   }
 
-  // Spotify's New UI
-  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`
-  const uiClassName = "New-UI-Snippet";
-  const lsBool = getConfig(uiClassName) ?? false;
-  hotload(lsBool, uiUrl, uiClassName);
+  // Hover Panels
+  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/hover-panels.css`;
+  const hoverClassname = `Hover-Panels-Snippet`;
+  lsBool = getConfig(hoverClassname) ?? false;
+  hotload(lsBool, hoverUrl, hoverClassname);
   content.appendChild(
     createSlider(hoverClassname, "Hover Panels", lsBool, hoverUrl)
   );
 
-  // Hover Panels
-  const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/hover-panels.css`;
-  const hoverClassname = `Hover-Panels-Snippet`;
-  const lsBool = getConfig(hoverClassname) ?? false;
-  hotload(lsBool, hoverUrl, hoverClassname);
+  // Spotify's New UI
+  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`
+  const uiClassName = "New-UI-Snippet";
+  lsBool = getConfig(uiClassName) ?? false;
+  hotload(lsBool, uiUrl, uiClassName);
   content.appendChild(
-    createSlider(hoverClassname, "Hover Panels", lsBool, hoverUrl)
+    createSlider(uiClassName, "New UI Fix (Temporary)", lsBool, uiUrl)
   );
 
   // ColorScheme Snippets
