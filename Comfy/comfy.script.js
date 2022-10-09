@@ -116,6 +116,15 @@ ${Spicetify.SVGIcons.check}
     return container;
   }
 
+  // Spotify's New UI
+  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`
+  const uiClassName = "New-UI-Snippet";
+  const lsBool = getConfig(uiClassName) ?? false;
+  hotload(lsBool, uiUrl, uiClassName);
+  content.appendChild(
+    createSlider(hoverClassname, "Hover Panels", lsBool, hoverUrl)
+  );
+
   // Hover Panels
   const hoverUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/hover-panels.css`;
   const hoverClassname = `Hover-Panels-Snippet`;
