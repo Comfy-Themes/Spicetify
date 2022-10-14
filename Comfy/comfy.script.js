@@ -10,8 +10,19 @@
   let activityquery = document.querySelector(
     "aside[aria-label='Friend Activity']"
   );
+  const navAlt = document.querySelector(".nav-alt");
 
-  if (!(Player?.data && Menu && LocalStorage && Platform && main && topbar)) {
+  if (
+    !(
+      Player?.data &&
+      Menu &&
+      LocalStorage &&
+      Platform &&
+      main &&
+      topbar &&
+      navAlt
+    )
+  ) {
     setTimeout(Comfy, 1000);
     return;
   }
@@ -125,14 +136,16 @@ ${Spicetify.SVGIcons.check}
     createSlider(hoverClassname, "Hover Panels", lsBool, hoverUrl)
   );
 
-  // Spotify's New UI
-  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`
-  const uiClassName = "New-UI-Snippet";
-  lsBool = getConfig(uiClassName) ?? false;
-  hotload(lsBool, uiUrl, uiClassName);
-  content.appendChild(
-    createSlider(uiClassName, "New UI Fix (Temporary)", lsBool, uiUrl)
-  );
+  // Spotify's New navUI
+  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`;
+  const uiClassName = "New-navUI-Snippet";
+  if (navAlt) {
+    lsBool = getConfig(uiClassName) ?? true;
+    hotload(lsBool, uiUrl, uiClassName);
+    content.appendChild(
+      createSlider(uiClassName, "New navUI Snippet", lsBool, uiUrl)
+    );
+  }
 
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
