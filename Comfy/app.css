@@ -263,8 +263,6 @@
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button div.main-likedSongsButton-likedSongsIcon,
 :root .Root__nav-bar ul.main-navBar-entryPoints > div a div.main-likedSongsButton-likedSongsIcon {
   background: linear-gradient(135deg, var(--spice-liked-left), var(--spice-liked-right));
-  border-style: solid;
-  border-width: 2px;
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints > div button span,
 :root .Root__nav-bar ul.main-navBar-entryPoints > div a span {
