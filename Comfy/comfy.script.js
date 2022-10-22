@@ -19,8 +19,7 @@
       LocalStorage &&
       Platform &&
       main &&
-      topbar &&
-      navAlt
+      topbar
     )
   ) {
     setTimeout(Comfy, 1000);
