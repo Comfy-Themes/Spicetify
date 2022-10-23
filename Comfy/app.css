@@ -506,12 +506,6 @@
 :root .Root__now-playing-bar .playback-bar .saber-hilt {
   height: 0;
 }
-:root .Root__now-playing-bar .playback-bar .playback-bar__progress-time-elapsed {
-  display: none;
-}
-:root .Root__now-playing-bar .playback-bar .main-playbackBarRemainingTime-container {
-  display: none;
-}
 :root .Root__now-playing-bar .playback-bar .playback-progressbar {
   grid-column: 1/3;
   grid-area: bar;
