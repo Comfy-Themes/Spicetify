@@ -1,3 +1,6 @@
 CHECKUP.txt
 /.vscode/
 .prettierignore
+Comfy/node_modules
+Comfy/package-lock.json
+Comfy/app.css.map
