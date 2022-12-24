@@ -21,8 +21,7 @@
       LocalStorage &&
       Platform &&
       main &&
-      topbar &&
-	  navPad1 || navPad2
+      topbar
     )
   ) {
     setTimeout(Comfy, 1000);
