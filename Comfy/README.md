@@ -20,7 +20,8 @@
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy/preview/Vaporwave.png) | ![Sunset](https://comfy-themes.github.io/Spicetify/Comfy/preview/Sunset.png) |
 
-|                                   Deep                                   |                                                                |
+|                                   Deep                                   |                                    Velvet                                    |
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
-| ![Deep](https://i.imgur.com/7Qx9ju8.png)
+| ![Deep](https://comfy-themes.github.io/Spicetify/Comfy/preview/Deep.png) | ![Velvet](https://comfy-themes.github.io/Spicetify/Comfy/preview/Velvet.png) |
+
 ---
