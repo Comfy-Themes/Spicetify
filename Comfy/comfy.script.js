@@ -11,6 +11,9 @@
     "aside[aria-label='Friend Activity']"
   );
   const navAlt = document.querySelector(".nav-alt");
+  const navTransPad = document.querySelector(
+    "#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition.os-host-scrollbar-vertical-hidden > div.os-padding > div > div"
+  );
 
   if (
     !(
@@ -19,7 +22,8 @@
       LocalStorage &&
       Platform &&
       main &&
-      topbar
+      topbar &&
+      navTransPad
     )
   ) {
     setTimeout(Comfy, 1000);
@@ -126,41 +130,62 @@ ${Spicetify.SVGIcons.check}
     return container;
   }
 
-  let snippetDetails = { }
+  let snippetDetails = {};
 
   // Hover Panels
-   snippetDetails = {
-    url: "https://raw.githubusercontent.com/Comfy/Comfy/master/ComfyHoverPanels.css", 
-    class_name: "Hover-Panels-Snippet"
+  snippetDetails = {
+    url: "https://raw.githubusercontent.com/Comfy/Comfy/master/ComfyHoverPanels.css",
+    class_name: "Hover-Panels-Snippet",
   };
   lsBool = getConfig(snippetDetails.class_name) ?? false;
   hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
-    createSlider(snippetDetails.class_name, "Hover Panels", lsBool, snippetDetails.url)
+    createSlider(
+      snippetDetails.class_name,
+      "Hover Panels",
+      lsBool,
+      snippetDetails.url
+    )
+  );
+
+  // Nav transition padding
+  navTransPad.setAttribute(
+    "style",
+    "padding: 0 !important; height: 100%; width: 100%;"
   );
 
   // Spotify's New navUI
   snippetDetails = {
-    url:`https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`,
-    class_name: "New-navUI-Snippet"
+    url: `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`,
+    class_name: "New-navUI-Snippet",
   };
   if (navAlt) {
     lsBool = getConfig(snippetDetails.class_name) ?? true;
     hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
     content.appendChild(
-      createSlider(snippetDetails.class_name, "New navUI Snippet", lsBool, snippetDetails.url)
+      createSlider(
+        snippetDetails.class_name,
+        "New navUI Snippet",
+        lsBool,
+        snippetDetails.url
+      )
     );
   }
-  
+
   // Remove PlayBack timers
   snippetDetails = {
     url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",
-    class_name: "Remove-timers-Snippet"
+    class_name: "Remove-timers-Snippet",
   };
   lsBool = getConfig(snippetDetails.class_name) ?? false;
   hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
-    createSlider(snippetDetails.class_name, "Remove Playback Timers", lsBool, snippetDetails.url)
+    createSlider(
+      snippetDetails.class_name,
+      "Remove Playback Timers",
+      lsBool,
+      snippetDetails.url
+    )
   );
 
   // ColorScheme Snippets

@@ -17,7 +17,7 @@
     box-sizing: content-box;
     transition: 350ms background-color;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    margin: 10px 12px 10px 12px !important;
+    margin: 12px !important;
     background-color: rgba(0, 0, 0, 0.1);
 
     & > li {
@@ -252,8 +252,6 @@
     margin-top: 0;
 
     .os-content {
-      padding-top: 0 !important;
-
       &::before {
         content: "Playlists";
         visibility: visible;
@@ -350,5 +348,10 @@
   // Scrollbar
   .os-scrollbar {
     display: none;
+  }
+
+  // Pages padding
+  .main-navBar-navBar::before {
+    padding-top: 12px !important;
   }
 }

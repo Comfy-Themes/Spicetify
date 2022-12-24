@@ -214,7 +214,7 @@
   box-sizing: content-box;
   transition: 350ms background-color;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
-  margin: 10px 12px 10px 12px !important;
+  margin: 12px !important;
   background-color: rgba(0, 0, 0, 0.1);
 }
 :root .Root__nav-bar ul.main-navBar-entryPoints#spicetify-sticky-list {
@@ -390,9 +390,6 @@
 :root .Root__nav-bar .main-rootlist-rootlist {
   margin-top: 0;
 }
-:root .Root__nav-bar .main-rootlist-rootlist .os-content {
-  padding-top: 0 !important;
-}
 :root .Root__nav-bar .main-rootlist-rootlist .os-content::before {
   content: "Playlists";
   visibility: visible;
@@ -461,6 +458,9 @@
 }
 :root .Root__nav-bar .os-scrollbar {
   display: none;
+}
+:root .Root__nav-bar .main-navBar-navBar::before {
+  padding-top: 12px !important;
 }
 
 :root .Root__now-playing-bar .main-nowPlayingBar-container {
@@ -702,5 +702,3 @@
   background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
-
-/*# sourceMappingURL=app.css.map */
