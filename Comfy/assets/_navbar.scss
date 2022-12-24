@@ -17,7 +17,7 @@
     box-sizing: content-box;
     transition: 350ms background-color;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    margin: 24px 12px 0 12px;
+    margin: 24px 12px 12px 12px;
     background-color: rgba(0, 0, 0, 0.1);
 
     & > li {
@@ -252,7 +252,7 @@
     margin-top: 0;
 
     .os-content {
-      padding-top: 16px !important;
+      padding-top: 0 !important;
 
       &::before {
         content: "Playlists";
