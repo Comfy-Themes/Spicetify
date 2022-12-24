@@ -1,4 +1,4 @@
-### ✅ Supported -> Spicetify 2.14.0, Spotify 1.1.96.
+### ✅ Supported -> Spicetify 2.15.0, Spotify 1.2.0.
 
 ---
 
