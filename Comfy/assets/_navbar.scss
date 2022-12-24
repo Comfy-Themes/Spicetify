@@ -17,7 +17,7 @@
     box-sizing: content-box;
     transition: 350ms background-color;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    margin: 24px 12px 12px 12px;
+    margin: 10px 12px 10px 12px !important;
     background-color: rgba(0, 0, 0, 0.1);
 
     & > li {
