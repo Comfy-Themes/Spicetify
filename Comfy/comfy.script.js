@@ -11,10 +11,9 @@
     "aside[aria-label='Friend Activity']"
   );
   const navAlt = document.querySelector(".nav-alt");
-  const navTransPad = document.querySelector(
-    "#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition.os-host-scrollbar-vertical-hidden > div.os-padding > div > div"
-  );
-
+  const navPad1 = document.querySelector("#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition.os-host-scrollbar-vertical-hidden > div.os-padding > div > div")
+  const navPad2 = document.querySelector("#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition.os-host-overflow.os-host-overflow-y > div.os-padding > div > div")
+  
   if (
     !(
       Player?.data &&
@@ -23,7 +22,7 @@
       Platform &&
       main &&
       topbar &&
-      navTransPad
+	  navPad1 || navPad2
     )
   ) {
     setTimeout(Comfy, 1000);
@@ -149,7 +148,7 @@ ${Spicetify.SVGIcons.check}
   );
 
   // Nav transition padding
-  navTransPad.setAttribute(
+  (navPad1 ? navPad1 : navPad2).setAttribute(
     "style",
     "padding: 0 !important; height: 100%; width: 100%;"
   );
