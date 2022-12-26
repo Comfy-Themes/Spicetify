@@ -147,7 +147,7 @@ ${Spicetify.SVGIcons.check}
   );
 
   // Nav transition padding
-  (navPad1 ? navPad1 : navPad2).setAttribute(
+  (navPad1 || navPad2) && (navPad1 || navPad2).setAttribute(
     "style",
     "padding: 0 !important; height: 100%; width: 100%;"
   );
