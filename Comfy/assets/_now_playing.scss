@@ -10,7 +10,7 @@
       // Cover-art
       .main-nowPlayingWidget-nowPlaying {
         &.main-nowPlayingWidget-coverExpanded {
-          transform: translateX(-100px);
+          transform: translate3d(-107px, -7px, 0px);
         }
 
         .main-coverSlotCollapsed-container {

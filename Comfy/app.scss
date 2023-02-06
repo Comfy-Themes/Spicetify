@@ -16,6 +16,18 @@
 
   // -- Other --
 
+  // Right Side Cover Art
+  .main-coverSlotExpanded-container {
+    position: fixed;
+    top: calc(100% - 318px);
+    left: calc(100% - 230px);
+    width: 200px;
+    height: 200px;
+    visibility: visible;
+    transform-origin: center;
+    animation-fill-mode: forwards;
+  }
+
   // Scrollbar
   .os-scrollbar-vertical {
     background: none;
