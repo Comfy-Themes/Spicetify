@@ -54,15 +54,7 @@
     background-color: var(--spice-radio-btn-active);
   }
 
-  // Home playlist cards
-  .view-homeShortcutsGrid-shortcut {
-    border-radius: var(--border-radius);
-    .view-homeShortcutsGrid-imageWrapper {
-      border-radius: calc(var(--border-radius) + 15px);
-    }
-  }
-
-  // Music card
+  // Cards
   .main-card-card {
     border-radius: var(--border-radius);
     padding: 0;
@@ -79,6 +71,21 @@
     .main-card-cardMetadata {
       padding: 16px;
     }
+  }
+
+  // Home Cards
+  .view-homeShortcutsGrid-shortcut {
+    border-radius: var(--border-radius);
+    .view-homeShortcutsGrid-imageWrapper {
+      border-radius: calc(var(--border-radius) + 15px);
+    }
+  }
+
+  // Library Card Grid
+  main[aria-label="Spotify – Your Library"] {
+  .main-gridContainer-gridContainer {
+	  padding-bottom: var(--grid-gap)
+  }
   }
 
   // Header
@@ -111,6 +118,8 @@
   .main-yourEpisodes-yourEpisodesContentWrapper {
     max-width: unset;
   }
+  
+  .artist-artistOverview-artistOverviewContent,
   .main-actionBarBackground-background {
     background: linear-gradient(
         rgba(var(--spice-rgb-main-transition), 0.6) 0,
@@ -120,13 +129,20 @@
     top: 338px;
     height: calc(100% - 243px);
   }
+  
+  section[data-test-uri*="artist"] {
+    .main-actionBarBackground-background {
+	  background-image: none !important;
+	  background-color: unset !important;
+	}  
+  }
 
   // Playlist, Album & Liked songs
   section {
     &[data-testid="playlist-page"],
     &[data-testid="album-page"],
     &[data-testid="your-episodes-page"],
-    &[data-testid="artist-page"] {
+    &[data-test-uri*="artist"] {
       .os-host-overflow {
         overflow: visible !important;
       }
@@ -171,9 +187,9 @@
     &[data-testid="album-page"] > div:nth-last-child(2),
     &[data-testid="episode"] > div:last-child,
     &[data-testid="your-episodes-page"] > div:last-child,
-    &[data-testid="artist-page"] > div > div:last-child {
+	&[data-test-uri*="artist"] > div > div:last-child {
       background: none;
-
+	  
       .main-trackList-trackListRowGrid {
         border-radius: var(--border-radius);
         border: none;
@@ -204,16 +220,8 @@
   }
 
   // Tracklists
-  section[class="contentSpacing"],
-  .rHpv7osDRvs3SUPMpQ_g {
-    .main-trackList-rowSectionIndex {
-      top: 7px !important;
-      left: 16px !important;
-    }
-  }
-
-  section:not([data-testid="album-page"]):not([data-testid="artist-page"]),
-  .NLaDALU71zxOtBUbsrfH {
+  section[data-testid="playlist-page"],
+  .artist-artistOverview-overview {
     .main-trackList-trackListRow {
       grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
           120px,
