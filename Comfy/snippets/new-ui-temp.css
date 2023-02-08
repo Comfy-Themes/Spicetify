@@ -39,7 +39,9 @@
 :root .Root__main-view .main-actionBarBackground-background {
 	top: 310px !important;
 }
-
+:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBarBackground-background {
+	top: 246px !important;
+}
 @media (min-width: 1280px) {
 	.playlist-playlist-playlistImageContainer {
 		height: 192px; 
