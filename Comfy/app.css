@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root .Root__main-view #preloadImage {
   position: absolute;
   width: 0;
@@ -26,19 +27,21 @@
     background-position: top;
   }
 }
-:root .Root__main-view .main-actionBarBackground-background {
-  background-image: none !important;
-  background-color: unset !important;
+:root .Root__main-view main:not([aria-label="Spotify – Your Library"]), :root .Root__main-view .main-view-container__scroll-node-child {
+  padding-bottom: 0;
 }
-:root .Root__main-view .playlist-playlist-playlistContent,
+:root .Root__main-view main[aria-label="Spotify – Your Library"] .main-gridContainer-gridContainer {
+  padding-bottom: var(--grid-gap) !important;
+}
 :root .Root__main-view .artist-artistOverview-artistOverviewContent,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBarBackground-background {
+:root .Root__main-view .main-actionBarBackground-background {
   background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
   top: 338px;
-  height: calc(100% - 243px);
+  height: 100%;
 }
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBarBackground-background {
-  top: 285px !important;
+:root .Root__main-view section[data-test-uri*=artist] .main-actionBarBackground-background {
+  background-image: none !important;
+  background-color: unset !important;
 }
 :root .Root__main-view #main > div > div.Root__top-container > div.Root__top-bar > header > div.main-topBar-topbarContentWrapper > div > div > button > span > span {
   fill: var(--spice-selected-row) !important;
@@ -82,8 +85,10 @@
 :root .Root__main-view .main-home-homeHeader {
   display: none !important;
 }
+:root .Root__main-view .main-entityHeader-withBackgroundImage {
+  height: 30vh !important;
+}
 :root .Root__main-view .main-entityHeader-container {
-  height: 40vh !important;
   padding: 32px;
   justify-content: center;
 }
@@ -129,9 +134,14 @@
 :root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar {
   padding-top: 16px;
 }
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] div:nth-child(4) {
+:root .Root__main-view section[class=folder-folderPage-sectionWrapper] > div:nth-child(4) {
   padding-top: 18px;
-  padding-left: 47px;
+  padding-left: 33px;
+}
+@media (min-width: 850px) {
+  :root .Root__main-view section[class=folder-folderPage-sectionWrapper] > div:nth-child(4) {
+    padding-left: 47px;
+  }
 }
 :root .Root__main-view section[data-testid=your-episodes-page] > .contentSpacing > section {
   height: calc(100vh - 494px);
@@ -641,9 +651,6 @@
   left: calc(100% - 230px);
   width: 200px;
   height: 200px;
-  visibility: visible;
-  transform-origin: center;
-  animation-fill-mode: forwards;
 }
 :root .os-scrollbar-vertical {
   background: none;

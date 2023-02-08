@@ -31,27 +31,32 @@
     }
   }
 
-  .main-actionBarBackground-background {
-    background-image: none !important;
-    background-color: unset !important;
+  .main-view-container__scroll-node-child {
+    padding-bottom: 0;
   }
 
-  .playlist-playlist-playlistContent,
+  main[aria-label="Spotify – Your Library"] {
+    .main-gridContainer-gridContainer {
+      padding-bottom: var(--grid-gap) !important;
+    }
+  }
+
   .artist-artistOverview-artistOverviewContent,
-  section[class="folder-folderPage-sectionWrapper"]
-    .main-actionBarBackground-background {
+  .main-actionBarBackground-background {
     background: linear-gradient(
         rgba(var(--spice-rgb-main-transition), 0.6) 0,
         var(--spice-main) 232px
       ),
       var(--background-noise) !important;
     top: 338px;
-    height: calc(100% - 243px);
+    height: 100%;
   }
 
-  section[class="folder-folderPage-sectionWrapper"]
+  section[data-test-uri*="artist"] {
     .main-actionBarBackground-background {
-    top: 285px !important;
+      background-image: none !important;
+      background-color: unset !important;
+    }
   }
 
   // Now playing bar queue button
@@ -115,9 +120,10 @@
   .main-home-homeHeader {
     display: none !important;
   }
-
+  .main-entityHeader-withBackgroundImage {
+    height: 30vh !important;
+  }
   .main-entityHeader-container {
-    height: 40vh !important;
     padding: 32px;
     justify-content: center;
 
@@ -152,6 +158,7 @@
       .os-viewport {
         overflow: visible !important;
       }
+
       .main-actionBar-ActionBar {
         padding: 8px 16px 16px 16px;
 
@@ -172,9 +179,12 @@
       .main-actionBar-ActionBar {
         padding-top: 16px;
       }
-      div:nth-child(4) {
+      > div:nth-child(4) {
+        @media (min-width: 850px) {
+          padding-left: 47px;
+        }
         padding-top: 18px;
-        padding-left: 47px;
+        padding-left: 33px;
       }
     }
 
