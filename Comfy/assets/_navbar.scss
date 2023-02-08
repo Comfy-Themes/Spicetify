@@ -13,7 +13,7 @@
     }
 
     column-gap: 16px;
-    padding: 0 12px;
+    padding: 0 12px !important;
     box-sizing: content-box;
     transition: 350ms background-color;
     border-radius: var(--border-radius) var(--border-radius) 0 0;

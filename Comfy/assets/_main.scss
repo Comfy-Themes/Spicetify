@@ -31,8 +31,15 @@
     }
   }
 
-  .artist-artistOverview-artistOverviewContent,
   .main-actionBarBackground-background {
+    background-image: none !important;
+    background-color: unset !important;
+  }
+
+  .playlist-playlist-playlistContent,
+  .artist-artistOverview-artistOverviewContent,
+  section[class="folder-folderPage-sectionWrapper"]
+    .main-actionBarBackground-background {
     background: linear-gradient(
         rgba(var(--spice-rgb-main-transition), 0.6) 0,
         var(--spice-main) 232px
@@ -42,11 +49,9 @@
     height: calc(100% - 243px);
   }
 
-  section[data-test-uri*="artist"] {
+  section[class="folder-folderPage-sectionWrapper"]
     .main-actionBarBackground-background {
-      background-image: none !important;
-      background-color: unset !important;
-    }
+    top: 285px !important;
   }
 
   // Now playing bar queue button
@@ -78,9 +83,15 @@
     .main-card-imageContainer {
       margin-bottom: -4px;
 
+      > div:last-child {
+        right: 12px;
+      }
       .main-cardImage-circular,
       img {
-        border-radius: 0;
+        border-radius: 0 !important;
+      }
+      .main-cardImage-imageWrapper {
+        box-shadow: none !important;
       }
     }
     .main-card-cardMetadata {
@@ -95,12 +106,6 @@
   }
 
   // Headers
-  section[class="folder-folderPage-sectionWrapper"] {
-    .main-entityHeader-container {
-      padding: 32px !important;
-    }
-  }
-
   .main-entityHeader-background {
     height: 83vh;
     &.main-entityHeader-overlay {
@@ -110,13 +115,15 @@
   .main-home-homeHeader {
     display: none !important;
   }
-  .main-entityHeader-container .main-entityHeader-backgroundColor {
-    background: none !important;
-  }
 
   .main-entityHeader-container {
+    height: 40vh !important;
     padding: 32px;
     justify-content: center;
+
+    .main-entityHeader-backgroundColor {
+      background: none !important;
+    }
 
     & > div:nth-last-of-type(2) {
       align-self: center;
@@ -138,7 +145,8 @@
     &[data-testid="playlist-page"],
     &[data-testid="album-page"],
     &[data-testid="your-episodes-page"],
-    &[data-test-uri*="artist"] {
+    &[data-test-uri*="artist"],
+    &[class="folder-folderPage-sectionWrapper"] {
       .os-host-overflow,
       .os-padding,
       .os-viewport {
@@ -159,12 +167,14 @@
         }
       }
     }
+
     &[class="folder-folderPage-sectionWrapper"] {
-      margin: 0 !important;
-      .os-host-overflow,
-      .os-padding,
-      .os-viewport {
-        overflow: visible !important;
+      .main-actionBar-ActionBar {
+        padding-top: 16px;
+      }
+      div:nth-child(4) {
+        padding-top: 18px;
+        padding-left: 47px;
       }
     }
 
@@ -186,8 +196,7 @@
     &[data-testid="album-page"] > div:nth-last-child(2),
     &[data-testid="episode"] > div:last-child,
     &[data-testid="your-episodes-page"] > div:last-child,
-    &[data-test-uri*="artist"] > div > div:last-child,
-    &[class="folder-folderPage-sectionWrapper"] > div > div:last-child {
+    &[data-test-uri*="artist"] > div > div:last-child {
       background: none;
 
       .main-trackList-trackListRowGrid {
