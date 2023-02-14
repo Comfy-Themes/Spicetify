@@ -85,12 +85,13 @@
     padding: 0;
     overflow: hidden;
 
+    .main-card-PlayButtonContainer {
+      right: 12px !important;
+    }
+
     .main-card-imageContainer {
       margin-bottom: -4px;
 
-      > div:last-child {
-        right: 12px;
-      }
       .main-cardImage-circular,
       img {
         border-radius: 0 !important;
@@ -147,13 +148,14 @@
   }
 
   // Page Layouts
-  section[data-testid="playlist-page"],
-  section[data-testid="album-page"],
-  section[data-testid="your-episodes-page"],
+  div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
+  section[class="mmCZ5VczybT9VqKB5wFU"], // Audiobook
   section[data-test-uri*="artist"],
+  section[data-testid="album-page"],
+  section[data-testid="playlist-page"],
   section[data-testid="enhanced-page"],
-  section[class="folder-folderPage-sectionWrapper"],
-  div[class="uCHqQ74vvHOnctGg0X0B"] {
+  section[data-testid="your-episodes-page"],
+  section[class="folder-folderPage-sectionWrapper"] {
     .os-host-overflow,
     .os-padding,
     .os-viewport {
@@ -189,27 +191,17 @@
     }
   }
 
-  section[data-testid="your-episodes-page"] > .contentSpacing > section {
-    height: calc(100vh - 494px);
-  }
   section[data-testid="your-episodes-page"]
-    > .main-yourEpisodes-yourEpisodesContentWrapper {
-    max-width: unset;
-    height: calc(100vh - 438px);
-
-    [data-testid^="episode-"] {
-      margin: 0;
-    }
+    .main-actionBarBackground-background {
+    height: calc(100vh - 494px);
   }
 
   // Tracklist Grid Styling
-  section[data-testid="playlist-page"] > div:last-child,
+  div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
+  section[data-test-uri*="artist"] > div,
   section[data-testid="album-page"] > div:nth-last-child(2),
-  section[data-testid="episode"] > div:last-child,
-  section[data-testid="your-episodes-page"] > div:last-child,
-  section[data-test-uri*="artist"] > div > div:last-child,
-  section[data-testid="enhanced-page"],
-  div[class="uCHqQ74vvHOnctGg0X0B"] {
+  section[data-testid="playlist-page"] > div:last-child,
+  section[data-testid="enhanced-page"] {
     background: none;
 
     .main-trackList-trackListRowGrid {
@@ -240,9 +232,10 @@
 }
 
 // Tracklist Grid Layout
+div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
+div[aria-label="Liked Songs"], // Artist Liked Songs Page
 section[data-testid="playlist-page"],
 section[data-testid="enhanced-page"],
-div[class="uCHqQ74vvHOnctGg0X0B"],
 .artist-artistOverview-overview {
   .main-trackList-trackListRow {
     grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
@@ -273,6 +266,10 @@ div[class="uCHqQ74vvHOnctGg0X0B"],
   }
 
   // Image overlay + visible play buttons on interact
+  .main-trackList-rowImageFallback {
+    border-radius: var(--border-radius);
+  }
+
   .main-trackList-trackListRow {
     &:hover,
     &:focus-within {

@@ -130,7 +130,7 @@ ${Spicetify.SVGIcons.check}
     lsBool = getConfig(uiClassName) ?? true;
     hotload(lsBool, uiUrl, uiClassName);
     content.appendChild(
-      createSlider(uiClassName, "New Structure Snippet", lsBool, uiUrl)
+      createSlider(uiClassName, "New Structure", lsBool, uiUrl)
     );
   }
 
@@ -144,7 +144,7 @@ ${Spicetify.SVGIcons.check}
   content.appendChild(
     createSlider(
       snippetDetails.class_name,
-      "Remove Playback Timers Snippet",
+      "Remove Playback Timers",
       lsBool,
       snippetDetails.url
     )
@@ -160,7 +160,7 @@ ${Spicetify.SVGIcons.check}
   content.appendChild(
     createSlider(
       snippetDetails.class_name,
-      "Remove Lyrics Button Snippet",
+      "Remove Lyrics Button",
       lsBool,
       snippetDetails.url
     )
