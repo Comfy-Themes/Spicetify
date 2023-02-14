@@ -150,6 +150,23 @@ ${Spicetify.SVGIcons.check}
     )
   );
 
+  // Remove Lyrics Button
+  snippetDetails = {
+    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-lyrics-button.css",
+    class_name: "Remove-Lyrics-Button-Snippet",
+  };
+  lsBool = getConfig(snippetDetails.class_name) ?? false;
+  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
+  content.appendChild(
+    createSlider(
+      snippetDetails.class_name,
+      "Remove Lyrics Button Snippet",
+      lsBool,
+      snippetDetails.url
+    )
+  );
+
+  
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
   const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${colorScheme}.css`;

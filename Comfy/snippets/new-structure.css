@@ -26,10 +26,14 @@ a.main-topBar-navLink .uPxdw {
 }
 
 div[class="uCHqQ74vvHOnctGg0X0B"],
+section[class="mmCZ5VczybT9VqKB5wFU"],
+section[data-testid="your-episodes-page"],
 section[data-testid="enhanced-page"],
 .playlist-playlist-playlist,
 .artist-artistOverview-overview,
-.folder-folderPage-sectionWrapper {
+.folder-folderPage-sectionWrapper,
+.album-albumPage-sectionWrapper,
+.show-showPage-sectionWrapper {
   margin-top: -35px !important;
 }
 .main-topBar-historyButtons .main-topBar-button,
