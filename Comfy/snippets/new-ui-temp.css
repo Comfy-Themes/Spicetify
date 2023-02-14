@@ -1,82 +1,128 @@
+.main-topBar-button {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.main-topBar-navLink {
+  border-radius: var(--border-radius) !important;
+  padding: 12px 14px !important;
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
+}
+a.main-topBar-navLink .uPxdw {
+  fill: var(--spice-subtext) !important;
+}
+.main-topBar-entryPoints > a > span {
+  display: none !important;
+}
+.main-topBar-searchBar {
+  -webkit-text-fill-color: var(--spice-subtext) !important;
+}
+
+div[class="uCHqQ74vvHOnctGg0X0B"],
+section[data-testid="enhanced-page"],
+.playlist-playlist-playlist,
+.artist-artistOverview-overview,
+.folder-folderPage-sectionWrapper {
+  margin-top: -35px !important;
+}
 .main-topBar-historyButtons .main-topBar-button,
 .main-topBar-button,
 .nav-alt .x-searchInput-searchInputInput {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.1);
+  background: rgba(var(--spice-rgb-pagelink-active), 0.1);
 }
 
 .main-topBar-historyButtons .main-topBar-button:hover,
 .main-topBar-button:hover {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+  background: rgba(var(--spice-rgb-pagelink-active), 0.2);
 }
 .nav-alt .x-searchInput-searchInputInput:hover {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+  background: rgba(var(--spice-rgb-pagelink-active), 0.2);
 }
 
 .nav-alt .main-entityHeader-container.main-entityHeader-nonWrapped {
-    min-height: 310px !important;
+  min-height: 310px !important;
 }
 :root .Root__main-view .main-entityHeader-container {
-	padding-top: 90px !important;
+  padding-top: 64px !important;
 }
 
 :root .Root__main-view #mainImage {
-    z-index: 0 !important;
+  z-index: 0 !important;
 }
 .main-view-container {
-    z-index: 1 !important;
+  z-index: 1 !important;
 }
 
 @media (max-width: 850px) {
-	.main-actionBar-ActionBarRow {
-			margin-left: -6px !important;
-	}
+  .main-actionBar-ActionBarRow {
+    margin-left: -6px !important;
+  }
 }
 @media (min-width: 850px) {
-	.contentSpacing {
-		padding: 0 29px;
-	}
+  .contentSpacing {
+    padding: 0 29px;
+  }
 }
 :root .Root__main-view .main-actionBarBackground-background {
-	top: 310px !important;
+  top: 310px !important;
 }
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBarBackground-background {
-	top: 246px !important;
+
+:root
+  .Root__main-view
+  div[class="uCHqQ74vvHOnctGg0X0B"]
+  .main-actionBarBackground-background,
+:root
+  .Root__main-view
+  section[class="folder-folderPage-sectionWrapper"]
+  .main-actionBarBackground-background {
+  top: 275px !important;
 }
+
 @media (min-width: 1280px) {
-	.playlist-playlist-playlistImageContainer {
-		height: 192px; 
-		min-width: 192px; 
-		width: 192px; 
-	}
+  .playlist-playlist-playlistImageContainer {
+    height: 192px;
+    min-width: 192px;
+    width: 192px;
+  }
 }
 
 :root .Root__now-playing-bar .playback-bar {
-    right: 0px !important;
-    position: fixed !important;
+  right: 0px !important;
+  position: fixed !important;
 }
 
 .nav-alt .main-navBar-navBar {
-    padding-top: 0px;
+  padding-top: 0px;
 }
 
 :root .Root__nav-bar ul.main-navBar-entryPoints {
-	padding: 5px 12px !important;
-	margin: 10px 12px 0 12px !important;
+  padding: 5px 12px !important;
+  margin: 10px 12px 0 12px !important;
 }
 
 .main-navBar-navBar::before {
-	content: "Pages";
-    visibility: visible;
-    width: unset;
-    height: unset;
-    line-height: unset;
-    display: block;
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-	padding-top: 10px;
+  content: "Pages";
+  visibility: visible;
+  width: unset;
+  height: unset;
+  line-height: unset;
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
 }
 
-#main > div > div.Root__top-container > nav > div.main-navBar-navBar > div.main-rootlist-rootlist > div > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-scrollbar-vertical-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition > div.os-padding > div > div {
-    padding-top: 12px !important;
+#main
+  > div
+  > div.Root__top-container
+  > nav
+  > div.main-navBar-navBar
+  > div.main-rootlist-rootlist
+  > div
+  > div.os-host.os-host-foreign.os-theme-spotify.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-scrollbar-vertical-hidden.main-rootlist-rootlistPlaylistsScrollNode.os-host-transition
+  > div.os-padding
+  > div
+  > div {
+  padding-top: 12px !important;
 }

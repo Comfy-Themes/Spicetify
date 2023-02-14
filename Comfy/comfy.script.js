@@ -175,9 +175,10 @@ ${Spicetify.SVGIcons.check}
     "/album/",
     "/collection/tracks",
     "/collection/episodes",
+    "/collection/local",
     "/episode/",
     "/lyrics-plus",
-    "/folder/",
+    "/folder/"
   ];
   main.appendChild(mainChild);
   mainChild.id = "mainImage";

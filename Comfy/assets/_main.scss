@@ -49,7 +49,7 @@
       ),
       var(--background-noise) !important;
     top: 338px;
-    height: 100%;
+    height: calc(100% - 232px);
   }
 
   section[data-test-uri*="artist"] {
@@ -147,153 +147,157 @@
   }
 
   // Page Layouts
-  section {
-    &[data-testid="playlist-page"],
-    &[data-testid="album-page"],
-    &[data-testid="your-episodes-page"],
-    &[data-test-uri*="artist"],
-    &[class="folder-folderPage-sectionWrapper"] {
-      .os-host-overflow,
-      .os-padding,
-      .os-viewport {
-        overflow: visible !important;
-      }
-
-      .main-actionBar-ActionBar {
-        padding: 8px 16px 16px 16px;
-
-        .main-actionBar-ActionBarRow {
-          margin-bottom: -8px;
-          margin-left: 8px;
-          margin-right: 22px;
-
-          .main-playButton-PlayButton {
-            margin-left: 24px;
-            margin-top: -24px;
-          }
-        }
-      }
+  section[data-testid="playlist-page"],
+  section[data-testid="album-page"],
+  section[data-testid="your-episodes-page"],
+  section[data-test-uri*="artist"],
+  section[data-testid="enhanced-page"],
+  section[class="folder-folderPage-sectionWrapper"],
+  div[class="uCHqQ74vvHOnctGg0X0B"] {
+    .os-host-overflow,
+    .os-padding,
+    .os-viewport {
+      overflow: visible !important;
     }
 
-    &[class="folder-folderPage-sectionWrapper"] {
-      .main-actionBar-ActionBar {
-        padding-top: 16px;
-      }
-      > div:nth-child(4) {
-        @media (min-width: 850px) {
-          padding-left: 47px;
-        }
-        padding-top: 18px;
-        padding-left: 33px;
-      }
-    }
+    .main-actionBar-ActionBar {
+      padding: 8px 16px 16px 16px;
 
-    &[data-testid="your-episodes-page"] > .contentSpacing > section {
-      height: calc(100vh - 494px);
-    }
-    &[data-testid="your-episodes-page"]
-      > .main-yourEpisodes-yourEpisodesContentWrapper {
-      max-width: unset;
-      height: calc(100vh - 438px);
+      .main-actionBar-ActionBarRow {
+        margin-bottom: -8px;
+        margin-left: 8px;
+        margin-right: 22px;
 
-      [data-testid^="episode-"] {
-        margin: 0;
-      }
-    }
-
-    // Tracklist Grid Styling
-    &[data-testid="playlist-page"] > div:last-child,
-    &[data-testid="album-page"] > div:nth-last-child(2),
-    &[data-testid="episode"] > div:last-child,
-    &[data-testid="your-episodes-page"] > div:last-child,
-    &[data-test-uri*="artist"] > div > div:last-child {
-      background: none;
-
-      .main-trackList-trackListRowGrid {
-        border-radius: var(--border-radius);
-        border: none;
-        padding-left: 18px;
-        transition: 200ms background-color;
-
-        .main-type-mesto,
-        .main-type-ballad {
-          transition: 300ms color;
-        }
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
-        &.main-trackList-selected {
-          background-color: rgba(255, 255, 255, 0.1);
+        .main-playButton-PlayButton {
+          margin-left: 24px;
+          margin-top: -24px;
         }
       }
-      .main-trackList-trackListHeader {
-        display: none;
-      }
-    }
-    &[data-testid] {
-      position: relative;
     }
   }
 
-  // Tracklist Grid Layout
-  section[data-testid="playlist-page"],
-  .artist-artistOverview-overview {
-    .main-trackList-trackListRow {
-      grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-          120px,
-          1fr
-        ) !important;
+  section[class="folder-folderPage-sectionWrapper"] {
+    .main-actionBar-ActionBar {
+      padding-top: 16px;
+    }
+    > div:nth-child(4) {
+      @media (min-width: 850px) {
+        padding-left: 47px;
+      }
+      padding-top: 18px;
+      padding-left: 33px;
+    }
+  }
 
-      & > .main-trackList-rowSectionIndex {
-        position: absolute;
-        z-index: 1000;
-        top: 8px;
-        left: 18px;
-        width: 40px;
-        height: 40px;
-        justify-content: center;
-        text-indent: -1000px;
+  section[data-testid="your-episodes-page"] > .contentSpacing > section {
+    height: calc(100vh - 494px);
+  }
+  section[data-testid="your-episodes-page"]
+    > .main-yourEpisodes-yourEpisodesContentWrapper {
+    max-width: unset;
+    height: calc(100vh - 438px);
+
+    [data-testid^="episode-"] {
+      margin: 0;
+    }
+  }
+
+  // Tracklist Grid Styling
+  section[data-testid="playlist-page"] > div:last-child,
+  section[data-testid="album-page"] > div:nth-last-child(2),
+  section[data-testid="episode"] > div:last-child,
+  section[data-testid="your-episodes-page"] > div:last-child,
+  section[data-test-uri*="artist"] > div > div:last-child,
+  section[data-testid="enhanced-page"],
+  div[class="uCHqQ74vvHOnctGg0X0B"] {
+    background: none;
+
+    .main-trackList-trackListRowGrid {
+      border-radius: var(--border-radius);
+      border: none;
+      padding-left: 18px;
+      transition: 200ms background-color;
+
+      .main-type-mesto,
+      .main-type-ballad {
+        transition: 300ms color;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      &.main-trackList-selected {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+    .main-trackList-trackListHeader {
+      display: none;
+    }
+  }
+  section[data-testid] {
+    position: relative;
+  }
+}
+
+// Tracklist Grid Layout
+section[data-testid="playlist-page"],
+section[data-testid="enhanced-page"],
+div[class="uCHqQ74vvHOnctGg0X0B"],
+.artist-artistOverview-overview {
+  .main-trackList-trackListRow {
+    grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+        120px,
+        1fr
+      ) !important;
+
+    & > .main-trackList-rowSectionIndex {
+      position: absolute;
+      z-index: 1000;
+      top: 8px;
+      left: 18px;
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      text-indent: -1000px;
+    }
+  }
+
+  .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+    grid-template-columns:
+      [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
+      [last] minmax(120px, 1fr) !important;
+  }
+
+  button.main-trackList-rowImagePlayButton {
+    color: black;
+  }
+
+  // Image overlay + visible play buttons on interact
+  .main-trackList-trackListRow {
+    &:hover,
+    &:focus-within {
+      .main-trackList-rowSectionIndex {
+        background: rgba(var(--spice-rgb-play-button), 0.5);
+        border-radius: var(--border-radius);
+      }
+      button.main-trackList-rowImagePlayButton {
+        opacity: 1;
       }
     }
 
-    .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
-      grid-template-columns:
-        [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
-        [last] minmax(120px, 1fr) !important;
-    }
-
-    button.main-trackList-rowImagePlayButton {
-      color: black;
-    }
-
-    // Image overlay + visible play buttons on interact
-    .main-trackList-trackListRow {
-      &:hover,
-      &:focus-within {
-        .main-trackList-rowSectionIndex {
-          background: rgba(var(--spice-rgb-play-button), 0.5);
-          border-radius: var(--border-radius);
-        }
-        button.main-trackList-rowImagePlayButton {
-          opacity: 1;
-        }
+    // Title highlight of active song
+    &.main-trackList-active {
+      .main-trackList-rowTitle {
+        color: var(--spice-text);
+        text-shadow: 0px 0px 6px var(--spice-text);
+        -webkit-text-stroke: thin;
       }
-
-      // Title highlight of active song
-      &.main-trackList-active {
-        .main-trackList-rowTitle {
-          color: var(--spice-text);
-          text-shadow: 0px 0px 6px var(--spice-text);
-          -webkit-text-stroke: thin;
-        }
-        .main-trackList-rowSectionIndex {
-          background: rgba(var(--spice-rgb-play-button), 0.5);
-          border-radius: var(--border-radius);
-        }
-        button.main-trackList-rowImagePlayButton {
-          opacity: 1;
-        }
+      .main-trackList-rowSectionIndex {
+        background: rgba(var(--spice-rgb-play-button), 0.5);
+        border-radius: var(--border-radius);
+      }
+      button.main-trackList-rowImagePlayButton {
+        opacity: 1;
       }
     }
   }
