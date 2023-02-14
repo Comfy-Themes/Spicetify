@@ -123,16 +123,32 @@ ${Spicetify.SVGIcons.check}
     return container;
   }
 
-  // Spotify's New navUI
-  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-ui-temp.css`;
-  const uiClassName = "New-navUI-Snippet";
+  // Spotify's New Home Structure
+  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-structure.css`;
+  const uiClassName = "New-Structure-Snippet";
   if (navAlt) {
     lsBool = getConfig(uiClassName) ?? true;
     hotload(lsBool, uiUrl, uiClassName);
     content.appendChild(
-      createSlider(uiClassName, "New navUI Snippet", lsBool, uiUrl)
+      createSlider(uiClassName, "New Structure Snippet", lsBool, uiUrl)
     );
   }
+
+  // Remove PlayBack timers
+  snippetDetails = {
+    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",
+    class_name: "Remove-Timers-Snippet",
+  };
+  lsBool = getConfig(snippetDetails.class_name) ?? false;
+  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
+  content.appendChild(
+    createSlider(
+      snippetDetails.class_name,
+      "Remove Playback Timers Snippet",
+      lsBool,
+      snippetDetails.url
+    )
+  );
 
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
