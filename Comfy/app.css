@@ -612,6 +612,9 @@ div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-acti
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar::after {
   content: none;
 }
+:root .Root__now-playing-bar .volume-bar .progress-bar > div {
+  --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
+}
 :root .Root__now-playing-bar .playback-bar {
   position: absolute;
   display: grid;
@@ -627,7 +630,7 @@ div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-acti
   grid-area: bar;
 }
 :root .Root__now-playing-bar .playback-bar .playback-progressbar > div {
-  --bg-color: rgba(var(--spice-rgb-progress-bg), 0.3);
+  --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
   --fg-color: var(--spice-progress-fg);
 }
 :root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div {
@@ -641,6 +644,10 @@ div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-acti
 }
 :root .Root__now-playing-bar .playback-bar .playback-progressbar > div .progress-bar__slider {
   display: none;
+}
+:root .Root__now-playing-bar .playback-bar > div {
+  height: 10px;
+  min-width: 33px;
 }
 :root .Root__now-playing-bar .playback-bar > div:first-of-type {
   grid-area: time-left;

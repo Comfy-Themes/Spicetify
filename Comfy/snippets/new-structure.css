@@ -1,15 +1,22 @@
-.main-topBar-button {
-  width: 48px !important;
-  height: 48px !important;
-}
-
 .main-topBar-navLink {
   border-radius: var(--border-radius) !important;
-  padding: 12px 14px !important;
+  padding: 12px 12px !important;
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
 }
+
+.main-topBar-navLink:hover {
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
+}
+
+.x-searchInput-searchInputSearchIcon .uPxdw,
 a.main-topBar-navLink .uPxdw {
   fill: var(--spice-subtext) !important;
+}
+.main-topBar-historyButtons * {
+  fill: var(--spice-subtext);
+}
+.main-topBar-entryPoints {
+  gap: 8px !important;
 }
 .main-topBar-entryPoints > a > span {
   display: none !important;

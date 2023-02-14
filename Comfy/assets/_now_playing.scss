@@ -42,6 +42,12 @@
     }
   }
 
+  .volume-bar .progress-bar {
+    & > div {
+      --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
+    }
+  }
+
   .playback-bar {
     position: absolute;
     display: grid;
@@ -60,7 +66,7 @@
       grid-area: bar;
 
       & > div {
-        --bg-color: rgba(var(--spice-rgb-progress-bg), 0.3);
+        --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
         --fg-color: var(--spice-progress-fg);
         & > div {
           --progress-bar-height: 12px;
@@ -82,11 +88,16 @@
       }
     }
 
-    & > div:first-of-type {
-      grid-area: time-left;
-    }
-    & > div:last-of-type {
-      grid-area: time-right;
+    & > div {
+      height: 10px;
+      min-width: 33px;
+
+      &:first-of-type {
+        grid-area: time-left;
+      }
+      &:last-of-type {
+        grid-area: time-right;
+      }
     }
 
     // Cursor
