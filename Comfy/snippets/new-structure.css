@@ -107,7 +107,7 @@ section[data-testid="enhanced-page"],
 }
 
 :root .Root__nav-bar ul.main-navBar-entryPoints {
-  padding: 5px 12px !important;
+  padding: 0px 12px 5px !important;
   margin: 10px 12px 0 12px !important;
 }
 
