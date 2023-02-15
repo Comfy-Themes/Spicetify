@@ -1,7 +1,3 @@
----
-### To enable hoverable panels, remove lines 3 and 7 in your user.css or enable the snippet in marketplace.
----
-
 |                                 Home                                 |                                 Friend list                                 |
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![Home](https://comfy-themes.github.io/Spicetify/Comfy/preview/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy/preview/friend-list.png) |
@@ -16,11 +12,13 @@
 | :----------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | ![Neon](https://comfy-themes.github.io/Spicetify/Comfy/preview/Neon.png) | ![Forest](https://comfy-themes.github.io/Spicetify/Comfy/preview/Forest.png) |
 
+
+
 |                                   Vaporwave                                   |                                    Sunset                                    |
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | ![Vaporwave](https://comfy-themes.github.io/Spicetify/Comfy/preview/Vaporwave.png) | ![Sunset](https://comfy-themes.github.io/Spicetify/Comfy/preview/Sunset.png) |
 
-|                                   Deep                                   |                                    Velvet                                    |
+|                                   Deep                                        |                                    Velvet                                    |
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | ![Deep](https://comfy-themes.github.io/Spicetify/Comfy/preview/Deep.png) | ![Velvet](https://comfy-themes.github.io/Spicetify/Comfy/preview/Velvet.png) |
 
