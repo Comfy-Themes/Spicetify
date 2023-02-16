@@ -166,6 +166,21 @@ ${Spicetify.SVGIcons.check}
     )
   );
 
+  // Revert Right Side Cover Art
+  snippetDetails = {
+    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/revert-right-art.css",
+    class_name: "Revert-Right-Art-Snippet",
+  };
+  lsBool = getConfig(snippetDetails.class_name) ?? false;
+  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
+  content.appendChild(
+    createSlider(
+      snippetDetails.class_name,
+      "Disable Right Side Cover Art",
+      lsBool,
+      snippetDetails.url
+    )
+  );
   
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();

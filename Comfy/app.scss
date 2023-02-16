@@ -18,8 +18,12 @@
 
   // Premium Fullscreen Overlay
   .npv-background-image__overlay {
-	  background: linear-gradient(rgba(var(--spice-rgb-shadow),0.5) 0, transparent 100%),var(--background-noise);
-	  background-color: unset;
+    background: linear-gradient(
+        rgba(var(--spice-rgb-shadow), 0.5) 0,
+        transparent 100%
+      ),
+      var(--background-noise);
+    background-color: unset;
   }
 
   // Right Side Cover Art

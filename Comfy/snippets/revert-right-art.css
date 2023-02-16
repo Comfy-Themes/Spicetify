@@ -1,0 +1,7 @@
+.main-coverSlotExpanded-container {
+    position: relative !Important;
+    top: revert !important;
+    left: revert !important;
+    width: revert !important;
+    height: revert !important;
+}

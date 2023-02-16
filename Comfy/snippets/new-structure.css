@@ -1,6 +1,19 @@
+.spotify__container--is-desktop.spotify__os--is-windows .main-topBar-left {
+  padding-inline-start: 58px;
+}
+
+.main-topBar-navLink,
+.nav-alt .x-searchInput-searchInputInput {
+	height: 40px
+}
+.main-topBar-right > button {
+	height: 40px;
+	width: 40px;
+	margin-right: 8px;
+}
 .main-topBar-navLink {
   border-radius: var(--border-radius) !important;
-  padding: 12px 12px !important;
+  padding: 8px 8px !important;
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
 }
 
@@ -14,6 +27,9 @@ a.main-topBar-navLink .uPxdw {
 }
 .main-topBar-historyButtons * {
   fill: var(--spice-subtext);
+}
+.main-topBar-historyButtons {
+	gap: 8px;
 }
 .main-topBar-entryPoints {
   gap: 8px !important;
