@@ -2,9 +2,13 @@
   padding-inline-start: 58px;
 }
 
-.main-topBar-navLink,
-.nav-alt .x-searchInput-searchInputInput {
-	height: 40px
+.spotify__container--is-desktop:not(.fullscreen) .main-topBar-topBarContainer {
+  grid-template-columns: 0.95fr auto 1fr !important;
+
+}
+form[role="search"] > input {
+  padding-right: 7px !important;
+  width: 120% !important;
 }
 .main-topBar-right > button {
 	height: 40px;
