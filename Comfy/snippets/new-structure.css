@@ -4,7 +4,7 @@
 
 @media (max-width: 932px) {
   .nav-alt .x-searchInput-searchInputInput {
-      width: 340px !important;
+    width: 340px !important;
   }
   .x-searchInput-searchInputIconContainer {
     right: 12px !important;
@@ -21,13 +21,13 @@
 
 .main-topBar-navLink,
 .nav-alt .x-searchInput-searchInputInput {
-  height: 40px !important;  
+  height: 40px !important;
 }
 
 .main-topBar-right > button {
-	height: 40px;
-	width: 40px;
-	margin-right: 8px;
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
 }
 .main-topBar-navLink {
   border-radius: var(--border-radius) !important;
@@ -47,7 +47,7 @@ a.main-topBar-navLink .uPxdw {
   fill: var(--spice-subtext);
 }
 .main-topBar-historyButtons {
-	gap: 8px;
+  gap: 8px;
 }
 .main-topBar-entryPoints {
   gap: 8px !important;
@@ -59,8 +59,10 @@ a.main-topBar-navLink .uPxdw {
   -webkit-text-fill-color: var(--spice-subtext) !important;
 }
 
+div[class="umiKMm5NVr5UeBJCHS6U"],
 div[class="NBwG2a4Dmwo6g_YrRdpo"],
 div[class="uCHqQ74vvHOnctGg0X0B"],
+section[class="NBwG2a4Dmwo6g_YrRdpo"],
 section[class="mmCZ5VczybT9VqKB5wFU"],
 section[data-testid="your-episodes-page"],
 section[data-testid="enhanced-page"],
@@ -120,8 +122,9 @@ section[data-testid="enhanced-page"],
 :root
   .Root__main-view
   section[class="folder-folderPage-sectionWrapper"]
-  .main-actionBarBackground-background {
-  top: 275px !important;
+  .main-actionBarBackground-background,
+div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background {
+  top: 277px !important;
 }
 
 @media (min-width: 1280px) {
