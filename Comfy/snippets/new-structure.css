@@ -123,8 +123,9 @@ section[data-testid="enhanced-page"],
   .Root__main-view
   section[class="folder-folderPage-sectionWrapper"]
   .main-actionBarBackground-background,
-div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background {
-  top: 277px !important;
+div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background,
+div[class="dTKw7B8X1ybw7SHebMH3"] .main-actionBarBackground-background {
+  top: 275px !important;
 }
 
 @media (min-width: 1280px) {
