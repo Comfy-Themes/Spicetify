@@ -115,16 +115,10 @@ section[data-testid="enhanced-page"],
   top: 310px !important;
 }
 
-:root
-  .Root__main-view
-  div[class="uCHqQ74vvHOnctGg0X0B"]
-  .main-actionBarBackground-background,
-:root
-  .Root__main-view
-  section[class="folder-folderPage-sectionWrapper"]
-  .main-actionBarBackground-background,
-div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background,
-div[class="dTKw7B8X1ybw7SHebMH3"] .main-actionBarBackground-background {
+:root .Root__main-view div[class="uCHqQ74vvHOnctGg0X0B"] .main-actionBarBackground-background,
+:root .Root__main-view section[class="folder-folderPage-sectionWrapper"] .main-actionBarBackground-background,
+:root .Root__main-view div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background,
+:root .Root__main-view div[class="dTKw7B8X1ybw7SHebMH3"] .main-actionBarBackground-background {
   top: 275px !important;
 }
 
