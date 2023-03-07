@@ -148,8 +148,10 @@
   }
 
   // Page Layouts
+  div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
   div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
   section[class="mmCZ5VczybT9VqKB5wFU"], // Audiobook
+  section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
   section[data-test-uri*="artist"],
   section[data-testid="album-page"],
   section[data-testid="playlist-page"],
@@ -197,7 +199,10 @@
   }
 
   // Tracklist Grid Styling
+  div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
   div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
+  div[class="rHpv7osDRvs3SUPMpQ_g"], // Queue
+  section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
   section[data-test-uri*="artist"] > div,
   section[data-testid="album-page"] > div:nth-last-child(2),
   section[data-testid="playlist-page"] > div:last-child,
@@ -232,8 +237,11 @@
 }
 
 // Tracklist Grid Layout
+div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
 div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
+div[class="rHpv7osDRvs3SUPMpQ_g"], // Queue
 div[aria-label="Liked Songs"], // Artist Liked Songs Page
+section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
 section[data-testid="playlist-page"],
 section[data-testid="enhanced-page"],
 .artist-artistOverview-overview {

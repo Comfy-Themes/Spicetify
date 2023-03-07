@@ -277,6 +277,7 @@
           & > div:nth-child(2) {
             background-color: rgba(0, 0, 0, 0.1);
             border-radius: var(--border-radius);
+            overflow: hidden;
 
             .main-rootlist-rootlistItem {
               padding: 0;
@@ -290,7 +291,7 @@
                 );
                 padding-right: var(--left-sidebar-padding-right);
                 box-sizing: content-box;
-                transition: color 350ms ease, background-color 150ms;
+                transition: background-color 150ms;
 
                 & + button {
                   border-radius: 0 !important;
@@ -301,7 +302,6 @@
 
                 &:hover,
                 &:hover + * {
-                  transition: 350ms color;
                   cursor: pointer;
                 }
 

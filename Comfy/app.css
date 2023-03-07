@@ -106,9 +106,15 @@
 :root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
   font-size: 50px !important;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-host-overflow,
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-padding,
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-viewport,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-host-overflow,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-padding,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-viewport,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .os-host-overflow,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .os-padding,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .os-viewport,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-host-overflow,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-padding,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-viewport,
@@ -132,7 +138,9 @@
 :root .Root__main-view section[class=folder-folderPage-sectionWrapper] .os-viewport {
   overflow: visible !important;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-actionBar-ActionBar,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar,
 :root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar,
 :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar,
@@ -142,7 +150,9 @@
 :root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar {
   padding: 8px 16px 16px 16px;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
 :root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
 :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
@@ -154,7 +164,9 @@
   margin-left: 8px;
   margin-right: 22px;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
 :root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
 :root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
 :root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
@@ -180,14 +192,20 @@
 :root .Root__main-view section[data-testid=your-episodes-page] .main-actionBarBackground-background {
   height: calc(100vh - 494px);
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo],
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U],
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B],
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g],
 :root .Root__main-view section[data-test-uri*=artist] > div,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2),
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child,
 :root .Root__main-view section[data-testid=enhanced-page] {
   background: none;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRowGrid,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRowGrid,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid,
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid,
@@ -197,8 +215,14 @@
   padding-left: 18px;
   transition: 200ms background-color;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRowGrid .main-type-ballad,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid .main-type-mesto,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRowGrid .main-type-ballad,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-mesto,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-ballad,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto,
@@ -209,21 +233,30 @@
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid.main-trackList-selected {
   background-color: rgba(255, 255, 255, 0.1);
 }
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListHeader,
+:root .Root__main-view div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListHeader,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListHeader,
+:root .Root__main-view div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListHeader,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListHeader,
 :root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListHeader,
 :root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListHeader,
@@ -234,14 +267,20 @@
   position: relative;
 }
 
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow,
 section[data-testid=playlist-page] .main-trackList-trackListRow,
 section[data-testid=enhanced-page] .main-trackList-trackListRow,
 .artist-artistOverview-overview .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
 section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
 section[data-testid=enhanced-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
@@ -255,28 +294,43 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow > .main-trackLis
   justify-content: center;
   text-indent: -1000px;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
 div[aria-label="Liked Songs"] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
 section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
 section[data-testid=enhanced-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
 .artist-artistOverview-overview .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] button.main-trackList-rowImagePlayButton,
+div[class=umiKMm5NVr5UeBJCHS6U] button.main-trackList-rowImagePlayButton,
 div[class=uCHqQ74vvHOnctGg0X0B] button.main-trackList-rowImagePlayButton,
+div[class=rHpv7osDRvs3SUPMpQ_g] button.main-trackList-rowImagePlayButton,
 div[aria-label="Liked Songs"] button.main-trackList-rowImagePlayButton,
 section[data-testid=playlist-page] button.main-trackList-rowImagePlayButton,
 section[data-testid=enhanced-page] button.main-trackList-rowImagePlayButton,
 .artist-artistOverview-overview button.main-trackList-rowImagePlayButton {
   color: black;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-rowImageFallback,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-rowImageFallback,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-rowImageFallback,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-rowImageFallback,
 div[aria-label="Liked Songs"] .main-trackList-rowImageFallback,
 section[data-testid=playlist-page] .main-trackList-rowImageFallback,
 section[data-testid=enhanced-page] .main-trackList-rowImageFallback,
 .artist-artistOverview-overview .main-trackList-rowImageFallback {
   border-radius: var(--border-radius);
 }
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
 section[data-testid=playlist-page] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
@@ -288,7 +342,13 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow:focus-within .ma
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
 section[data-testid=playlist-page] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
@@ -299,7 +359,10 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow:focus-within but
 .artist-artistOverview-overview .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
   opacity: 1;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
 section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
 section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
@@ -308,7 +371,10 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   text-shadow: 0px 0px 6px var(--spice-text);
   -webkit-text-stroke: thin;
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
 section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
 section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
@@ -316,7 +382,10 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
+section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+div[class=umiKMm5NVr5UeBJCHS6U] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
 div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+div[class=rHpv7osDRvs3SUPMpQ_g] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
 div[aria-label="Liked Songs"] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
 section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
 section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
@@ -532,6 +601,7 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: var(--border-radius);
+  overflow: hidden;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem {
   padding: 0;
@@ -542,7 +612,7 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   padding-left: calc(12px + var(--indentation) * var(--left-sidebar-item-indentation-width));
   padding-right: var(--left-sidebar-padding-right);
   box-sizing: content-box;
-  transition: color 350ms ease, background-color 150ms;
+  transition: background-color 150ms;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink + button {
   border-radius: 0 !important;
@@ -551,7 +621,6 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   margin-left: 0;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:hover + * {
-  transition: 350ms color;
   cursor: pointer;
 }
 :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLinkActive + *, :root .Root__nav-bar .main-rootlist-rootlist .os-content > ul[tabindex="0"] > div > div:nth-child(2) .main-rootlist-rootlistItem .main-rootlist-rootlistItemLink:focus + * {

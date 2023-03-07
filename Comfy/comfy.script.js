@@ -226,7 +226,8 @@ ${Spicetify.SVGIcons.check}
     "/collection/local",
     "/episode/",
     "/lyrics-plus",
-    "/folder/"
+    "/folder/",
+    "/user/"
   ];
   main.appendChild(mainChild);
   mainChild.id = "mainImage";
