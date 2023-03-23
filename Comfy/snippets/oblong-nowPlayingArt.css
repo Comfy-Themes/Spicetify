@@ -1,4 +1,4 @@
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
+#main > div > div.Root__top-container > div.Root__now-playing-bar > footer > div > div.main-nowPlayingBar-left > div > div.main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer > div > div > a > div > div {
     width: 115px !important;
     height: 84px !important;
 	border-radius: 15px;
