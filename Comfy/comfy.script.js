@@ -4,7 +4,8 @@
       Spicetify.Player?.data &&
       Spicetify.Menu &&
       Spicetify.LocalStorage &&
-      Spicetify.Platform
+      Spicetify.Platform &&
+      document.querySelector(".Root__main-view")
     )
   ) {
     setTimeout(comfy, 300);
@@ -181,23 +182,23 @@ ${Spicetify.SVGIcons.check}
       snippetDetails.url
     )
   );
-  
+
   // Oblong Now Playing Cover Art
   snippetDetails = {
     url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css",
     class_name: "Oblong-nowPlaying-Art-Snippet",
   };
-  lsBool = getConfig(snippetDetails.class_name) ?? true;
+  lsBool = getConfig(snippetDetails.class_name) ?? false;
   hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
     createSlider(
       snippetDetails.class_name,
       "Oblong Now Playing Cover Art",
-      lsBool,
+      lsBool || Spicetify.Config?.color_scheme?.toLowerCase() === "mono",
       snippetDetails.url
     )
   );
-  
+
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
   const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${colorScheme}.css`;
@@ -243,7 +244,7 @@ ${Spicetify.SVGIcons.check}
     "/episode/",
     "/lyrics-plus",
     "/folder/",
-    "/user/"
+    "/user/",
   ];
   main.appendChild(mainChild);
   mainChild.id = "mainImage";
