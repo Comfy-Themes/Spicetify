@@ -60,7 +60,8 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   
   # applying.
   Write-Part "APPLYING";
-  spicetify auto
+  spicetify backup
+  spicetify apply
   Write-Done
 }
 else {
