@@ -60,13 +60,7 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   
   # applying.
   Write-Part "APPLYING";
-  $configFile = Get-Content "$spicePath\config-xpui.ini"
-  $backupVer = $configFile -match "^version"
-  if ($backupVer.Length -gt 0) {
-    spicetify apply
-  } else {
-    spicetify backup apply
-  }
+  spicetify auto
   Write-Done
 }
 else {
