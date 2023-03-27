@@ -18,3 +18,8 @@
 svg.main-coverSlotExpandedCollapseButton-chevron {
     color: rgb(0,0,0);
 }
+
+:root .Root__main-view .artist-artistOverview-artistOverviewContent,
+:root .Root__main-view .main-actionBarBackground-background {
+ 	background: linear-gradient(rgba(var(--spice-rgb-main), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
+}
