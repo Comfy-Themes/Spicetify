@@ -30,7 +30,7 @@
   margin-right: 8px;
 }
 .main-topBar-navLink {
-  color: unset;
+  color: unset !important;
   border-radius: var(--border-radius) !important;
   padding: 8px 8px !important;
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
