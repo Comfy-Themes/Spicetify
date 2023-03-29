@@ -30,7 +30,6 @@
   margin-right: 8px;
 }
 .main-topBar-navLink {
-  color: unset !important;
   border-radius: var(--border-radius) !important;
   padding: 8px 8px !important;
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
@@ -38,6 +37,10 @@
 
 .main-topBar-navLink:hover {
   background-color: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
+}
+
+.Svg-img-24-icon {
+ fill:  var(--spice-subtext) !important;
 }
 
 .x-searchInput-searchInputSearchIcon .uPxdw,
