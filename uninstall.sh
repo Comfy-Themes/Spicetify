@@ -3,7 +3,7 @@
 set -e
 
 echo "Uninstalling"
-spicetify config current_theme "SpicetifyDefault" color_scheme "green-dark" extensions comfy.js-
+spicetify config current_theme " " color_scheme " "
 
 echo "Deleting files"
 while true; do
@@ -12,11 +12,8 @@ while true; do
     [Yy]*)
         spice_dir="$(dirname "$(spicetify -c)")"
         theme_dir="${spice_dir}/Themes"
-        ext_dir="${spice_dir}/Extensions"
 
         rm -rf "${theme_dir}/Comfy"
-        # Use -f to ignore if missing
-        rm -f "${ext_dir}/comfy.js"
         break
         ;;
     [Nn]*)

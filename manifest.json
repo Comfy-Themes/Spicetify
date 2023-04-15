@@ -5,19 +5,19 @@
 	"readme": "Comfy/README.md",
 	"usercss": "Comfy/user.css",
 	"schemes": "Comfy/color.ini",
-	"include": ["https://comfy-themes.github.io/Spicetify/Comfy/comfy.js"],
+	"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.js"],
 	"authors": [
 		{
 			"name": "NYRI4",
 			"url": "https://github.com/NYRI4"
 		},
 		{
-			"name": "kyrie25",
-			"url": "https://github.com/kyrie25"			
-		},
-		{
 			"name": "OhItsTom",
 			"url": "https://github.com/OhItsTom"			
+		},
+		{
+			"name": "kyrie25",
+			"url": "https://github.com/kyrie25"			
 		}
 	]
 }

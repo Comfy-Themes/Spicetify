@@ -34,12 +34,8 @@ if ($PSVersionTable.PSVersion.Major -gt $PSMinVersion) {
   Remove-Item -Recurse -Force "$sp_dot_dir\Comfy" -ErrorAction Ignore
   Write-Done
 
-  Write-Part "REMOVING  "; Write-Emphasized "$spicePath\Extensions\comfy.js"
-  Remove-Item -Force "$spicePath\Extensions\comfy.js" -ErrorAction Ignore
-  Write-Done
   spicetify config current_theme " "
   spicetify config color_scheme " "
-  spicetify config extensions comfy.js-
 
   Write-Part "APPLYING";
   $configFile = Get-Content "$spicePath\config-xpui.ini"
