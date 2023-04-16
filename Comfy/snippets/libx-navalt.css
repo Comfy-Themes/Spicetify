@@ -1,1 +1,143 @@
+.main-topBar-sectionWrapper.main-topBar-right div:last-child {
+    -webkit-app-region: no-drag !important;
+}
+@media (max-width: 932px) {
+	.x-searchInput-searchInputInput {
+		width: 340px !important;
+	}
 
+	.x-searchInput-searchInputIconContainer {
+		right: 12px !important;
+	}
+}
+
+.x-searchInput-searchInputInput {
+	padding-right: 40px !important;
+	width: 120%;
+}
+
+.x-searchInput-searchInputIconContainer {
+	right: -15%;
+}
+
+.main-topBar-navLink,
+.x-searchInput-searchInputInput {
+	height: 40px !important;
+}
+
+.main-topBar-right>button {
+	height: 40px;
+	width: 40px;
+	margin-right: 8px;
+}
+
+.main-topBar-navLink {
+	border-radius: var(--border-radius) !important;
+	padding: 8px 8px !important;
+	background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
+}
+
+.main-topBar-navLink:hover {
+	background-color: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
+}
+
+.main-topBar-topBarContainer .Svg-img-24-icon,
+.main-topBar-historyButtons * {
+	fill: var(--spice-subtext) !important;
+}
+
+.main-topBar-historyButtons,
+.main-topBar-entryPoints {
+	gap: 8px !important;
+}
+
+.main-topBar-entryPoints>a>span {
+	display: none !important;
+}
+
+.main-topBar-searchBar {
+	-webkit-text-fill-color: var(--spice-subtext) !important;
+}
+
+div[class="umiKMm5NVr5UeBJCHS6U"],
+div[class="NBwG2a4Dmwo6g_YrRdpo"],
+div[class="uCHqQ74vvHOnctGg0X0B"],
+section[class="NBwG2a4Dmwo6g_YrRdpo"],
+section[class="mmCZ5VczybT9VqKB5wFU"],
+section[data-testid="your-episodes-page"],
+section[data-testid="enhanced-page"],
+.playlist-playlist-playlist,
+.artist-artistOverview-overview,
+.folder-folderPage-sectionWrapper,
+.album-albumPage-sectionWrapper,
+.show-showPage-sectionWrapper {
+	margin-top: -35px !important;
+}
+
+.main-topBar-historyButtons .main-topBar-button,
+.main-topBar-button,
+.nav-ylx .x-searchInput-searchInputInput {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.1);
+}
+
+.main-topBar-historyButtons .main-topBar-button:hover,
+.main-topBar-button:hover,
+.nav-ylx .x-searchInput-searchInputInput:hover {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+}
+
+.main-entityHeader-container.main-entityHeader-nonWrapped {
+	min-height: 310px !important;
+}
+
+:root .Root__main-view .main-actionBarBackground-background {
+	top: 310px !important;
+}
+
+:root .Root__main-view .main-entityHeader-container {
+	padding-top: 64px !important;
+}
+
+:root .Root__main-view #mainImage {
+	z-index: 0 !important;
+}
+
+.main-view-container {
+	z-index: 1 !important;
+}
+
+@media (max-width: 850px) {
+	.main-actionBar-ActionBarRow {
+		margin-left: -6px !important;
+	}
+}
+
+@media (min-width: 850px) {
+	.contentSpacing {
+		padding: 0 29px;
+	}
+}
+
+:root .Root__main-view div[class="uCHqQ74vvHOnctGg0X0B"] .main-actionBarBackground-background,
+:root .Root__main-view section[class="folder-folderPage-sectionWrapper"] .main-actionBarBackground-background,
+:root .Root__main-view div[class="umiKMm5NVr5UeBJCHS6U"] .main-actionBarBackground-background,
+:root .Root__main-view div[class="dTKw7B8X1ybw7SHebMH3"] .main-actionBarBackground-background {
+	top: 275px !important;
+}
+
+@media (min-width: 1280px) {
+	.playlist-playlist-playlistImageContainer {
+		height: 192px;
+		min-width: 192px;
+		width: 192px;
+	}
+}
+
+:root .Root__now-playing-bar .playback-bar {
+	right: 0px !important;
+	position: fixed !important;
+}
+
+.spotify__container--is-desktop .nav-ylx .Root__top-container {
+	padding-top: 12px !important;
+}
