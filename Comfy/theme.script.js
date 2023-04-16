@@ -24,6 +24,7 @@ async function initComfy() {
 
   const main = document.querySelector(".Root__main-view");
   const navAlt = document.querySelector(".nav-alt");
+  const navAlt2 = document.querySelection(".main-topBar-topBarContainer";
 
   style.innerHTML = `
 .setting-row::after {
@@ -127,7 +128,7 @@ ${Spicetify.SVGIcons.check}
   // Spotify's New Home Structure
   const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-structure.css`;
   const uiClassName = "New-Structure-Snippet";
-  if (navAlt) {
+  if (navAlt || navAlt2) {
     lsBool = getConfig(uiClassName) ?? true;
     hotload(lsBool, uiUrl, uiClassName);
     content.appendChild(
