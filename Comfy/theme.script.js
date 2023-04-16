@@ -23,8 +23,10 @@ async function initComfy() {
   let style = document.createElement("style");
 
   const main = document.querySelector(".Root__main-view");
-  const navAlt = document.querySelector(".nav-alt");
-  const navAlt2 = document.querySelector(".main-topBar-topBarContainer");
+  const navAlt =
+    document.querySelector(".nav-alt") ||
+    document.querySelector(".main-topBar-topBarContainer");
+  const libX = document.querySelector(".Root__nav-bar.hasYLXSidebar");
 
   style.innerHTML = `
 .setting-row::after {
@@ -125,15 +127,37 @@ ${Spicetify.SVGIcons.check}
     return container;
   }
 
-  // Spotify's New Home Structure
-  const uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/new-structure.css`;
-  const uiClassName = "New-Structure-Snippet";
-  if (navAlt || navAlt2) {
+  // LibX + Navigation
+  uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx-navalt.css`;
+  uiClassName = "LibX_NavAlt-Snippet";
+  if (libX && navAlt) {
     lsBool = getConfig(uiClassName) ?? true;
     hotload(lsBool, uiUrl, uiClassName);
     content.appendChild(
-      createSlider(uiClassName, "New Structure", lsBool, uiUrl)
+      createSlider(uiClassName, "Library X + Navigation Support", lsBool, uiUrl)
     );
+  } else {
+    // Spotify's New Navigation
+    uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/navalt.css`;
+    uiClassName = "NavAlt-Snippet";
+    if (navAlt) {
+      lsBool = getConfig(uiClassName) ?? true;
+      hotload(lsBool, uiUrl, uiClassName);
+      content.appendChild(
+        createSlider(uiClassName, "New Navigation Support", lsBool, uiUrl)
+      );
+    }
+
+    // Library X
+    uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx.css`;
+    uiClassName = "LibX-Snippet";
+    if (libX) {
+      lsBool = getConfig(uiClassName) ?? true;
+      hotload(lsBool, uiUrl, uiClassName);
+      content.appendChild(
+        createSlider(uiClassName, "Library X Support", lsBool, uiUrl)
+      );
+    }
   }
 
   // Remove PlayBack timers
