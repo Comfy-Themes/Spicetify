@@ -1,3 +1,7 @@
+.main-topBar-topBarContainer {
+  height: 64px !important;
+}
+
 .spotify__container--is-desktop.spotify__os--is-windows .main-topBar-left {
   padding-inline-start: 59px;
 }
