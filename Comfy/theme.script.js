@@ -24,7 +24,7 @@ async function initComfy() {
 
   const main = document.querySelector(".Root__main-view");
   const navAlt = document.querySelector(".nav-alt");
-  const navAlt2 = document.querySelection(".main-topBar-topBarContainer";
+  const navAlt2 = document.querySelector(".main-topBar-topBarContainer");
 
   style.innerHTML = `
 .setting-row::after {
