@@ -3,14 +3,14 @@
 }
 
 @media (max-width: 932px) {
-  .nav-alt .x-searchInput-searchInputInput {
+  .x-searchInput-searchInputInput {
     width: 340px !important;
   }
   .x-searchInput-searchInputIconContainer {
     right: 12px !important;
   }
 }
-.nav-alt .x-searchInput-searchInputInput {
+.x-searchInput-searchInputInput {
   padding-right: 40px !important;
   width: 120%;
 }
@@ -20,7 +20,7 @@
 }
 
 .main-topBar-navLink,
-.nav-alt .x-searchInput-searchInputInput {
+.x-searchInput-searchInputInput {
   height: 40px !important;
 }
 
@@ -75,7 +75,7 @@ section[data-testid="enhanced-page"],
 }
 .main-topBar-historyButtons .main-topBar-button,
 .main-topBar-button,
-.nav-alt .x-searchInput-searchInputInput {
+.x-searchInput-searchInputInput {
   background: rgba(var(--spice-rgb-pagelink-active), 0.1);
 }
 
@@ -83,11 +83,11 @@ section[data-testid="enhanced-page"],
 .main-topBar-button:hover {
   background: rgba(var(--spice-rgb-pagelink-active), 0.2);
 }
-.nav-alt .x-searchInput-searchInputInput:hover {
+.x-searchInput-searchInputInput:hover {
   background: rgba(var(--spice-rgb-pagelink-active), 0.2);
 }
 
-.nav-alt .main-entityHeader-container.main-entityHeader-nonWrapped {
+.main-entityHeader-container.main-entityHeader-nonWrapped {
   min-height: 310px !important;
 }
 :root .Root__main-view .main-entityHeader-container {
