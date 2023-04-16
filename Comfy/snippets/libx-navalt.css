@@ -1,4 +1,11 @@
-.main-topBar-sectionWrapper.main-topBar-right div:last-child {
+div#searchPage {
+    padding-top: 50px;
+}
+
+.spotify__container--is-desktop.spotify__os--is-windows .nav-ylx .main-topBar-container {
+	padding-inline-end: 0px;	
+}
+.main-topBar-sectionWrapper.main-topBar-right button {
     -webkit-app-region: no-drag !important;
 }
 @media (max-width: 932px) {
@@ -76,14 +83,14 @@ section[data-testid="enhanced-page"],
 
 .main-topBar-historyButtons .main-topBar-button,
 .main-topBar-button,
-.nav-ylx .x-searchInput-searchInputInput {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.1);
+.nav-ylx .x-searchInput-searchInputInput, .Fxnb0xe6bL7I7W8V0p6C {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
 }
 
 .main-topBar-historyButtons .main-topBar-button:hover,
 .main-topBar-button:hover,
-.nav-ylx .x-searchInput-searchInputInput:hover {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+.nav-ylx .x-searchInput-searchInputInput:hover,.Button-md-24-buttonTertiary-condensedAll-useBrowserDefaultFocusStyle:hover {
+	background: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
 }
 
 .main-entityHeader-container.main-entityHeader-nonWrapped {
