@@ -1,3 +1,13 @@
+figure.main-avatar-avatar.pEG0W4wkbkrOYURhz82H {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.main-topBar-sectionWrapper.main-topBar-right > button > figure > div {
+    width: 32px !important;
+    height: 32px !important;	
+}
+
 div#searchPage {
     padding-top: 50px;
 }
