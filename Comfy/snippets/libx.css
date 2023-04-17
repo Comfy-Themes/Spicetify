@@ -1,4 +1,19 @@
- .main-entityHeader-container.main-entityHeader-nonWrapped {
+:root {
+  --spice-main-elevated: transparent;
+} 
+
+.vreceNX3ABcxyddeS83B {
+	background-color: transparent !important;
+}
+.search-searchCategory-carouselButton:hover {
+  background-color: var(--spice-highlight);
+}
+
+.BoxComponent-group-naked-isInteractive-hasFocus-hasLeadingOrMedia:active::after {
+background-color: var(--spice-highlight-elevated);  
+}
+
+.main-entityHeader-container.main-entityHeader-nonWrapped {
      min-height: 310px !important;
 }
  :root .Root__main-view #mainImage {
