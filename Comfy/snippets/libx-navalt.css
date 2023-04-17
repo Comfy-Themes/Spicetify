@@ -1,3 +1,18 @@
+:root {
+  --spice-main-elevated: transparent;
+}
+
+.vreceNX3ABcxyddeS83B {
+	background-color: transparent !important;
+}
+.search-searchCategory-carouselButton:hover {
+  background-color: var(--spice-highlight);
+}
+
+.BoxComponent-group-naked-isInteractive-hasFocus-hasLeadingOrMedia:active::after {
+background-color: var(--spice-highlight-elevated);  
+}
+
 figure.main-avatar-avatar.pEG0W4wkbkrOYURhz82H {
     width: 32px !important;
     height: 32px !important;
