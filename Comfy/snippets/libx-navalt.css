@@ -1,6 +1,12 @@
 :root {
   --spice-main-elevated: transparent;
 }
+.nav-ylx .x-searchInput-searchInputSearchIcon {
+	color: var(--spice-subtext);	
+}
+.encore-dark-theme, .encore-dark-theme .encore-base-set {
+  --text-subdued: var(--spice-subtext) !important;
+  }
 
 .vreceNX3ABcxyddeS83B {
 	background-color: transparent !important;
@@ -66,11 +72,11 @@ div#searchPage {
 .main-topBar-navLink {
 	border-radius: var(--border-radius) !important;
 	padding: 8px 8px !important;
-	background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
+	background-color: var(--spice-main) !important;
 }
 
 .main-topBar-navLink:hover {
-	background-color: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
+	background-color: var(--spice-highlight) !important;
 }
 
 .main-topBar-topBarContainer .Svg-img-24-icon,
@@ -109,13 +115,13 @@ section[data-testid="enhanced-page"],
 .main-topBar-historyButtons .main-topBar-button,
 .main-topBar-button,
 .nav-ylx .x-searchInput-searchInputInput, .Fxnb0xe6bL7I7W8V0p6C {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
+	background:  var(--spice-main) !important;
 }
 
 .main-topBar-historyButtons .main-topBar-button:hover,
 .main-topBar-button:hover,
 .nav-ylx .x-searchInput-searchInputInput:hover,.Button-md-24-buttonTertiary-condensedAll-useBrowserDefaultFocusStyle:hover {
-	background: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
+	background: var(--spice-highlight) !important;
 }
 
 .main-entityHeader-container.main-entityHeader-nonWrapped {
@@ -128,6 +134,10 @@ section[data-testid="enhanced-page"],
 
 :root .Root__main-view .main-entityHeader-container {
 	padding-top: 64px !important;
+}
+
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
+    color: rgba(var(--spice-rgb-selected-row),.7);
 }
 
 :root .Root__main-view #mainImage {
