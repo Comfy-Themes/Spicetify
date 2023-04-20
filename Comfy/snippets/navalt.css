@@ -1,7 +1,12 @@
 .main-topBar-topBarContainer {
   height: 64px !important;
 }
-
+.x-searchInput-searchInputSearchIcon {
+	color: var(--spice-subtext);	
+}
+.encore-dark-theme, .encore-dark-theme .encore-base-set {
+  --text-subdued: var(--spice-subtext) !important;
+  }
 .spotify__container--is-desktop.spotify__os--is-windows .main-topBar-left {
   padding-inline-start: 59px;
 }
@@ -34,14 +39,13 @@
   margin-right: 8px;
 }
 .main-topBar-navLink {
-  border-radius: var(--border-radius) !important;
-  padding: 8px 8px !important;
-  background-color: rgba(var(--spice-rgb-pagelink-active), 0.1) !important;
+	border-radius: var(--border-radius) !important;
+	padding: 8px 8px !important;
+	background-color: var(--spice-main) !important;
 }
 
 .main-topBar-navLink:hover {
-  background-color: rgba(var(--spice-rgb-pagelink-active), 0.2) !important;
-}
+	background-color: var(--spice-highlight) !important;
 
 .main-topBar-topBarContainer .Svg-img-24-icon {
  fill:  var(--spice-subtext) !important;
@@ -80,15 +84,15 @@ section[data-testid="enhanced-page"],
 .main-topBar-historyButtons .main-topBar-button,
 .main-topBar-button,
 .x-searchInput-searchInputInput {
-  background: rgba(var(--spice-rgb-pagelink-active), 0.1);
+  background: var(--spice-main) !important;
 }
 
 .main-topBar-historyButtons .main-topBar-button:hover,
 .main-topBar-button:hover {
-  background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+  background: var(--spice-highlight) !important;
 }
 .x-searchInput-searchInputInput:hover {
-  background: rgba(var(--spice-rgb-pagelink-active), 0.2);
+  background: var(--spice-highlight) !important;
 }
 
 .main-entityHeader-container.main-entityHeader-nonWrapped {
@@ -160,7 +164,9 @@ section[data-testid="enhanced-page"],
   font-weight: bold;
   padding-top: 10px;
 }
-
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
+    color: rgba(var(--spice-rgb-selected-row),.7);
+}
 #main
   > div
   > div.Root__top-container
