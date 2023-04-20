@@ -1,7 +1,9 @@
 :root {
   --spice-main-elevated: transparent;
 } 
-
+.encore-dark-theme, .encore-dark-theme .encore-base-set {
+  --text-subdued: var(--spice-subtext) !important;
+  }
 .vreceNX3ABcxyddeS83B {
 	background-color: transparent !important;
 }
@@ -45,4 +47,8 @@ background-color: var(--spice-highlight-elevated);
  :root .Root__now-playing-bar .playback-bar {
      right: 0px !important;
      position: fixed !important;
+}
+
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
+    color: rgba(var(--spice-rgb-selected-row),.7);
 }
