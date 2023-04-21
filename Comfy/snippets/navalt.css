@@ -46,7 +46,7 @@
 
 .main-topBar-navLink:hover {
 	background-color: var(--spice-highlight) !important;
-
+}
 .main-topBar-topBarContainer .Svg-img-24-icon {
  fill:  var(--spice-subtext) !important;
 }
