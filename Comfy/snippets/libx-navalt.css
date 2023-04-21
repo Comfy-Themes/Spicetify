@@ -136,6 +136,7 @@ section[data-testid="enhanced-page"],
 	padding-top: 64px !important;
 }
 
+.Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle,
 .Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
     color: rgba(var(--spice-rgb-selected-row),.7);
 }
