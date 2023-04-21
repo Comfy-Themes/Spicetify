@@ -1,3 +1,7 @@
+.main-topBar-navLink,
+.x-searchInput-searchInputInput {
+  height: 40px !important;
+}
 :root {
   --spice-main-elevated: transparent;
 } 
@@ -7,8 +11,8 @@
 .vreceNX3ABcxyddeS83B {
 	background-color: transparent !important;
 }
-.search-searchCategory-carouselButton:hover {
-  background-color: var(--spice-highlight);
+.x-searchInput-searchInputSearchIcon {
+	color: var(--spice-subtext);	
 }
 
 .BoxComponent-group-naked-isInteractive-hasFocus-hasLeadingOrMedia:active::after {
@@ -48,7 +52,7 @@ background-color: var(--spice-highlight-elevated);
      right: 0px !important;
      position: fixed !important;
 }
-
+.Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle,
 .Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
     color: rgba(var(--spice-rgb-selected-row),.7);
 }
