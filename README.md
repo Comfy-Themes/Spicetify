@@ -1,12 +1,21 @@
-### ✅ Supported -> Spicetify 2.17.2, Spotify 1.2.9.
+<img align="right" src="https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png" alt="Preview" width="45%">
 
----
+<div align="left">
+  <img align="left" src="https://i.imgur.com/gWx75QA.png" alt="Logo" width="60" height="70">
 
-![Banner](https://comfy-themes.github.io/Spicetify/banner.png)
+  <h3 align="left">Comfy Spicetify</h3>
+  <p align="left">Stay comfy while listening to music</p>
+  
+  <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a>
+  ・
+  <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a>
+</div>
 
----
+<h4> ✅ Supported</h4>
 
-![Preview](https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png)
+* 🔥 Spicetify : `2.17.2`
+* 🟢 Spotify : `1.2.9`
+<br/>
 
 ### 📥 Automatic Installation
 
