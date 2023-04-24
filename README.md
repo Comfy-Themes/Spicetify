@@ -1,21 +1,24 @@
-<img align="right" src="https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png" alt="Preview" width="45%">
+<table>
+  <tr>
+    <td>
+      <img align="right" src="https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png" alt="Preview" width="50%">
+      <div align="center">
+        <img align="center" src="https://i.imgur.com/gWx75QA.png" alt="Logo" width="70" height="90">
+        <h3 align="center">Comfy Spicetify</h3>
+        <p align="center">Stay comfy while listening to music</p>
+        <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a> ・ <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a>
+      </div>
+      <hr>
+      <h4 align="center"> ✅ Supported</h4>
+        <li align="center">🔥 Spicetify : <code>2.17.2</code></li>
+        <li align="center">🟢 Spotify : <code>1.2.9</code></li>
+      </hr>
+    </td>
+  </tr>
+</table>
 
-<div align="left">
-  <img align="left" src="https://i.imgur.com/gWx75QA.png" alt="Logo" width="60" height="70">
 
-  <h3 align="left">Comfy Spicetify</h3>
-  <p align="left">Stay comfy while listening to music</p>
-  
-  <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a>
-  ・
-  <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a>
-</div>
 
-<h4> ✅ Supported</h4>
-
-* 🔥 Spicetify : `2.17.2`
-* 🟢 Spotify : `1.2.9`
-<br/>
 
 ### 📥 Automatic Installation
 
