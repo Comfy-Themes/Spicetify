@@ -12,7 +12,7 @@
       <h4> ✅ Supported</h4>
         <li>🔥 Spicetify : <code>2.17.2</code></li>
         <li>🟢 Spotify : <code>1.2.9</code></li>
-        <h4> </h4>
+        <h3> </h3>
       </hr>
     </td>
   </tr>
