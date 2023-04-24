@@ -9,9 +9,9 @@
         <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a> ・ <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a>
       </div>
       <hr>
-      <h4 align="center"> ✅ Supported</h4>
-        <li align="center">🔥 Spicetify : <code>2.17.2</code></li>
-        <li align="center">🟢 Spotify : <code>1.2.9</code></li>
+      <h4> ✅ Supported</h4>
+        <li>🔥 Spicetify : <code>2.17.2</code></li>
+        <li>🟢 Spotify : <code>1.2.9</code></li>
       </hr>
     </td>
   </tr>
