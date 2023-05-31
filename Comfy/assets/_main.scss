@@ -1,13 +1,5 @@
 :root .Root__main-view {
-  // Background Images
-  #preloadImage {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    z-index: -1;
-  }
-
+  // Background Image
   #mainImage {
     position: absolute; // instead of background-attachment
     width: 100%;
@@ -148,7 +140,7 @@
   }
 
   // Page Layouts
-  div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
+  .profile-userOverview-container, // User Profile
   div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
   section[class="mmCZ5VczybT9VqKB5wFU"], // Audiobook
   section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
@@ -199,9 +191,9 @@
   }
 
   // Tracklist Grid Styling
-  div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
+  .profile-userOverview-container, // User Profile
   div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
-  div[class="rHpv7osDRvs3SUPMpQ_g"], // Queue
+  .queue-queuePage-queuePage, // Queue
   section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
   section[data-test-uri*="artist"] > div,
   section[data-testid="album-page"] > div:nth-last-child(2),
@@ -237,10 +229,10 @@
 }
 
 // Tracklist Grid Layout
-div[class="umiKMm5NVr5UeBJCHS6U"], // User Profile
+.profile-userOverview-container, // User Profile
 div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
-div[class="rHpv7osDRvs3SUPMpQ_g"], // Queue
-div[aria-label="Liked Songs"], // Artist Liked Songs Page
+.queue-queuePage-queuePage, // Queue
+.Etjqlb2I2wFLmS0idcnV, // Artist Liked Songs Page
 section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
 section[data-testid="playlist-page"],
 section[data-testid="enhanced-page"],
