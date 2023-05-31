@@ -1,7 +1,7 @@
 :root .Root__main-view {
-  // Background Image
+  // Background Image 
   #mainImage {
-    position: absolute; // instead of background-attachment
+    position: absolute; // Positioned absolutely to cover the entire viewport 
     width: 100%;
     height: 100%;
     top: 0;
@@ -9,7 +9,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    will-change: transform; // creates a new paint layer
+    will-change: transform; // Creates a new paint layer for better performance 
     z-index: -1;
     transition: 300ms background-image ease-in-out;
     filter: blur(4px);
@@ -18,23 +18,26 @@
   }
 
   @media (max-width: 1500px) {
+   // Adjust the background position on smaller screens
     #mainImage {
       background-position: top;
     }
   }
 
-  .main-view-container__scroll-node-child {
-    padding-bottom: 0;
-  }
 
+ // Adjustments for specific sections/pages
+
+ // Your Library page
   main[aria-label="Spotify – Your Library"] {
     .main-gridContainer-gridContainer {
-      padding-bottom: var(--grid-gap) !important;
+      padding-bottom: var(--grid-gap) !important;// Increase bottom padding
     }
   }
 
+ // Artist overview and action bar background
   .artist-artistOverview-artistOverviewContent,
   .main-actionBarBackground-background {
+   // Gradient background with an overlay
     background: linear-gradient(
         rgba(var(--spice-rgb-main-transition), 0.6) 0,
         var(--spice-main) 232px
@@ -44,6 +47,7 @@
     height: calc(100% - 232px);
   }
 
+ // Remove background image for artist pages
   section[data-test-uri*="artist"] {
     .main-actionBarBackground-background {
       background-image: none !important;
@@ -51,29 +55,21 @@
     }
   }
 
-  // Now playing bar queue button
-  #main
-    > div
-    > div.Root__top-container
-    > div.Root__top-bar
-    > header
-    > div.main-topBar-topbarContentWrapper
-    > div
-    > div
-    > button
-    > span
-    > span {
-    fill: var(--spice-selected-row) !important;
+ // Styles for specific elements
+
+ // Now playing bar queue button
+  #main > div > div.Root__top-container > div.Root__top-bar > header > div.main-topBar-topbarContentWrapper > div > div > button > span > span {
+    fill: var(--spice-selected-row) !important;// Change the fill color
   }
 
-  // Settings radio buttons
+ // Settings radio buttons
   input:checked ~ .x-toggle-indicatorWrapper {
-    background-color: var(--spice-radio-btn-active);
+    background-color: var(--spice-radio-btn-active);// Change the background color when checked
   }
 
-  // Image Cards
+ // Image Cards
   .main-card-card {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius);// Apply border-radius
     padding: 0;
     overflow: hidden;
 
@@ -86,7 +82,7 @@
 
       .main-cardImage-circular,
       img {
-        border-radius: 0 !important;
+        border-radius: 0 !important;// Remove border-radius
       }
       .main-cardImage-imageWrapper {
         box-shadow: none !important;
@@ -96,14 +92,16 @@
       padding: 16px;
     }
   }
+
+ // Home shortcuts grid
   .view-homeShortcutsGrid-shortcut {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius);// Apply border-radius
     .view-homeShortcutsGrid-imageWrapper {
       border-radius: calc(var(--border-radius) + 15px);
     }
   }
 
-  // Headers
+ // Headers
   .main-entityHeader-background {
     height: 83vh;
     &.main-entityHeader-overlay {
@@ -139,11 +137,13 @@
     }
   }
 
-  // Page Layouts
-  .profile-userOverview-container, // User Profile
-  div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
-  section[class="mmCZ5VczybT9VqKB5wFU"], // Audiobook
-  section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
+ // Page Layouts
+
+ // Profile, Local Files, Audiobook, Playlist Radio Page, and more
+  .profile-userOverview-container,
+  div[class="uCHqQ74vvHOnctGg0X0B"],
+  section[class="mmCZ5VczybT9VqKB5wFU"],
+  section[class="NBwG2a4Dmwo6g_YrRdpo"],
   section[data-test-uri*="artist"],
   section[data-testid="album-page"],
   section[data-testid="playlist-page"],
@@ -153,11 +153,11 @@
     .os-host-overflow,
     .os-padding,
     .os-viewport {
-      overflow: visible !important;
+      overflow: visible !important;// Override overflow property
     }
 
     .main-actionBar-ActionBar {
-      padding: 8px 16px 16px 16px;
+      padding: 8px 16px 16px 16px;// Adjust padding
 
       .main-actionBar-ActionBarRow {
         margin-bottom: -8px;
@@ -172,6 +172,7 @@
     }
   }
 
+ // Additional styling for folder pages
   section[class="folder-folderPage-sectionWrapper"] {
     .main-actionBar-ActionBar {
       padding-top: 16px;
@@ -185,24 +186,27 @@
     }
   }
 
-  section[data-testid="your-episodes-page"]
-    .main-actionBarBackground-background {
+ // Adjust height of your episodes page
+  section[data-testid="your-episodes-page"] .main-actionBarBackground-background {
     height: calc(100vh - 494px);
   }
 
-  // Tracklist Grid Styling
-  .profile-userOverview-container, // User Profile
-  div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
-  .queue-queuePage-queuePage, // Queue
-  section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
+ // Tracklist Grid Styling
+
+ // Profile, Local Files, Queue, Playlist Radio Page, and more
+  .profile-userOverview-container,
+  div[class="uCHqQ74vvHOnctGg0X0B"],
+  .queue-queuePage-queuePage,
+  section[class="NBwG2a4Dmwo6g_YrRdpo"],
   section[data-test-uri*="artist"] > div,
   section[data-testid="album-page"],
-  section[data-testid="playlist-page"] ,
+  section[data-testid="playlist-page"],
   section[data-testid="enhanced-page"] {
-    position: sticky;
-    
-    .playlist-playlist-playlistContent {
-      background: none;
+    position: sticky; // Make the tracklist rows sticky
+
+    .playlist-playlist-playlistContent,
+    .dTKw7B8X1ybw7SHebMH3 {
+      background: none; // Remove background
     }
 
     .main-trackList-trackListRowGrid {
@@ -224,28 +228,28 @@
       }
     }
     .main-trackList-trackListHeader {
-      display: none;
+      display: none; // Hide tracklist header
     }
   }
+
   section[data-testid] {
-    position: relative;
+    position: relative;// Set position to relative
   }
 }
 
 // Tracklist Grid Layout
-.profile-userOverview-container, // User Profile
-div[class="uCHqQ74vvHOnctGg0X0B"], // Local Files
-.queue-queuePage-queuePage, // Queue
-.Etjqlb2I2wFLmS0idcnV, // Artist Liked Songs Page
-section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
+
+// Profile, Local Files, Queue, Artist Liked Songs Page, Playlist Radio Page, and more
+.profile-userOverview-container,
+div[class="uCHqQ74vvHOnctGg0X0B"],
+.queue-queuePage-queuePage,
+.Etjqlb2I2wFLmS0idcnV,
+section[class="NBwG2a4Dmwo6g_YrRdpo"],
 section[data-testid="playlist-page"],
 section[data-testid="enhanced-page"],
 .artist-artistOverview-overview {
   .main-trackList-trackListRow {
-    grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-        120px,
-        1fr
-      ) !important;
+    grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;// Adjust grid template columns
 
     & > .main-trackList-rowSectionIndex {
       position: absolute;
@@ -260,16 +264,14 @@ section[data-testid="enhanced-page"],
   }
 
   .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
-    grid-template-columns:
-      [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
-      [last] minmax(120px, 1fr) !important;
+    grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;// Adjust grid template columns for specific case
   }
 
   button.main-trackList-rowImagePlayButton {
-    color: black;
+    color: black;// Adjust color
   }
 
-  // Image overlay + visible play buttons on interact
+ // Image overlay + visible play buttons on interaction
   .main-trackList-rowImageFallback {
     border-radius: var(--border-radius);
   }
@@ -286,7 +288,7 @@ section[data-testid="enhanced-page"],
       }
     }
 
-    // Title highlight of active song
+   // Title highlight of active song
     &.main-trackList-active {
       .main-trackList-rowTitle {
         color: var(--spice-text);

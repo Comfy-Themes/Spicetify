@@ -20,9 +20,6 @@
     background-position: top;
   }
 }
-:root .Root__main-view .main-view-container__scroll-node-child {
-  padding-bottom: 0;
-}
 :root .Root__main-view main[aria-label="Spotify – Your Library"] .main-gridContainer-gridContainer {
   padding-bottom: var(--grid-gap) !important;
 }
@@ -196,13 +193,21 @@
   position: sticky;
 }
 :root .Root__main-view .profile-userOverview-container .playlist-playlist-playlistContent,
+:root .Root__main-view .profile-userOverview-container .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .playlist-playlist-playlistContent,
+:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view .queue-queuePage-queuePage .playlist-playlist-playlistContent,
+:root .Root__main-view .queue-queuePage-queuePage .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .playlist-playlist-playlistContent,
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view section[data-test-uri*=artist] > div .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-test-uri*=artist] > div .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view section[data-testid=album-page] .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-testid=album-page] .dTKw7B8X1ybw7SHebMH3,
 :root .Root__main-view section[data-testid=playlist-page] .playlist-playlist-playlistContent,
-:root .Root__main-view section[data-testid=enhanced-page] .playlist-playlist-playlistContent {
+:root .Root__main-view section[data-testid=playlist-page] .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view section[data-testid=enhanced-page] .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-testid=enhanced-page] .dTKw7B8X1ybw7SHebMH3 {
   background: none;
 }
 :root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid,
@@ -828,6 +833,12 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   left: calc(100% - 230px);
   width: 200px;
   height: 200px;
+}
+:root .Root__main-view .main-view-container__scroll-node-child {
+  padding-bottom: 0;
+}
+:root .os-scrollbar-horizontal {
+  display: none;
 }
 :root .os-scrollbar-vertical {
   background: none;

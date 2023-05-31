@@ -36,6 +36,12 @@
   }
 
   // Scrollbar
+  .Root__main-view .main-view-container__scroll-node-child {
+    padding-bottom: 0;
+  }
+  .os-scrollbar-horizontal {
+    display: none;
+  }
   .os-scrollbar-vertical {
     background: none;
 
