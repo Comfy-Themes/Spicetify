@@ -167,6 +167,8 @@ async function initComfy() {
   // Valid Channels
   const channels = [
     "/playlist/",
+    "/station/playlist/",
+    "/artist/",
     "/album/",
     "/collection/tracks",
     "/collection/episodes",

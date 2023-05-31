@@ -190,9 +190,19 @@
 :root .Root__main-view .queue-queuePage-queuePage,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo],
 :root .Root__main-view section[data-test-uri*=artist] > div,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2),
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child,
+:root .Root__main-view section[data-testid=album-page],
+:root .Root__main-view section[data-testid=playlist-page],
 :root .Root__main-view section[data-testid=enhanced-page] {
+  position: sticky;
+}
+:root .Root__main-view .profile-userOverview-container .playlist-playlist-playlistContent,
+:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .playlist-playlist-playlistContent,
+:root .Root__main-view .queue-queuePage-queuePage .playlist-playlist-playlistContent,
+:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-test-uri*=artist] > div .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-testid=album-page] .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-testid=playlist-page] .playlist-playlist-playlistContent,
+:root .Root__main-view section[data-testid=enhanced-page] .playlist-playlist-playlistContent {
   background: none;
 }
 :root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid,
@@ -200,8 +210,8 @@
 :root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
@@ -218,10 +228,10 @@
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid .main-type-ballad,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-mesto,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid .main-type-ballad,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid .main-type-mesto,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
@@ -231,8 +241,8 @@
 :root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid:hover,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
@@ -241,8 +251,8 @@
 :root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid.main-trackList-selected,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid.main-trackList-selected {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -251,8 +261,8 @@
 :root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListHeader,
 :root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListHeader,
 :root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListHeader,
-:root .Root__main-view section[data-testid=album-page] > div:nth-last-child(2) .main-trackList-trackListHeader,
-:root .Root__main-view section[data-testid=playlist-page] > div:last-child .main-trackList-trackListHeader,
+:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListHeader,
+:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListHeader,
 :root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListHeader {
   display: none;
 }

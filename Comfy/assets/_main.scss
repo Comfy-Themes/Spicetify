@@ -196,10 +196,14 @@
   .queue-queuePage-queuePage, // Queue
   section[class="NBwG2a4Dmwo6g_YrRdpo"], // Playlist Radio Page
   section[data-test-uri*="artist"] > div,
-  section[data-testid="album-page"] > div:nth-last-child(2),
-  section[data-testid="playlist-page"] > div:last-child,
+  section[data-testid="album-page"],
+  section[data-testid="playlist-page"] ,
   section[data-testid="enhanced-page"] {
-    background: none;
+    position: sticky;
+    
+    .playlist-playlist-playlistContent {
+      background: none;
+    }
 
     .main-trackList-trackListRowGrid {
       border-radius: var(--border-radius);
