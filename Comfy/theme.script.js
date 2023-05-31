@@ -136,6 +136,7 @@ async function initComfy() {
     "Custom-Image-URL",
     "Custom Image URL",
     "Paste URL Here!",
+    `If you have a local image, you can place it in the "spotify/apps/xpui/images" directory and provide the relative path, such as "images/your-image.png".`,
     updateImageDisplay
   );
   content.append(

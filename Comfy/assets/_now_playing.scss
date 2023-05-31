@@ -10,10 +10,13 @@
       // Cover-art
       .main-nowPlayingWidget-nowPlaying {
         &.main-nowPlayingWidget-coverExpanded {
-          transform: translate3d(-107px, -7px, 0px);
+          transform: translateX(-95px);
         }
 
         .main-coverSlotCollapsed-container {
+          &[aria-hidden="true"] {
+            opacity: 0;
+          }
           top: -20px;
 
           .cover-art {

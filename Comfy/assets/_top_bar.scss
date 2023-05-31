@@ -17,7 +17,9 @@
   .main-entityHeader-topbarTitle {
     padding: 0 0px;
   }
-
+  .main-topBar-historyButtons>button:hover {
+      transform: scale(1.1);
+  }
   .main-playButton-PlayButton {
     display: none !important;
   }

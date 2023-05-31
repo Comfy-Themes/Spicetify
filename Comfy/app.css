@@ -15,9 +15,6 @@
   -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
-.main-topBar-historyButtons>button:hover {
-    transform: scale(1.1);
-}
 @media (max-width: 1500px) {
   :root .Root__main-view #mainImage {
     background-position: top;
@@ -638,7 +635,7 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   display: none;
 }
 :root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 :root .Root__nav-bar .os-scrollbar {
   display: none;
@@ -656,10 +653,13 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   padding-bottom: 16px;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
-  transform: translate3d(-107px, -7px, 0px);
+  transform: translateX(-95px);
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
   top: -20px;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container[aria-hidden=true] {
+  opacity: 0;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
   width: 84px !important;
@@ -748,6 +748,9 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 }
 :root .Root__top-bar header .main-entityHeader-topbarTitle {
   padding: 0 0px;
+}
+:root .Root__top-bar header .main-topBar-historyButtons > button:hover {
+  transform: scale(1.1);
 }
 :root .Root__top-bar header .main-playButton-PlayButton {
   display: none !important;
