@@ -47,6 +47,15 @@ async function initComfy() {
     );
   }
 
+  // Enable Home Header
+  uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css`;
+  uiClassName = "Home-Header-Snippet";
+  lsBool = getConfig(uiClassName) ?? true;
+  hotload(lsBool, uiUrl, uiClassName);
+  content.appendChild(
+    createSlider(uiClassName, "Enable Colorful Home Header", lsBool, uiUrl)
+  );
+
   // Remove PlayBack timers
   snippetDetails = {
     url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",

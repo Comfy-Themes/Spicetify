@@ -76,7 +76,7 @@
   --bgColor: unset !important;
 }
 :root .Root__main-view .main-home-homeHeader {
-  display: none !important;
+  display: none;
 }
 :root .Root__main-view .main-entityHeader-withBackgroundImage {
   height: 30vh !important;
