@@ -44,10 +44,17 @@ header.main-topBar-container {
 .profile-userOverview-container,
 .artist-artistOverview-overview,
 .album-albumPage-sectionWrapper,
+.show-showPage-sectionWrapper,
 .A4dupilHPIEDfhXDE0m0,
 .uCHqQ74vvHOnctGg0X0B,
 .lXcKpCtaEeFf1HifX139,
 .MlK79hskRbFrN2OBjMkl,
-.Root__main-view section[data-testid] {
+.dpN5ViPOceUWNB5EQPHN,
+.mmCZ5VczybT9VqKB5wFU {
     margin-top: -15px !important;
+}
+
+.search-searchCategory-SearchCategory,
+.artist-artistDiscography-topBar {
+  margin-top: 0px !important;
 }

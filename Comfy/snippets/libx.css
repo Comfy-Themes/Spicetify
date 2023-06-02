@@ -14,6 +14,9 @@
 .x-searchInput-searchInputSearchIcon {
 	color: var(--spice-subtext) !important;	
 }
+.main-yourLibraryX-isScrolled {
+    box-shadow: none !important;
+}
 .main-topBar-historyButtons>button:hover {
     transform: scale(1.1);
 }
