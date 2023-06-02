@@ -34,7 +34,7 @@ async function initComfy() {
       content,
       isLarge: true,
     });
-
+:root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div > div > div
     const header = document.querySelector(".main-trackCreditsModal-header");
     const container = document.createElement("div");
     const extraText = document.createElement("a");
@@ -65,6 +65,16 @@ async function initComfy() {
       )
     );
   }
+
+  // Remove Progress Bar Gradient
+  content.appendChild(
+    createSlider(
+      "Remove-Progress-Bar-Gradient-Snippet",
+      "Remove Progress Bar Gradient",
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/no-progressBar-gradient.css"
+    )
+  );
 
   // Enable Home Header
   content.appendChild(

@@ -1,0 +1,8 @@
+:root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div > div > div {
+    background-color: var(--fg-color) !important;
+    border-radius: var(--progress-bar-radius) !important;
+    height: var(--progress-bar-height) !important;
+    -webkit-transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
+    transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
+    width: 100% !important;
+}
