@@ -33,6 +33,17 @@ async function initComfy() {
       title: "Comfy Settings",
       content,
     });
+
+    const header = document.querySelector(".main-trackCreditsModal-header");
+    const container = document.createElement("div");
+    const extraText = document.createElement("a");
+    extraText.textContent = "Need support? Click here!";
+    extraText.href = "https://discord.gg/rtBQX5D3bD";
+    extraText.style.color = "var(--spice-tab-active)";
+
+    container.appendChild(document.querySelector("h1.main-type-alto"));
+    container.appendChild(extraText);
+    header.prepend(container);
   });
 
   // SETTINGS MENU CONTENT
