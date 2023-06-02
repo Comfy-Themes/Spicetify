@@ -37,110 +37,84 @@ async function initComfy() {
 
   // SETTINGS MENU CONTENT
   // Library X
-  uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx.css`;
-  uiClassName = "LibX-Snippet";
   if (libX) {
-    lsBool = getConfig(uiClassName) ?? true;
-    hotload(lsBool, uiUrl, uiClassName);
     content.appendChild(
-      createSlider(uiClassName, "Library X Support", lsBool, uiUrl)
+      createSlider(
+        "LibX-Snippet",
+        "Library X Support",
+        true,
+        "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx.css"
+      )
     );
   }
 
   // Enable Home Header
-  uiUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css`;
-  uiClassName = "Home-Header-Snippet";
-  lsBool = getConfig(uiClassName) ?? true;
-  hotload(lsBool, uiUrl, uiClassName);
   content.appendChild(
-    createSlider(uiClassName, "Enable Colorful Home Header", lsBool, uiUrl)
+    createSlider(
+      "Home-Header-Snippet",
+      "Enable Colorful Home Header",
+      true,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css"
+    )
   );
 
   // Remove PlayBack timers
-  snippetDetails = {
-    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",
-    class_name: "Remove-Timers-Snippet",
-  };
-  lsBool = getConfig(snippetDetails.class_name) ?? false;
-  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
     createSlider(
-      snippetDetails.class_name,
+      "Remove-Timers-Snippet",
       "Remove Playback Timers",
-      lsBool,
-      snippetDetails.url
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css"
     )
   );
 
   // Remove Lyrics Button
-  snippetDetails = {
-    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-lyrics-button.css",
-    class_name: "Remove-Lyrics-Button-Snippet",
-  };
-  lsBool = getConfig(snippetDetails.class_name) ?? false;
-  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
     createSlider(
-      snippetDetails.class_name,
+      "Remove-Lyrics-Button-Snippet",
       "Remove Lyrics Button",
-      lsBool,
-      snippetDetails.url
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-lyrics-button.css"
     )
   );
 
   // Oblong Now Playing Cover Art
-  snippetDetails = {
-    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css",
-    class_name: "Oblong-nowPlaying-Art-Snippet",
-  };
-  lsBool = getConfig(snippetDetails.class_name) ?? false;
-  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
     createSlider(
-      snippetDetails.class_name,
+      "Oblong-nowPlaying-Art-Snippet",
       "Oblong Now Playing Cover Art",
-      lsBool || Spicetify.Config?.color_scheme?.toLowerCase() === "mono",
-      snippetDetails.url
+      Spicetify.Config?.color_scheme?.toLowerCase() === "mono",
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css"
     )
   );
 
   // ColorScheme Snippets
   const colorScheme = Spicetify.Config?.color_scheme.toLowerCase();
   const addonUrl = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${colorScheme}.css`;
-  const addonClassname = `Comfy-${colorScheme}-Snippet`;
   if ((await fetch(addonUrl)).ok) {
-    let lsBool = getConfig(`Comfy-${colorScheme}-Snippet`) ?? true;
-    hotload(lsBool, addonUrl, addonClassname);
     content.appendChild(
       createSlider(
-        addonClassname,
+        `Comfy-${colorScheme}-Snippet`,
         `Comfy-${
           colorScheme.charAt(0).toUpperCase() + colorScheme.slice(1)
         } additional features`,
-        lsBool,
+        true,
         addonUrl
       )
     );
   }
 
   // Revert Right Side Cover Art
-  snippetDetails = {
-    url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/revert-right-art.css",
-    class_name: "Revert-Right-Art-Snippet",
-  };
-  lsBool = getConfig(snippetDetails.class_name) ?? false;
-  hotload(lsBool, snippetDetails.url, snippetDetails.class_name);
   content.appendChild(
     createSlider(
-      snippetDetails.class_name,
+      "Revert-Right-Art-Snippet",
       "Disable Right Side Cover Art",
-      lsBool,
-      snippetDetails.url
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/revert-right-art.css"
     )
   );
 
   // Custom Image
-  lsBool = getConfig("Custom-Image") ?? false;
   textInput = createTextInput(
     "Custom-Image-URL",
     "Custom Image URL",
@@ -152,14 +126,14 @@ async function initComfy() {
     createSlider(
       "Custom-Image",
       "Custom Image Enabled",
-      lsBool,
+      false,
       null,
       (state) => {
         state ? content.appendChild(textInput) : content.removeChild(textInput);
         updateImageDisplay();
       }
     ),
-    lsBool ? textInput : ""
+    getConfig("Custom-Image") ? textInput : ""
   );
 
   // HEADER IMAGE
