@@ -150,7 +150,8 @@ async function initComfy() {
     /^\/episode\//,
     /^\/lyrics-plus$/,
     /^\/folder\//,
-    /^\/user\//,
+    /^\/user\/(?!users\b)\w+$/,
+    /^\/genre\//
   ];
 
   // Create image container + preload image
