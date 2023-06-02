@@ -49,14 +49,16 @@ async function initComfy() {
   }
 
   // Topbar Inside Titlebar
-  content.appendChild(
-    createSlider(
-      "Topbar-Inside-Titlebar-Snippet",
-      "Move Topbar Inside Titlebar",
-      false,
-      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css"
-    )
-  );
+  if (libX) {
+    content.appendChild(
+      createSlider(
+        "Topbar-Inside-Titlebar-Snippet",
+        "Move Topbar Inside Titlebar",
+        false,
+        "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css"
+      )
+    );
+  }
 
   // Enable Home Header
   content.appendChild(
