@@ -32,6 +32,7 @@ async function initComfy() {
     Spicetify.PopupModal.display({
       title: "Comfy Settings",
       content,
+      isLarge: true,
     });
 
     const header = document.querySelector(".main-trackCreditsModal-header");
