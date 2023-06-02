@@ -140,17 +140,17 @@ async function initComfy() {
 
   // Valid Channels
   const channels = [
-    "/playlist/",
-    "/station/playlist/",
-    "/artist/",
-    "/album/",
-    "/collection/tracks",
-    "/collection/episodes",
-    "/collection/local",
-    "/episode/",
-    "/lyrics-plus",
-    "/folder/",
-    "/user/",
+    /^\/playlist\//,
+    /^\/station\/playlist\//,
+    /^\/artist\/(?!artists\b)\w+$/,
+    /^\/album\//,
+    /^\/collection\/tracks$/,
+    /^\/collection\/episodes$/,
+    /^\/collection\/local$/,
+    /^\/episode\//,
+    /^\/lyrics-plus$/,
+    /^\/folder\//,
+    /^\/user\//,
   ];
 
   // Create image container + preload image
@@ -169,7 +169,7 @@ async function initComfy() {
   function updateImageDisplay() {
     const { pathname } = Platform.History.location;
     imageContainer.style.display = channels.some((channel) =>
-      pathname.startsWith(channel)
+      channel.test(pathname)
     )
       ? "block"
       : "none";
