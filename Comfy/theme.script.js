@@ -38,19 +38,13 @@ async function initComfy() {
   // SETTINGS MENU CONTENT
   // Library X
   if (libX) {
-    content.appendChild(
+    content.append(
       createSlider(
         "LibX-Snippet",
         "Library X Support",
         true,
         "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx.css"
-      )
-    );
-  }
-
-  // Topbar Inside Titlebar
-  if (libX) {
-    content.appendChild(
+      ),
       createSlider(
         "Topbar-Inside-Titlebar-Snippet",
         "Move Topbar Inside Titlebar",
