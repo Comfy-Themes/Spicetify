@@ -48,12 +48,22 @@ async function initComfy() {
     );
   }
 
+  // Topbar Inside Titlebar
+  content.appendChild(
+    createSlider(
+      "Topbar-Inside-Titlebar-Snippet",
+      "Move Topbar Inside Titlebar",
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css"
+    )
+  );
+
   // Enable Home Header
   content.appendChild(
     createSlider(
       "Home-Header-Snippet",
       "Enable Colorful Home Header",
-      true,
+      false,
       "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css"
     )
   );
@@ -83,7 +93,7 @@ async function initComfy() {
     createSlider(
       "Oblong-nowPlaying-Art-Snippet",
       "Oblong Now Playing Cover Art",
-      Spicetify.Config?.color_scheme?.toLowerCase() === "mono",
+      false,
       "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css"
     )
   );
