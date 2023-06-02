@@ -34,7 +34,7 @@ async function initComfy() {
       content,
       isLarge: true,
     });
-:root .Root__now-playing-bar .playback-bar .playback-progressbar > div > div > div > div
+
     const header = document.querySelector(".main-trackCreditsModal-header");
     const container = document.createElement("div");
     const extraText = document.createElement("a");
