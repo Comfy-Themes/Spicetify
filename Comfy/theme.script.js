@@ -62,8 +62,8 @@ async function initComfy() {
   content.appendChild(
     createSlider(
       "Home-Header-Snippet",
-      "Enable Colorful Home Header",
-      false,
+      "Colorful Home Header",
+      true,
       "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css"
     )
   );
