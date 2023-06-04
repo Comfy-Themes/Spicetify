@@ -58,3 +58,7 @@ header.main-topBar-container {
   margin-top: 0 !important;
   top: 0 !important;
 }
+
+:root .Root__top-bar header .main-entityHeader-topbarTitle {
+    height: 32px;
+}
