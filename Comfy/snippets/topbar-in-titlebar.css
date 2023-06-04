@@ -24,8 +24,7 @@ header.main-topBar-container {
   padding-bottom: 64px; 
 } 
 
-.nav-ylx .main-topBar-topbarContent,
-.main-topBar-topbarContent>* {
+.nav-ylx .main-topBar-topbarContent {
   app-region: drag !important;
 }
 
@@ -54,7 +53,8 @@ header.main-topBar-container {
     margin-top: -15px !important;
 }
 
-.search-searchCategory-SearchCategory,
+.search-searchCategory-SearchCategory, 
 .artist-artistDiscography-topBar {
-  margin-top: 0px !important;
+  margin-top: 0 !important;
+  top: 0 !important;
 }
