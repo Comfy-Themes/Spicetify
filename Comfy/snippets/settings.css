@@ -66,3 +66,11 @@ button.reset:hover {
   border: none;
   height: 32px;
 }
+
+.nW1RKQOkzcJcX6aDCZB4 {
+  fill: var(--spice-subtext);
+}
+
+.qBZYab2T7Yc4O5Nh0mjA:focus-within .nW1RKQOkzcJcX6aDCZB4, .qBZYab2T7Yc4O5Nh0mjA:hover .nW1RKQOkzcJcX6aDCZB4 {
+  fill: var(--spice-text);
+}
