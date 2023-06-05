@@ -1,10 +1,7 @@
 .main-embedWidgetGenerator-container {
-  background-color: var(--spice-player) !important;
-  max-height: 90vh;
+  max-height: 90vh !important;
 }
-.GenericModal {
-  border-radius: var(--border-radius);
-}
+
 .setting-row::after {
   content: "";
   display: table;
@@ -103,4 +100,12 @@ button.reset:hover {
 .qBZYab2T7Yc4O5Nh0mjA:focus-within .nW1RKQOkzcJcX6aDCZB4, .qBZYab2T7Yc4O5Nh0mjA:hover .nW1RKQOkzcJcX6aDCZB4, .GuwMf98GUBSpCDgf8KRA {
   fill: var(--spice-text);
   cursor: help;
+}
+
+.main-trackCreditsModal-mainSection::-webkit-scrollbar, .main-trackCreditsModal-mainSection::-webkit-scrollbar-track {
+  width: 10px;
+}
+
+.main-trackCreditsModal-mainSection::-webkit-scrollbar-thumb {
+  border-radius: 4.5px;
 }
