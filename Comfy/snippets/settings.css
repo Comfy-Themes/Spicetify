@@ -18,10 +18,15 @@
   color: var(--spice-subtext);
 }
 .setting-row .col.description {
-  float: left;
-  padding-right: 15px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
 }
+
 .setting-row .col.action {
   float: right;
   text-align: right;
@@ -95,7 +100,7 @@ button.reset:hover {
   fill: var(--spice-subtext);
 }
 
-.qBZYab2T7Yc4O5Nh0mjA:focus-within .nW1RKQOkzcJcX6aDCZB4, .qBZYab2T7Yc4O5Nh0mjA:hover .nW1RKQOkzcJcX6aDCZB4 {
+.qBZYab2T7Yc4O5Nh0mjA:focus-within .nW1RKQOkzcJcX6aDCZB4, .qBZYab2T7Yc4O5Nh0mjA:hover .nW1RKQOkzcJcX6aDCZB4, .GuwMf98GUBSpCDgf8KRA {
   fill: var(--spice-text);
   cursor: help;
 }
