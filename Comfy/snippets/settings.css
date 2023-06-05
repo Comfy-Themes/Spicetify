@@ -15,6 +15,7 @@
   padding: 10px 0;
   align-items: center;
   justify-content: space-between;
+  color: var(--spice-subtext);
 }
 .setting-row .col.description {
   float: left;
@@ -60,11 +61,34 @@ button.reset:hover {
 }
 
 .setting-row .col.action input {
+  padding-inline: 10px;
   text-align: center;
   background-color: rgba(var(--spice-rgb-text), 0.3);
   outline: none;
   border: none;
   height: 32px;
+}
+
+.setting-row .col.action input.input::-webkit-inner-spin-button {
+  cursor: pointer;
+}
+
+.setting-row {
+  color: var(--spice-subtext);
+}
+
+.divider-row:first-of-type .space {
+  display: none;
+}
+
+.divider-row .space {
+  margin-bottom: 20px;
+}
+
+.divider-row .divider {
+  height: 2px;
+  border-width: 0;
+  background-color: var(--spice-button-disabled);
 }
 
 .nW1RKQOkzcJcX6aDCZB4 {

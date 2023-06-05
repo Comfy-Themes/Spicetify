@@ -1,7 +1,7 @@
 function hotload(bool, url, classname) {
   if (!url) return;
   if (bool) {
-    loadCSS(url, classname);
+    loadCSS(url, false, classname);
   } else {
     unloadCSS(classname);
   }
@@ -13,8 +13,8 @@ async function getCSS(url) {
     .catch((e) => console.error(e));
 }
 
-async function loadCSS(url, classname) {
-  const css = await getCSS(url);
+async function loadCSS(url, text=false, classname) {
+  const css = url ? await getCSS(url) : text;
   const style = document.createElement("style");
   style.innerHTML = css;
   style.classList.add(classname);
@@ -32,6 +32,18 @@ function getConfig(key) {
     console.error(e);
     return null;
   }
+}
+
+function createDivider(name) {
+  const container = document.createElement("div");
+  container.classList.add("divider-row");
+  container.id = name;
+  container.innerHTML = `
+  <div class="space"></div>
+  <h3 class="title">${name}</h3>
+  <hr class="divider"></hr>
+  `;
+  return container;
 }
 
 function createSlider(name, desc, defaultVal, url, returnFunc) {
@@ -66,7 +78,7 @@ function createSlider(name, desc, defaultVal, url, returnFunc) {
   return container;
 }
 
-function createTextInput(name, desc, defaultVal, tippyMessage, returnFunc) {
+function createInput(type, name, desc, defaultVal, tippyMessage, allowHTML, returnFunc) {
   defaultVal = getConfig(name) ?? defaultVal;
 
   const container = document.createElement("div");
@@ -81,20 +93,23 @@ function createTextInput(name, desc, defaultVal, tippyMessage, returnFunc) {
     </svg>
   </div>
   <div class="col action">
-    <input type="text" class="input" placeholder="${defaultVal}">
+    <input type="${type}" class="input" value="${defaultVal}">
   </div>`;
   const help = container.querySelector(".qBZYab2T7Yc4O5Nh0mjA");
   console.log(
     Spicetify.Tippy(help, {
       ...Spicetify.TippyProps,
       content: tippyMessage,
+      allowHTML: allowHTML,
     })
   );
   const input = container.querySelector("input");
   input.onchange = () => {
     Spicetify.LocalStorage.set(name, `"${input.value}"`);
-    returnFunc?.(input.value);
+    returnFunc?.(input.value, name);
     console.log(name, getConfig(name));
   };
+
+  returnFunc?.(defaultVal, name);
   return container;
 }

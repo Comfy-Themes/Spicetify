@@ -48,6 +48,9 @@ async function initComfy() {
   });
 
   // SETTINGS MENU CONTENT
+
+  content.append(createDivider("Support Modules"));
+  
   // Library X
   if (libX) {
     content.append(
@@ -65,6 +68,40 @@ async function initComfy() {
       )
     );
   }
+
+  content.append(createDivider("Interface"));
+
+  // Button Radius - not written well
+  content.appendChild(
+    createInput(
+      "number",
+      "Button-Radius",
+      "Button Radius",
+      "8",
+      `
+      change how circular buttons are
+      - Comfy default: 8px
+      - Spotify default: 50px
+      `,
+      true,
+      (value, className) => {
+        const style = document.querySelector(`head > style.${className}`);
+        const cssContent = `
+          :root button:not(.main-editImageButton-overlay),
+          :root button span,
+          :root input {
+            --border-radius: ${value}px !important;
+          }
+        `;
+      
+        if (style) {
+          style.innerHTML = cssContent;
+        } else {
+          loadCSS(false, cssContent, className);
+        }
+      }      
+    )
+  )
 
   // Remove Progress Bar Gradient
   content.appendChild(
@@ -106,6 +143,8 @@ async function initComfy() {
     )
   );
 
+  content.append(createDivider("Cover Art"));
+  
   // Oblong Now Playing Cover Art
   content.appendChild(
     createSlider(
@@ -142,8 +181,11 @@ async function initComfy() {
     )
   );
 
+  content.append(createDivider("Banner Image"));
+
   // Custom Image
-  textInput = createTextInput(
+  textInput = createInput(
+    "text",
     "Custom-Image-URL",
     "Custom Image URL",
     "Paste URL Here!",
@@ -163,7 +205,7 @@ async function initComfy() {
     ),
     getConfig("Custom-Image") ? textInput : ""
   );
-
+  
   // HEADER IMAGE
 
   // Valid Channels
