@@ -87,9 +87,10 @@ async function initComfy() {
       (value, className) => {
         const style = document.querySelector(`head > style.${className}`);
         const cssContent = `
-          :root button:not(.main-editImageButton-overlay),
-          :root button span,
-          :root input {
+        :root button:not(.main-editImageButton-overlay):not([style*="background-image"]),
+        :root button span,
+        :root input:not([style*="background-image"])
+         {
             --border-radius: ${value}px !important;
           }
         `;
