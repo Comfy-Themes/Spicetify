@@ -816,12 +816,18 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 
 :root {
   --border-radius: 8px;
+  --button-radius: 8px;
 }
 :root button,
 :root button span,
 :root input,
 :root img {
   border-radius: var(--border-radius) !important;
+}
+:root button:not(.main-editImageButton-overlay):not([style*="background-image"]),
+:root button span,
+:root input:not([style*="background-image"]) {
+	--border-radius: var(--button-radius) !important;
 }
 :root .npv-background-image__overlay {
   background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.5) 0, transparent 100%), var(--background-noise);

@@ -71,9 +71,24 @@ button.reset:hover {
   height: 32px;
 }
 
-.setting-row .col.action input.input::-webkit-inner-spin-button {
-  cursor: pointer;
+.setting-row .col.action input[type="number"] {
+  width: 50px;
 }
+
+.setting-row .col.action input[type="number"]::-webkit-inner-spin-button,
+.setting-row .col.action input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+
+.setting-row .col.action:hover input[type="number"]::-webkit-inner-spin-button,
+.setting-row .col.action:hover input[type="number"]::-webkit-outer-spin-button {
+  display: block;
+}
+
+.setting-row .col.action input[type="number"]:hover {
+  width: 60px;
+}
+
 
 .setting-row {
   color: var(--spice-subtext);

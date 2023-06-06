@@ -6,12 +6,19 @@
 
 :root {
   --border-radius: 8px;
+  --button-radius: 8px;
 
   button,
   button span,
   input,
   img {
     border-radius: var(--border-radius) !important;
+  }
+
+  button:not(.main-editImageButton-overlay):not([style*="background-image"]),
+  button span,
+  input:not([style*="background-image"]) {
+    --border-radius: var(--button-radius) !important;
   }
 
   // -- Other --

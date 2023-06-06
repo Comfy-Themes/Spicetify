@@ -71,7 +71,7 @@ async function initComfy() {
 
   content.append(createDivider("Interface"));
 
-  // Button Radius - not written well
+  // Button Radius
   content.appendChild(
     createInput(
       "number",
@@ -79,27 +79,13 @@ async function initComfy() {
       "Button Radius",
       "8",
       `
-      change how circular buttons are
-      - Comfy default: 8px
-      - Spotify default: 50px
+      <h4> Change how circular buttons are: </h4>
+      <li> Comfy default: 8px </li>
+      <li> Spotify default: 50px </li>
       `,
       true,
-      (value, className) => {
-        const style = document.querySelector(`head > style.${className}`);
-        const cssContent = `
-        :root button:not(.main-editImageButton-overlay):not([style*="background-image"]),
-        :root button span,
-        :root input:not([style*="background-image"])
-         {
-            --border-radius: ${value}px !important;
-          }
-        `;
-      
-        if (style) {
-          style.innerHTML = cssContent;
-        } else {
-          loadCSS(false, cssContent, className);
-        }
+      (value) => {
+        document.documentElement.style.setProperty("--button-radius", value + "px");
       }      
     )
   )
@@ -190,7 +176,11 @@ async function initComfy() {
     "Custom-Image-URL",
     "Custom Image URL",
     "Paste URL Here!",
-    `If you have a local image, you can place it in the "spotify/apps/xpui/images" directory and provide the relative path, such as "images/your-image.png".`,
+    `
+    <h4> Local Images: </h4>
+	  <li>Place desired image in 'spotify/Apps/xpui/images'.</li>	
+	  <li>Enter 'images/image.png into text box.</li>
+	  `,
     updateImageDisplay
   );
   content.append(
