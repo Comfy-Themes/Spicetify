@@ -5,6 +5,7 @@
       Spicetify.Menu &&
       Spicetify.LocalStorage &&
       Spicetify.Platform &&
+	    Spicetify.AppTitle &&
       document.querySelector(".Root__main-view")
     )
   ) {
@@ -70,6 +71,27 @@ async function initComfy() {
   }
 
   content.append(createDivider("Interface"));
+
+  // App Title
+  content.appendChild(
+    createInput(
+      "text",
+      "App-Title",
+      "Application Title",
+      await Spicetify.AppTitle.get(),
+	    "leave blank to reset to default<br>note: default value can be lost",
+      true,
+      async (value, name, container) => {
+        if (!value) {
+          await Spicetify.AppTitle.reset()
+          inputBox = container.querySelector('.input')
+          inputBox.value = await Spicetify.AppTitle.get()
+          return
+        }
+        await Spicetify.AppTitle.set(value)
+      }      
+    )
+  )
 
   // Button Radius
   content.appendChild(
@@ -363,11 +385,11 @@ async function initComfy() {
     const input = container.querySelector("input");
     input.onchange = () => {
       Spicetify.LocalStorage.set(name, `"${input.value}"`);
-      returnFunc?.(input.value, name);
+      returnFunc?.(input.value, name, container);
       console.log(name, getConfig(name));
     };
   
-    returnFunc?.(defaultVal, name);
+    returnFunc?.(defaultVal, name, container);
     return container;
   }
   
