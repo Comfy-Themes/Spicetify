@@ -1,3 +1,11 @@
+/* nowplaying broken flexbox */
+/* remove when spotify fix it */
+.main-nowPlayingWidget-nowPlaying {
+    display: -webkit-box !important;
+    width: min-content !important;
+}
+
+
 .main-topBar-navLink,
 .x-searchInput-searchInputInput {
   height: 40px !important;
