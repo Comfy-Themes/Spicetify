@@ -112,6 +112,16 @@ async function initComfy() {
     )
   )
 
+  // Remove Device Picker Notification
+  content.appendChild(
+    createSlider(
+      "Remove-Device-Picker-Notification-Snippet",
+      "Remove Device Picker Notification",
+      false,
+      "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-device-picker.css"
+    )
+  );  
+
   // Remove Progress Bar Gradient
   content.appendChild(
     createSlider(
