@@ -50,7 +50,7 @@ async function initComfy() {
 
   // Source Checks + Image Updater
   const sourceCheck = () => getConfig("Custom-Image");
-  const source = () => getConfig("Custom-Image-URL").replace(/"/g, "");
+  const source = () => getConfig("Custom-Image-URL")?.replace(/"/g, "");
   function updateImageDisplay() {
     const { pathname } = Platform.History.location;
     imageContainer.style.display = channels.some((channel) => channel.test(pathname)) ? "block" : "none";
@@ -79,12 +79,17 @@ async function initComfy() {
 
   async function getCSS(url) {
     return await fetch(url)
-      .then((res) => res.text())
+      .then((res) => {
+        if (!res.ok) return;
+        return res.text();
+      })
       .catch((e) => console.error(e));
   }
 
   async function loadCSS(url, text = false, classname) {
+    if (document.getElementsByClassName(classname)[0]) return;
     const css = url ? await getCSS(url) : text;
+    if (!css) return;
     const style = document.createElement("style");
     style.innerHTML = css;
     style.classList.add(classname);
@@ -348,11 +353,8 @@ async function initComfy() {
             "Note: default value can be lost"
           ),
           returnFunc: async (value) => {
-            if (!value) {
-              await Spicetify.AppTitle.reset();
-              return await Spicetify.AppTitle.get();
-            }
-            await Spicetify.AppTitle.set(value);
+            if (!value) await Spicetify.AppTitle.reset();
+            else await Spicetify.AppTitle.set(value);
           },
         },
         {
@@ -468,6 +470,7 @@ async function initComfy() {
   const { toggle } = Spicetify.Panel.registerPanel({
     label: "Comfy Settings",
     children: Spicetify.React.createElement(Content),
+    style: { minWidth: "370px" },
   });
 
   // SETTINGS MENU
