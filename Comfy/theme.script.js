@@ -368,7 +368,6 @@ async function initComfy() {
             Spicetify.React.createElement("li", null, "Comfy default: 8px"),
             Spicetify.React.createElement("li", null, "Spotify default: 50px")
           ),
-          allowHTML: true,
           returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", value + "px"),
         },
         {
