@@ -190,10 +190,10 @@ async function initComfy() {
       Spicetify.React.useEffect(() => {
         if (isPromise(defaultVal)) {
           defaultVal.then((val) => {
-            setValue(val);
+            if (getConfig(name) === null) setValue(val);
             setDefaultState(val);
           });
-        } else setValue(defaultVal);
+        } else if (getConfig(name) === null) setValue(defaultVal);
       }, [defaultVal]);
 
       Spicetify.React.useEffect(() => {
@@ -353,8 +353,8 @@ async function initComfy() {
             "Note: default value can be lost"
           ),
           returnFunc: async (value) => {
-            if (!value) await Spicetify.AppTitle.reset();
-            else await Spicetify.AppTitle.set(value);
+            if (!value) await Spicetify.Platform.UserAPI._product_state.delOverridesValues({ keys: ["name"] });
+            else await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
           },
         },
         {
