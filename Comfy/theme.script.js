@@ -6,6 +6,7 @@
       Spicetify.Panel &&
       Spicetify.React &&
       Spicetify.ReactDOM &&
+      Spicetify.AppTitle &&
       document.querySelector(".Root__main-view")
     )
   ) {
