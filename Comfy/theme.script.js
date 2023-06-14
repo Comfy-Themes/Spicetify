@@ -123,7 +123,7 @@ async function initComfy() {
         Spicetify.React.createElement(
           Spicetify.React.Fragment,
           null,
-          Spicetify.React.createElement("h3", { className: "title" }, name),
+          Spicetify.React.createElement("h4", { className: "title" }, name),
           Spicetify.React.createElement("hr", { className: "divider" })
         )
     );

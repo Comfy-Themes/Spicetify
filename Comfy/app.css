@@ -752,8 +752,8 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 .main-buddyFeed-content {
   margin-top: 0 !important;
 }
-.main-buddyFeed-content .main-buddyFeed-header {
-  margin-bottom: 16px;
+.main-buddyFeed-content .comfy-settings:last-child {
+  padding-bottom: 20px;
 }
 .main-buddyFeed-content .comfy-settings .setting-row {
   display: flex;

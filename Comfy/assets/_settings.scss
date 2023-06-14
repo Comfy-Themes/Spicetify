@@ -10,10 +10,12 @@
 // Comfy settings
 .main-buddyFeed-content {
   margin-top: 0 !important;
-  .main-buddyFeed-header {
-    margin-bottom: 16px;
-  }
+
   .comfy-settings {
+    &:last-child {
+      padding-bottom: 20px;
+    }
+    
     .setting-row {
       display: flex;
       padding: 10px 0;
