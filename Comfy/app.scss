@@ -46,8 +46,9 @@
   .Root__main-view .main-view-container__scroll-node-child {
     padding-bottom: 0;
   }
+  aside#Desktop_PanelContainer_Id .os-scrollbar-vertical,
   .os-scrollbar-horizontal {
-    display: none;
+    display: none !important;
   }
   .os-scrollbar-vertical {
     background: none;

@@ -291,19 +291,13 @@ async function initComfy() {
   };
 
   const Content = () => {
-    const [style, setStyle] = Spicetify.React.useState("");
+    const [style] = Spicetify.React.useState("");
     const [additionalFeatures, setAdditionalFeatures] = Spicetify.React.useState(false);
     const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
 
     const libX = document.querySelector(".nav-ylx");
 
     Spicetify.React.useEffect(() => {
-      fetch("https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/settings.css").then((res) => {
-        res.text().then((text) => {
-          setStyle(text);
-        });
-      });
-
       fetch(
         `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`
       )
