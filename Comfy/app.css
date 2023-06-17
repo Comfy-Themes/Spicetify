@@ -760,6 +760,9 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   padding: 10px 0;
   align-items: center;
 }
+.main-buddyFeed-content .comfy-settings .setting-row .col {
+  padding: 0 !important;
+}
 .main-buddyFeed-content .comfy-settings .setting-row .col.description {
   -webkit-box-align: center;
   -ms-flex-align: center;
