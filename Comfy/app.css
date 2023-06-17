@@ -20,6 +20,10 @@
     background-position: top;
   }
 }
+:root .Root__main-view .main-trackList-playingIcon,
+:root .Root__main-view .x-settings-equalizerPanelCanvas {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%);
+}
 :root .Root__main-view main[aria-label="Spotify – Your Library"] .main-gridContainer-gridContainer {
   padding-bottom: var(--grid-gap) !important;
 }

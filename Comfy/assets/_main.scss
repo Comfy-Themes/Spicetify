@@ -24,6 +24,12 @@
     }
   }
 
+  // SVG Filtering - Makes them white instead of green.
+
+  .main-trackList-playingIcon,
+  .x-settings-equalizerPanelCanvas {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%);
+  }
 
  // Adjustments for specific sections/pages
 
