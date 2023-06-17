@@ -994,11 +994,11 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   overflow: hidden;
 }
 :root #context-menu ul {
-  background-color: var(--spice-player);
+  background-color: var(--spice-card);
 }
 :root #context-menu ul button,
 :root #context-menu ul a {
-  border-radius: 0;
+  border-radius: 2px !important;
 }
 :root #context-menu ul button::before, :root #context-menu ul button::after,
 :root #context-menu ul a::before,

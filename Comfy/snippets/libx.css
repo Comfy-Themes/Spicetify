@@ -5,6 +5,13 @@
     width: min-content !important;
 }
 
+.main-yourLibraryX-listRowEntityImage {
+    border-radius: var(--border-radius) !important;
+}
+
+.Root__nav-bar {
+    overflow: visible !important;
+}
 
 .main-topBar-navLink,
 .x-searchInput-searchInputInput {
