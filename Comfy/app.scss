@@ -105,8 +105,8 @@
   #context-menu {
     overflow: hidden;
 
-    ul {
-      background-color: var(--spice-card);
+    ul:not([aria-labelledby~="device-picker-header"]) {
+      background-color: var(--spice-player);
 
       button,
       a {

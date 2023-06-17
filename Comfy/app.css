@@ -997,22 +997,22 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 :root #context-menu {
   overflow: hidden;
 }
-:root #context-menu ul {
-  background-color: var(--spice-card);
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) {
+  background-color: var(--spice-player);
 }
-:root #context-menu ul button,
-:root #context-menu ul a {
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) button,
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a {
   border-radius: 2px !important;
 }
-:root #context-menu ul button::before, :root #context-menu ul button::after,
-:root #context-menu ul a::before,
-:root #context-menu ul a::after {
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) button::before, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button::after,
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a::before,
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a::after {
   content: none;
 }
-:root #context-menu ul button:not(.main-contextMenu-disabled):focus, :root #context-menu ul button:not(.main-contextMenu-disabled):hover, :root #context-menu ul button[aria-expanded=true],
-:root #context-menu ul a:not(.main-contextMenu-disabled):focus,
-:root #context-menu ul a:not(.main-contextMenu-disabled):hover,
-:root #context-menu ul a[aria-expanded=true] {
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) button:not(.main-contextMenu-disabled):focus, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button:not(.main-contextMenu-disabled):hover, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button[aria-expanded=true],
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a:not(.main-contextMenu-disabled):focus,
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a:not(.main-contextMenu-disabled):hover,
+:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a[aria-expanded=true] {
   background-color: rgba(92, 110, 177, 0.1647058824);
   transition: 150ms background-color;
 }
