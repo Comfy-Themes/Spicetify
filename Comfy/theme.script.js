@@ -232,11 +232,11 @@ async function initComfy() {
             },
             Spicetify.React.createElement(
               "div",
-              { className: "GuwMf98GUBSpCDgf8KRA" },
+              { className: "x-settings-tooltip" },
               Spicetify.React.createElement(
                 "div",
                 {
-                  className: "qBZYab2T7Yc4O5Nh0mjA",
+                  className: "x-settings-tooltipIconWrapper",
                 },
                 Spicetify.React.createElement(
                   "svg",
