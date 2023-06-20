@@ -62,6 +62,3 @@ header.main-topBar-container {
 :root .Root__top-bar header .main-entityHeader-topbarTitle {
     height: 32px;
 }
-.lyrics-lyricsContainer-LyricsContainer {
-  margin-top: -15px !important;
-}
