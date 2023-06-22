@@ -726,9 +726,6 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 :root input:not([style*=background-image]) {
   --border-radius: var(--button-radius) !important;
 }
-:root .encore-base-set {
-  --text-subdued: var(--spice-subtext) ;
-}
 :root .encore-bright-accent-set {
   --background-base: var(--spice-play-button);
   --background-highlight: var(--spice-play-button-active);
