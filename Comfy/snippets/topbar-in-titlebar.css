@@ -12,19 +12,23 @@
   grid-template-rows: auto 1fr auto;
 }
 
+.body-drag-top {
+  height: 48px;
+}
+
 header.main-topBar-container {
   pointer-events: none;
 }
 
-.spotify__container--is-desktop.spotify__os--is-windows .nav-ylx .main-topBar-container {
+.spotify__container--is-desktop.spotify__os--is-windows .main-topBar-container {
   padding-inline: 60px 150px; padding-bottom: 64px;
 } 
-.nav-ylx .main-topBar-container { 
+.main-topBar-container { 
   padding-inline: 60px 0; 
   padding-bottom: 64px; 
 } 
 
-.nav-ylx .main-topBar-topbarContent {
+.main-topBar-topbarContent {
   app-region: drag !important;
 }
 
