@@ -14,6 +14,25 @@
     }
   }
 
+  // Search bar
+  .main-topBar-searchBar {
+    > form input {
+      &::placeholder {
+        color: rgba(var(--spice-rgb-selected-row),.7);
+      }
+      height: 32px;
+      background-color: rgba(var(--spice-rgb-shadow),.7);
+    }
+    > div {
+      span {
+        align-self: end;
+      }
+      button {
+        height: 16px;
+      }
+    }
+  }
+
   .main-entityHeader-topbarTitle {
     padding: 0 0px;
   }

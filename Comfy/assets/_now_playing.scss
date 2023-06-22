@@ -52,13 +52,14 @@
   }
 
   .playback-bar {
-    position: absolute;
+    position: fixed;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-areas:
       "time-left time-right"
       "bar bar";
     bottom: 0;
+    right: 0;
 
     .saber-hilt {
       height: 0;

@@ -7,6 +7,7 @@
 :root {
   --border-radius: 8px;
   --button-radius: 8px;
+  --spice-main-elevated: transparent;
 
   button,
   button span,
@@ -23,6 +24,16 @@
 
   // -- Other --
 
+  // Base Sets
+  .encore-base-set {
+    --text-subdued: var(--spice-subtext)
+  }
+  .encore-bright-accent-set {
+    --background-base: var(--spice-play-button);
+    --background-highlight: var(--spice-play-button-active);
+    --background-press: var(--spice-play-button-active);
+  }
+  
   // Premium Fullscreen Overlay
   .npv-background-image__overlay {
     background: linear-gradient(
@@ -61,13 +72,6 @@
       border: 2px solid rgba(200, 200, 200, 0.275);
       border-radius: 4.5px;
     }
-  }
-
-  // Play Buttons
-  .encore-bright-accent-set {
-    --background-base: var(--spice-play-button);
-    --background-highlight: var(--spice-play-button-active);
-    --background-press: var(--spice-play-button-active);
   }
 
   // Coloured hearts

@@ -298,8 +298,6 @@ async function initComfy() {
     const [additionalFeatures, setAdditionalFeatures] = Spicetify.React.useState(false);
     const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
 
-    const libX = document.querySelector(".nav-ylx");
-
     Spicetify.React.useEffect(() => {
       fetch(
         `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`
@@ -320,22 +318,6 @@ async function initComfy() {
         dangerouslySetInnerHTML: { __html: style },
       }),
       Spicetify.React.createElement(Divider, null),
-      Spicetify.React.createElement(Section, { name: "Support Modules", condition: !!libX }, [
-        {
-          type: "slider",
-          name: "LibX-Snippet",
-          desc: "Library X Support",
-          defaultVal: true,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/libx.css",
-        },
-        {
-          type: "slider",
-          name: "Topbar-Inside-Titlebar-Snippet",
-          desc: "Move Topbar Inside Titlebar",
-          defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css",
-        },
-      ]),
       Spicetify.React.createElement(Section, { name: "Interface" }, [
         {
           type: "input",
@@ -369,6 +351,13 @@ async function initComfy() {
             Spicetify.React.createElement("li", null, "Spotify default: 50px")
           ),
           returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", value + "px"),
+        },
+        {
+          type: "slider",
+          name: "Topbar-Inside-Titlebar-Snippet",
+          desc: "Move Topbar Inside Titlebar",
+          defaultVal: false,
+          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css",
         },
         {
           type: "slider",

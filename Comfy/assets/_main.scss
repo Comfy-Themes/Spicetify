@@ -10,7 +10,6 @@
     background-repeat: no-repeat;
     background-position: center;
     will-change: transform; // Creates a new paint layer for better performance 
-    z-index: -1;
     transition: 300ms background-image ease-in-out;
     filter: blur(4px);
     -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
@@ -22,6 +21,9 @@
     #mainImage {
       background-position: top;
     }
+  }
+  .main-view-container {
+    z-index: 1 !important;
   }
 
   // SVG Filtering - Makes them white instead of green.
@@ -49,7 +51,7 @@
         var(--spice-main) 232px
       ),
       var(--background-noise) !important;
-    top: 338px;
+    top: 345px;
     height: calc(100% - 232px);
   }
 
@@ -123,7 +125,7 @@
   .main-entityHeader-container {
     padding: 32px;
     justify-content: center;
-
+    
     .main-entityHeader-backgroundColor {
       background: none !important;
     }
@@ -166,10 +168,8 @@
       padding: 8px 16px 16px 16px;// Adjust padding
 
       .main-actionBar-ActionBarRow {
-        margin-bottom: -8px;
-        margin-left: 8px;
-        margin-right: 22px;
-
+        margin-left: calc(-6px + (var(--content-spacing) - 16px));
+        
         .main-playButton-PlayButton {
           margin-left: 24px;
           margin-top: -24px;
@@ -199,6 +199,7 @@
 
  // Tracklist Grid Styling
 
+ 
  // Profile, Local Files, Queue, Playlist Radio Page, and more
   .profile-userOverview-container,
   div[class="uCHqQ74vvHOnctGg0X0B"],
@@ -209,6 +210,12 @@
   section[data-testid="playlist-page"],
   section[data-testid="enhanced-page"] {
     position: sticky; // Make the tracklist rows sticky
+
+    .playlist-playlist-playlistImageContainer {
+      height: 192px;
+      min-width: 192px;
+      width: 192px;
+    }  
 
     .playlist-playlist-playlistContent,
     .dTKw7B8X1ybw7SHebMH3 {
