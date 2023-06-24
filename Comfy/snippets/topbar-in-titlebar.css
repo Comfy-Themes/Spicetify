@@ -21,11 +21,12 @@ header.main-topBar-container {
 }
 
 .spotify__container--is-desktop.spotify__os--is-windows .main-topBar-container {
-  padding-inline: 60px 150px; padding-bottom: 64px;
+  padding-inline: 60px 150px !important; 
+  padding-bottom: 64px !important; 
 } 
 .main-topBar-container { 
-  padding-inline: 60px 0; 
-  padding-bottom: 64px; 
+  padding-inline: 0 0 !important; 
+  padding-bottom: 64px !important; 
 } 
 
 .main-topBar-topbarContent {
