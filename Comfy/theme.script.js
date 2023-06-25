@@ -202,13 +202,15 @@ async function initComfy() {
             .then((val) => {
               setConditionState(val);
             })
-            .catch((e) => setConditionState(false));
+            .catch(() => setConditionState(false));
         } else setConditionState(condition);
       }, [condition]);
 
       Spicetify.React.useEffect(() => {
-        Spicetify.LocalStorage.set(name, `"${value}"`);
-        returnFunc(value, name);
+        // Cleanup
+        const title = value === "[object Promise]" ? "" : value;
+        Spicetify.LocalStorage.set(name, `"${title}"`);
+        returnFunc(title, name);
         console.log(name, getConfig(name));
       }, [value]);
 
