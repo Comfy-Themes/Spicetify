@@ -186,17 +186,14 @@ async function initComfy() {
 
   const Input = Spicetify.React.memo(
     ({ inputType, name, desc, defaultVal, tippyMessage, condition = true, returnFunc = (...args) => {} }) => {
-      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
+      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
       const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
       const [conditionState, setConditionState] = Spicetify.React.useState(condition);
 
       Spicetify.React.useEffect(() => {
         if (isPromise(defaultVal)) {
-          defaultVal.then((val) => {
-            if (getConfig(name) === null) setValue(val);
-            setDefaultState(val);
-          });
-        } else if (getConfig(name) === null) setValue(defaultVal);
+          defaultVal.then((val) => setDefaultState(val));
+        }
       }, [defaultVal]);
 
       Spicetify.React.useEffect(() => {
