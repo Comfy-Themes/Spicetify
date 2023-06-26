@@ -349,7 +349,7 @@ async function initComfy() {
             Spicetify.React.createElement("li", null, "Comfy default: 8px"),
             Spicetify.React.createElement("li", null, "Spotify default: 50px")
           ),
-          returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", value + "px"),
+          returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px"),
         },
         {
           type: "slider",
