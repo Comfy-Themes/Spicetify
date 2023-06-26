@@ -207,8 +207,9 @@ async function initComfy() {
       }, [condition]);
 
       Spicetify.React.useEffect(() => {
-        // Cleanup
+        // Account for falsely stringified value in Local Storage, can be removed at a later time in the future.
         const title = value === "[object Promise]" ? "" : value;
+
         Spicetify.LocalStorage.set(name, `"${title}"`);
         returnFunc(title, name);
         console.log(name, getConfig(name));
