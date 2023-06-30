@@ -186,17 +186,14 @@ async function initComfy() {
 
   const Input = Spicetify.React.memo(
     ({ inputType, name, desc, defaultVal, tippyMessage, condition = true, returnFunc = (...args) => {} }) => {
-      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
+      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
       const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
       const [conditionState, setConditionState] = Spicetify.React.useState(condition);
 
       Spicetify.React.useEffect(() => {
         if (isPromise(defaultVal)) {
-          defaultVal.then((val) => {
-            if (getConfig(name) === null) setValue(val);
-            setDefaultState(val);
-          });
-        } else if (getConfig(name) === null) setValue(defaultVal);
+          defaultVal.then((val) => setDefaultState(val));
+        }
       }, [defaultVal]);
 
       Spicetify.React.useEffect(() => {
@@ -205,13 +202,16 @@ async function initComfy() {
             .then((val) => {
               setConditionState(val);
             })
-            .catch((e) => setConditionState(false));
+            .catch(() => setConditionState(false));
         } else setConditionState(condition);
       }, [condition]);
 
       Spicetify.React.useEffect(() => {
-        Spicetify.LocalStorage.set(name, `"${value}"`);
-        returnFunc(value, name);
+        // Account for falsely stringified value in Local Storage, can be removed at a later time in the future.
+        const title = value === "[object Promise]" ? "" : value;
+
+        Spicetify.LocalStorage.set(name, `"${title}"`);
+        returnFunc(title, name);
         console.log(name, getConfig(name));
       }, [value]);
 
@@ -350,7 +350,7 @@ async function initComfy() {
             Spicetify.React.createElement("li", null, "Comfy default: 8px"),
             Spicetify.React.createElement("li", null, "Spotify default: 50px")
           ),
-          returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", value + "px"),
+          returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px"),
         },
         {
           type: "slider",
