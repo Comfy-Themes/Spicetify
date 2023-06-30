@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root .Root__main-view #mainImage {
   position: absolute;
   width: 100%;
@@ -22,293 +21,276 @@
 :root .Root__main-view .main-view-container {
   z-index: 1 !important;
 }
-:root .Root__main-view .main-trackList-playingIcon,
-:root .Root__main-view .x-settings-equalizerPanelCanvas {
+:root .Root__main-view .main-view-container .lyrics-lyricsContainer-Provider {
+  font-size: 0;
+}
+:root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsBackground {
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+:root .Root__main-view .main-view-container .main-trackList-playingIcon,
+:root .Root__main-view .main-view-container .x-settings-equalizerPanelCanvas {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%);
 }
-:root .Root__main-view main[aria-label="Spotify – Your Library"] .main-gridContainer-gridContainer {
-  padding-bottom: var(--grid-gap) !important;
-}
-:root .Root__main-view .artist-artistOverview-artistOverviewContent,
-:root .Root__main-view .main-actionBarBackground-background {
+:root .Root__main-view .main-view-container .artist-artistOverview-artistOverviewContent,
+:root .Root__main-view .main-view-container .main-actionBarBackground-background {
   background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
-  top: 345px;
   height: calc(100% - 232px);
 }
-:root .Root__main-view section[data-test-uri*=artist] .main-actionBarBackground-background {
+:root .Root__main-view .main-view-container .artist-artistOverview-artistOverviewContent .main-actionBarBackground-background {
   background-image: none !important;
   background-color: unset !important;
 }
-:root .Root__main-view #main > div > div.Root__top-container > div.Root__top-bar > header > div.main-topBar-topbarContentWrapper > div > div > button > span > span {
-  fill: var(--spice-selected-row) !important;
-}
-:root .Root__main-view input:checked ~ .x-toggle-indicatorWrapper {
+:root .Root__main-view .main-view-container input:checked ~ .x-toggle-indicatorWrapper {
   background-color: var(--spice-radio-btn-active);
 }
-:root .Root__main-view .main-card-card {
+:root .Root__main-view .main-view-container .main-card-card {
   border-radius: var(--border-radius);
   padding: 0;
   overflow: hidden;
 }
-:root .Root__main-view .main-card-card .main-card-PlayButtonContainer {
+:root .Root__main-view .main-view-container .main-card-card .main-card-PlayButtonContainer {
   right: 12px !important;
 }
-:root .Root__main-view .main-card-card .main-card-imageContainer {
+:root .Root__main-view .main-view-container .main-card-card .main-card-imageContainer {
   margin-bottom: -4px;
 }
-:root .Root__main-view .main-card-card .main-card-imageContainer .main-cardImage-circular,
-:root .Root__main-view .main-card-card .main-card-imageContainer img {
+:root .Root__main-view .main-view-container .main-card-card .main-card-imageContainer .main-cardImage-circular,
+:root .Root__main-view .main-view-container .main-card-card .main-card-imageContainer img {
   border-radius: 0 !important;
 }
-:root .Root__main-view .main-card-card .main-card-imageContainer .main-cardImage-imageWrapper {
+:root .Root__main-view .main-view-container .main-card-card .main-card-imageContainer .main-cardImage-imageWrapper {
   box-shadow: none !important;
 }
-:root .Root__main-view .main-card-card .main-card-cardMetadata {
+:root .Root__main-view .main-view-container .main-card-card .main-card-cardMetadata {
   padding: 16px;
 }
-:root .Root__main-view .view-homeShortcutsGrid-shortcut {
-  border-radius: var(--border-radius);
-}
-:root .Root__main-view .view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-imageWrapper {
-  border-radius: calc(var(--border-radius) + 15px);
-}
-:root .Root__main-view .main-entityHeader-background {
-  height: 83vh;
-}
-:root .Root__main-view .main-entityHeader-background.main-entityHeader-overlay {
-  --bgColor: unset !important;
-}
-:root .Root__main-view .main-home-homeHeader {
+:root .Root__main-view .main-view-container .main-home-homeHeader {
   display: none;
 }
-:root .Root__main-view .main-entityHeader-withBackgroundImage {
+:root .Root__main-view .main-view-container .view-homeShortcutsGrid-shortcut {
+  border-radius: var(--border-radius);
+}
+:root .Root__main-view .main-view-container .view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-imageWrapper {
+  border-radius: calc(var(--border-radius) + 15px);
+}
+:root .Root__main-view .main-view-container .main-entityHeader-background {
+  height: 83vh;
+}
+:root .Root__main-view .main-view-container .main-entityHeader-background.main-entityHeader-overlay {
+  --bgColor: unset !important;
+}
+:root .Root__main-view .main-view-container .main-entityHeader-withBackgroundImage {
   height: 30vh !important;
 }
-:root .Root__main-view .main-entityHeader-container {
+:root .Root__main-view .main-view-container .main-entityHeader-container {
   padding: 32px;
   justify-content: center;
 }
-:root .Root__main-view .main-entityHeader-container .main-entityHeader-backgroundColor {
+:root .Root__main-view .main-view-container .main-entityHeader-container .main-entityHeader-backgroundColor {
   background: none !important;
 }
-:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) {
+:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) {
   align-self: center;
   flex-shrink: 0;
 }
-:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText {
+:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText {
   flex: unset;
   justify-content: center;
 }
-:root .Root__main-view .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
+:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
   font-size: 50px !important;
 }
-:root .Root__main-view .profile-userOverview-container .os-host-overflow,
-:root .Root__main-view .profile-userOverview-container .os-padding,
-:root .Root__main-view .profile-userOverview-container .os-viewport,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-host-overflow,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-padding,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .os-viewport,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-host-overflow,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-padding,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .os-viewport,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-host-overflow,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-padding,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .os-viewport,
-:root .Root__main-view section[data-test-uri*=artist] .os-host-overflow,
-:root .Root__main-view section[data-test-uri*=artist] .os-padding,
-:root .Root__main-view section[data-test-uri*=artist] .os-viewport,
-:root .Root__main-view section[data-testid=album-page] .os-host-overflow,
-:root .Root__main-view section[data-testid=album-page] .os-padding,
-:root .Root__main-view section[data-testid=album-page] .os-viewport,
-:root .Root__main-view section[data-testid=playlist-page] .os-host-overflow,
-:root .Root__main-view section[data-testid=playlist-page] .os-padding,
-:root .Root__main-view section[data-testid=playlist-page] .os-viewport,
-:root .Root__main-view section[data-testid=enhanced-page] .os-host-overflow,
-:root .Root__main-view section[data-testid=enhanced-page] .os-padding,
-:root .Root__main-view section[data-testid=enhanced-page] .os-viewport,
-:root .Root__main-view section[data-testid=your-episodes-page] .os-host-overflow,
-:root .Root__main-view section[data-testid=your-episodes-page] .os-padding,
-:root .Root__main-view section[data-testid=your-episodes-page] .os-viewport,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .os-host-overflow,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .os-padding,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .os-viewport {
-  overflow: visible !important;
-}
-:root .Root__main-view .profile-userOverview-container .main-actionBar-ActionBar,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar,
-:root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar,
-:root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar,
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar,
-:root .Root__main-view section[data-testid=enhanced-page] .main-actionBar-ActionBar,
-:root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar {
-  padding: 8px 16px 16px 16px;
-}
-:root .Root__main-view .profile-userOverview-container .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[data-testid=enhanced-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar .main-actionBar-ActionBarRow {
-  margin-left: calc(-6px + var(--content-spacing) - 16px);
-}
-:root .Root__main-view .profile-userOverview-container .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[class=mmCZ5VczybT9VqKB5wFU] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[data-test-uri*=artist] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[data-testid=album-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[data-testid=playlist-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[data-testid=enhanced-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[data-testid=your-episodes-page] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton {
-  margin-left: 24px;
-  margin-top: -24px;
-}
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] .main-actionBar-ActionBar {
-  padding-top: 16px;
-}
-:root .Root__main-view section[class=folder-folderPage-sectionWrapper] > div:nth-child(4) {
-  padding-top: 18px;
-  padding-left: 33px;
-}
-@media (min-width: 850px) {
-  :root .Root__main-view section[class=folder-folderPage-sectionWrapper] > div:nth-child(4) {
-    padding-left: 47px;
-  }
-}
-:root .Root__main-view section[data-testid=your-episodes-page] .main-actionBarBackground-background {
-  height: calc(100vh - 494px);
-}
-:root .Root__main-view .profile-userOverview-container,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B],
-:root .Root__main-view .queue-queuePage-queuePage,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo],
-:root .Root__main-view section[data-test-uri*=artist] > div,
-:root .Root__main-view section[data-testid=album-page],
-:root .Root__main-view section[data-testid=playlist-page],
-:root .Root__main-view section[data-testid=enhanced-page] {
+:root .Root__main-view .main-view-container .profile-userOverview-container,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo,
+:root .Root__main-view .main-view-container section[data-testid] {
   position: sticky;
 }
-:root .Root__main-view .profile-userOverview-container .playlist-playlist-playlistImageContainer,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .playlist-playlist-playlistImageContainer,
-:root .Root__main-view .queue-queuePage-queuePage .playlist-playlist-playlistImageContainer,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .playlist-playlist-playlistImageContainer,
-:root .Root__main-view section[data-test-uri*=artist] > div .playlist-playlist-playlistImageContainer,
-:root .Root__main-view section[data-testid=album-page] .playlist-playlist-playlistImageContainer,
-:root .Root__main-view section[data-testid=playlist-page] .playlist-playlist-playlistImageContainer,
-:root .Root__main-view section[data-testid=enhanced-page] .playlist-playlist-playlistImageContainer {
+:root .Root__main-view .main-view-container .profile-userOverview-container .os-host-overflow,
+:root .Root__main-view .main-view-container .profile-userOverview-container .os-padding,
+:root .Root__main-view .main-view-container .profile-userOverview-container .os-viewport,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .os-host-overflow,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .os-padding,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .os-viewport,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .os-host-overflow,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .os-padding,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .os-viewport,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .os-host-overflow,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .os-padding,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .os-viewport,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .os-host-overflow,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .os-padding,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .os-viewport,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .os-host-overflow,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .os-padding,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .os-viewport,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .os-host-overflow,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .os-padding,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .os-viewport,
+:root .Root__main-view .main-view-container section[data-testid] .os-host-overflow,
+:root .Root__main-view .main-view-container section[data-testid] .os-padding,
+:root .Root__main-view .main-view-container section[data-testid] .os-viewport {
+  overflow: visible !important;
+}
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-actionBar-ActionBar,
+:root .Root__main-view .main-view-container section[data-testid] .main-actionBar-ActionBar {
+  padding: 8px 16px 16px 16px;
+}
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton,
+:root .Root__main-view .main-view-container section[data-testid] .main-actionBar-ActionBar .main-actionBar-ActionBarRow .main-playButton-PlayButton {
+  margin-left: var(--content-spacing);
+  margin-top: -24px;
+}
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md],
+:root .Root__main-view .main-view-container section[data-testid] .main-actionBar-ActionBar .main-actionBar-ActionBarRow [class*=Button-md] {
+  min-block-size: 32px;
+  padding-block: 0;
+}
+:root .Root__main-view .main-view-container .profile-userOverview-container .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .playlist-playlist-playlistImageContainer,
+:root .Root__main-view .main-view-container section[data-testid] .playlist-playlist-playlistImageContainer {
   height: 192px;
   min-width: 192px;
   width: 192px;
 }
-:root .Root__main-view .profile-userOverview-container .playlist-playlist-playlistContent,
-:root .Root__main-view .profile-userOverview-container .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .playlist-playlist-playlistContent,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view .queue-queuePage-queuePage .playlist-playlist-playlistContent,
-:root .Root__main-view .queue-queuePage-queuePage .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .playlist-playlist-playlistContent,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view section[data-test-uri*=artist] > div .playlist-playlist-playlistContent,
-:root .Root__main-view section[data-test-uri*=artist] > div .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view section[data-testid=album-page] .playlist-playlist-playlistContent,
-:root .Root__main-view section[data-testid=album-page] .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view section[data-testid=playlist-page] .playlist-playlist-playlistContent,
-:root .Root__main-view section[data-testid=playlist-page] .dTKw7B8X1ybw7SHebMH3,
-:root .Root__main-view section[data-testid=enhanced-page] .playlist-playlist-playlistContent,
-:root .Root__main-view section[data-testid=enhanced-page] .dTKw7B8X1ybw7SHebMH3 {
+:root .Root__main-view .main-view-container .profile-userOverview-container .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .profile-userOverview-container .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .dTKw7B8X1ybw7SHebMH3,
+:root .Root__main-view .main-view-container section[data-testid] .playlist-playlist-playlistContent,
+:root .Root__main-view .main-view-container section[data-testid] .dTKw7B8X1ybw7SHebMH3 {
   background: none;
 }
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
   padding-left: 18px;
   transition: 200ms background-color;
 }
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid .main-type-ballad,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid .main-type-mesto,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid .main-type-ballad {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRowGrid .main-type-ballad,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRowGrid .main-type-mesto,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
 }
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid:hover,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid:hover {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRowGrid:hover,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRowGrid:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListRowGrid.main-trackList-selected,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListRowGrid.main-trackList-selected {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRowGrid.main-trackList-selected,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRowGrid.main-trackList-selected {
   background-color: rgba(255, 255, 255, 0.1);
 }
-:root .Root__main-view .profile-userOverview-container .main-trackList-trackListHeader,
-:root .Root__main-view div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListHeader,
-:root .Root__main-view .queue-queuePage-queuePage .main-trackList-trackListHeader,
-:root .Root__main-view section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListHeader,
-:root .Root__main-view section[data-test-uri*=artist] > div .main-trackList-trackListHeader,
-:root .Root__main-view section[data-testid=album-page] .main-trackList-trackListHeader,
-:root .Root__main-view section[data-testid=playlist-page] .main-trackList-trackListHeader,
-:root .Root__main-view section[data-testid=enhanced-page] .main-trackList-trackListHeader {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListHeader,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListHeader {
   display: none;
 }
-:root .Root__main-view section[data-testid] {
-  position: relative;
+:root .Root__main-view .main-view-container .profile-userOverview-container button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section[data-testid] button.main-trackList-rowImagePlayButton {
+  color: black;
 }
-
-.profile-userOverview-container .main-trackList-trackListRow,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow,
-.queue-queuePage-queuePage .main-trackList-trackListRow,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow,
-section[data-testid=playlist-page] .main-trackList-trackListRow,
-section[data-testid=enhanced-page] .main-trackList-trackListRow,
-.artist-artistOverview-overview .main-trackList-trackListRow {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-.profile-userOverview-container .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-.queue-queuePage-queuePage .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-section[data-testid=playlist-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-section[data-testid=enhanced-page] .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-.artist-artistOverview-overview .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -318,103 +300,102 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow > .main-trackLis
   justify-content: center;
   text-indent: -1000px;
 }
-.profile-userOverview-container .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-.queue-queuePage-queuePage .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-section[data-testid=playlist-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-section[data-testid=enhanced-page] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-.artist-artistOverview-overview .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
-.profile-userOverview-container button.main-trackList-rowImagePlayButton,
-div[class=uCHqQ74vvHOnctGg0X0B] button.main-trackList-rowImagePlayButton,
-.queue-queuePage-queuePage button.main-trackList-rowImagePlayButton,
-.Etjqlb2I2wFLmS0idcnV button.main-trackList-rowImagePlayButton,
-section[class=NBwG2a4Dmwo6g_YrRdpo] button.main-trackList-rowImagePlayButton,
-section[data-testid=playlist-page] button.main-trackList-rowImagePlayButton,
-section[data-testid=enhanced-page] button.main-trackList-rowImagePlayButton,
-.artist-artistOverview-overview button.main-trackList-rowImagePlayButton {
-  color: black;
-}
-.profile-userOverview-container .main-trackList-rowImageFallback,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-rowImageFallback,
-.queue-queuePage-queuePage .main-trackList-rowImageFallback,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-rowImageFallback,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-rowImageFallback,
-section[data-testid=playlist-page] .main-trackList-rowImageFallback,
-section[data-testid=enhanced-page] .main-trackList-rowImageFallback,
-.artist-artistOverview-overview .main-trackList-rowImageFallback {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-rowImageFallback {
   border-radius: var(--border-radius);
 }
-.profile-userOverview-container .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, .profile-userOverview-container .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-.queue-queuePage-queuePage .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-.queue-queuePage-queuePage .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-section[data-testid=playlist-page] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-section[data-testid=playlist-page] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-section[data-testid=enhanced-page] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-section[data-testid=enhanced-page] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-.artist-artistOverview-overview .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-.artist-artistOverview-overview .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, :root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
-.profile-userOverview-container .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, .profile-userOverview-container .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-.queue-queuePage-queuePage .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-.queue-queuePage-queuePage .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-section[data-testid=playlist-page] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-section[data-testid=playlist-page] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-section[data-testid=enhanced-page] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-section[data-testid=enhanced-page] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-.artist-artistOverview-overview .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-.artist-artistOverview-overview .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, :root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
   opacity: 1;
 }
-.profile-userOverview-container .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-.queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
-.artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle {
   color: var(--spice-text);
   text-shadow: 0px 0px 6px var(--spice-text);
   -webkit-text-stroke: thin;
 }
-.profile-userOverview-container .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-.queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
-.artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionIndex {
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
-.profile-userOverview-container .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-div[class=uCHqQ74vvHOnctGg0X0B] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-.queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-.Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-section[class=NBwG2a4Dmwo6g_YrRdpo] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-section[data-testid=playlist-page] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
-.artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton {
+:root .Root__main-view .main-view-container .profile-userOverview-container .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .artist-artistOverview-overview .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .mmCZ5VczybT9VqKB5wFU .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .Etjqlb2I2wFLmS0idcnV .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container .NBwG2a4Dmwo6g_YrRdpo .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section[data-testid] .main-trackList-trackListRow.main-trackList-active button.main-trackList-rowImagePlayButton {
   opacity: 1;
+}
+:root .Root__main-view .main-view-container section[data-testid=your-episodes-page] .main-actionBarBackground-background {
+  height: calc(100vh - 494px) !important;
+}
+:root .Root__main-view .main-view-container section[data-testid=episode] .main-actionBar-ActionBarRow {
+  margin-top: 0 !important;
+}
+:root .Root__main-view .main-view-container section[data-testid=episode] .main-actionBar-ActionBarRow:nth-child(1) {
+  display: none;
 }
 
 :root .Root__nav-bar .main-rootlist-wrapper div:nth-child(2) > li .main-yourLibraryX-listRowEntityImage {
@@ -448,17 +429,23 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-95px);
 }
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded .main-coverSlotCollapsed-container[aria-hidden=true] {
+  opacity: 0;
+}
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
   top: -20px;
-}
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container[aria-hidden=true] {
-  opacity: 0;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
   width: 84px !important;
   height: 84px !important;
   border-radius: var(--border-radius);
   overflow: hidden;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-extraControls * svg {
+  color: rgba(var(--spice-rgb-selected-row), 0.7) !important;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-extraControls button:hover svg {
+  color: var(--spice-text) !important;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-connectBar-connectBar {
   position: absolute;
@@ -551,6 +538,13 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   display: flex;
   width: 100%;
 }
+.main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip div {
+  color: var(--spice-subtext);
+}
+.main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:focus-within div, .main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:hover div {
+  color: var(--spice-text);
+  cursor: help;
+}
 .main-buddyFeed-content .comfy-settings .setting-row .col.action {
   float: right;
   text-align: right;
@@ -622,28 +616,7 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
   border-width: 0;
   background-color: var(--spice-button-disabled);
 }
-.main-buddyFeed-content .comfy-settings .nW1RKQOkzcJcX6aDCZB4 {
-  fill: var(--spice-subtext);
-}
-.main-buddyFeed-content .comfy-settings .qBZYab2T7Yc4O5Nh0mjA:focus-within .nW1RKQOkzcJcX6aDCZB4,
-.main-buddyFeed-content .comfy-settings .qBZYab2T7Yc4O5Nh0mjA:hover .nW1RKQOkzcJcX6aDCZB4,
-.main-buddyFeed-content .comfy-settings .GuwMf98GUBSpCDgf8KRA {
-  fill: var(--spice-text);
-  cursor: help;
-}
 
-:root .Root__top-bar header button {
-  border-radius: var(--border-radius);
-}
-:root .Root__top-bar header button[title="Popup Lyrics"] {
-  background-image: url("https://i.imgur.com/91fuU3P.png");
-  background-size: 60%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-:root .Root__top-bar header button[title="Popup Lyrics"] svg {
-  display: none;
-}
 :root .Root__top-bar header .main-topBar-searchBar > form input {
   height: 32px;
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
@@ -772,16 +745,6 @@ section[data-testid=enhanced-page] .main-trackList-trackListRow.main-trackList-a
 :root .control-button-heart *:not([fill=none]),
 :root #_R_G *:not([fill=none]) {
   fill: var(--spice-heart) !important;
-}
-:root .lyrics-lyricsContainer-Provider {
-  font-size: 0;
-}
-:root .lyrics-lyricsContainer-LyricsBackground {
-  z-index: -1;
-  background-repeat: no-repeat;
-  background-size: cover;
-  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-  mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 :root #context-menu {
   overflow: hidden;

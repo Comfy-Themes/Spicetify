@@ -11,12 +11,13 @@
       .main-nowPlayingWidget-nowPlaying {
         &.main-nowPlayingWidget-coverExpanded {
           transform: translateX(-95px);
+
+          .main-coverSlotCollapsed-container[aria-hidden="true"] {
+            opacity: 0;
+          }
         }
 
         .main-coverSlotCollapsed-container {
-          &[aria-hidden="true"] {
-            opacity: 0;
-          }
           top: -20px;
 
           .cover-art {
