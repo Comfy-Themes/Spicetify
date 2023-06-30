@@ -81,3 +81,12 @@ Go into your theme folder and open either :
 `color.ini` for the colors
 
 `user.css` to modify the code
+
+### ♥ Donation Guide
+---
+
+Thinking of donating? Please consider what you value most when deciding who to donate to:
+
+- Theme Maintenance - OhItsTom
+- Extension Maintenance - Kyrie (pqnanh)
+- Theme Design - Nyria
