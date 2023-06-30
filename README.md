@@ -10,8 +10,8 @@
       </div>
       <hr>
       <h4> ✅ Supported</h4>
-        <li>🔥 Spicetify : <code>2.20.1</code></li>
-        <li>🟢 Spotify : <code>1.2.14</code></li>
+        <li>🔥 Spicetify : <code><=2.20.1</code></li>
+        <li>🟢 Spotify : <code><=1.2.13</code></li>
       <hr>
     </td>
   </tr>
@@ -19,33 +19,16 @@
 
 
 
-
-### 📥 Automatic Installation
-
----
-
-Windows -> **PowerShell**:
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.ps1 | iex
-```
-
-macOS and Linux -> **Bash**:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | sh
-```
-
 ### 📥 Manual Installation
 
 ---
 
 ### Downloading Comfy.
 
-CD into your `Themes` folder in `.spicetify` and run :
+CD into your `Themes` folder in `spicetify` and run :
 
 ```sh
-git clone https://github.com/Comfy-Themes/Spicetify
+git clone -b legacy https://github.com/Comfy-Themes/Spicetify
 ```
 
 Rename the folder to `Comfy` and run these commands to apply :
@@ -61,16 +44,7 @@ spicetify apply
 
 ---
 
-The theme automatically updates for users using the version of Spicetify equals or greater than `2.8.2`, however, for the users that don't want to update Spicetify to the newest version:
-
-1. Go [here](https://comfy-themes.github.io/Spicetify/Comfy/theme.script.js)
-2. Copy the whole code (sorry for the flashbang)
-3. Go into the Spicetify/themes/Comfy folder.
-4. Open the `theme.js` file, paste the code and **save it**
-5. Afterwards, in a terminal, run `spicetify apply`
-6. Enjoy !
-
-For the users that don't want to update Spicetify to the newest version, do the same with [this](https://comfy-themes.github.io/Spicetify/Comfy/app.css) and paste it in the `user.css` replacing the `@import`.
+This version of the theme only works with the old spotify sidebar, this branch will not receive updates or accept PRs.
 
 ### 🖌️ Customization
 
