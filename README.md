@@ -10,7 +10,7 @@
       </div>
       <hr>
       <h4> ✅ Supported</h4>
-        <li>🔥 Spicetify : <code>2.20.1</code></li>
+        <li>🔥 Spicetify : <code>2.20.3</code></li>
         <li>🟢 Spotify : <code>1.2.14</code></li>
       <hr>
     </td>
@@ -87,6 +87,6 @@ Go into your theme folder and open either :
 
 Thinking of donating? Please consider what you value most when deciding who to donate to:
 
-- Theme Maintenance - OhItsTom
-- Extension Maintenance - Kyrie (pqnanh)
-- Theme Design - Nyria
+- Theme Maintenance - [OhItsTom](https://ko-fi.com/ohitstom)
+- Extension Maintenance - [Kyrie25](http://paypal.me/pqnanh)
+- Theme Design - [Nyria](https://ko-fi.com/nyria)
