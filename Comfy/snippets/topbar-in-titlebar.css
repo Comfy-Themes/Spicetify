@@ -58,6 +58,7 @@ header.main-topBar-container {
     margin-top: -15px !important;
 }
 
+.queue-queuePage-queuePage,
 .search-searchCategory-SearchCategory, 
 .artist-artistDiscography-topBar {
   margin-top: 0 !important;

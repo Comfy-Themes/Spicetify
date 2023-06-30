@@ -27,6 +27,14 @@
           }
         }
       }
+
+      // Miscolored right side button svgs
+      .main-nowPlayingBar-extraControls * svg {
+        color: rgba(var(--spice-rgb-selected-row),.7) !important;
+      }
+      .main-nowPlayingBar-extraControls button:hover svg {
+        color: var(--spice-text) !important;
+      }
     }
 
     .main-connectBar-connectBar {

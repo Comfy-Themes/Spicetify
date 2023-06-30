@@ -7,8 +7,8 @@
         }
         > div {
           &:active::after {
-            background-color: var(--spice-highlight-elevated);  
-            border-radius: 20px !Important;
+            background-color: var(--spice-highlight-elevated);
+            border-radius: 20px !important;
           }
           .x-entityImage-imageContainer {
             box-shadow: none !important;

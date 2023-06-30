@@ -1,27 +1,12 @@
 :root .Root__top-bar header {
-  button {
-    border-radius: var(--border-radius);
-
-    &[title="Popup Lyrics"] {
-      background-image: url("https://i.imgur.com/91fuU3P.png");
-      background-size: 60%;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      svg {
-        display: none;
-      }
-    }
-  }
-
   // Search bar
   .main-topBar-searchBar {
     > form input {
       &::placeholder {
-        color: rgba(var(--spice-rgb-selected-row),.7);
+        color: rgba(var(--spice-rgb-selected-row), 0.7);
       }
       height: 32px;
-      background-color: rgba(var(--spice-rgb-shadow),.7);
+      background-color: rgba(var(--spice-rgb-shadow), 0.7);
     }
     > div {
       span {
@@ -36,8 +21,8 @@
   .main-entityHeader-topbarTitle {
     padding: 0 0px;
   }
-  .main-topBar-historyButtons>button:hover {
-      transform: scale(1.1);
+  .main-topBar-historyButtons > button:hover {
+    transform: scale(1.1);
   }
   .main-playButton-PlayButton {
     display: none !important;

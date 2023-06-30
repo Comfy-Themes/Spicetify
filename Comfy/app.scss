@@ -5,6 +5,7 @@
 @forward "assets/top_bar";
 
 :root {
+  // Variables
   --border-radius: 8px;
   --button-radius: 8px;
   --spice-main-elevated: transparent;
@@ -22,15 +23,14 @@
     --border-radius: var(--button-radius) !important;
   }
 
-  // -- Other --
-
   // Base Sets
   .encore-bright-accent-set {
     --background-base: var(--spice-play-button);
     --background-highlight: var(--spice-play-button-active);
     --background-press: var(--spice-play-button-active);
   }
-  
+
+
   // Premium Fullscreen Overlay
   .npv-background-image__overlay {
     background: linear-gradient(
@@ -91,18 +91,7 @@
     }
   }
 
-  // Lyrics plus
-  .lyrics-lyricsContainer-Provider {
-    font-size: 0;
-  }
-  .lyrics-lyricsContainer-LyricsBackground {
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-  }
-
+  // Menus
   #context-menu {
     overflow: hidden;
 
