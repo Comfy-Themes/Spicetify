@@ -17,6 +17,9 @@
   </tr>
 </table>
 
+### Note
+
+**This branch mainly exists for users who would like to use a version of spotify that still supports the use of the old sidebar**
 
 
 ### 📥 Manual Installation
