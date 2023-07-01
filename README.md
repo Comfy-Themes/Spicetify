@@ -10,7 +10,7 @@
       </div>
       <hr>
       <h4> ✅ Supported</h4>
-        <li>🔥 Spicetify : <code>2.20.1</code></li>
+        <li>🔥 Spicetify : <code>2.20.3</code></li>
         <li>🟢 Spotify : <code>1.2.14</code></li>
       <hr>
     </td>
@@ -81,3 +81,12 @@ Go into your theme folder and open either :
 `color.ini` for the colors
 
 `user.css` to modify the code
+
+### ♥ Donation Guide
+---
+
+Thinking of donating? Please consider what you value most when deciding who to donate to:
+
+- Theme Maintenance - [OhItsTom](https://ko-fi.com/ohitstom)
+- Extension Maintenance - [kyrie25](https://ko-fi.com/kyrie25)
+- Theme Design - [Nyria](https://ko-fi.com/nyria)
