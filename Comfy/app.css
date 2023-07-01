@@ -21,7 +21,7 @@
 :root .Root__main-view .main-view-container {
   z-index: 1 !important;
 }
-:root .Root__main-view .main-view-container main section:not([data-test-uri^="spotify:artist:"]) {
+:root .Root__main-view .main-view-container main {
   position: sticky;
 }
 :root .Root__main-view .main-view-container main .os-host-overflow,
@@ -115,12 +115,12 @@
 :root .Root__main-view .main-view-container .main-trackList-trackListRowGrid.main-trackList-selected {
   background-color: rgba(255, 255, 255, 0.1);
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow > .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
   position: absolute;
   z-index: 1000;
   top: 8px;
@@ -130,39 +130,39 @@
   justify-content: center;
   text-indent: -1000px;
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackList[aria-colcount="6"] .main-trackList-trackListRow {
   grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-rowImageFallback,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-rowImageFallback {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-rowImageFallback,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-rowImageFallback {
   border-radius: var(--border-radius);
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex, :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:hover .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:focus-within .main-trackList-rowSectionIndex {
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton, :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:hover button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
   opacity: 1;
   color: black;
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-active .main-trackList-rowTitle,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-active .main-trackList-rowTitle {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active .main-trackList-rowTitle,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active .main-trackList-rowTitle {
   color: var(--spice-text);
   text-shadow: 0px 0px 6px var(--spice-text);
   -webkit-text-stroke: thin;
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-active .main-trackList-rowSectionIndex,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-active .main-trackList-rowSectionIndex {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active .main-trackList-rowSectionIndex,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active .main-trackList-rowSectionIndex {
   background: rgba(var(--spice-rgb-play-button), 0.5);
   border-radius: var(--border-radius);
 }
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-active button.main-trackList-rowImagePlayButton,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .main-trackList-active button.main-trackList-rowImagePlayButton {
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active button.main-trackList-rowImagePlayButton,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active button.main-trackList-rowImagePlayButton {
   opacity: 1;
   color: black;
 }
@@ -178,12 +178,18 @@
 :root .Root__main-view .main-view-container .lyrics-lyricsContainer-Provider {
   font-size: 0;
 }
-:root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsBackground {
+:root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer {
+  position: fixed !important;
+}
+:root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer .lyrics-lyricsContainer-LyricsBackground {
   z-index: -1;
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+:root .Root__main-view .main-view-container .artist-artistOverview-artistOverviewContent {
+  position: relative !important;
 }
 :root .Root__main-view .main-view-container .artist-artistOverview-artistOverviewContent .main-actionBarBackground-background {
   background-image: none !important;

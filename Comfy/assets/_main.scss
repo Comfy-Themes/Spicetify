@@ -27,9 +27,7 @@
 
     // Main Page Tweaks
     main {
-      section:not([data-test-uri^="spotify:artist:"]) {
-        position: sticky;
-      }
+      position: sticky;
 
       .os-host-overflow,
       .os-padding,
@@ -156,46 +154,67 @@
         background-color: rgba(255, 255, 255, 0.1);
       }
     }
-    
+
     .uCHqQ74vvHOnctGg0X0B, //Local Files (has no section)
     section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) {
-      // Tracklist Grid Layout
-      .main-trackList-trackListRow {
-        grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-            120px,
-            1fr
-          ) !important; // Adjust grid template columns
-
-        & > .main-trackList-rowSectionIndex {
-          position: absolute;
-          z-index: 1000;
-          top: 8px;
-          left: 18px;
-          width: 40px;
-          height: 40px;
-          justify-content: center;
-          text-indent: -1000px;
-        }
-      }
-
-      .main-trackList-trackList[aria-colcount="6"]
+      .contentSpacing:not(.artist-artistDiscography-tracklist) {
+        // Tracklist Grid Layout
         .main-trackList-trackListRow {
-        grid-template-columns:
-          [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
-          [last] minmax(
-            120px,
-            1fr
-          ) !important; // Adjust grid template columns for specific case
-      }
+          grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+              120px,
+              1fr
+            ) !important; // Adjust grid template columns
 
-      // Tracklist Image overlay + Button Overlay
-      .main-trackList-rowImageFallback {
-        border-radius: var(--border-radius);
-      }
+          & > .main-trackList-rowSectionIndex {
+            position: absolute;
+            z-index: 1000;
+            top: 8px;
+            left: 18px;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            text-indent: -1000px;
+          }
+        }
 
-      .main-trackList-trackListRow {
-        &:hover,
-        &:focus-within {
+        .main-trackList-trackList[aria-colcount="6"]
+          .main-trackList-trackListRow {
+          grid-template-columns:
+            [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
+            [last] minmax(
+              120px,
+              1fr
+            ) !important; // Adjust grid template columns for specific case
+        }
+
+        // Tracklist Image overlay + Button Overlay
+        .main-trackList-rowImageFallback {
+          border-radius: var(--border-radius);
+        }
+
+        .main-trackList-trackListRow {
+          &:hover,
+          &:focus-within {
+            .main-trackList-rowSectionIndex {
+              background: rgba(var(--spice-rgb-play-button), 0.5);
+              border-radius: var(--border-radius);
+            }
+
+            button.main-trackList-rowImagePlayButton {
+              opacity: 1;
+              color: black;
+            }
+          }
+        }
+
+        // Highlight title of active song
+        .main-trackList-active {
+          .main-trackList-rowTitle {
+            color: var(--spice-text);
+            text-shadow: 0px 0px 6px var(--spice-text);
+            -webkit-text-stroke: thin;
+          }
+
           .main-trackList-rowSectionIndex {
             background: rgba(var(--spice-rgb-play-button), 0.5);
             border-radius: var(--border-radius);
@@ -207,27 +226,7 @@
           }
         }
       }
-
-      // Highlight title of active song
-      .main-trackList-active {
-        .main-trackList-rowTitle {
-          color: var(--spice-text);
-          text-shadow: 0px 0px 6px var(--spice-text);
-          -webkit-text-stroke: thin;
-        }
-
-        .main-trackList-rowSectionIndex {
-          background: rgba(var(--spice-rgb-play-button), 0.5);
-          border-radius: var(--border-radius);
-        }
-
-        button.main-trackList-rowImagePlayButton {
-          opacity: 1;
-          color: black;
-        }
-      }
     }
-
     // Page Specific Changes
     // Artist Page
     .main-gridContainer-gridContainer:last-child {
@@ -247,20 +246,25 @@
     .lyrics-lyricsContainer-Provider {
       font-size: 0;
     }
+    .lyrics-lyricsContainer-LyricsContainer {
+      position: fixed !important;
 
-    .lyrics-lyricsContainer-LyricsBackground {
-      z-index: -1;
-      background-repeat: no-repeat;
-      background-size: cover;
-      -webkit-mask-image: linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.6)
-      );
-      mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      .lyrics-lyricsContainer-LyricsBackground {
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-mask-image: linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6)
+        );
+        mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      }
     }
 
     // Artist
     .artist-artistOverview-artistOverviewContent {
+      position: relative !important;
+
       .main-actionBarBackground-background {
         background-image: none !important;
         background-color: unset !important;
