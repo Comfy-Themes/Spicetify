@@ -88,5 +88,5 @@ Go into your theme folder and open either :
 Thinking of donating? Please consider what you value most when deciding who to donate to:
 
 - Theme Maintenance - [OhItsTom](https://ko-fi.com/ohitstom)
-- Extension Maintenance - [Kyrie25](http://paypal.me/pqnanh)
+- Extension Maintenance - [kyrie25](https://ko-fi.com/kyrie25)
 - Theme Design - [Nyria](https://ko-fi.com/nyria)
