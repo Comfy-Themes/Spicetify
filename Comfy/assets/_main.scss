@@ -156,10 +156,9 @@
         background-color: rgba(255, 255, 255, 0.1);
       }
     }
-
-    section:not(.album-albumPage-sectionWrapper):not(
-        .search-searchResult-tracklistContainer
-      ) {
+    
+    .uCHqQ74vvHOnctGg0X0B, //Local Files (has no section)
+    section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) {
       // Tracklist Grid Layout
       .main-trackList-trackListRow {
         grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
