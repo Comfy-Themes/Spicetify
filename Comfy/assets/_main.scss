@@ -155,9 +155,9 @@
       }
     }
 
-    .uCHqQ74vvHOnctGg0X0B, //Local Files (has no section)
-    section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) {
-      .contentSpacing:not(.artist-artistDiscography-tracklist) {
+    .uCHqQ74vvHOnctGg0X0B, // Local Files (has no section)
+    .queue-queuePage-queuePage, // Has section but its merged with contentSpacing
+    section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) {
         // Tracklist Grid Layout
         .main-trackList-trackListRow {
           grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
@@ -224,7 +224,6 @@
             opacity: 1;
             color: black;
           }
-        }
       }
     }
     // Page Specific Changes
