@@ -424,6 +424,20 @@ async function initComfy() {
       ]),
       Spicetify.React.createElement(Section, { name: "Banner Image" }, [
         {
+          type: "input",
+          inputType: "number",
+          name: "Image-Blur",
+          desc: "Image Blur",
+          defaultVal: "4",
+          tippyMessage: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
+            Spicetify.React.createElement("li", null, "Comfy default: 4px"),
+          ),
+          returnFunc: (value) => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px"),
+        },
+        {
           type: "slider",
           name: "Custom-Image",
           desc: "Custom Image Enabled",

@@ -9,7 +9,7 @@
   background-position: center;
   will-change: transform;
   transition: 300ms background-image ease-in-out;
-  filter: blur(4px);
+  filter: blur(var(--image-blur));
   -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
@@ -520,6 +520,7 @@
   --border-radius: 8px;
   --button-radius: 8px;
   --spice-main-elevated: transparent;
+  --image-blur: 4px;
 }
 :root button,
 :root button span,
