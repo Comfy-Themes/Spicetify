@@ -247,6 +247,12 @@
     }
     .lyrics-lyricsContainer-LyricsContainer {
       position: fixed !important;
+      overflow: auto;
+      
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
 
       .lyrics-lyricsContainer-LyricsBackground {
         z-index: -1;

@@ -191,6 +191,11 @@
 }
 :root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer {
   position: fixed !important;
+  overflow: auto;
+}
+:root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 :root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer .lyrics-lyricsContainer-LyricsBackground {
   z-index: -1;
