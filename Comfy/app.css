@@ -521,6 +521,115 @@
   display: none;
 }
 
+.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
+  padding-inline: 60px 150px !important;
+  padding-bottom: 64px !important;
+}
+
+:root #main.Comfy-mono-Snippet .cover-art {
+  box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
+}
+:root #main.Comfy-mono-Snippet .main-coverSlotCollapsed-expandButton,
+:root #main.Comfy-mono-Snippet .main-editImageButton-icon.icon,
+:root #main.Comfy-mono-Snippet svg.main-coverSlotExpandedCollapseButton-chevron {
+  color: #000000;
+}
+:root #main.Home-Header-Snippet .main-home-homeHeader {
+  display: block !important;
+}
+:root #main.Horizontal-pageLinks-Snippet ul#spicetify-sticky-list {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+:root #main.Horizontal-pageLinks-Snippet span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+  display: none;
+}
+:root #main.Remove-Progress-Bar-Gradient-Snippet .x-progressBar-fillColor {
+  background-color: var(--fg-color) !important;
+  border-radius: var(--progress-bar-radius) !important;
+  height: var(--progress-bar-height) !important;
+  transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
+  width: 100% !important;
+}
+:root #main.Oblong-nowPlaying-Art-Snippet .cover-art {
+  width: 115px !important;
+  height: 84px !important;
+  border-radius: 15px;
+  overflow: hidden;
+}
+:root #main.Remove-Device-Picker-Notification-Snippet .main-connectBar-connected {
+  display: none !important;
+}
+:root #main.Remove-Lyrics-Button-Snippet .main-nowPlayingBar-lyricsButton {
+  display: none !important;
+}
+:root #main.Remove-Timers-Snippet .playback-bar__progress-time-elapsed,
+:root #main.Remove-Timers-Snippet .main-playbackBarRemainingTime-container {
+  display: none;
+}
+:root #main.Revert-Right-Art-Snippet .main-coverSlotExpanded-container {
+  position: relative !important;
+  top: revert !important;
+  left: revert !important;
+  width: revert !important;
+  height: revert !important;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container {
+  grid-template-areas: "top-bar top-bar top-bar" "left-sidebar main-view right-sidebar" "now-playing-bar now-playing-bar now-playing-bar";
+  grid-template-rows: auto 1fr auto;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar {
+  grid-area: top-bar;
+  height: 32px;
+  margin-top: -32px;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container {
+  padding-inline: 0;
+  padding-bottom: 64px;
+  pointer-events: none;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container .main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container .main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
+  justify-content: center;
+  display: flex;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container .main-topBar-topbarContent {
+  app-region: drag !important;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container .main-topBar-topbarContent .main-entityHeader-topbarTitle {
+  height: 32px;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container .main-topBar-background {
+  display: none;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .body-drag-top {
+  height: 48px;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .main-view-container__scroll-node-child-spacer {
+  height: 15px;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .playlist-playlist-playlist,
+:root #main.Topbar-Inside-Titlebar-Snippet .profile-userOverview-container,
+:root #main.Topbar-Inside-Titlebar-Snippet .artist-artistOverview-overview,
+:root #main.Topbar-Inside-Titlebar-Snippet .album-albumPage-sectionWrapper,
+:root #main.Topbar-Inside-Titlebar-Snippet .show-showPage-sectionWrapper,
+:root #main.Topbar-Inside-Titlebar-Snippet .A4dupilHPIEDfhXDE0m0,
+:root #main.Topbar-Inside-Titlebar-Snippet .uCHqQ74vvHOnctGg0X0B,
+:root #main.Topbar-Inside-Titlebar-Snippet .lXcKpCtaEeFf1HifX139,
+:root #main.Topbar-Inside-Titlebar-Snippet .MlK79hskRbFrN2OBjMkl,
+:root #main.Topbar-Inside-Titlebar-Snippet .dpN5ViPOceUWNB5EQPHN,
+:root #main.Topbar-Inside-Titlebar-Snippet .mmCZ5VczybT9VqKB5wFU {
+  margin-top: -15px !important;
+}
+:root #main.Topbar-Inside-Titlebar-Snippet .queue-queuePage-queuePage,
+:root #main.Topbar-Inside-Titlebar-Snippet .search-searchCategory-SearchCategory,
+:root #main.Topbar-Inside-Titlebar-Snippet .artist-artistDiscography-topBar {
+  margin-top: 0 !important;
+  top: 0 !important;
+}
+
 :root {
   --border-radius: 8px;
   --button-radius: 8px;

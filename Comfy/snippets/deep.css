@@ -1,5 +1,0 @@
-.main-navBar-navBarItem .collection-icon, .main-navBar-navBarLinkActive .collection-active-icon {
-    -webkit-filter: invert(54%) sepia(18%) saturate(922%) hue-rotate(114deg) brightness(96%) contrast(86%);
-    /* This filter isn't actually necessary as webkit-filter always works, but it's here for the sake of completeness. */
-    filter: invert(54%) sepia(18%) saturate(922%) hue-rotate(114deg) brightness(96%) contrast(86%);
-}
