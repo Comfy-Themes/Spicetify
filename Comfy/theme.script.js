@@ -67,39 +67,6 @@ async function initComfy() {
   Player.addEventListener("songchange", updateImageDisplay);
 
   // FUNCTIONS
-
-  function hotload(bool, url, classname) {
-    if (!url) return;
-    if (bool) {
-      loadCSS(url, false, classname);
-    } else {
-      unloadCSS(classname);
-    }
-  }
-
-  async function getCSS(url) {
-    return await fetch(url)
-      .then((res) => {
-        if (!res.ok) return;
-        return res.text();
-      })
-      .catch((e) => console.error(e));
-  }
-
-  async function loadCSS(url, text = false, classname) {
-    if (document.getElementsByClassName(classname)[0]) return;
-    const css = url ? await getCSS(url) : text;
-    if (!css) return;
-    const style = document.createElement("style");
-    style.innerHTML = css;
-    style.classList.add(classname);
-    document.head.appendChild(style);
-  }
-
-  function unloadCSS(classname) {
-    return document.getElementsByClassName(classname)[0]?.remove();
-  }
-
   function getConfig(key) {
     try {
       return JSON.parse(Spicetify.LocalStorage.get(key));
@@ -175,7 +142,7 @@ async function initComfy() {
 
     Spicetify.React.useEffect(() => {
       Spicetify.LocalStorage.set(name, state);
-      hotload(state, url, name);
+      document.getElementById("main")?.classList.toggle(name, state);
       callback?.(state);
       console.log(name, getConfig(name));
     }, [state]);
@@ -312,21 +279,18 @@ async function initComfy() {
           name: "Home-Header-Snippet",
           desc: "Colorful Home Header",
           defaultVal: true,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css",
         },
         {
           type: Slider,
           name: "Topbar-Inside-Titlebar-Snippet",
           desc: "Move Topbar Inside Titlebar",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css",
         },
         {
           type: Slider,
           name: "Horizontal-pageLinks-Snippet",
           desc: "Horizontal Page Links",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/horizontal-pageLinks.css",
         },
       ]),
       Spicetify.React.createElement(Section, { name: "Playbar" }, [
@@ -335,28 +299,24 @@ async function initComfy() {
           name: "Remove-Device-Picker-Notification-Snippet",
           desc: "Remove Device Picker Notification",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-device-picker.css",
         },
         {
           type: Slider,
           name: "Remove-Progress-Bar-Gradient-Snippet",
           desc: "Remove Progress Bar Gradient",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/no-progressBar-gradient.css",
         },
         {
           type: Slider,
           name: "Remove-Timers-Snippet",
           desc: "Remove Playback Timers",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",
         },
         {
           type: Slider,
           name: "Remove-Lyrics-Button-Snippet",
           desc: "Remove Lyrics Button",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-lyrics-button.css",
         },
       ]),
       Spicetify.React.createElement(Section, { name: "Cover Art" }, [
@@ -365,7 +325,6 @@ async function initComfy() {
           name: "Oblong-nowPlaying-Art-Snippet",
           desc: "Oblong Now Playing Cover Art",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css",
         },
         {
           type: Slider,
@@ -376,14 +335,12 @@ async function initComfy() {
           } additional features`,
           defaultVal: true,
           condition: !!data,
-          url: snippetURL,
         },
         {
           type: Slider,
           name: "Revert-Right-Art-Snippet",
           desc: "Disable Right Side Cover Art",
           defaultVal: false,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/revert-right-art.css",
         },
       ]),
       Spicetify.React.createElement(Section, { name: "Banner Image" }, [
@@ -406,7 +363,6 @@ async function initComfy() {
           name: "Custom-Image",
           desc: "Custom Image Enabled",
           defaultVal: false,
-          url: null,
           callback: (value) => {
             setCustomImage(value);
             updateImageDisplay();
