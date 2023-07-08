@@ -7,7 +7,6 @@
       Spicetify.React &&
       Spicetify.ReactDOM &&
       Spicetify.AppTitle &&
-      Spicetify.ReactQuery &&
       document.querySelector(".Root__main-view")
     )
   ) {
@@ -19,7 +18,6 @@
 
 async function initComfy() {
   const { Player, Platform } = Spicetify;
-  const { QueryClient, QueryClientProvider, useQuery } = Spicetify.ReactQuery;
   const main = document.querySelector(".Root__main-view");
 
   // Valid Channels
@@ -227,14 +225,7 @@ async function initComfy() {
 
   const Content = () => {
     const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
-    const snippetURL = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`;
-
-    const { data } = useQuery("additionalFeatures", () =>
-      fetch(snippetURL).then((res) => {
-        if (!res.ok) return;
-        return res.text();
-      })
-    );
+    const additionalFeatureSchemes = ["mono", "velvet"];
 
     return Spicetify.React.createElement(
       "div",
@@ -334,7 +325,7 @@ async function initComfy() {
             Spicetify.Config?.color_scheme.toLowerCase().slice(1)
           } additional features`,
           defaultVal: true,
-          condition: !!data,
+          condition: additionalFeatureSchemes.includes(Spicetify.Config?.color_scheme.toLowerCase()),
         },
         {
           type: Slider,
@@ -415,14 +406,9 @@ async function initComfy() {
     );
   };
 
-  const queryClient = new QueryClient();
   const { toggle } = Spicetify.Panel.registerPanel({
     label: "Comfy Settings",
-    children: Spicetify.React.createElement(
-      QueryClientProvider,
-      { client: queryClient },
-      Spicetify.React.createElement(Content)
-    ),
+    children: Spicetify.React.createElement(Content),
     style: { minWidth: "370px" },
     headerActions: Spicetify.React.createElement(DiscordButton),
   });
@@ -432,8 +418,5 @@ async function initComfy() {
   new Spicetify.Topbar.Button("Comfy Settings", svg, toggle, false, true);
 
   // Workaround for hotloading assets
-  Spicetify.ReactDOM.render(
-    Spicetify.React.createElement(QueryClientProvider, { client: queryClient }, Spicetify.React.createElement(Content)),
-    document.createElement("div")
-  );
+  Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
 }
