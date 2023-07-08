@@ -354,11 +354,27 @@ async function initComfy() {
         },
         {
           type: "slider",
+          name: "Home-Header-Snippet",
+          desc: "Colorful Home Header",
+          defaultVal: true,
+          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css",
+        },
+        {
+          type: "slider",
           name: "Topbar-Inside-Titlebar-Snippet",
           desc: "Move Topbar Inside Titlebar",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css",
         },
+        {
+          type: "slider",
+          name: "Horizontal-pageLinks-Snippet",
+          desc: "Horizontal Page Links",
+          defaultVal: false,
+          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/horizontal-pageLinks.css",
+        },
+      ]),
+      Spicetify.React.createElement(Section, { name: "Playbar" }, [
         {
           type: "slider",
           name: "Remove-Device-Picker-Notification-Snippet",
@@ -372,13 +388,6 @@ async function initComfy() {
           desc: "Remove Progress Bar Gradient",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/no-progressBar-gradient.css",
-        },
-        {
-          type: "slider",
-          name: "Home-Header-Snippet",
-          desc: "Colorful Home Header",
-          defaultVal: true,
-          url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css",
         },
         {
           type: "slider",
@@ -433,7 +442,7 @@ async function initComfy() {
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
-            Spicetify.React.createElement("li", null, "Comfy default: 4px"),
+            Spicetify.React.createElement("li", null, "Comfy default: 4px")
           ),
           returnFunc: (value) => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px"),
         },

@@ -1,0 +1,9 @@
+ul#spicetify-sticky-list {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+    display: none;
+}
