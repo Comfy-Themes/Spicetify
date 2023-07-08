@@ -7,6 +7,7 @@
       Spicetify.React &&
       Spicetify.ReactDOM &&
       Spicetify.AppTitle &&
+      Spicetify.ReactQuery &&
       document.querySelector(".Root__main-view")
     )
   ) {
@@ -18,6 +19,7 @@
 
 async function initComfy() {
   const { Player, Platform } = Spicetify;
+  const { QueryClient, QueryClientProvider, useQuery } = Spicetify.ReactQuery;
   const main = document.querySelector(".Root__main-view");
 
   // Valid Channels
@@ -115,6 +117,44 @@ async function initComfy() {
     return false;
   }
 
+  const Tippy = ({ label }) => {
+    if (!label) return null;
+    return Spicetify.React.createElement(
+      Spicetify.ReactComponent.TooltipWrapper,
+      {
+        label,
+        showDelay: 0,
+      },
+      Spicetify.React.createElement(
+        "div",
+        { className: "x-settings-tooltip" },
+        Spicetify.React.createElement(
+          "div",
+          {
+            className: "x-settings-tooltipIconWrapper",
+          },
+          Spicetify.React.createElement(
+            "svg",
+            {
+              role: "img",
+              height: "16",
+              width: "16",
+              tabindex: "0",
+              className: "Svg-sc-ytk21e-0 Svg-img-16-icon nW1RKQOkzcJcX6aDCZB4",
+              viewBox: "0 0 16 16",
+            },
+            Spicetify.React.createElement("path", {
+              d: "M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z",
+            }),
+            Spicetify.React.createElement("path", {
+              d: "M7.25 12.026v-1.5h1.5v1.5h-1.5zm.884-7.096A1.125 1.125 0 0 0 7.06 6.39l-1.431.448a2.625 2.625 0 1 1 5.13-.784c0 .54-.156 1.015-.503 1.488-.3.408-.7.652-.973.818l-.112.068c-.185.116-.26.203-.302.283-.046.087-.097.245-.097.57h-1.5c0-.47.072-.898.274-1.277.206-.385.507-.645.827-.846l.147-.092c.285-.177.413-.257.526-.41.169-.23.213-.397.213-.602 0-.622-.503-1.125-1.125-1.125z",
+            })
+          )
+        )
+      )
+    );
+  };
+
   const Divider = Spicetify.React.memo(({ name }) => {
     return Spicetify.React.createElement(
       "div",
@@ -130,149 +170,78 @@ async function initComfy() {
     );
   });
 
-  const Slider = Spicetify.React.memo(
-    ({ name, desc, defaultVal, url, condition = true, returnFunc = (...args) => {} }) => {
-      const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
-      const [conditionState, setConditionState] = Spicetify.React.useState(condition);
+  const Slider = Spicetify.React.memo(({ name, desc, tippy, defaultVal, url, condition = true, callback }) => {
+    const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 
-      Spicetify.React.useEffect(() => {
-        if (isPromise(condition)) {
-          condition
-            .then((val) => {
-              setConditionState(val);
-            })
-            .catch((e) => setConditionState(false));
-        } else setConditionState(condition);
-      }, [condition]);
+    Spicetify.React.useEffect(() => {
+      Spicetify.LocalStorage.set(name, state);
+      hotload(state, url, name);
+      callback?.(state);
+      console.log(name, getConfig(name));
+    }, [state]);
 
-      Spicetify.React.useEffect(() => {
-        Spicetify.LocalStorage.set(name, state);
-        hotload(state, url, name);
-        returnFunc(state);
-        console.log(name, getConfig(name));
-      }, [state]);
+    if (condition === false) return null;
 
-      if (conditionState === false) return null;
-
-      return Spicetify.React.createElement(
+    return Spicetify.React.createElement(
+      "div",
+      { className: "setting-row", id: name },
+      Spicetify.React.createElement("label", { className: "col description" }, desc, tippy),
+      Spicetify.React.createElement(
         "div",
-        { className: "setting-row", id: name },
-        Spicetify.React.createElement("label", { className: "col description" }, desc),
+        { className: "col action" },
         Spicetify.React.createElement(
-          "div",
-          { className: "col action" },
-          Spicetify.React.createElement(
-            "button",
-            {
-              className: `switch ${state ? "" : "disabled"}`,
-              onClick: () => {
-                setState(!state);
-              },
+          "button",
+          {
+            className: `switch ${state ? "" : "disabled"}`,
+            onClick: () => setState(!state),
+          },
+          Spicetify.React.createElement("svg", {
+            height: "16",
+            width: "16",
+            viewBox: "0 0 16 16",
+            fill: "currentColor",
+            dangerouslySetInnerHTML: {
+              __html: Spicetify.SVGIcons.check,
             },
-            Spicetify.React.createElement("svg", {
-              height: "16",
-              width: "16",
-              viewBox: "0 0 16 16",
-              fill: "currentColor",
-              dangerouslySetInnerHTML: {
-                __html: Spicetify.SVGIcons.check,
-              },
-            })
-          )
-        )
-      );
-    }
-  );
-
-  const Input = Spicetify.React.memo(
-    ({ inputType, name, desc, defaultVal, tippyMessage, condition = true, returnFunc = (...args) => {} }) => {
-      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
-      const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
-      const [conditionState, setConditionState] = Spicetify.React.useState(condition);
-
-      Spicetify.React.useEffect(() => {
-        if (isPromise(defaultVal)) {
-          defaultVal.then((val) => setDefaultState(val));
-        }
-      }, [defaultVal]);
-
-      Spicetify.React.useEffect(() => {
-        if (isPromise(condition)) {
-          condition
-            .then((val) => {
-              setConditionState(val);
-            })
-            .catch(() => setConditionState(false));
-        } else setConditionState(condition);
-      }, [condition]);
-
-      Spicetify.React.useEffect(() => {
-        // Account for falsely stringified value in Local Storage, can be removed at a later time in the future.
-        const title = value === "[object Promise]" ? "" : value;
-
-        Spicetify.LocalStorage.set(name, `"${title}"`);
-        returnFunc(title, name);
-        console.log(name, getConfig(name));
-      }, [value]);
-
-      if (conditionState === false) return null;
-
-      return Spicetify.React.createElement(
-        "div",
-        { className: "setting-row", id: name },
-        Spicetify.React.createElement(
-          "label",
-          { className: "col description" },
-          desc,
-          Spicetify.React.createElement(
-            Spicetify.ReactComponent.TooltipWrapper,
-            {
-              label: tippyMessage,
-              showDelay: 0,
-            },
-            Spicetify.React.createElement(
-              "div",
-              { className: "x-settings-tooltip" },
-              Spicetify.React.createElement(
-                "div",
-                {
-                  className: "x-settings-tooltipIconWrapper",
-                },
-                Spicetify.React.createElement(
-                  "svg",
-                  {
-                    role: "img",
-                    height: "16",
-                    width: "16",
-                    tabindex: "0",
-                    className: "Svg-sc-ytk21e-0 Svg-img-16-icon nW1RKQOkzcJcX6aDCZB4",
-                    viewBox: "0 0 16 16",
-                  },
-                  Spicetify.React.createElement("path", {
-                    d: "M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z",
-                  }),
-                  Spicetify.React.createElement("path", {
-                    d: "M7.25 12.026v-1.5h1.5v1.5h-1.5zm.884-7.096A1.125 1.125 0 0 0 7.06 6.39l-1.431.448a2.625 2.625 0 1 1 5.13-.784c0 .54-.156 1.015-.503 1.488-.3.408-.7.652-.973.818l-.112.068c-.185.116-.26.203-.302.283-.046.087-.097.245-.097.57h-1.5c0-.47.072-.898.274-1.277.206-.385.507-.645.827-.846l.147-.092c.285-.177.413-.257.526-.41.169-.23.213-.397.213-.602 0-.622-.503-1.125-1.125-1.125z",
-                  })
-                )
-              )
-            )
-          )
-        ),
-        Spicetify.React.createElement(
-          "div",
-          { className: "col action" },
-          Spicetify.React.createElement("input", {
-            type: inputType,
-            className: "input",
-            value: value,
-            placeholder: defaultState,
-            onChange: (e) => setValue(e.target.value),
           })
         )
-      );
-    }
-  );
+      )
+    );
+  });
+
+  const Input = Spicetify.React.memo(({ inputType, name, desc, tippy, defaultVal, condition = true, callback }) => {
+    const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
+    const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
+
+    Spicetify.React.useEffect(() => {
+      if (isPromise(defaultVal)) defaultVal.then((val) => setDefaultState(val));
+    }, [defaultVal]);
+
+    Spicetify.React.useEffect(() => {
+      Spicetify.LocalStorage.set(name, `"${value}"`);
+      callback?.(value, name);
+      console.log(name, getConfig(name));
+    }, [value]);
+
+    if (condition === false) return null;
+
+    return Spicetify.React.createElement(
+      "div",
+      { className: "setting-row", id: name },
+      Spicetify.React.createElement("label", { className: "col description" }, desc, tippy),
+      Spicetify.React.createElement(
+        "div",
+        { className: "col action" },
+        Spicetify.React.createElement("input", {
+          type: inputType,
+          className: "input",
+          value: value,
+          placeholder: defaultState,
+          onChange: (e) => setValue(e.target.value),
+        })
+      )
+    );
+  });
 
   const Section = ({ name, children, condition = true }) => {
     if (condition === false) return null;
@@ -280,94 +249,80 @@ async function initComfy() {
       Spicetify.React.Fragment,
       null,
       Spicetify.React.createElement(Divider, { name }),
-      children.map((child) => {
-        switch (child.type) {
-          case "slider":
-            return Spicetify.React.createElement(Slider, child);
-          case "input":
-            return Spicetify.React.createElement(Input, child);
-          default:
-            return children;
-        }
-      })
+      children.map((child) =>
+        Spicetify.React.createElement(child.type, {
+          ...child,
+          tippy: Spicetify.React.createElement(Tippy, { label: child.tippy }),
+        })
+      )
     );
   };
 
   const Content = () => {
-    const [style] = Spicetify.React.useState("");
-    const [additionalFeatures, setAdditionalFeatures] = Spicetify.React.useState(false);
     const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
+    const snippetURL = `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`;
 
-    Spicetify.React.useEffect(() => {
-      fetch(
-        `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`
-      )
-        .then((res) => {
-          if (!res.ok) return setAdditionalFeatures(false);
-          setAdditionalFeatures(true);
-        })
-        .catch((e) => {
-          setAdditionalFeatures(false);
-        });
-    }, []);
+    const { data } = useQuery("additionalFeatures", () =>
+      fetch(snippetURL).then((res) => {
+        if (!res.ok) return;
+        return res.text();
+      })
+    );
 
     return Spicetify.React.createElement(
       "div",
       { className: "comfy-settings" },
-      Spicetify.React.createElement("style", {
-        dangerouslySetInnerHTML: { __html: style },
-      }),
-      Spicetify.React.createElement(Divider, null),
+      Spicetify.React.createElement(Divider),
       Spicetify.React.createElement(Section, { name: "Interface" }, [
         {
-          type: "input",
+          type: Input,
           inputType: "text",
           name: "App-Title",
           desc: "Application Title",
           defaultVal: Spicetify.AppTitle.get(),
-          tippyMessage: Spicetify.React.createElement(
+          tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             "Leave blank to reset to default",
             Spicetify.React.createElement("br", null),
             "Note: default value can be lost"
           ),
-          returnFunc: async (value) => {
+          callback: async (value) => {
             if (!value) await Spicetify.Platform.UserAPI._product_state.delOverridesValues({ keys: ["name"] });
             else await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
           },
         },
         {
-          type: "input",
+          type: Input,
           inputType: "number",
           name: "Button-Radius",
           desc: "Button Radius",
           defaultVal: "8",
-          tippyMessage: Spicetify.React.createElement(
+          tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Change how circular buttons are:"),
             Spicetify.React.createElement("li", null, "Comfy default: 8px"),
             Spicetify.React.createElement("li", null, "Spotify default: 50px")
           ),
-          returnFunc: (value) => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px"),
+          callback: (value) => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px"),
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Home-Header-Snippet",
           desc: "Colorful Home Header",
           defaultVal: true,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/home-header.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Topbar-Inside-Titlebar-Snippet",
           desc: "Move Topbar Inside Titlebar",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/topbar-in-titlebar.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Horizontal-pageLinks-Snippet",
           desc: "Horizontal Page Links",
           defaultVal: false,
@@ -376,28 +331,28 @@ async function initComfy() {
       ]),
       Spicetify.React.createElement(Section, { name: "Playbar" }, [
         {
-          type: "slider",
+          type: Slider,
           name: "Remove-Device-Picker-Notification-Snippet",
           desc: "Remove Device Picker Notification",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-device-picker.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Remove-Progress-Bar-Gradient-Snippet",
           desc: "Remove Progress Bar Gradient",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/no-progressBar-gradient.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Remove-Timers-Snippet",
           desc: "Remove Playback Timers",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/remove-timers.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Remove-Lyrics-Button-Snippet",
           desc: "Remove Lyrics Button",
           defaultVal: false,
@@ -406,25 +361,25 @@ async function initComfy() {
       ]),
       Spicetify.React.createElement(Section, { name: "Cover Art" }, [
         {
-          type: "slider",
+          type: Slider,
           name: "Oblong-nowPlaying-Art-Snippet",
           desc: "Oblong Now Playing Cover Art",
           defaultVal: false,
           url: "https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/oblong-nowPlayingArt.css",
         },
         {
-          type: "slider",
+          type: Slider,
           name: `Comfy-${Spicetify.Config?.color_scheme.toLowerCase()}-Snippet`,
           desc: `Comfy-${
             Spicetify.Config?.color_scheme.toLowerCase().charAt(0).toUpperCase() +
             Spicetify.Config?.color_scheme.toLowerCase().slice(1)
           } additional features`,
           defaultVal: true,
-          condition: !!additionalFeatures,
-          url: `https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/snippets/${Spicetify.Config?.color_scheme.toLowerCase()}.css`,
+          condition: !!data,
+          url: snippetURL,
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Revert-Right-Art-Snippet",
           desc: "Disable Right Side Cover Art",
           defaultVal: false,
@@ -433,37 +388,37 @@ async function initComfy() {
       ]),
       Spicetify.React.createElement(Section, { name: "Banner Image" }, [
         {
-          type: "input",
+          type: Input,
           inputType: "number",
           name: "Image-Blur",
           desc: "Image Blur",
           defaultVal: "4",
-          tippyMessage: Spicetify.React.createElement(
+          tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
             Spicetify.React.createElement("li", null, "Comfy default: 4px")
           ),
-          returnFunc: (value) => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px"),
+          callback: (value) => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px"),
         },
         {
-          type: "slider",
+          type: Slider,
           name: "Custom-Image",
           desc: "Custom Image Enabled",
           defaultVal: false,
           url: null,
-          returnFunc: (value) => {
+          callback: (value) => {
             setCustomImage(value);
             updateImageDisplay();
           },
         },
         {
-          type: "input",
+          type: Input,
           inputType: "text",
           name: "Custom-Image-URL",
           desc: "Custom Image URL",
           defaultVal: "Paste URL here!",
-          tippyMessage: Spicetify.React.createElement(
+          tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Local Images:"),
@@ -471,7 +426,7 @@ async function initComfy() {
             Spicetify.React.createElement("li", null, "Enter 'images/image.png into text box.")
           ),
           condition: customImage,
-          returnFunc: updateImageDisplay,
+          callback: updateImageDisplay,
         },
       ])
     );
@@ -504,9 +459,14 @@ async function initComfy() {
     );
   };
 
+  const queryClient = new QueryClient();
   const { toggle } = Spicetify.Panel.registerPanel({
     label: "Comfy Settings",
-    children: Spicetify.React.createElement(Content),
+    children: Spicetify.React.createElement(
+      QueryClientProvider,
+      { client: queryClient },
+      Spicetify.React.createElement(Content)
+    ),
     style: { minWidth: "370px" },
     headerActions: Spicetify.React.createElement(DiscordButton),
   });
@@ -516,5 +476,8 @@ async function initComfy() {
   new Spicetify.Topbar.Button("Comfy Settings", svg, toggle, false, true);
 
   // Workaround for hotloading assets
-  Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
+  Spicetify.ReactDOM.render(
+    Spicetify.React.createElement(QueryClientProvider, { client: queryClient }, Spicetify.React.createElement(Content)),
+    document.createElement("div")
+  );
 }
