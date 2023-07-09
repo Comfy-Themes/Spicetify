@@ -51,7 +51,7 @@
     }
 
     &.Oblong-nowPlaying-Art-Snippet {
-      .cover-art {
+      .main-nowPlayingWidget-coverArt .cover-art {
         width: 115px !important;
         height: 84px !important;
         border-radius: 15px;
