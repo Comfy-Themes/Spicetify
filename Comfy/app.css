@@ -553,7 +553,7 @@
   transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
   width: 100% !important;
 }
-:root #main.Oblong-nowPlaying-Art-Snippet .cover-art {
+:root #main.Oblong-nowPlaying-Art-Snippet .main-nowPlayingWidget-coverArt .cover-art {
   width: 115px !important;
   height: 84px !important;
   border-radius: 15px;
