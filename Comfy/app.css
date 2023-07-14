@@ -29,10 +29,6 @@
 :root .Root__main-view .main-view-container main .os-viewport {
   overflow: visible !important;
 }
-:root .Root__main-view .main-view-container .main-trackList-playingIcon,
-:root .Root__main-view .main-view-container .x-settings-equalizerPanelCanvas {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%);
-}
 :root .Root__main-view .main-view-container input:checked ~ .x-toggle-indicatorWrapper {
   background-color: var(--spice-radio-btn-active);
 }
@@ -646,6 +642,13 @@
 :root button span,
 :root input:not([style*=background-image]) {
   --border-radius: var(--button-radius) !important;
+}
+:root .main-trackList-playingIcon {
+  border-radius: 0 !important;
+}
+:root .main-trackList-playingIcon,
+:root .x-settings-equalizerPanelCanvas {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%);
 }
 :root .encore-bright-accent-set {
   --background-base: var(--spice-play-button);
