@@ -10,8 +10,8 @@
       </div>
       <hr>
       <h4> ✅ Supported</h4>
-        <li>🔥 Spicetify : <code>2.20.3</code></li>
-        <li>🟢 Spotify : <code>1.2.14</code></li>
+        <li>🔥 Spicetify : <code>2.21.0</code></li>
+        <li>🟢 Spotify : <code>1.2.16</code></li>
       <hr>
     </td>
   </tr>
