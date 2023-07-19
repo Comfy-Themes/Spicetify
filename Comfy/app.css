@@ -73,15 +73,15 @@
 :root .Root__main-view .main-view-container .main-entityHeader-container .main-entityHeader-backgroundColor {
   background: none !important;
 }
-:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) {
+:root .Root__main-view .main-view-container .main-entityHeader-container .main-entityHeader-imageContainer {
   align-self: center;
   flex-shrink: 0;
 }
-:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText {
+:root .Root__main-view .main-view-container .main-entityHeader-container .main-entityHeader-imageContainer + .main-entityHeader-headerText {
   flex: unset;
   justify-content: center;
 }
-:root .Root__main-view .main-view-container .main-entityHeader-container > div:nth-last-of-type(2) + .main-entityHeader-headerText .main-entityHeader-title h1 {
+:root .Root__main-view .main-view-container .main-entityHeader-container .main-entityHeader-imageContainer + .main-entityHeader-headerText .main-entityHeader-title h1 {
   font-size: 50px !important;
 }
 :root .Root__main-view .main-view-container .main-actionBar-ActionBar {
