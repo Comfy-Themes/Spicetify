@@ -24,6 +24,6 @@
 
 |                                   Yami                                        |
 | :---------------------------------------------------------------------------: |
-| ![Yami](https://raw.githubusercontent.com/whois-hoeless/Spicetify-Yami/main/Comfy/preview/Yami.png) |
+| ![Yami](https://comfy-themes.github.io/Spicetify/Comfy/preview/Yami.png) |
 
 ---
