@@ -22,4 +22,8 @@
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | ![Deep](https://comfy-themes.github.io/Spicetify/Comfy/preview/Deep.png) | ![Velvet](https://comfy-themes.github.io/Spicetify/Comfy/preview/Velvet.png) |
 
+|                                   Yami                                        |
+| :---------------------------------------------------------------------------: |
+| ![Yami](https://comfy-themes.github.io/Spicetify/Comfy/preview/Deep.png) |
+
 ---
