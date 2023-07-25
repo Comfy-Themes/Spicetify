@@ -656,6 +656,7 @@
   left: 0;
   bottom: 0;
   animation-direction: reverse;
+  animation-delay: 10s;
 }
 @keyframes rotate {
   from {
