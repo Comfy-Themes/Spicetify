@@ -1,27 +1,21 @@
 :root .Root__main-view {
   // Background Image - Behind the main view (container)
-  #mainImage {
+  .mainImage {
     position: absolute; // Positioned absolutely to cover the entire viewport
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    will-change: transform; // Creates a new paint layer for better performance
-    transition: 300ms background-image ease-in-out;
+    object-fit: cover;
+    object-position: top;
     filter: blur(var(--image-blur));
     -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+   }
+  .secondaryImage {
+    display: none;
   }
-
-  @media (max-width: 1500px) {
-    #mainImage {
-      background-position: top;
-    }
-  }
-
+  
   .main-view-container {
     z-index: 1 !important;
 

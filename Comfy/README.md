@@ -1,6 +1,8 @@
-|                                 Home                                 |                                 Friend list                                 |
-| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![Home](https://comfy-themes.github.io/Spicetify/Comfy/preview/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy/preview/friend-list.png) |
+
+
+|                                 Home                                 |                                 Friend list                                 |                                 Apple Music Gradient                                 |
+| :------------------------------------------------------------------: | :-------------------------------------------------------------------------: | :-
+| ![Home](https://comfy-themes.github.io/Spicetify/Comfy/preview/home.png) | ![Friend List](https://comfy-themes.github.io/Spicetify/Comfy/preview/friend-list.png) | ![AM-Gradient](https://comfy-themes.github.io/Spicetify/Comfy/preview/AM-Gradient.gif) |
 
 ---
 

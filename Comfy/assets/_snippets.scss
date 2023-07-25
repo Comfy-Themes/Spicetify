@@ -156,5 +156,54 @@
         top: 0 !important;
       }
     }
+    &.Apple-Music-Gradient-Snippet {
+      .frame {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        filter: blur(calc(var(--image-blur) * 10));
+      
+        .mainImage,
+        .secondaryImage {
+          position: absolute;
+          width: 200%;
+          animation: rotate 35s linear infinite;
+          border-radius: 100em !important;
+        }
+      
+        .mainImage {
+          /* Nullify all the values */
+          height: revert;
+          left: unset;
+          object-fit: unset;
+          object-position: unset;
+          filter: none;
+          -webkit-mask-image: none;
+          mask-image: none;
+          right: 0;
+          top: 0;
+          z-index: 10;
+          mix-blend-mode: luminosity;
+        }
+      
+        .secondaryImage {
+          display: revert;
+          left: 0;
+          bottom: 0;
+          animation-direction: reverse;
+        }
+      }
+      
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+      
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
   }
 }

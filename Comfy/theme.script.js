@@ -37,22 +37,24 @@ async function initComfy() {
   ];
 
   // Create image container + preload image
-  const imageContainer = document.createElement("div");
-  imageContainer.id = "mainImage";
-  main.appendChild(imageContainer);
+  const frame = document.createElement('div');
+  const mainImage = document.createElement('img');
+  const secondaryImage = document.createElement('img');
 
-  const preloadImage = new Image();
-  preloadImage.onload = () => {
-    imageContainer.style.backgroundImage = `url("${preloadImage.src}")`;
-  };
+  frame.className = 'frame';
+  mainImage.className = 'mainImage';
+  secondaryImage.className = 'secondaryImage';
+
+  frame.append(mainImage, secondaryImage);
+  main.appendChild(frame);
 
   // Source Checks + Image Updater
   const sourceCheck = () => getConfig("Custom-Image");
   const source = () => getConfig("Custom-Image-URL")?.replace(/"/g, "");
   function updateImageDisplay() {
     const { pathname } = Platform.History.location;
-    imageContainer.style.display = channels.some((channel) => channel.test(pathname)) ? "block" : "none";
-    preloadImage.src = sourceCheck() ? source() : Player.data.track.metadata.image_xlarge_url;
+    frame.style.display = channels.some((channel) => channel.test(pathname)) ? "" : "none";
+    mainImage.src = secondaryImage.src = sourceCheck() ? source() : Player.data.track.metadata.image_xlarge_url;
   }
 
   // Initialize
@@ -89,6 +91,8 @@ async function initComfy() {
       {
         label,
         showDelay: 0,
+        placement: "left",
+        trigger: "mouseenter",
       },
       Spicetify.React.createElement(
         "div",
@@ -351,6 +355,37 @@ async function initComfy() {
         },
         {
           type: Slider,
+          name: "Apple-Music-Gradient-Snippet",
+          desc: "Apple Music Gradient",
+          defaultVal: false,
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement(
+              'div',
+              {
+                style: {
+                  // tippy doesnt like loading images
+                  height: '315px',
+                },
+              },
+              Spicetify.React.createElement(
+                'img', 
+                { 
+                  src: 'https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/preview/AM-Gradient.gif?raw=true', 
+                  alt: 'preview',
+                  style: {
+                    width: '100%',
+                  },
+                }
+              ),
+              Spicetify.React.createElement("h4", null, "Blur (10x Value):"),
+              Spicetify.React.createElement("li", null, "Recommended: 4px"),
+            )
+          ), 
+        },
+        {
+          type: Slider,
           name: "Custom-Image",
           desc: "Custom Image Enabled",
           defaultVal: false,
@@ -370,7 +405,7 @@ async function initComfy() {
             null,
             Spicetify.React.createElement("h4", null, "Local Images:"),
             Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'."),
-            Spicetify.React.createElement("li", null, "Enter 'images/image.png into text box.")
+            Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box.")
           ),
           condition: customImage,
           callback: updateImageDisplay,

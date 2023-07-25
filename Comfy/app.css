@@ -1,22 +1,17 @@
-:root .Root__main-view #mainImage {
+:root .Root__main-view .mainImage {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  will-change: transform;
-  transition: 300ms background-image ease-in-out;
+  object-fit: cover;
+  object-position: top;
   filter: blur(var(--image-blur));
   -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
-@media (max-width: 1500px) {
-  :root .Root__main-view #mainImage {
-    background-position: top;
-  }
+:root .Root__main-view .secondaryImage {
+  display: none;
 }
 :root .Root__main-view .main-view-container {
   z-index: 1 !important;
@@ -627,6 +622,48 @@
 :root #main.Topbar-Inside-Titlebar-Snippet .artist-artistDiscography-topBar {
   margin-top: 0 !important;
   top: 0 !important;
+}
+:root #main.Apple-Music-Gradient-Snippet .frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  filter: blur(calc(var(--image-blur) * 10));
+}
+:root #main.Apple-Music-Gradient-Snippet .frame .mainImage,
+:root #main.Apple-Music-Gradient-Snippet .frame .secondaryImage {
+  position: absolute;
+  width: 200%;
+  animation: rotate 35s linear infinite;
+  border-radius: 100em !important;
+}
+:root #main.Apple-Music-Gradient-Snippet .frame .mainImage {
+  /* Nullify all the values */
+  height: revert;
+  left: unset;
+  object-fit: unset;
+  object-position: unset;
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  mix-blend-mode: luminosity;
+}
+:root #main.Apple-Music-Gradient-Snippet .frame .secondaryImage {
+  display: revert;
+  left: 0;
+  bottom: 0;
+  animation-direction: reverse;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 :root {
