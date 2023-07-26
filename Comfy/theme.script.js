@@ -176,7 +176,7 @@
   });
 
   const Input = Spicetify.React.memo(
-    ({ inputType, name, desc, min, tippy, defaultVal, condition = true, callback }) => {
+    ({ inputType, name, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
       const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
       const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 
@@ -204,6 +204,8 @@
             className: "input",
             value,
             min,
+            max,
+            step,
             placeholder: defaultState,
             onChange: (e) => setValue(e.target.value),
           })
