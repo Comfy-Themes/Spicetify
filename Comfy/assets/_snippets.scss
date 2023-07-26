@@ -168,7 +168,7 @@
         .secondaryImage {
           position: absolute;
           width: 150%;
-          animation: rotate 35s linear infinite;
+          animation: rotate var(--gradient-speed) linear infinite;
           border-radius: 100em !important;
         }
       

@@ -385,6 +385,21 @@ async function initComfy() {
           ), 
         },
         {
+          type: Input,
+          inputType: "number",
+          name: "Gradient-Speed",
+          desc: "Gradient Speed",
+          defaultVal: "50",
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
+            Spicetify.React.createElement("li", null, "Comfy default: 50")
+          ),
+          condition: null, //make condition
+          callback: (value) => document.documentElement.style.setProperty("--gradient-speed", (value || "50") + "s"),
+        },
+        {
           type: Slider,
           name: "Custom-Image",
           desc: "Custom Image Enabled",
