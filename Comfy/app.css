@@ -633,7 +633,7 @@
 :root #main.Apple-Music-Gradient-Snippet .frame .mainImage,
 :root #main.Apple-Music-Gradient-Snippet .frame .secondaryImage {
   position: absolute;
-  width: 150%;
+  width: var(--gradient-width);
   animation: rotate var(--gradient-speed) linear infinite;
   border-radius: 100em !important;
 }
@@ -656,7 +656,6 @@
   left: 0;
   bottom: 0;
   animation-direction: reverse;
-  animation-delay: 10s;
 }
 @keyframes rotate {
   from {
@@ -673,6 +672,7 @@
   --spice-main-elevated: transparent;
   --image-blur: 4px;
   --gradient-speed: 50s;
+  --gradient-width: 150%;
 }
 :root button,
 :root button span,

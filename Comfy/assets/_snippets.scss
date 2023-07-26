@@ -167,7 +167,7 @@
         .mainImage,
         .secondaryImage {
           position: absolute;
-          width: 150%;
+          width: var(--gradient-width);
           animation: rotate var(--gradient-speed) linear infinite;
           border-radius: 100em !important;
         }
@@ -192,7 +192,6 @@
           left: 0;
           bottom: 0;
           animation-direction: reverse;
-          animation-delay: 10s;
         }
       }
       

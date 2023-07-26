@@ -390,7 +390,7 @@
           type: Input,
           inputType: "number",
           name: "Gradient-Speed",
-          desc: "Gradient Speed",
+          desc: "Gradient Speed - Advanced",
           defaultVal: "50",
           min: "0",
           tippy: Spicetify.React.createElement(
@@ -401,6 +401,22 @@
           ),
           condition: useGradient,
           callback: (value) => document.documentElement.style.setProperty("--gradient-speed", (value || "50") + "s"),
+        },
+        {
+          type: Input,
+          inputType: "number",
+          name: "Gradient-Size",
+          desc: "Gradient Size - Advanced",
+          defaultVal: "150",
+          min: "0",
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
+            Spicetify.React.createElement("li", null, "Comfy default: 150")
+          ),
+          condition: useGradient,
+          callback: (value) => document.documentElement.style.setProperty("--gradient-width", (value || "150") + "%"),
         },
         {
           type: Slider,
