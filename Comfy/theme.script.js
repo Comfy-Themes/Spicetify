@@ -136,7 +136,7 @@
     );
   });
 
-  const Slider = Spicetify.React.memo(({ name, desc, tippy, defaultVal, url, condition = true, callback }) => {
+  const Slider = Spicetify.React.memo(({ name, desc, tippy, defaultVal, condition = true, callback }) => {
     const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 
     Spicetify.React.useEffect(() => {
