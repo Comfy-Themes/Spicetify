@@ -13,10 +13,7 @@
     setTimeout(comfy, 300);
     return;
   }
-  await initComfy();
-})();
 
-async function initComfy() {
   const { Player, Platform } = Spicetify;
   const main = document.querySelector(".Root__main-view");
 
@@ -37,13 +34,13 @@ async function initComfy() {
   ];
 
   // Create image container + preload image
-  const frame = document.createElement('div');
-  const mainImage = document.createElement('img');
-  const secondaryImage = document.createElement('img');
+  const frame = document.createElement("div");
+  const mainImage = document.createElement("img");
+  const secondaryImage = document.createElement("img");
 
-  frame.className = 'frame';
-  mainImage.className = 'mainImage';
-  secondaryImage.className = 'secondaryImage';
+  frame.className = "frame";
+  mainImage.className = "mainImage";
+  secondaryImage.className = "secondaryImage";
 
   frame.append(mainImage, secondaryImage);
   main.appendChild(frame);
@@ -178,39 +175,42 @@ async function initComfy() {
     );
   });
 
-  const Input = Spicetify.React.memo(({ inputType, name, desc, tippy, defaultVal, condition = true, callback }) => {
-    const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
-    const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
+  const Input = Spicetify.React.memo(
+    ({ inputType, name, desc, min, tippy, defaultVal, condition = true, callback }) => {
+      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
+      const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 
-    Spicetify.React.useEffect(() => {
-      if (isPromise(defaultVal)) defaultVal.then((val) => setDefaultState(val));
-    }, [defaultVal]);
+      Spicetify.React.useEffect(() => {
+        if (isPromise(defaultVal)) defaultVal.then((val) => setDefaultState(val));
+      }, [defaultVal]);
 
-    Spicetify.React.useEffect(() => {
-      Spicetify.LocalStorage.set(name, `"${value}"`);
-      callback?.(value, name);
-      console.log(name, getConfig(name));
-    }, [value]);
+      Spicetify.React.useEffect(() => {
+        Spicetify.LocalStorage.set(name, `"${value}"`);
+        callback?.(value, name);
+        console.log(name, getConfig(name));
+      }, [value]);
 
-    if (condition === false) return null;
+      if (condition === false) return null;
 
-    return Spicetify.React.createElement(
-      "div",
-      { className: "setting-row", id: name },
-      Spicetify.React.createElement("label", { className: "col description" }, desc, tippy),
-      Spicetify.React.createElement(
+      return Spicetify.React.createElement(
         "div",
-        { className: "col action" },
-        Spicetify.React.createElement("input", {
-          type: inputType,
-          className: "input",
-          value: value,
-          placeholder: defaultState,
-          onChange: (e) => setValue(e.target.value),
-        })
-      )
-    );
-  });
+        { className: "setting-row", id: name },
+        Spicetify.React.createElement("label", { className: "col description" }, desc, tippy),
+        Spicetify.React.createElement(
+          "div",
+          { className: "col action" },
+          Spicetify.React.createElement("input", {
+            type: inputType,
+            className: "input",
+            value,
+            min,
+            placeholder: defaultState,
+            onChange: (e) => setValue(e.target.value),
+          })
+        )
+      );
+    }
+  );
 
   const Section = ({ name, children, condition = true }) => {
     if (condition === false) return null;
@@ -229,6 +229,7 @@ async function initComfy() {
 
   const Content = () => {
     const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
+    const [useGradient, setUseGradient] = Spicetify.React.useState(getConfig("Apple-Music-Gradient-Snippet") ?? false);
     const additionalFeatureSchemes = ["mono", "velvet"];
 
     return Spicetify.React.createElement(
@@ -345,6 +346,7 @@ async function initComfy() {
           name: "Image-Blur",
           desc: "Image Blur",
           defaultVal: "4",
+          min: "0",
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
@@ -362,27 +364,25 @@ async function initComfy() {
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement(
-              'div',
+              "div",
               {
                 style: {
                   // tippy doesnt like loading images
-                  height: '315px',
+                  height: "315px",
                 },
               },
-              Spicetify.React.createElement(
-                'img', 
-                { 
-                  src: 'https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/preview/AM-Gradient.gif?raw=true', 
-                  alt: 'preview',
-                  style: {
-                    width: '100%',
-                  },
-                }
-              ),
+              Spicetify.React.createElement("img", {
+                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/preview/AM-Gradient.gif?raw=true",
+                alt: "preview",
+                style: {
+                  width: "100%",
+                },
+              }),
               Spicetify.React.createElement("h4", null, "Blur (10x Value):"),
-              Spicetify.React.createElement("li", null, "Recommended: 4px"),
+              Spicetify.React.createElement("li", null, "Recommended: 4px")
             )
-          ), 
+          ),
+          callback: setUseGradient,
         },
         {
           type: Input,
@@ -390,13 +390,14 @@ async function initComfy() {
           name: "Gradient-Speed",
           desc: "Gradient Speed",
           defaultVal: "50",
+          min: "0",
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
             Spicetify.React.createElement("li", null, "Comfy default: 50")
           ),
-          condition: null, //make condition
+          condition: useGradient,
           callback: (value) => document.documentElement.style.setProperty("--gradient-speed", (value || "50") + "s"),
         },
         {
@@ -469,4 +470,4 @@ async function initComfy() {
 
   // Workaround for hotloading assets
   Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
-}
+})();
