@@ -6,6 +6,12 @@
 }
 
 :root {
+  &:has(#main.Flatten-Colors-Snippet) {
+    --spice-main: var(--spice-sidebar);
+    --spice-main-transition: var(--spice-sidebar);
+    --spice-rgb-main: var(--spice-rgb-sidebar);
+    --spice-rgb-main-transition: var( --spice-rgb-sidebar);
+  }
   #main {
     &.Comfy-mono-Snippet {
       .cover-art {

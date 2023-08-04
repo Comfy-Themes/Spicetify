@@ -520,6 +520,12 @@
   padding-bottom: 64px !important;
 }
 
+:root:has(#main.Flatten-Colors-Snippet) {
+  --spice-main: var(--spice-sidebar);
+  --spice-main-transition: var(--spice-sidebar);
+  --spice-rgb-main: var(--spice-rgb-sidebar);
+  --spice-rgb-main-transition: var( --spice-rgb-sidebar);
+}
 :root #main.Comfy-mono-Snippet .cover-art {
   box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
 }

@@ -305,6 +305,17 @@
         },
         {
           type: Slider,
+          name: "Flatten-Colors-Snippet",
+          desc: "Flatten Theme Colors",
+          defaultVal: false,
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar"),
+          ),
+        },
+        {
+          type: Slider,
           name: "Home-Header-Snippet",
           desc: "Colorful Home Header",
           defaultVal: true,
