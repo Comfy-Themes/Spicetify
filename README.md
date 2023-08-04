@@ -11,7 +11,7 @@
       <hr>
       <h4> ✅ Supported</h4>
         <li>🔥 Spicetify : <code>2.22.1</code></li>
-        <li>🟢 Spotify : <code>1.2.17</code></li>
+        <li>🟢 Spotify : <code>1.2.16</code></li>
       <hr>
     </td>
   </tr>
