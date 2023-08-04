@@ -680,8 +680,8 @@
 :root img {
   border-radius: var(--border-radius) !important;
 }
-:root button:not(.main-editImageButton-overlay):not([style*=background-image]),
-:root button span,
+:root button:not(.main-editImageButton-overlay):not([style*=background-image]):not(.hd6a3g_3QyF8MFL0wWs1),
+:root button span:empty:not(.Lyric.Synced.Line),
 :root input:not([style*=background-image]) {
   --border-radius: var(--button-radius) !important;
 }

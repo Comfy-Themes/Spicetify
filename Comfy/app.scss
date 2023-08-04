@@ -21,9 +21,9 @@
     border-radius: var(--border-radius) !important;
   }
 
-  button:not(.main-editImageButton-overlay):not([style*="background-image"]),
-  button span,
-  input:not([style*="background-image"]) {
+  button:not(.main-editImageButton-overlay):not([style*=background-image]):not(.hd6a3g_3QyF8MFL0wWs1),
+  button span:empty:not(.Lyric.Synced.Line),
+  input:not([style*=background-image]) {
     --border-radius: var(--button-radius) !important;
   }
 
