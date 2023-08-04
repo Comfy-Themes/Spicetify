@@ -17,6 +17,8 @@
   const { Player, Platform } = Spicetify;
   const main = document.querySelector(".Root__main-view");
 
+  const additionalFeatureSchemes = ["mono", "velvet"];
+
   // Valid Channels
   const channels = [
     /^\/playlist\//,
@@ -229,11 +231,40 @@
     );
   };
 
-  const Content = () => {
-    const [customImage, setCustomImage] = Spicetify.React.useState(getConfig("Custom-Image") ?? false);
-    const [useGradient, setUseGradient] = Spicetify.React.useState(getConfig("Apple-Music-Gradient-Snippet") ?? false);
-    const additionalFeatureSchemes = ["mono", "velvet"];
+  const SubSection = ({ name, condition = true, items, callback, ...props }) => {
+    const [state, setState] = Spicetify.React.useState(getConfig(name) ?? true);
+    if (condition === false) return null;
 
+    return Spicetify.React.createElement(
+      Spicetify.React.Fragment,
+      null,
+      Spicetify.React.createElement(Slider, {
+        name,
+        callback: (value) => {
+          setState(value);
+          callback?.(value);
+        },
+        ...props,
+      }),
+      state &&
+        Spicetify.React.createElement(
+          "ul",
+          { className: "sub-section", style: { listStyle: "auto", listStyleType: "disc" } },
+          items.map((item) =>
+            Spicetify.React.createElement(
+              "li",
+              { className: "sub-section-item", style: { marginLeft: "1rem" } },
+              Spicetify.React.createElement(item.type, {
+                ...item,
+                tippy: Spicetify.React.createElement(Tippy, { label: item.tippy }),
+              })
+            )
+          )
+        )
+    );
+  };
+
+  const Content = () => {
     return Spicetify.React.createElement(
       "div",
       { className: "comfy-settings" },
@@ -358,7 +389,7 @@
           callback: (value) => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px"),
         },
         {
-          type: Slider,
+          type: SubSection,
           name: "Apple-Music-Gradient-Snippet",
           desc: "Apple Music Gradient",
           defaultVal: false,
@@ -384,65 +415,64 @@
               Spicetify.React.createElement("li", null, "Recommended: 4px")
             )
           ),
-          callback: setUseGradient,
+          items: [
+            {
+              type: Input,
+              inputType: "number",
+              name: "Gradient-Speed",
+              desc: "Gradient Speed - Advanced",
+              defaultVal: "50",
+              min: "0",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
+                Spicetify.React.createElement("li", null, "Comfy default: 50")
+              ),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--gradient-speed", (value || "50") + "s"),
+            },
+            {
+              type: Input,
+              inputType: "number",
+              name: "Gradient-Size",
+              desc: "Gradient Size - Advanced",
+              defaultVal: "150",
+              min: "0",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
+                Spicetify.React.createElement("li", null, "Comfy default: 150")
+              ),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--gradient-width", (value || "150") + "%"),
+            },
+          ],
         },
         {
-          type: Input,
-          inputType: "number",
-          name: "Gradient-Speed",
-          desc: "Gradient Speed - Advanced",
-          defaultVal: "50",
-          min: "0",
-          tippy: Spicetify.React.createElement(
-            Spicetify.React.Fragment,
-            null,
-            Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
-            Spicetify.React.createElement("li", null, "Comfy default: 50")
-          ),
-          condition: useGradient,
-          callback: (value) => document.documentElement.style.setProperty("--gradient-speed", (value || "50") + "s"),
-        },
-        {
-          type: Input,
-          inputType: "number",
-          name: "Gradient-Size",
-          desc: "Gradient Size - Advanced",
-          defaultVal: "150",
-          min: "0",
-          tippy: Spicetify.React.createElement(
-            Spicetify.React.Fragment,
-            null,
-            Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
-            Spicetify.React.createElement("li", null, "Comfy default: 150")
-          ),
-          condition: useGradient,
-          callback: (value) => document.documentElement.style.setProperty("--gradient-width", (value || "150") + "%"),
-        },
-        {
-          type: Slider,
+          type: SubSection,
           name: "Custom-Image",
           desc: "Custom Image Enabled",
           defaultVal: false,
-          callback: (value) => {
-            setCustomImage(value);
-            updateImageDisplay();
-          },
-        },
-        {
-          type: Input,
-          inputType: "text",
-          name: "Custom-Image-URL",
-          desc: "Custom Image URL",
-          defaultVal: "Paste URL here!",
-          tippy: Spicetify.React.createElement(
-            Spicetify.React.Fragment,
-            null,
-            Spicetify.React.createElement("h4", null, "Local Images:"),
-            Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'."),
-            Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box.")
-          ),
-          condition: customImage,
           callback: updateImageDisplay,
+          items: [
+            {
+              type: Input,
+              inputType: "text",
+              name: "Custom-Image-URL",
+              desc: "Custom Image URL",
+              defaultVal: "Paste URL here!",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Local Images:"),
+                Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'."),
+                Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box.")
+              ),
+              callback: updateImageDisplay,
+            },
+          ],
         },
       ])
     );
