@@ -347,24 +347,25 @@
   border-radius: var(--border-radius);
 }
 
-.Root__right-sidebar section {
-  min-width: "370px";
+.Root__top-container:has(.comfy-settings) {
+  grid-template-columns: var(--left-sidebar-width) 1fr minmax(345px, max(var(--right-sidebar-width), 345px));
 }
-.Root__right-sidebar .main-buddyFeed-content {
+
+.main-buddyFeed-content {
   margin-top: 0 !important;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings:last-child {
+.main-buddyFeed-content .comfy-settings:last-child {
   padding-bottom: 20px;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row {
+.main-buddyFeed-content .comfy-settings .setting-row {
   display: flex;
   padding: 10px 0;
   align-items: center;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col {
+.main-buddyFeed-content .comfy-settings .setting-row .col {
   padding: 0 !important;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.description {
+.main-buddyFeed-content .comfy-settings .setting-row .col.description {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -373,18 +374,18 @@
   display: flex;
   width: 100%;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip div {
+.main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip div {
   color: var(--spice-subtext);
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:focus-within div, .Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:hover div {
+.main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:focus-within div, .main-buddyFeed-content .comfy-settings .setting-row .col.description .x-settings-tooltip:hover div {
   color: var(--spice-text);
   cursor: help;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action {
   float: right;
   text-align: right;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch {
   align-items: center;
   border: 0px;
   border-radius: 50%;
@@ -395,10 +396,10 @@
   margin-inline-start: 12px;
   padding: 8px;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch.disabled, .Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch[disabled] {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch.disabled, .main-buddyFeed-content .comfy-settings .setting-row .col.action button.switch[disabled] {
   color: rgba(var(--spice-rgb-text), 0.3);
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action button.reset {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action button.reset {
   font-weight: 700;
   font-size: medium;
   background-color: transparent;
@@ -411,42 +412,43 @@
   min-block-size: 32px;
   cursor: pointer;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action button.reset:hover {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action button.reset:hover {
   transform: scale(1.04);
   border-color: var(--spice-text);
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action input {
   padding-inline: 10px;
   text-align: center;
   background-color: rgba(var(--spice-rgb-text), 0.3);
   outline: none;
   border: none;
   height: 32px;
+  width: calc(var(--right-sidebar-width));
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number] {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number] {
   width: 50px;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number]::-webkit-inner-spin-button, .Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number]::-webkit-outer-spin-button {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number]::-webkit-inner-spin-button, .main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number]::-webkit-outer-spin-button {
   display: none;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number] {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number] {
   width: 60px;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number]::-webkit-inner-spin-button, .Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number]::-webkit-outer-spin-button {
+.main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number]::-webkit-inner-spin-button, .main-buddyFeed-content .comfy-settings .setting-row .col.action input:hover[type=number]::-webkit-outer-spin-button {
   display: block;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .setting-row::after {
+.main-buddyFeed-content .comfy-settings .setting-row::after {
   content: "";
   display: table;
   clear: both;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .divider-row:first-of-type .space {
+.main-buddyFeed-content .comfy-settings .divider-row:first-of-type .space {
   display: none;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .divider-row .space {
+.main-buddyFeed-content .comfy-settings .divider-row .space {
   margin-bottom: 20px;
 }
-.Root__right-sidebar .main-buddyFeed-content .comfy-settings .divider-row .divider {
+.main-buddyFeed-content .comfy-settings .divider-row .divider {
   height: 2px;
   border-width: 0;
   background-color: var(--spice-button-disabled);
