@@ -348,7 +348,7 @@
 }
 
 .Root__top-container:has(.comfy-settings) {
-  grid-template-columns: var(--left-sidebar-width) 1fr minmax(345px, max(var(--right-sidebar-width), 345px));
+  grid-template-columns: var(--left-sidebar-width) 1fr minmax(350px, max(var(--right-sidebar-width), 350px));
 }
 
 .main-buddyFeed-content {
@@ -423,7 +423,7 @@
   outline: none;
   border: none;
   height: 32px;
-  width: calc(var(--right-sidebar-width));
+  width: 120px;
 }
 .main-buddyFeed-content .comfy-settings .setting-row .col.action input[type=number] {
   width: 50px;
