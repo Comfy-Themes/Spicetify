@@ -519,6 +519,7 @@
   const { toggle } = Spicetify.Panel.registerPanel({
     label: "Comfy Settings",
     children: Spicetify.React.createElement(Content),
+    style: { minWidth: "calc(370px - var(--panel-gap))" },
     headerActions: Spicetify.React.createElement(DiscordButton),
   });
 
