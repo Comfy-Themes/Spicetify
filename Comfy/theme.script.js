@@ -416,7 +416,7 @@
                 },
               },
               Spicetify.React.createElement("img", {
-                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/preview/AM-Gradient.gif?raw=true",
+                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/images/settings/am-blur.gif?raw=true",
                 alt: "preview",
                 style: {
                   width: "100%",

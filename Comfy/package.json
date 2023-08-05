@@ -2,7 +2,7 @@
   "name": "comfy",
   "version": "1.0.0",
   "description": "Stay comfy while listening to music",
-  "main": "comfy.js",
+  "main": "theme.script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile-scss": "sass app.scss app.css"

@@ -2,7 +2,7 @@
 	{
 		"name": "Comfy",
 		"description": "Stay comfy while listening to music",
-		"preview": "Comfy/preview/preview.png",
+		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",

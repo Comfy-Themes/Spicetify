@@ -1,12 +1,13 @@
 <table>
   <tr>
     <td>
-      <img align="right" src="https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png" alt="Preview" width="50%">
+      <img align="right" src="./images/preview.png" alt="Preview" width="50%">
       <div align="center">
         <img align="center" src="https://i.imgur.com/gWx75QA.png" alt="Logo" width="70" height="90">
         <h3 align="center">Comfy Spicetify</h3>
         <p align="center">Stay comfy while listening to music</p>
-        <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a> ・ <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a>
+        <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a> ・ <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a> ・
+        <a href="Comfy/README.md">Preview images</a>
       </div>
       <hr>
       <h4> ✅ Supported</h4>
@@ -16,7 +17,6 @@
     </td>
   </tr>
 </table>
-
 
 
 
@@ -80,7 +80,9 @@ Go into your theme folder and open either :
 
 `color.ini` for the colors
 
-`user.css` to modify the code
+`user.css` for styling
+
+`theme.js` for settings
 
 ### ♥ Donation Guide
 ---
