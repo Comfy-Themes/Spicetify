@@ -423,6 +423,14 @@
           name: "Custom-Cover-Art-Dimensions",
           desc: "Custom Dimensions",
           defaultVal: false,
+          callback: (value) => {
+            if (!value) {
+              document.documentElement.style.setProperty("--cover-art-width", "");
+              document.documentElement.style.setProperty("--cover-art-height", "");
+              document.documentElement.style.setProperty("--cover-art-radius", "");
+              document.documentElement.style.setProperty("--cover-art-margin", "");
+            }
+          },
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
