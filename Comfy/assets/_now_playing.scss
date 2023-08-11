@@ -18,12 +18,12 @@
         }
 
         .main-coverSlotCollapsed-container {
-          top: -20px;
+          bottom: var(--cover-art-bottom);
 
           .cover-art {
-            width: 84px !important;
-            height: 84px !important;
-            border-radius: var(--border-radius);
+            width: var(--cover-art-width) !important;
+            height: var(--cover-art-height) !important;
+            border-radius: var(--cover-art-radius);
             overflow: hidden;
           }
         }

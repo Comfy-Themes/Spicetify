@@ -304,6 +304,64 @@
           callback: (value) => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px"),
         },
         {
+          type: SubSection,
+          name: "Custom-Font",
+          desc: "Custom Font",
+          defaultVal: false,
+          callback: (value) => {
+            if (!value) {
+              document.documentElement.style.setProperty("--font-family", "");
+            }
+          },
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement(
+              "div",
+              {
+                style: {
+                  // tippy doesnt like loading images
+                  height: "300px",
+                },
+              },
+              Spicetify.React.createElement("img", {
+                src: "https://media.discordapp.net/attachments/811648374687399988/1139576978924642425/image.png?width=1069&height=520",
+                alt: "preview",
+                style: {
+                  width: "100%",
+                },
+              }),
+              Spicetify.React.createElement("h4", { style: { fontWeight: "normal" } }, "If you have the font installed on your PC, then just enter the fonts name."),
+              Spicetify.React.createElement("h4", { style: { fontWeight: "normal" } }, "Otherwise, you can use a Google Font by entering the URL of the font."),
+            )
+          ),
+          items: [
+            {
+              type: Input,
+              inputType: "text",
+              name: "Font",
+              desc: "Font",
+              defaultVal: "",
+              callback: (value) => {
+                let fontFamily = value;
+                if (value.includes(".")) {
+                  fontFamily = decodeURIComponent(value.match(/family=([^&:]+)/)?.[1]?.replace(/\+/g, ' '));
+                  if (!document.getElementById("custom-font")) {
+                    const link = document.createElement("link");
+                    link.rel = "stylesheet";
+                    link.href = value;
+                    link.id = "custom-font";
+                    document.head.appendChild(link);
+                  } else {
+                    document.getElementById("custom-font").href = value;
+                  }
+                }
+                document.documentElement.style.setProperty('--font-family', fontFamily);
+              }          
+            }, 
+          ],
+        },
+        {
           type: Slider,
           name: "Flatten-Colors-Snippet",
           desc: "Flatten Theme Colors",
@@ -361,10 +419,59 @@
       ]),
       Spicetify.React.createElement(Section, { name: "Cover Art" }, [
         {
-          type: Slider,
-          name: "Oblong-nowPlaying-Art-Snippet",
-          desc: "Oblong Now Playing Cover Art",
+          type: SubSection,
+          name: "Custom-Cover-Art-Dimensions",
+          desc: "Custom Dimensions",
           defaultVal: false,
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Change the size of the cover art:"),
+            Spicetify.React.createElement("li", null, "Comfy default: (84px, 84px, 8px, 20px)"),
+            Spicetify.React.createElement("li", null, "Spotify default: (56px, 56px, 4px, 0px)"),
+            Spicetify.React.createElement("li", null, "Oblong: (115px, 84px, 15px, 20px)"),
+          ),
+          items: [
+            {
+              type: Input,
+              inputType: "number",
+              name: "Cover-Art-Width",
+              desc: "Width",
+              defaultVal: "84px",
+              callback: (value) => document.documentElement.style.setProperty("--cover-art-width", (value || "84") + "px"),
+            },
+            {
+              type: Input,
+              inputType: "number",
+              name: "Cover-Art-Height",
+              desc: "Height",
+              defaultVal: "84px",
+              callback: (value) => document.documentElement.style.setProperty("--cover-art-height", (value || "84") + "px"),
+            },
+            {
+              type: Input,
+              inputType: "number",
+              name: "Cover-Art-Radius",
+              desc: "Border Radius",
+              defaultVal: "8px",
+              callback: (value) => document.documentElement.style.setProperty("--cover-art-radius", (value || "8") + "px"),
+            },
+            {
+              type: Input,
+              inputType: "number",
+              name: "Cover-Art-Bottom",
+              desc: "Bottom Margin",
+              defaultVal: "20px",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Change the distance between the cover art and the bottom of the playbar:"),
+                Spicetify.React.createElement("li", null, "Comfy default: 20px"),
+                Spicetify.React.createElement("li", null, "Spotify default: 0px"),
+              ),
+              callback: (value) => document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px"),
+            },
+          ],
         },
         {
           type: Slider,
@@ -431,7 +538,7 @@
               type: Input,
               inputType: "number",
               name: "Gradient-Speed",
-              desc: "Gradient Speed - Advanced",
+              desc: "Speed - Advanced",
               defaultVal: "50",
               min: "0",
               tippy: Spicetify.React.createElement(
@@ -447,7 +554,7 @@
               type: Input,
               inputType: "number",
               name: "Gradient-Size",
-              desc: "Gradient Size - Advanced",
+              desc: "Size - Advanced",
               defaultVal: "150",
               min: "0",
               tippy: Spicetify.React.createElement(
@@ -464,7 +571,7 @@
         {
           type: SubSection,
           name: "Custom-Image",
-          desc: "Custom Image Enabled",
+          desc: "Custom Image",
           defaultVal: false,
           callback: updateImageDisplay,
           items: [
@@ -472,7 +579,7 @@
               type: Input,
               inputType: "text",
               name: "Custom-Image-URL",
-              desc: "Custom Image URL",
+              desc: "URL",
               defaultVal: "Paste URL here!",
               tippy: Spicetify.React.createElement(
                 Spicetify.React.Fragment,

@@ -10,7 +10,7 @@
     --spice-main: var(--spice-sidebar);
     --spice-main-transition: var(--spice-sidebar);
     --spice-rgb-main: var(--spice-rgb-sidebar);
-    --spice-rgb-main-transition: var( --spice-rgb-sidebar);
+    --spice-rgb-main-transition: var(--spice-rgb-sidebar);
   }
   #main {
     &.Comfy-mono-Snippet {
@@ -53,15 +53,6 @@
           calc(-100% + var(--progress-bar-transform))
         ) !important;
         width: 100% !important;
-      }
-    }
-
-    &.Oblong-nowPlaying-Art-Snippet {
-      .main-nowPlayingWidget-coverArt .cover-art {
-        width: 115px !important;
-        height: 84px !important;
-        border-radius: 15px;
-        overflow: hidden;
       }
     }
 

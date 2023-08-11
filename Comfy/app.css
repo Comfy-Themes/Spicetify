@@ -265,12 +265,12 @@
   opacity: 0;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
-  top: -20px;
+  bottom: var(--cover-art-bottom);
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container .cover-art {
-  width: 84px !important;
-  height: 84px !important;
-  border-radius: var(--border-radius);
+  width: var(--cover-art-width) !important;
+  height: var(--cover-art-height) !important;
+  border-radius: var(--cover-art-radius);
   overflow: hidden;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-extraControls * svg {
@@ -529,7 +529,7 @@
   --spice-main: var(--spice-sidebar);
   --spice-main-transition: var(--spice-sidebar);
   --spice-rgb-main: var(--spice-rgb-sidebar);
-  --spice-rgb-main-transition: var( --spice-rgb-sidebar);
+  --spice-rgb-main-transition: var(--spice-rgb-sidebar);
 }
 :root #main.Comfy-mono-Snippet .cover-art {
   box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
@@ -557,12 +557,6 @@
   height: var(--progress-bar-height) !important;
   transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
   width: 100% !important;
-}
-:root #main.Oblong-nowPlaying-Art-Snippet .main-nowPlayingWidget-coverArt .cover-art {
-  width: 115px !important;
-  height: 84px !important;
-  border-radius: 15px;
-  overflow: hidden;
 }
 :root #main.Remove-Device-Picker-Notification-Snippet .main-connectBar-connected {
   display: none !important;
@@ -684,6 +678,10 @@
   --image-blur: 4px;
   --gradient-speed: 50s;
   --gradient-width: 150%;
+  --cover-art-width: 84px;
+  --cover-art-height: 84px;
+  --cover-art-radius: 8px;
+  --cover-art-bottom: 20px;
 }
 :root button,
 :root button span,
