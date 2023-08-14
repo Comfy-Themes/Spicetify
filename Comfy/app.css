@@ -585,7 +585,7 @@
   margin-top: -32px;
 }
 :root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container .Root__top-bar .main-topBar-container {
-  padding-inline: 0;
+  padding-inline: 80px 0px;
   padding-bottom: 64px;
   pointer-events: none;
 }
