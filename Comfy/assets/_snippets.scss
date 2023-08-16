@@ -67,6 +67,22 @@
       }
     }
     
+    &.visible-column-bar-Snippet {
+      .main-trackList-trackListHeader,
+      .main-trackList-trackListHeaderStuck {
+        position: static;
+      }
+      
+      .main-trackList-trackListHeader {
+        display: block !important;
+      }
+      
+      .main-trackList-trackListHeaderStuck {
+        background: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
 
     &.Home-Header-Snippet {
       .main-home-homeHeader {

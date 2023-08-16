@@ -400,6 +400,38 @@
           desc: "Horizontal Page Links",
           defaultVal: false,
         },
+        {
+          type: Slider,
+          name: "visible-column-bar-Snippet",
+          desc: "Visible Column Bar",
+          defaultVal: false,
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist"),
+          ),
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement(
+              "div",
+              {
+                style: {
+                  // tippy doesnt like loading images
+                  height: "120px",
+                },
+              },
+              Spicetify.React.createElement("img", {
+                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/images/settings/column-bar.png",
+                alt: "preview",
+                style: {
+                  width: "100%",
+                },
+              }),
+              Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist"),
+            )
+          ),
+        },
       ]),
       Spicetify.React.createElement(Section, { name: "Playbar" }, [
         {

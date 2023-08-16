@@ -582,6 +582,18 @@
   transition: all 0.3s ease;
   opacity: 1 !important;
 }
+:root #main.visible-column-bar-Snippet .main-trackList-trackListHeader,
+:root #main.visible-column-bar-Snippet .main-trackList-trackListHeaderStuck {
+  position: static;
+}
+:root #main.visible-column-bar-Snippet .main-trackList-trackListHeader {
+  display: block !important;
+}
+:root #main.visible-column-bar-Snippet .main-trackList-trackListHeaderStuck {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
 :root #main.Home-Header-Snippet .main-home-homeHeader {
   display: block !important;
 }
