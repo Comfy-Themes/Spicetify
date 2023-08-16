@@ -3,7 +3,7 @@
     !(
       Spicetify.Player?.data &&
       Spicetify.Platform &&
-      Spicetify.Panel &&
+      Spicetify.PopupModal &&
       Spicetify.React &&
       Spicetify.ReactDOM &&
       Spicetify.AppTitle &&
