@@ -8,6 +8,7 @@
 }
 
 // Comfy settings
+/*
 .Root__top-container:has(.comfy-settings) {
   grid-template-columns: var(--left-sidebar-width) 1fr minmax(
       350px,
@@ -18,6 +19,11 @@
 .main-buddyFeed-content {
   margin-top: 0 !important;
 
+.....}*/
+  .main-embedWidgetGenerator-container {
+      width: 500px;
+      max-height: 75vh;
+  }
   .comfy-settings {
     &:last-child {
       padding-bottom: 20px;
@@ -136,8 +142,11 @@
     }
 
     .divider-row {
-      &:first-of-type .space {
-        display: none;
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        .space {
+          display: none;
+        } 
       }
       .space {
         margin-bottom: 20px;
@@ -149,4 +158,3 @@
       }
     }
   }
-}
