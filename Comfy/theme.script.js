@@ -268,8 +268,7 @@
     return Spicetify.React.createElement(
       "div",
       { className: "comfy-settings" },
-      Spicetify.React.createElement(Divider),
-      Spicetify.React.createElement(Section, { name: "Colorscheme" }, [
+      Spicetify.React.createElement(Section, { name: "Colorscheme", condition: additionalFeatureSchemes.includes(Spicetify.Config?.color_scheme.toLowerCase()) }, [
         {
           type: Slider,
           name: `Comfy-${Spicetify.Config?.color_scheme.toLowerCase()}-Snippet`,
@@ -278,7 +277,6 @@
             Spicetify.Config?.color_scheme.toLowerCase().slice(1)
           } additional features`,
           defaultVal: true,
-          condition: additionalFeatureSchemes.includes(Spicetify.Config?.color_scheme.toLowerCase()),
         }
       ]),
       Spicetify.React.createElement(Section, { name: "Interface" }, [
