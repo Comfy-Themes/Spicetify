@@ -127,7 +127,7 @@
         &:not(.main-contextMenu-disabled):focus,
         &:not(.main-contextMenu-disabled):hover,
         &[aria-expanded="true"] {
-          background-color: #5c6eb12a;
+          background-color: rgba(var(--spice-rgb-pagelink-active), 0.15);
           transition: 150ms background-color;
         }
       }
@@ -153,7 +153,7 @@
       &:not(.main-contextMenu-disabled):focus,
       &:not(.main-contextMenu-disabled):hover,
       &[aria-expanded="true"] {
-        background-color: #5c6eb12a;
+        background-color: rgba(var(--spice-rgb-pagelink-active), 0.15);
         transition: 150ms background-color;
       }
     }
