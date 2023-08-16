@@ -539,6 +539,39 @@
 :root #main.Comfy-mono-Snippet svg.main-coverSlotExpandedCollapseButton-chevron {
   color: #000000;
 }
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar {
+  background: var(--spice-main);
+  border-radius: var(--border-radius);
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar {
+  padding: 0 18px 6px 18px !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .player-controls__buttons--new-icons {
+  margin-bottom: 0 !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar {
+  position: absolute !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .x-progressBar-progressBarBg,
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .x-progressBar-sliderArea {
+  border-radius: 0 0 8px 8px !important;
+  height: 6px !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div,
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .x-progressBar-fillColor {
+  height: 6px !important;
+  border-radius: 50px !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:last-of-type,
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:first-of-type {
+  transition: all 0.3s ease;
+  opacity: 0 !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:last-of-type:hover,
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:first-of-type:hover {
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+}
 :root #main.Home-Header-Snippet .main-home-homeHeader {
   display: block !important;
 }
@@ -767,7 +800,7 @@
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) a:not(.main-contextMenu-disabled):focus,
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) a:not(.main-contextMenu-disabled):hover,
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) a[aria-expanded=true] {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.15);
   transition: 150ms background-color;
 }
 :root #bookmark-menu {
@@ -790,6 +823,6 @@
 :root #bookmark-menu a:not(.main-contextMenu-disabled):focus,
 :root #bookmark-menu a:not(.main-contextMenu-disabled):hover,
 :root #bookmark-menu a[aria-expanded=true] {
-  background-color: rgba(92, 110, 177, 0.1647058824);
+  background-color: rgba(var(--spice-rgb-pagelink-active), 0.15);
   transition: 150ms background-color;
 }
