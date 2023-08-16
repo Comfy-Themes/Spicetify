@@ -359,7 +359,7 @@
   margin-top: 0 !important;
 
 .....}*/
-.main-embedWidgetGenerator-container {
+.main-embedWidgetGenerator-container:has(.comfy-settings) {
   width: 500px;
   max-height: 75vh;
 }
