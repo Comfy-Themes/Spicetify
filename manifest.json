@@ -24,7 +24,7 @@
 	},
 	{
 		"name": "Comfy (Legacy)",
-		"description": "Stay comfy while listening to music",
+		"description": "Comfy for Spotify <= 1.2.13",
 		"preview": "Comfy/preview/preview.png",
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
