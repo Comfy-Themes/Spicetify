@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td>
-      <img align="right" src="https://comfy-themes.github.io/Spicetify/Comfy/preview/preview.png" alt="Preview" width="50%">
+      <img align="right" src="https://github.com/Comfy-Themes/Spicetify/blob/legacy/Comfy/preview/preview.png" alt="Preview" width="50%">
       <div align="center">
         <img align="center" src="https://i.imgur.com/gWx75QA.png" alt="Logo" width="70" height="90">
         <h3 align="center">Comfy Spicetify</h3>
