@@ -422,7 +422,7 @@
                 },
               },
               Spicetify.React.createElement("img", {
-                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/images/settings/column-bar.png",
+                src: "https://github.com/Comfy-Themes/Spicetify/blob/main/images/settings/column-bar.png?raw=true",
                 alt: "preview",
                 style: {
                   width: "100%",
