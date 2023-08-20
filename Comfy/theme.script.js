@@ -446,15 +446,7 @@
           type: Dropdown,
           name: "Color-Scheme",
           desc: `Color Scheme`,
-          options: (() => {
-            try {
-              const keys = Object.keys(colorSchemes);
-              return keys;
-            } catch (error) {
-              console.error("ColorSchemes NOT Found!:", error.message);
-              return null;
-            }
-          })(),
+          options: colorSchemes ? Object.keys(colorSchemes) : [],
           defaultVal: Spicetify.Config?.color_scheme.toLowerCase(),
           condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme") && colorSchemes,
           tippy: Spicetify.React.createElement("div", null, "For faster loadtimes use cli to change color schemes."),
