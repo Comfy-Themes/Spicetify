@@ -571,7 +571,7 @@
   color: #000000;
 }
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar {
-  background: var(--spice-main);
+  background: var(--spice-playbar);
   border-radius: var(--border-radius);
 }
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar {
