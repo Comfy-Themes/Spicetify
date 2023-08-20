@@ -14,6 +14,23 @@
     return;
   }
 
+  // Attempt to load color.ini from localStorage
+  let colorSchemes = getConfig("colorSchemes");
+
+  // Update schemes no matter what
+  fetch("https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/color.ini")
+    .then((response) => response.text())
+    .then((iniContent) => {
+      const parsedIni = parseIni(iniContent);
+      localStorage.setItem("colorSchemes", JSON.stringify(parsedIni).toLowerCase());
+      colorSchemes = getConfig("colorSchemes");
+      console.log("Successfully updated colorSchemes!");
+    })
+    .catch((error) => {
+      console.error("Failed to update colorSchemes:", error);
+    });
+
+  // Header Image(s)
   const { Player, Platform } = Spicetify;
   const main = document.querySelector(".Root__main-view");
 
@@ -80,6 +97,100 @@
 
     return false;
   }
+
+  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  function applyTheme(scheme) {
+    const existingScheme = document.querySelector("style.comfyScheme");
+    if (existingScheme) existingScheme.remove();
+    if (!scheme) return;
+
+    const schemeTag = document.createElement("style");
+    schemeTag.classList.add("comfyScheme");
+    let injectStr = ":root {";
+    const themeIniKeys = Object.keys(scheme);
+    themeIniKeys.forEach((key) => {
+      injectStr += `--spice-${key}: #${scheme[key]};`;
+      injectStr += `--spice-rgb-${key}: ${hexToRGB(scheme[key])};`;
+    });
+    injectStr += "}";
+    schemeTag.innerHTML = injectStr;
+    document.body.appendChild(schemeTag);
+  }
+
+  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  function removeTheme() {
+    const existingScheme = document.querySelector("style.comfyScheme");
+    if (existingScheme) existingScheme.remove();
+  }
+
+  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  const parseIni = (data) => {
+    const regex = {
+      section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
+      param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
+      comment: /^\s*;.*$/,
+    };
+    const value = {};
+    let section = null;
+
+    const lines = data.split(/[\r\n]+/);
+
+    lines.forEach(function (line) {
+      if (regex.comment.test(line)) {
+        return;
+      } else if (regex.param.test(line)) {
+        if (line.includes("xrdb")) {
+          delete value[section || ""];
+          section = null;
+          return;
+        }
+
+        const match = line.match(regex.param);
+
+        if (match && match.length === 3) {
+          if (section) {
+            if (!value[section]) {
+              value[section] = {};
+            }
+            value[section][match[1]] = match[2].split(";")[0].trim();
+          }
+        }
+      } else if (regex.section.test(line)) {
+        const match = line.match(regex.section);
+        if (match) {
+          value[match[1]] = {};
+          section = match[1];
+        }
+      } else if (line.length === 0 && section) {
+        section = null;
+      }
+    });
+
+    return value;
+  };
+
+  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  const hexToRGB = (hex) => {
+    if (hex.length === 3) {
+      hex = hex
+        .split("")
+        .map((char) => char + char)
+        .join("");
+    } else if (hex.length != 6) {
+      throw "Only 3- or 6-digit hex colours are allowed.";
+    } else if (hex.match(/[^0-9a-f]/i)) {
+      throw "Only hex colours are allowed.";
+    }
+
+    const aRgbHex = hex.match(/.{1,2}/g);
+    if (!aRgbHex || aRgbHex.length !== 3) {
+      throw "Could not parse hex colour.";
+    }
+
+    const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
+
+    return aRgb;
+  };
 
   const Tippy = ({ label }) => {
     if (!label) return null;
@@ -325,25 +436,6 @@
 
   const Content = () => {
     let cachedFeature = null;
-    let cachedScheme = null;
-    const colorSchemes = [
-      "comfy",
-      "nord",
-      "lunar",
-      "catppuccin-latte",
-      "catppuccin-frappe",
-      "catppuccin-macchiato",
-      "catppuccin-mocha",
-      "Mono",
-      "Deep",
-      "Sunset",
-      "Neon",
-      "Forest",
-      "Yami",
-      "Sakura",
-      "Vaporwave",
-      "Velvet",
-    ];
     const additionalFeatureSchemes = ["nord", "mono"];
 
     return Spicetify.React.createElement(
@@ -354,20 +446,24 @@
           type: Dropdown,
           name: "Color-Scheme",
           desc: `Color Scheme`,
-          options: colorSchemes,
+          options: (() => {
+            try {
+              const keys = Object.keys(colorSchemes);
+              return keys;
+            } catch (error) {
+              console.error("ColorSchemes NOT Found!:", error.message);
+              return null;
+            }
+          })(),
           defaultVal: Spicetify.Config?.color_scheme.toLowerCase(),
-          condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
+          condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme") && colorSchemes,
           tippy: Spicetify.React.createElement("div", null, "For faster loadtimes use cli to change color schemes."),
           callback: (value) => {
-            if (cachedScheme) {
-              document.querySelector("html")?.classList.remove(cachedScheme);
+            if (value !== Spicetify.Config?.color_scheme.toLowerCase()) {
+              applyTheme(colorSchemes[value]);
+            } else {
+              removeTheme();
             }
-            if (value !== Spicetify.Config?.color_scheme.toLowerCase() && value !== "") {
-              cachedScheme = value;
-              document.querySelector("html")?.classList.add(value);
-            }
-
-            // Somehow trigger a dropdown change on 'scheme-features' to update the feature snippets? or change 'scheme-features' defaultVal and refresh dom/redraw? @kyrie25
           },
         },
         {
