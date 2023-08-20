@@ -24,6 +24,7 @@
       const parsedIni = parseIni(iniContent);
       localStorage.setItem("colorSchemes", JSON.stringify(parsedIni).toLowerCase());
       colorSchemes = getConfig("colorSchemes");
+      Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
       console.log("Successfully updated colorSchemes!");
     })
     .catch((error) => {
@@ -448,10 +449,10 @@
           desc: `Color Scheme`,
           options: colorSchemes ? Object.keys(colorSchemes) : [],
           defaultVal: Spicetify.Config?.color_scheme.toLowerCase(),
-          condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme") && colorSchemes,
+          condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
           tippy: Spicetify.React.createElement("div", null, "For faster loadtimes use cli to change color schemes."),
           callback: (value) => {
-            if (value !== Spicetify.Config?.color_scheme.toLowerCase()) {
+            if (value !== Spicetify.Config?.color_scheme.toLowerCase() && colorSchemes) {
               applyTheme(colorSchemes[value]);
             } else {
               removeTheme();
