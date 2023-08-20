@@ -252,10 +252,13 @@
     const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 
     Spicetify.React.useEffect(() => {
-      Spicetify.LocalStorage.set(name, state);
+      const item = getConfig(name);
+      if (item !== state) {
+        Spicetify.LocalStorage.set(name, state);
+        console.log(name, item);
+      }
       document.getElementById("main")?.classList.toggle(name, state);
       callback?.(state);
-      console.log(name, getConfig(name));
     }, [state]);
 
     if (condition === false) return null;
@@ -297,11 +300,13 @@
       }, [defaultVal]);
 
       Spicetify.React.useEffect(() => {
-        Spicetify.LocalStorage.set(name, `"${value}"`);
+        const item = getConfig(name);
+        if (item !== value) {
+          Spicetify.LocalStorage.set(name, `"${value}"`);
+          console.log(name, item);
+        }
         callback?.(value, name);
-        console.log(name, getConfig(name));
       }, [value]);
-
       if (condition === false) return null;
 
       return Spicetify.React.createElement(
@@ -382,10 +387,13 @@
     if (!defaultVal) defaultVal = fallbackVal;
 
     Spicetify.React.useEffect(() => {
-      Spicetify.LocalStorage.set(name, `"${selectedValue}"`);
+      const item = getConfig(name);
+      if (item !== selectedValue) {
+        Spicetify.LocalStorage.set(name, `"${selectedValue}"`);
+        console.log(name, item);
+      }
       callback?.(selectedValue);
       setButtonEnabled(selectedValue !== defaultVal);
-      console.log(name, getConfig(name));
     }, [selectedValue]);
 
     if (!condition) return null;
