@@ -359,7 +359,22 @@
   margin-top: 0 !important;
 
 .....}*/
-.main-embedWidgetGenerator-container:has(.comfy-settings) {
+@keyframes custom-animation {
+  0% {
+    opacity: 1;
+  }
+  25%, 50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+.GenericModal__overlay:has(.comfy-settings):not(:has(.GenericModal:hover)) {
+  animation: custom-animation 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+  animation-fill-mode: forwards;
+}
+.GenericModal__overlay:has(.comfy-settings) .main-embedWidgetGenerator-container {
   width: 500px;
   max-height: 75vh;
 }
