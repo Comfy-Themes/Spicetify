@@ -4,6 +4,7 @@
 @forward "assets/settings";
 @forward "assets/top_bar";
 @forward "assets/snippets";
+@forward "assets/_color_schemes";
 
 :root {
   // Variables
@@ -21,13 +22,15 @@
   button,
   button span,
   input,
+  select,
   img {
     border-radius: var(--border-radius) !important;
   }
 
   button:not(.main-editImageButton-overlay):not([style*=background-image]):not(.hd6a3g_3QyF8MFL0wWs1),
   button span:empty:not(.Lyric.Synced.Line),
-  input:not([style*=background-image]) {
+  input:not([style*=background-image]),
+  select {
     --border-radius: var(--button-radius) !important;
   }
 

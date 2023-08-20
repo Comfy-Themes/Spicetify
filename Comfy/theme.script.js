@@ -17,8 +17,6 @@
   const { Player, Platform } = Spicetify;
   const main = document.querySelector(".Root__main-view");
 
-  const additionalFeatureSchemes = ["nord", "mono", "velvet"];
-
   // Valid Channels
   const channels = [
     /^\/playlist\//,
@@ -264,20 +262,129 @@
     );
   };
 
+  const Dropdown = Spicetify.React.memo(({ name, desc, options, defaultVal, condition = true, tippy, callback }) => {
+    const [selectedValue, setSelectedValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
+    const [buttonEnabled, setButtonEnabled] = Spicetify.React.useState(selectedValue !== defaultVal);
+
+    const fallbackVal = "Select an option";
+    if (!defaultVal) defaultVal = fallbackVal;
+
+    Spicetify.React.useEffect(() => {
+      Spicetify.LocalStorage.set(name, `"${selectedValue}"`);
+      callback?.(selectedValue);
+      setButtonEnabled(selectedValue !== defaultVal);
+      console.log(name, getConfig(name));
+    }, [selectedValue]);
+
+    if (!condition) return null;
+
+    return Spicetify.React.createElement(
+      "div",
+      { className: "setting-row", id: name },
+      Spicetify.React.createElement("label", { className: "col description" }, desc, tippy),
+      Spicetify.React.createElement(
+        "div",
+        { className: "col action", style: { display: "flex", flexDirection: "row !important" } },
+        buttonEnabled &&
+          Spicetify.React.createElement(
+            "button",
+            {
+              className: `switch`,
+              style: { marginInlineEnd: "12px" },
+              onClick: () => {
+                setSelectedValue(defaultVal);
+                callback?.(defaultVal);
+              },
+            },
+            Spicetify.React.createElement("svg", {
+              height: "16",
+              width: "16",
+              viewBox: "0 0 16 16",
+              fill: "currentColor",
+              dangerouslySetInnerHTML: {
+                __html: Spicetify.SVGIcons.x,
+              },
+            })
+          ),
+        Spicetify.React.createElement(
+          "select",
+          {
+            value: selectedValue,
+            onChange: (event) => {
+              const newValue = event.target.value;
+              setSelectedValue(newValue);
+              callback?.(newValue);
+            },
+          },
+          defaultVal === fallbackVal && Spicetify.React.createElement("option", { value: "" }, fallbackVal),
+          options.map((option) => Spicetify.React.createElement("option", { key: option, value: option }, option))
+        )
+      )
+    );
+  });
+
   const Content = () => {
+    let cachedFeature = null;
+    let cachedScheme = null;
+    const colorSchemes = [
+      "comfy",
+      "nord",
+      "lunar",
+      "catppuccin-latte",
+      "catppuccin-frappe",
+      "catppuccin-macchiato",
+      "catppuccin-mocha",
+      "Mono",
+      "Deep",
+      "Sunset",
+      "Neon",
+      "Forest",
+      "Yami",
+      "Sakura",
+      "Vaporwave",
+      "Velvet",
+    ];
+    const additionalFeatureSchemes = ["nord", "mono"];
+
     return Spicetify.React.createElement(
       "div",
       { className: "comfy-settings" },
-      Spicetify.React.createElement(Section, { name: "Colorscheme", condition: additionalFeatureSchemes.includes(Spicetify.Config?.color_scheme.toLowerCase()) }, [
+      Spicetify.React.createElement(Section, { name: "Colorscheme" }, [
         {
-          type: Slider,
-          name: `Comfy-${Spicetify.Config?.color_scheme.toLowerCase()}-Snippet`,
-          desc: `${
-            Spicetify.Config?.color_scheme.toLowerCase().charAt(0).toUpperCase() +
-            Spicetify.Config?.color_scheme.toLowerCase().slice(1)
-          } additional features`,
-          defaultVal: true,
-        }
+          type: Dropdown,
+          name: "Color-Scheme",
+          desc: `Color Scheme`,
+          options: colorSchemes,
+          defaultVal: Spicetify.Config?.color_scheme.toLowerCase(),
+          condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
+          tippy: Spicetify.React.createElement("div", null, "For faster loadtimes use cli to change color schemes."),
+          callback: (value) => {
+            if (cachedScheme) {
+              document.querySelector("html")?.classList.remove(cachedScheme);
+            }
+            if (value !== Spicetify.Config?.color_scheme.toLowerCase() && value !== "") {
+              cachedScheme = value;
+              document.querySelector("html")?.classList.add(value);
+            }
+
+            // Somehow trigger a dropdown change on 'scheme-features' to update the feature snippets? or change 'scheme-features' defaultVal and refresh dom/redraw? @kyrie25
+          },
+        },
+        {
+          type: Dropdown,
+          name: `Scheme-Features`,
+          desc: `Additional Features`,
+          options: additionalFeatureSchemes,
+          callback: (value) => {
+            if (cachedFeature) {
+              document.getElementById("main")?.classList.remove(`Comfy-${cachedFeature}-Snippet`);
+            }
+            if (value !== "Select an option" && value !== "") {
+              cachedFeature = value;
+              document.getElementById("main")?.classList.add(`Comfy-${value}-Snippet`);
+            }
+          },
+        },
       ]),
       Spicetify.React.createElement(Section, { name: "Interface" }, [
         {
@@ -294,8 +401,8 @@
             "Note: default value can be lost"
           ),
           callback: async (value) => {
-            if (!value) await Spicetify.Platform.UserAPI._product_state.delOverridesValues({ keys: ["name"] });
-            else await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
+            await Spicetify.Platform.UserAPI._product_state.delOverridesValues({ keys: ["name"] });
+            if (value) await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
           },
         },
         {
@@ -341,8 +448,16 @@
                   width: "100%",
                 },
               }),
-              Spicetify.React.createElement("h4", { style: { fontWeight: "normal" } }, "If you have the font installed on your PC, then just enter the fonts name."),
-              Spicetify.React.createElement("h4", { style: { fontWeight: "normal" } }, "Otherwise, you can use a Google Font by entering the URL of the font."),
+              Spicetify.React.createElement(
+                "h4",
+                { style: { fontWeight: "normal" } },
+                "If you have the font installed on your PC, then just enter the fonts name."
+              ),
+              Spicetify.React.createElement(
+                "h4",
+                { style: { fontWeight: "normal" } },
+                "Otherwise, you can use a Google Font by entering the URL of the font."
+              )
             )
           ),
           items: [
@@ -355,7 +470,7 @@
               callback: (value) => {
                 let fontFamily = value;
                 if (value.includes(".")) {
-                  fontFamily = decodeURIComponent(value.match(/family=([^&:]+)/)?.[1]?.replace(/\+/g, ' '));
+                  fontFamily = decodeURIComponent(value.match(/family=([^&:]+)/)?.[1]?.replace(/\+/g, " "));
                   if (!document.getElementById("custom-font")) {
                     const link = document.createElement("link");
                     link.rel = "stylesheet";
@@ -366,9 +481,9 @@
                     document.getElementById("custom-font").href = value;
                   }
                 }
-                document.documentElement.style.setProperty('--font-family', fontFamily);
-              }          
-            }, 
+                document.documentElement.style.setProperty("--font-family", fontFamily);
+              },
+            },
           ],
         },
         {
@@ -379,7 +494,7 @@
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
-            Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar"),
+            Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar")
           ),
         },
         {
@@ -408,7 +523,7 @@
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
-            Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist"),
+            Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist")
           ),
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
@@ -428,7 +543,7 @@
                   width: "100%",
                 },
               }),
-              Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist"),
+              Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist")
             )
           ),
         },
@@ -479,7 +594,7 @@
             Spicetify.React.createElement("h4", null, "Change the size of the cover art:"),
             Spicetify.React.createElement("li", null, "Comfy default: (84px, 84px, 8px, 20px)"),
             Spicetify.React.createElement("li", null, "Spotify default: (56px, 56px, 4px, 0px)"),
-            Spicetify.React.createElement("li", null, "Oblong: (115px, 84px, 15px, 20px)"),
+            Spicetify.React.createElement("li", null, "Oblong: (115px, 84px, 15px, 20px)")
           ),
           items: [
             {
@@ -488,7 +603,8 @@
               name: "Cover-Art-Width",
               desc: "Width",
               defaultVal: "84px",
-              callback: (value) => document.documentElement.style.setProperty("--cover-art-width", (value || "84") + "px"),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--cover-art-width", (value || "84") + "px"),
             },
             {
               type: Input,
@@ -496,7 +612,8 @@
               name: "Cover-Art-Height",
               desc: "Height",
               defaultVal: "84px",
-              callback: (value) => document.documentElement.style.setProperty("--cover-art-height", (value || "84") + "px"),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--cover-art-height", (value || "84") + "px"),
             },
             {
               type: Input,
@@ -504,7 +621,8 @@
               name: "Cover-Art-Radius",
               desc: "Border Radius",
               defaultVal: "8px",
-              callback: (value) => document.documentElement.style.setProperty("--cover-art-radius", (value || "8") + "px"),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--cover-art-radius", (value || "8") + "px"),
             },
             {
               type: Input,
@@ -515,11 +633,16 @@
               tippy: Spicetify.React.createElement(
                 Spicetify.React.Fragment,
                 null,
-                Spicetify.React.createElement("h4", null, "Change the distance between the cover art and the bottom of the playbar:"),
+                Spicetify.React.createElement(
+                  "h4",
+                  null,
+                  "Change the distance between the cover art and the bottom of the playbar:"
+                ),
                 Spicetify.React.createElement("li", null, "Comfy default: 20px"),
-                Spicetify.React.createElement("li", null, "Spotify default: 0px"),
+                Spicetify.React.createElement("li", null, "Spotify default: 0px")
               ),
-              callback: (value) => document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px"),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px"),
             },
           ],
         },
@@ -665,24 +788,30 @@
 
   // SETTINGS MENU
   const svg = `<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`;
-  new Spicetify.Topbar.Button("Comfy Settings", svg, () => {
-    Spicetify.PopupModal.display({
-      title: "Comfy Settings",
-      content: Spicetify.React.createElement(Content),
-      isLarge: true
-    });
+  new Spicetify.Topbar.Button(
+    "Comfy Settings",
+    svg,
+    () => {
+      Spicetify.PopupModal.display({
+        title: "Comfy Settings",
+        content: Spicetify.React.createElement(Content),
+        isLarge: true,
+      });
 
-    const header = document.querySelector(".main-trackCreditsModal-header");
-    const container = document.createElement("div");
-    const extraText = document.createElement("a");
-    extraText.textContent = "Need support? Click here!";
-    extraText.href = "https://discord.gg/rtBQX5D3bD";
-    extraText.style.color = "lightgreen";
+      const header = document.querySelector(".main-trackCreditsModal-header");
+      const container = document.createElement("div");
+      const extraText = document.createElement("a");
+      extraText.textContent = "Need support? Click here!";
+      extraText.href = "https://discord.gg/rtBQX5D3bD";
+      extraText.style.color = "lightgreen";
 
-    container.appendChild(document.querySelector("h1.main-type-alto"));
-    container.appendChild(extraText);
-    header.prepend(container);
-  }, false, true)
+      container.appendChild(document.querySelector("h1.main-type-alto"));
+      container.appendChild(extraText);
+      header.prepend(container);
+    },
+    false,
+    true
+  );
 
   // Workaround for hotloading assets
   Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
