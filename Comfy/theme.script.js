@@ -14,10 +14,9 @@
     return;
   }
 
-  // Attempt to load color.ini from localStorage
+  // Attempt to load color.ini from localStorage and updates it
   let colorSchemes = getConfig("colorSchemes");
 
-  // Update schemes no matter what
   fetch("https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/color.ini")
     .then((response) => response.text())
     .then((iniContent) => {
@@ -34,8 +33,6 @@
   // Header Image(s)
   const { Player, Platform } = Spicetify;
   const main = document.querySelector(".Root__main-view");
-
-  // Valid Channels
   const channels = [
     /^\/playlist\//,
     /^\/station\/playlist\//,
@@ -99,7 +96,7 @@
     return false;
   }
 
-  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  // courtesy of https://github.com/spicetify/spicetify-marketplace
   function applyTheme(scheme) {
     const existingScheme = document.querySelector("style.comfyScheme");
     if (existingScheme) existingScheme.remove();
@@ -118,13 +115,13 @@
     document.body.appendChild(schemeTag);
   }
 
-  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  // courtesy of https://github.com/spicetify/spicetify-marketplace
   function removeTheme() {
     const existingScheme = document.querySelector("style.comfyScheme");
     if (existingScheme) existingScheme.remove();
   }
 
-  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  // courtesy of https://github.com/spicetify/spicetify-marketplace
   const parseIni = (data) => {
     const regex = {
       section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
@@ -170,7 +167,7 @@
     return value;
   };
 
-  // Curtesy of https://github.com/spicetify/spicetify-marketplace
+  // courtesy of https://github.com/spicetify/spicetify-marketplace
   const hexToRGB = (hex) => {
     if (hex.length === 3) {
       hex = hex
@@ -249,13 +246,13 @@
   });
 
   const Slider = Spicetify.React.memo(({ name, desc, tippy, defaultVal, condition = true, callback }) => {
-    const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
+    const initialValue = getConfig(name) ?? defaultVal;
+    const [state, setState] = Spicetify.React.useState(initialValue);
 
     Spicetify.React.useEffect(() => {
-      const item = getConfig(name);
-      if (item !== state) {
+      if (initialValue !== state) {
         Spicetify.LocalStorage.set(name, state);
-        console.log(name, item);
+        console.log(name, state);
       }
       document.getElementById("main")?.classList.toggle(name, state);
       callback?.(state);
@@ -292,7 +289,8 @@
 
   const Input = Spicetify.React.memo(
     ({ inputType, name, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
-      const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
+      const initialValue = getConfig(name) ?? "";
+      const [value, setValue] = Spicetify.React.useState(initialValue);
       const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 
       Spicetify.React.useEffect(() => {
@@ -300,13 +298,13 @@
       }, [defaultVal]);
 
       Spicetify.React.useEffect(() => {
-        const item = getConfig(name);
-        if (item !== value) {
+        if (initialValue !== value) {
           Spicetify.LocalStorage.set(name, `"${value}"`);
-          console.log(name, item);
+          console.log(name, value);
         }
         callback?.(value, name);
       }, [value]);
+
       if (condition === false) return null;
 
       return Spicetify.React.createElement(
@@ -380,17 +378,17 @@
   };
 
   const Dropdown = Spicetify.React.memo(({ name, desc, options, defaultVal, condition = true, tippy, callback }) => {
-    const [selectedValue, setSelectedValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
+    const initialValue = getConfig(name) ?? defaultVal;
+    const [selectedValue, setSelectedValue] = Spicetify.React.useState(initialValue);
     const [buttonEnabled, setButtonEnabled] = Spicetify.React.useState(selectedValue !== defaultVal);
 
     const fallbackVal = "Select an option";
     if (!defaultVal) defaultVal = fallbackVal;
 
     Spicetify.React.useEffect(() => {
-      const item = getConfig(name);
-      if (item !== selectedValue) {
+      if (initialValue !== selectedValue) {
         Spicetify.LocalStorage.set(name, `"${selectedValue}"`);
-        console.log(name, item);
+        console.log(name, selectedValue);
       }
       callback?.(selectedValue);
       setButtonEnabled(selectedValue !== defaultVal);
