@@ -6,11 +6,15 @@
 }
 
 :root {
-  &:has(#main.Flatten-Colors-Snippet) {
+  &:has(#main.Flatten-Colors-normal) {
     --spice-main: var(--spice-sidebar);
     --spice-main-transition: var(--spice-sidebar);
     --spice-rgb-main: var(--spice-rgb-sidebar);
     --spice-rgb-main-transition: var(--spice-rgb-sidebar);
+  }
+  &:has(#main.Flatten-Colors-reverse) {
+    --spice-sidebar: var(--spice-main);
+    --spice-rgb-sidebar: var(--spice-rgb-main);
   }
   #main {
     &.Comfy-mono-Snippet {

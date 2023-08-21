@@ -557,11 +557,15 @@
   padding-bottom: 64px !important;
 }
 
-:root:has(#main.Flatten-Colors-Snippet) {
+:root:has(#main.Flatten-Colors-normal) {
   --spice-main: var(--spice-sidebar);
   --spice-main-transition: var(--spice-sidebar);
   --spice-rgb-main: var(--spice-rgb-sidebar);
   --spice-rgb-main-transition: var(--spice-rgb-sidebar);
+}
+:root:has(#main.Flatten-Colors-reverse) {
+  --spice-sidebar: var(--spice-main);
+  --spice-rgb-sidebar: var(--spice-rgb-main);
 }
 :root #main.Comfy-mono-Snippet .cover-art {
   box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);

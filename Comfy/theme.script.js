@@ -390,7 +390,7 @@
         Spicetify.LocalStorage.set(name, `"${selectedValue}"`);
         console.log(name, selectedValue);
       }
-      callback?.(selectedValue);
+      callback?.(name, selectedValue, options, defaultVal);
       setButtonEnabled(selectedValue !== defaultVal);
     }, [selectedValue]);
 
@@ -411,7 +411,6 @@
               style: { marginInlineEnd: "12px" },
               onClick: () => {
                 setSelectedValue(defaultVal);
-                callback?.(defaultVal);
               },
             },
             Spicetify.React.createElement("svg", {
@@ -429,12 +428,10 @@
           {
             value: selectedValue,
             onChange: (event) => {
-              const newValue = event.target.value;
-              setSelectedValue(newValue);
-              callback?.(newValue);
+              setSelectedValue(event.target.value);
             },
           },
-          defaultVal === fallbackVal && Spicetify.React.createElement("option", { value: "" }, fallbackVal),
+          defaultVal === fallbackVal && Spicetify.React.createElement("option", { value: fallbackVal }, fallbackVal),
           options.map((option) => Spicetify.React.createElement("option", { key: option, value: option }, option))
         )
       )
@@ -442,9 +439,6 @@
   });
 
   const Content = () => {
-    let cachedFeature = null;
-    const additionalFeatureSchemes = ["nord", "mono"];
-
     return Spicetify.React.createElement(
       "div",
       { className: "comfy-settings" },
@@ -457,7 +451,7 @@
           defaultVal: Spicetify.Config?.color_scheme.toLowerCase(),
           condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
           tippy: Spicetify.React.createElement("div", null, "For faster loadtimes use cli to change color schemes."),
-          callback: (value) => {
+          callback: (name, value) => {
             if (value !== Spicetify.Config?.color_scheme.toLowerCase() && colorSchemes) {
               applyTheme(colorSchemes[value]);
             } else {
@@ -469,15 +463,11 @@
           type: Dropdown,
           name: `Scheme-Features`,
           desc: `Additional Features`,
-          options: additionalFeatureSchemes,
-          callback: (value) => {
-            if (cachedFeature) {
-              document.getElementById("main")?.classList.remove(`Comfy-${cachedFeature}-Snippet`);
-            }
-            if (value !== "Select an option" && value !== "") {
-              cachedFeature = value;
-              document.getElementById("main")?.classList.add(`Comfy-${value}-Snippet`);
-            }
+          options: ["nord", "mono"],
+          callback: (name, value, options) => {
+            const main = document.getElementById("main");
+            main.classList.remove(...options.map((option) => `Comfy-${option}-Snippet`));
+            if (value !== "Select an option") main.classList.add(`Comfy-${value}-Snippet`);
           },
         },
       ]),
@@ -582,15 +572,21 @@
           ],
         },
         {
-          type: Slider,
-          name: "Flatten-Colors-Snippet",
+          type: Dropdown,
+          name: "Flatten-Colors",
           desc: "Flatten Theme Colors",
-          defaultVal: false,
+          defaultVal: "off",
+          options: ["off", "normal", "reverse"],
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar")
           ),
+          callback: (name, value, options, defaultVal) => {
+            const main = document.getElementById("main");
+            main.classList.remove(...options.map((option) => `${name}-${option}`));
+            if (value !== defaultVal) main.classList.add(`${name}-${value}`);
+          },
         },
         {
           type: Slider,
