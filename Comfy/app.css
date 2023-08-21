@@ -28,6 +28,7 @@
   background-color: var(--spice-radio-btn-active);
 }
 :root .Root__main-view .main-view-container .main-card-card {
+  background: var(--spice-sidebar);
   border-radius: var(--border-radius);
   padding: 0;
   overflow: hidden;
