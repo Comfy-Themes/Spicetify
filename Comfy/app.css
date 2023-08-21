@@ -33,6 +33,9 @@
   padding: 0;
   overflow: hidden;
 }
+:root .Root__main-view .main-view-container .main-card-card:hover {
+  background: var(--spice-card);
+}
 :root .Root__main-view .main-view-container .main-card-card .main-card-PlayButtonContainer {
   right: 12px !important;
 }

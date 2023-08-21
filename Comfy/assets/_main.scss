@@ -42,6 +42,10 @@
       padding: 0;
       overflow: hidden;
 
+      &:hover {
+        background: var(--spice-card);
+      }
+
       .main-card-PlayButtonContainer {
         right: 12px !important;
       }
