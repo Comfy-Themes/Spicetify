@@ -9,6 +9,8 @@
 
       // Cover-art
       .main-nowPlayingWidget-nowPlaying {
+        height: 0 !important;
+        
         &.main-nowPlayingWidget-coverExpanded {
           transform: translateX(-95px);
 

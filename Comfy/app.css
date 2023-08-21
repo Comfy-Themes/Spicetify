@@ -259,6 +259,9 @@
   box-sizing: content-box;
   padding-bottom: 16px;
 }
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying {
+  height: 0 !important;
+}
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-95px);
 }
