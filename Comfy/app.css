@@ -259,9 +259,6 @@
   box-sizing: content-box;
   padding-bottom: 16px;
 }
-:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying {
-  height: 0 !important;
-}
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-95px);
 }
@@ -779,6 +776,9 @@
 :root input:not([style*=background-image]),
 :root select {
   --border-radius: var(--button-radius) !important;
+}
+:root .Root__top-container {
+  overflow: hidden;
 }
 :root .main-trackList-playingIcon {
   border-radius: 0 !important;
