@@ -26,6 +26,23 @@
 
 </details></details>
 
+<details><summary>Rosé Pine</summary>
+<details><summary>Original</summary>
+
+![png](../images/color-schemes/png/rose-pine/original.png)
+
+</details>
+<details><summary>Moon</summary>
+
+![png](../images/color-schemes/png/rose-pine/moon.png)
+
+</details>
+<details><summary>Dawn</summary>
+
+![png](../images/color-schemes/png/rose-pine/dawn.png)
+
+</details></details>
+
 <details><summary>Mono</summary>
 <details><summary>Original</summary>
 
