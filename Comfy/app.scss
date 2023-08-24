@@ -75,26 +75,26 @@
     height: 200px;
   }
 
-  // Scrollbar
+  // Scrollbars
   .Root__main-view .main-view-container__scroll-node-child {
     padding-bottom: 0;
   }
+  
   aside#Desktop_PanelContainer_Id .os-scrollbar-vertical,
   .os-scrollbar-horizontal {
     display: none !important;
   }
-  .os-scrollbar-vertical {
-    background: none;
-
-    .os-scrollbar-track {
-      width: 10px;
-    }
-
-    .os-scrollbar-handle {
-      border: 2px solid rgba(200, 200, 200, 0.275);
-      border-radius: 4.5px;
-    }
+  
+  .os-scrollbar-track,
+  ::-webkit-scrollbar {
+    width: calc(var(--scrollbar-vertical-size) / 2);
   }
+
+  .os-scrollbar-handle,
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4.5px;
+  }
+
 
   // Coloured hearts
   .main-addButton-active {

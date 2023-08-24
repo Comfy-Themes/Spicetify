@@ -378,13 +378,18 @@
   animation: custom-animation 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
   animation-fill-mode: forwards;
 }
-.GenericModal__overlay:has(.comfy-settings) .main-embedWidgetGenerator-container {
-  width: 500px;
-  max-height: 75vh;
+.GenericModal__overlay:has(.comfy-settings) .GenericModal {
+  border-radius: 10px;
+}
+.GenericModal__overlay:has(.comfy-settings) .GenericModal .main-embedWidgetGenerator-container {
+  background-color: var(--spice-main);
+  max-height: 90vh;
 }
 
-.comfy-settings:last-child {
-  padding-bottom: 20px;
+.comfy-settings {
+  /*&:last-child {
+      padding-bottom: 20px;
+    }*/
 }
 .comfy-settings .setting-row {
   display: flex;
@@ -418,7 +423,7 @@
   align-items: center;
   border: 0px;
   border-radius: 50%;
-  background-color: rgba(var(--spice-rgb-shadow), 0.7);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
   color: var(--spice-text);
   cursor: pointer;
   display: flex;
@@ -448,11 +453,14 @@
 .comfy-settings .setting-row .col.action input {
   padding-inline: 10px;
   text-align: center;
-  background-color: rgba(var(--spice-rgb-text), 0.3);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
   outline: none;
   border: none;
   height: 32px;
   width: 120px;
+}
+.comfy-settings .setting-row .col.action input::placeholder {
+  color: rgba(var(--spice-rgb-subtext), 0.3);
 }
 .comfy-settings .setting-row .col.action input[type=number] {
   width: 50px;
@@ -468,9 +476,14 @@
 }
 .comfy-settings .setting-row .col.action select {
   border: none !important;
-  background-color: rgba(var(--spice-rgb-shadow), 0.7);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
   text-align: center;
   height: 32px;
+  color: var(--spice-text);
+}
+.comfy-settings .setting-row .col.action select option {
+  background-color: var(--spice-sidebar);
+  color: var(--spice-subtext);
 }
 .comfy-settings .setting-row::after {
   content: "";
@@ -813,14 +826,12 @@
 :root .os-scrollbar-horizontal {
   display: none !important;
 }
-:root .os-scrollbar-vertical {
-  background: none;
+:root .os-scrollbar-track,
+:root ::-webkit-scrollbar {
+  width: calc(var(--scrollbar-vertical-size) / 2);
 }
-:root .os-scrollbar-vertical .os-scrollbar-track {
-  width: 10px;
-}
-:root .os-scrollbar-vertical .os-scrollbar-handle {
-  border: 2px solid rgba(200, 200, 200, 0.275);
+:root .os-scrollbar-handle,
+:root ::-webkit-scrollbar-thumb {
   border-radius: 4.5px;
 }
 :root .main-addButton-active {
