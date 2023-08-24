@@ -642,6 +642,12 @@
       Spicetify.React.createElement(Section, { name: "Playbar" }, [
         {
           type: Slider,
+          name: "Hoverable-Timers-Snippet",
+          desc: "Hoverable Playback Timers",
+          defaultVal: false,
+        },
+        {
+          type: Slider,
           name: "Remove-Device-Picker-Notification-Snippet",
           desc: "Remove Device Picker Notification",
           defaultVal: false,
@@ -650,12 +656,6 @@
           type: Slider,
           name: "Remove-Progress-Bar-Gradient-Snippet",
           desc: "Remove Progress Bar Gradient",
-          defaultVal: false,
-        },
-        {
-          type: Slider,
-          name: "Remove-Timers-Snippet",
-          desc: "Remove Playback Timers",
           defaultVal: false,
         },
         {

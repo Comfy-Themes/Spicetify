@@ -661,9 +661,15 @@
 :root #main.Remove-Lyrics-Button-Snippet .main-nowPlayingBar-lyricsButton {
   display: none !important;
 }
-:root #main.Remove-Timers-Snippet .playback-bar__progress-time-elapsed,
-:root #main.Remove-Timers-Snippet .main-playbackBarRemainingTime-container {
-  display: none;
+:root #main.Hoverable-Timers-Snippet .playback-bar > div:last-of-type,
+:root #main.Hoverable-Timers-Snippet .playback-bar > div:first-of-type {
+  transition: all 0.3s ease;
+  opacity: 0 !important;
+}
+:root #main.Hoverable-Timers-Snippet .playback-bar > div:last-of-type:hover,
+:root #main.Hoverable-Timers-Snippet .playback-bar > div:first-of-type:hover {
+  transition: all 0.3s ease;
+  opacity: 1 !important;
 }
 :root #main.Revert-Right-Art-Snippet .main-coverSlotExpanded-container {
   position: relative !important;

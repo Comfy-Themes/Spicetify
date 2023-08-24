@@ -131,10 +131,18 @@
       }
     }
 
-    &.Remove-Timers-Snippet {
-      .playback-bar__progress-time-elapsed,
-      .main-playbackBarRemainingTime-container {
-        display: none;
+    &.Hoverable-Timers-Snippet {
+      .playback-bar {
+        > div:last-of-type,
+        > div:first-of-type {
+          transition: all 0.3s ease;
+          opacity: 0 !important;
+
+          &:hover {
+            transition: all 0.3s ease;
+            opacity: 1 !important;
+          }
+        }
       }
     }
 
