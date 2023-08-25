@@ -737,6 +737,7 @@
   height: 100%;
   z-index: 0;
   filter: blur(calc(var(--image-blur) * 10));
+  background-image: var(--gradient-background-image);
 }
 :root #main.Apple-Music-Gradient-Snippet .frame .mainImage,
 :root #main.Apple-Music-Gradient-Snippet .frame .secondaryImage {
@@ -744,6 +745,7 @@
   width: var(--gradient-width);
   animation: rotate var(--gradient-speed) linear infinite;
   border-radius: 100em !important;
+  mix-blend-mode: var(--gradient-blend-mode);
 }
 :root #main.Apple-Music-Gradient-Snippet .frame .mainImage {
   /* Nullify all the values */
@@ -757,7 +759,6 @@
   right: 0;
   top: 0;
   z-index: 10;
-  mix-blend-mode: luminosity;
 }
 :root #main.Apple-Music-Gradient-Snippet .frame .secondaryImage {
   display: revert;
@@ -781,6 +782,8 @@
   --image-blur: 4px;
   --gradient-speed: 50s;
   --gradient-width: 150%;
+  --gradient-blend-mode: luminosity;
+  --gradient-background-image: none;
   --cover-art-width: 84px;
   --cover-art-height: 84px;
   --cover-art-radius: 8px;
@@ -839,6 +842,9 @@
 :root .os-scrollbar-handle,
 :root ::-webkit-scrollbar-thumb {
   border-radius: 4.5px;
+}
+:root ::-webkit-scrollbar-track {
+  margin-bottom: 10px;
 }
 :root .main-addButton-active {
   color: var(--spice-heart);

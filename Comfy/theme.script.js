@@ -790,6 +790,34 @@
           items: [
             {
               type: Input,
+              inputType: "text",
+              name: "Gradient-Noise",
+              desc: "Noise URL - Advanced",
+              defaultVal: "none",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Overlays an image below the blur and over the art, can be used for noise.")
+              ),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--gradient-background-image", `url('${value}')` || "none"),
+            },
+            {
+              type: Input,
+              inputType: "text",
+              name: "Gradient-Blend",
+              desc: "Blend Mode - Advanced",
+              defaultVal: "luminosity",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "'difference' works well with noise")
+              ),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--gradient-blend-mode", value || "luminosity"),
+            },
+            {
+              type: Input,
               inputType: "number",
               name: "Gradient-Speed",
               desc: "Speed - Advanced",

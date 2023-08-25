@@ -13,6 +13,8 @@
   --image-blur: 4px;
   --gradient-speed: 50s;
   --gradient-width: 150%;
+  --gradient-blend-mode: luminosity;
+  --gradient-background-image: none;
   --cover-art-width: 84px;
   --cover-art-height: 84px;
   --cover-art-radius: 8px;
@@ -95,6 +97,9 @@
     border-radius: 4.5px;
   }
 
+  ::-webkit-scrollbar-track {
+    margin-bottom: 10px
+  }
 
   // Coloured hearts
   .main-addButton-active {
