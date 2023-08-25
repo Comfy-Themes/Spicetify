@@ -848,6 +848,21 @@
               callback: (value) =>
                 document.documentElement.style.setProperty("--gradient-width", (value || "150") + "%"),
             },
+            {
+              type: Input,
+              inputType: "number",
+              name: "Gradient-Radius",
+              desc: "Radius - Advanced",
+              defaultVal: "500",
+              min: "0",
+              tippy: Spicetify.React.createElement(
+                Spicetify.React.Fragment,
+                null,
+                Spicetify.React.createElement("h4", null, "Radius of circles (in px)"),
+              ),
+              callback: (value) =>
+                document.documentElement.style.setProperty("--gradient-radius", (value || "500") + "px"),
+            },            
           ],
         },
         {

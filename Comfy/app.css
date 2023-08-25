@@ -744,7 +744,7 @@
   position: absolute;
   width: var(--gradient-width);
   animation: rotate var(--gradient-speed) linear infinite;
-  border-radius: 100em !important;
+  border-radius: var(--gradient-radius) !important;
   mix-blend-mode: var(--gradient-blend-mode);
 }
 :root #main.Apple-Music-Gradient-Snippet .frame .mainImage {
@@ -784,6 +784,7 @@
   --gradient-width: 150%;
   --gradient-blend-mode: luminosity;
   --gradient-background-image: none;
+  --gradient-radius: 500px;
   --cover-art-width: 84px;
   --cover-art-height: 84px;
   --cover-art-radius: 8px;
