@@ -258,7 +258,7 @@
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar {
   box-sizing: content-box;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-95px);
@@ -275,6 +275,9 @@
   height: var(--cover-art-height) !important;
   border-radius: var(--cover-art-radius);
   overflow: hidden;
+}
+:root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .player-controls__buttons--new-icons {
+  margin-bottom: 0px !important;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-extraControls * svg {
   color: rgba(var(--spice-rgb-selected-row), 0.7) !important;

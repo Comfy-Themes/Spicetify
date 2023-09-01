@@ -5,7 +5,7 @@
 
     .main-nowPlayingBar-nowPlayingBar {
       box-sizing: content-box;
-      padding-bottom: 16px;
+      padding-bottom: 12px;
 
       // Cover-art
       .main-nowPlayingWidget-nowPlaying {
@@ -29,6 +29,11 @@
             overflow: hidden;
           }
         }
+      }
+
+      // Controls
+      .player-controls__buttons--new-icons {
+        margin-bottom: 0px !important
       }
 
       // Miscolored right side button svgs
@@ -105,9 +110,6 @@
     }
 
     & > div {
-      height: 10px;
-      min-width: 33px;
-
       &:first-of-type {
         grid-area: time-left;
       }
