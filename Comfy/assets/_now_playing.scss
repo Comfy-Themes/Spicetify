@@ -4,8 +4,7 @@
     border-top: none;
 
     .main-nowPlayingBar-nowPlayingBar {
-      box-sizing: content-box;
-      padding-bottom: 12px;
+      margin-bottom: 12px;
 
       // Cover-art
       .main-nowPlayingWidget-nowPlaying {
@@ -110,6 +109,10 @@
     }
 
     & > div {
+      // Timer height/width
+      height: 12px;
+      text-align: center;
+
       &:first-of-type {
         grid-area: time-left;
       }

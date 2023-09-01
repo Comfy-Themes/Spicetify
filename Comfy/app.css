@@ -257,8 +257,7 @@
   border-top: none;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar {
-  box-sizing: content-box;
-  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
   transform: translateX(-95px);
@@ -333,8 +332,8 @@
   display: none;
 }
 :root .Root__now-playing-bar .playback-bar > div {
-  height: 10px;
-  min-width: 33px;
+  height: 12px;
+  text-align: center;
 }
 :root .Root__now-playing-bar .playback-bar > div:first-of-type {
   grid-area: time-left;
