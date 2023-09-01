@@ -614,16 +614,6 @@
   height: 6px !important;
   border-radius: 50px !important;
 }
-:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:last-of-type,
-:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:first-of-type {
-  transition: all 0.3s ease;
-  opacity: 0 !important;
-}
-:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:last-of-type:hover,
-:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar > div:first-of-type:hover {
-  transition: all 0.3s ease;
-  opacity: 1 !important;
-}
 :root #main.visible-column-bar-Snippet .main-trackList-trackListHeader,
 :root #main.visible-column-bar-Snippet .main-trackList-trackListHeaderStuck {
   position: static;
