@@ -332,7 +332,7 @@
   display: none;
 }
 :root .Root__now-playing-bar .playback-bar > div {
-  height: 12px;
+  height: 10px;
   text-align: center;
 }
 :root .Root__now-playing-bar .playback-bar > div:first-of-type {
