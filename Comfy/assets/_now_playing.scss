@@ -108,9 +108,9 @@
       }
     }
 
-    & > div {
-      // Timer height/width
-      height: 10px;
+    // Timers
+    & > div:not(.playback-progressbar) {
+      height: 8px;
       text-align: center;
 
       &:first-of-type {

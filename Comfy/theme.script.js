@@ -676,7 +676,7 @@
               document.documentElement.style.setProperty("--cover-art-width", "");
               document.documentElement.style.setProperty("--cover-art-height", "");
               document.documentElement.style.setProperty("--cover-art-radius", "");
-              document.documentElement.style.setProperty("--cover-art-margin", "");
+              document.documentElement.style.setProperty("--cover-art-bottom", "");
             }
           },
           tippy: Spicetify.React.createElement(

@@ -36,14 +36,30 @@
     
         .main-nowPlayingBar-nowPlayingBar {
           padding: 0 18px 6px 18px !important;
-          
-          .player-controls__buttons--new-icons {
-            margin-bottom: 0 !important;
-          }
+          margin-bottom: 0 !important;
 
           .playback-bar {
             position: absolute !important;
-    
+
+            .playback-bar__progress-time-elapsed,
+            .main-playbackBarRemainingTime-container {
+                position: absolute;
+                bottom: 18px;
+                right: 0px;
+                grid-area: none !important;
+            }
+            .playback-bar__progress-time-elapsed {
+                transform: translateX(calc(-100% - 20px));
+            }
+            .playback-bar__progress-time-elapsed::after {
+                position: absolute;
+                left: calc(100% + 10px);
+                font-weight: bold;
+                color: rgba(var(--spice-rgb-custom-subdued), 0.8);
+                content: "/";
+                transform: translateX(-50%);
+            }
+
             .x-progressBar-progressBarBg,
             .x-progressBar-sliderArea {
               border-radius: 0 0 8px 8px !important;
@@ -122,15 +138,18 @@
 
     &.Hoverable-Timers-Snippet {
       .playback-bar {
-        > div:last-of-type,
-        > div:first-of-type {
+        > div {
           transition: all 0.3s ease;
-          opacity: 0 !important;
+          opacity: 0;
+        }
 
-          &:hover {
-            transition: all 0.3s ease;
-            opacity: 1 !important;
-          }
+        &:hover > div {
+          transition: all 0.3s ease;
+          opacity: 1 !important;
+        }
+
+        .playback-progressbar {
+          opacity: 1 !important;
         }
       }
     }

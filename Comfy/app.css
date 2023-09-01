@@ -331,14 +331,14 @@
 :root .Root__now-playing-bar .playback-bar .playback-progressbar .progress-bar .progress-bar__slider {
   display: none;
 }
-:root .Root__now-playing-bar .playback-bar > div {
-  height: 10px;
+:root .Root__now-playing-bar .playback-bar > div:not(.playback-progressbar) {
+  height: 8px;
   text-align: center;
 }
-:root .Root__now-playing-bar .playback-bar > div:first-of-type {
+:root .Root__now-playing-bar .playback-bar > div:not(.playback-progressbar):first-of-type {
   grid-area: time-left;
 }
-:root .Root__now-playing-bar .playback-bar > div:last-of-type {
+:root .Root__now-playing-bar .playback-bar > div:not(.playback-progressbar):last-of-type {
   grid-area: time-right;
 }
 :root .Root__now-playing-bar .playback-bar button {
@@ -598,12 +598,28 @@
 }
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar {
   padding: 0 18px 6px 18px !important;
-}
-:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .player-controls__buttons--new-icons {
   margin-bottom: 0 !important;
 }
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar {
   position: absolute !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .playback-bar__progress-time-elapsed,
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .main-playbackBarRemainingTime-container {
+  position: absolute;
+  bottom: 18px;
+  right: 0px;
+  grid-area: none !important;
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .playback-bar__progress-time-elapsed {
+  transform: translateX(calc(-100% - 20px));
+}
+:root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .playback-bar__progress-time-elapsed::after {
+  position: absolute;
+  left: calc(100% + 10px);
+  font-weight: bold;
+  color: rgba(var(--spice-rgb-custom-subdued), 0.8);
+  content: "/";
+  transform: translateX(-50%);
 }
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .x-progressBar-progressBarBg,
 :root #main.Comfy-nord-Snippet .Root__now-playing-bar .main-nowPlayingBar-nowPlayingBar .playback-bar .x-progressBar-sliderArea {
@@ -652,14 +668,15 @@
 :root #main.Remove-Lyrics-Button-Snippet .main-nowPlayingBar-lyricsButton {
   display: none !important;
 }
-:root #main.Hoverable-Timers-Snippet .playback-bar > div:last-of-type,
-:root #main.Hoverable-Timers-Snippet .playback-bar > div:first-of-type {
+:root #main.Hoverable-Timers-Snippet .playback-bar > div {
   transition: all 0.3s ease;
-  opacity: 0 !important;
+  opacity: 0;
 }
-:root #main.Hoverable-Timers-Snippet .playback-bar > div:last-of-type:hover,
-:root #main.Hoverable-Timers-Snippet .playback-bar > div:first-of-type:hover {
+:root #main.Hoverable-Timers-Snippet .playback-bar:hover > div {
   transition: all 0.3s ease;
+  opacity: 1 !important;
+}
+:root #main.Hoverable-Timers-Snippet .playback-bar .playback-progressbar {
   opacity: 1 !important;
 }
 :root #main.Revert-Right-Art-Snippet .main-coverSlotExpanded-container {
