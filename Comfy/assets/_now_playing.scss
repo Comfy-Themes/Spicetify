@@ -20,6 +20,7 @@
 
         .main-coverSlotCollapsed-container {
           bottom: var(--cover-art-bottom);
+          border-radius: var(--cover-art-radius);
 
           .cover-art {
             width: var(--cover-art-width) !important;
