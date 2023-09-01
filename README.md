@@ -11,8 +11,8 @@
       </div>
       <hr>
       <h4> ✅ Supported</h4>
-        <li>🔥 Spicetify : <code>2.22.2</code></li>
-        <li>🟢 Spotify : <code>1.2.18</code></li>
+        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.23.0">2.23.0</a></code></li>
+        <li>🟢 Spotify: <code><a href="https://upgrade.scdn.co/upgrade/client/win32-x86/spotify_installer-1.2.19.941.gbf202593-411.exe">1.2.19</a></code></li>
       <hr>
     </td>
   </tr>
