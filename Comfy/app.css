@@ -97,6 +97,11 @@
   min-block-size: 32px;
   padding-block: 0;
 }
+:root .Root__main-view .main-view-container .main-trackList-active .main-trackList-rowTitle {
+  color: var(--spice-text);
+  text-shadow: 0px 0px 6px var(--spice-text);
+  -webkit-text-stroke: thin;
+}
 :root .Root__main-view .main-view-container .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
@@ -155,13 +160,6 @@
 :root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackListRow:focus-within button.main-trackList-rowImagePlayButton {
   opacity: 1;
   color: black;
-}
-:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-active .main-trackList-rowTitle,
-:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-active .main-trackList-rowTitle,
-:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-active .main-trackList-rowTitle {
-  color: var(--spice-text);
-  text-shadow: 0px 0px 6px var(--spice-text);
-  -webkit-text-stroke: thin;
 }
 :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-active .main-trackList-rowSectionIndex,
 :root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-active .main-trackList-rowSectionIndex,
