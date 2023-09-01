@@ -57,9 +57,6 @@
     --background-highlight: var(--spice-play-button-active);
     --background-press: var(--spice-play-button-active);
   }
-  .encore-dark-theme, .encore-dark-theme .encore-base-set {
-    --text-bright-accent: var(--spice-heart);
-  }
 
   // Premium Fullscreen Overlay
   .npv-background-image__overlay {
@@ -104,7 +101,8 @@
     margin-bottom: 10px
   }
 
-  // Coloured hearts
+  // Coloured heart
+  .Button-textBrightAccent-lg-32-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
   .main-addButton-active {
     color: var(--spice-heart);
     &:hover {

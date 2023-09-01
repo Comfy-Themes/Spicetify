@@ -808,9 +808,6 @@
   --background-highlight: var(--spice-play-button-active);
   --background-press: var(--spice-play-button-active);
 }
-:root .encore-dark-theme, :root .encore-dark-theme .encore-base-set {
-  --text-bright-accent: var(--spice-heart);
-}
 :root .npv-background-image__overlay {
   background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.5) 0, transparent 100%), var(--background-noise);
   background-color: unset;
@@ -840,9 +837,11 @@
 :root ::-webkit-scrollbar-track {
   margin-bottom: 10px;
 }
+:root .Button-textBrightAccent-lg-32-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
 :root .main-addButton-active {
   color: var(--spice-heart);
 }
+:root .Button-textBrightAccent-lg-32-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle:hover,
 :root .main-addButton-active:hover {
   color: rgba(var(--spice-rgb-heart), 0.7);
 }
