@@ -44,6 +44,7 @@
       }
     }
 
+    // Connect Bar
     .main-connectBar-connectBar {
       position: absolute;
       top: -15px;
@@ -58,42 +59,41 @@
         content: none;
       }
     }
-  }
 
-  .volume-bar .progress-bar {
-    & > div {
+
+    // Volume Bar
+    .main-nowPlayingBar-volumeBar .progress-bar {
       --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
     }
-  }
 
-  .playback-bar {
-    position: fixed;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-areas:
-      "time-left time-right"
-      "bar bar";
-    bottom: 0;
-    right: 0;
+    .playback-bar {
+      position: fixed;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-areas:
+        "time-left time-right"
+        "bar bar";
+      bottom: 0;
+      right: 0;
+      gap: 0;
 
-    .saber-hilt {
-      height: 0;
-    }
+      .saber-hilt {
+        height: 0;
+      }
 
-    .playback-progressbar {
-      grid-column: 1/3;
-      grid-area: bar;
+      .playback-progressbar {
+        grid-column: 1/3;
+        grid-area: bar;
+        height: 10px;
 
-      .progress-bar {
-        --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
-        --fg-color: var(--spice-progress-fg);
-        
-        .x-progressBar-progressBarBg {
+        .progress-bar {
+          --bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
+          --fg-color: var(--spice-progress-fg);
           --progress-bar-height: 12px;
           --progress-bar-radius: 0;
 
           .x-progressBar-fillColor {
-            width: 105%;
+            width: 107%;
             background-color: transparent;
             background-image: linear-gradient(
               90deg,
@@ -101,29 +101,24 @@
               transparent 100%
             );
           }
+
+          .progress-bar__slider {
+            display: none;
+          }
         }
-        .progress-bar__slider {
-          display: none;
+      }
+
+      // Timers
+      & > div {
+        text-align: center;
+
+        &:first-of-type {
+          grid-area: time-left;
+        }
+        &:last-of-type {
+          grid-area: time-right;
         }
       }
-    }
-
-    // Timers
-    & > div:not(.playback-progressbar) {
-      height: 8px;
-      text-align: center;
-
-      &:first-of-type {
-        grid-area: time-left;
-      }
-      &:last-of-type {
-        grid-area: time-right;
-      }
-    }
-
-    // Cursor
-    button {
-      width: 0;
     }
   }
 }
