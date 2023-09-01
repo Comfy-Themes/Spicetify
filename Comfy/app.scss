@@ -57,7 +57,9 @@
     --background-highlight: var(--spice-play-button-active);
     --background-press: var(--spice-play-button-active);
   }
-
+  .encore-dark-theme, .encore-dark-theme .encore-base-set {
+    --text-bright-accent: var(--spice-heart);
+  }
 
   // Premium Fullscreen Overlay
   .npv-background-image__overlay {
