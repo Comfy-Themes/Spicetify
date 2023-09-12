@@ -11,7 +11,7 @@
         height: 0;
         
         &.main-nowPlayingWidget-coverExpanded {
-          transform: translateX(-95px);
+          transform: translateX(calc(var(--cover-art-width) * -1));
 
           .main-coverSlotCollapsed-container[aria-hidden="true"] {
             opacity: 0;
