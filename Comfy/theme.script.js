@@ -558,7 +558,8 @@
                   fontFamily = decodeURIComponent(value.match(/family=([^&:]+)/)?.[1]?.replace(/\+/g, " "));
                   if (!document.getElementById("custom-font")) {
                     const link = document.createElement("link");
-                    link.rel = "stylesheet";
+                    link.rel = "preload stylesheet";
+                    link.as = "style";
                     link.href = value;
                     link.id = "custom-font";
                     document.head.appendChild(link);
