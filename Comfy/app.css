@@ -248,6 +248,9 @@
 :root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
   border-radius: 0 !important;
 }
+:root .Root__nav-bar .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+  padding-bottom: 0 !important;
+}
 :root .Root__nav-bar .os-scrollbar {
   display: none;
 }
