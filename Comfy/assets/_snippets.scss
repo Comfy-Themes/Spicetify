@@ -162,6 +162,9 @@
         width: 200px;
         height: 200px;
       }
+      .main-yourLibraryX-libraryIsCollapsed {
+        padding-bottom: 0 !important; // tweaked
+      }
     }
 
     &.Topbar-Inside-Titlebar-Snippet {

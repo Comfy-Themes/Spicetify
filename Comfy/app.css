@@ -248,7 +248,7 @@
 :root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
   border-radius: 0 !important;
 }
-:root .Root__nav-bar .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+:root .Root__nav-bar .main-yourLibraryX-libraryIsCollapsed {
   padding-bottom: 272px !important;
 }
 :root .Root__nav-bar .os-scrollbar {
@@ -687,6 +687,9 @@
   left: calc(100% - 230px);
   width: 200px;
   height: 200px;
+}
+:root #main.Right-Art-Snippet .main-yourLibraryX-libraryIsCollapsed {
+  padding-bottom: 0 !important;
 }
 :root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container {
   grid-template-areas: "top-bar top-bar top-bar" "left-sidebar main-view right-sidebar" "now-playing-bar now-playing-bar now-playing-bar";
