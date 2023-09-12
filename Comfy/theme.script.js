@@ -739,8 +739,8 @@
         },
         {
           type: Slider,
-          name: "Revert-Right-Art-Snippet",
-          desc: "Disable Right Side Cover Art",
+          name: "Right-Art-Snippet",
+          desc: "Right Side Cover Art",
           defaultVal: false,
         },
       ]),

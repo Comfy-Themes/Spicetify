@@ -681,12 +681,12 @@
 :root #main.Hoverable-Timers-Snippet .playback-bar .playback-progressbar {
   opacity: 1 !important;
 }
-:root #main.Revert-Right-Art-Snippet .main-coverSlotExpanded-container {
-  position: relative !important;
-  top: revert !important;
-  left: revert !important;
-  width: revert !important;
-  height: revert !important;
+:root #main.Right-Art-Snippet .main-coverSlotExpanded-container {
+  position: fixed;
+  top: calc(100% - 318px);
+  left: calc(100% - 230px);
+  width: 200px;
+  height: 200px;
 }
 :root #main.Topbar-Inside-Titlebar-Snippet .Root__top-container {
   grid-template-areas: "top-bar top-bar top-bar" "left-sidebar main-view right-sidebar" "now-playing-bar now-playing-bar now-playing-bar";
@@ -831,13 +831,6 @@
 :root .npv-background-image__overlay {
   background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.5) 0, transparent 100%), var(--background-noise);
   background-color: unset;
-}
-:root .main-coverSlotExpanded-container {
-  position: fixed;
-  top: calc(100% - 318px);
-  left: calc(100% - 230px);
-  width: 200px;
-  height: 200px;
 }
 :root .Root__main-view .main-view-container__scroll-node-child {
   padding-bottom: 0;

@@ -154,13 +154,13 @@
       }
     }
 
-    &.Revert-Right-Art-Snippet {
+    &.Right-Art-Snippet {
       .main-coverSlotExpanded-container {
-        position: relative !important;
-        top: revert !important;
-        left: revert !important;
-        width: revert !important;
-        height: revert !important;
+        position: fixed;
+        top: calc(100% - 318px);
+        left: calc(100% - 230px);
+        width: 200px;
+        height: 200px;
       }
     }
 
