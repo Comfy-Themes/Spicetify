@@ -23,13 +23,12 @@
     box-shadow: none !important;
   }
 
-
   // Cover art expanded
   .main-coverSlotExpanded-container .cover-art .cover-art-image {
     border-radius: 0 !important;
   }
   .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
-    padding-bottom: 0 !important;
+    padding-bottom: 272px !important; // tweaked
   }
 
   // Scrollbar
