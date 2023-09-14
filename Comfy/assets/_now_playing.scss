@@ -11,10 +11,10 @@
         height: 0;
         
         &.main-nowPlayingWidget-coverExpanded {
-          transform: translateX(calc(var(--cover-art-width) * -1));
+          transform: translateX(-16px);
 
           .main-coverSlotCollapsed-container[aria-hidden="true"] {
-            opacity: 0;
+            display: none;
           }
         }
 

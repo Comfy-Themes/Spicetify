@@ -245,10 +245,11 @@
 :root .Root__nav-bar .main-yourLibraryX-isScrolled {
   box-shadow: none !important;
 }
-:root .Root__nav-bar .main-coverSlotExpanded-container .cover-art .cover-art-image {
-  border-radius: 0 !important;
+:root .Root__nav-bar .cover-art .cover-art-image,
+:root .Root__nav-bar .main-coverSlotExpanded-container {
+  border-radius: 4px !important;
 }
-:root .Root__nav-bar .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+:root .Root__nav-bar .main-yourLibraryX-libraryContainer.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
   padding-bottom: 272px !important;
 }
 :root .Root__nav-bar .os-scrollbar {
@@ -266,10 +267,10 @@
   height: 0;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded {
-  transform: translateX(calc(var(--cover-art-width) * -1));
+  transform: translateX(-16px);
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying.main-nowPlayingWidget-coverExpanded .main-coverSlotCollapsed-container[aria-hidden=true] {
-  opacity: 0;
+  display: none;
 }
 :root .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
   bottom: var(--cover-art-bottom);
@@ -878,11 +879,6 @@
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button,
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) a {
   border-radius: 2px !important;
-}
-:root #context-menu ul:not([aria-labelledby~=device-picker-header]) button::before, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button::after,
-:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a::before,
-:root #context-menu ul:not([aria-labelledby~=device-picker-header]) a::after {
-  content: none;
 }
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button:not(.main-contextMenu-disabled):focus, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button:not(.main-contextMenu-disabled):hover, :root #context-menu ul:not([aria-labelledby~=device-picker-header]) button[aria-expanded=true],
 :root #context-menu ul:not([aria-labelledby~=device-picker-header]) a:not(.main-contextMenu-disabled):focus,

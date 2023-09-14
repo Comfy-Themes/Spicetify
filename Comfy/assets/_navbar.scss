@@ -24,10 +24,11 @@
   }
 
   // Cover art expanded
-  .main-coverSlotExpanded-container .cover-art .cover-art-image {
-    border-radius: 0 !important;
+  .cover-art .cover-art-image,
+  .main-coverSlotExpanded-container {
+    border-radius: 4px !important;
   }
-  .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+  .main-yourLibraryX-libraryContainer.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
     padding-bottom: 272px !important; // tweaked
   }
 

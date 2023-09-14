@@ -125,10 +125,6 @@
       a {
         border-radius: 2px !important;
 
-        &::before,
-        &::after {
-          content: none;
-        }
         &:not(.main-contextMenu-disabled):focus,
         &:not(.main-contextMenu-disabled):hover,
         &[aria-expanded="true"] {
