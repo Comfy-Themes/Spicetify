@@ -215,7 +215,7 @@
               height: "16",
               width: "16",
               tabindex: "0",
-              className: "Svg-sc-ytk21e-0 Svg-img-16-icon nW1RKQOkzcJcX6aDCZB4",
+              className: "Svg-sc-ytk21e-0 Svg-img-icon x-settings-tooltipIcon",
               viewBox: "0 0 16 16",
             },
             Spicetify.React.createElement("path", {
