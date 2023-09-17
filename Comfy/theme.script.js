@@ -651,7 +651,7 @@
             Spicetify.React.Fragment,
             null,
             Spicetify.React.createElement("h4", null, "Change the height of the gradient"),
-            Spicetify.React.createElement("h4", null, "Otherwise known as the stop value of the gradient.")
+            Spicetify.React.createElement("h4", null, "Otherwise known as the stop value of the gradient."),
             Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient.")
           ),
           callback: (value) =>
