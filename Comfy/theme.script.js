@@ -607,6 +607,8 @@
           desc: "Horizontal Page Links",
           defaultVal: false,
         },
+      ]),
+      Spicetify.React.createElement(Section, { name: "Tracklist" }, [
         {
           type: Slider,
           name: "visible-column-bar-Snippet",
@@ -638,6 +640,22 @@
               Spicetify.React.createElement("h4", null, "Unhides the column bar above tracklist")
             )
           ),
+        },
+        {
+          type: Input,
+          inputType: "number",
+          name: "Tracklist-Gradient-Height",
+          desc: "Tracklist Gradient Height",
+          defaultVal: "232",
+          tippy: Spicetify.React.createElement(
+            Spicetify.React.Fragment,
+            null,
+            Spicetify.React.createElement("h4", null, "Change the height of the gradient"),
+            Spicetify.React.createElement("h4", null, "Otherwise known as the stop value of the gradient.")
+            Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient.")
+          ),
+          callback: (value) =>
+            document.documentElement.style.setProperty("--tracklist-gradient-height", (value || "232") + "px"),
         },
       ]),
       Spicetify.React.createElement(Section, { name: "Playbar" }, [
@@ -798,7 +816,11 @@
               tippy: Spicetify.React.createElement(
                 Spicetify.React.Fragment,
                 null,
-                Spicetify.React.createElement("h4", null, "Overlays an image below the blur and over the art, can be used for noise.")
+                Spicetify.React.createElement(
+                  "h4",
+                  null,
+                  "Overlays an image below the blur and over the art, can be used for noise."
+                )
               ),
               callback: (value) =>
                 document.documentElement.style.setProperty("--gradient-background-image", `url('${value}')` || "none"),
@@ -859,11 +881,11 @@
               tippy: Spicetify.React.createElement(
                 Spicetify.React.Fragment,
                 null,
-                Spicetify.React.createElement("h4", null, "Radius of circles (in px)"),
+                Spicetify.React.createElement("h4", null, "Radius of circles (in px)")
               ),
               callback: (value) =>
                 document.documentElement.style.setProperty("--gradient-radius", (value || "500") + "px"),
-            },            
+            },
           ],
         },
         {

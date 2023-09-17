@@ -73,16 +73,14 @@
       width: 100%;
 
       .x-settings-tooltip {
-        div {
-          color: var(--spice-subtext);
-        }
+        svg {
+          fill: var(--spice-subtext);
 
-        &:focus-within,
-        &:hover {
-          div {
-            color: var(--spice-text);
-            cursor: help;
-          }
+          &:focus-within,
+          &:hover {
+              fill: var(--spice-text);
+              cursor: help;
+            }
         }
       }
     }

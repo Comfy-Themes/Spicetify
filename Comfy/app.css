@@ -209,7 +209,7 @@
 }
 :root .Root__main-view .main-view-container .artist-artistOverview-artistOverviewContent,
 :root .Root__main-view .main-view-container .main-actionBarBackground-background {
-  background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) 232px), var(--background-noise) !important;
+  background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)), var(--background-noise) !important;
   height: calc(100% - 300px);
 }
 :root .Root__main-view .main-view-container .playlist-playlist-playlistImageContainer {
@@ -412,11 +412,11 @@
   display: flex;
   width: 100%;
 }
-.comfy-settings .setting-row .col.description .x-settings-tooltip div {
-  color: var(--spice-subtext);
+.comfy-settings .setting-row .col.description .x-settings-tooltip svg {
+  fill: var(--spice-subtext);
 }
-.comfy-settings .setting-row .col.description .x-settings-tooltip:focus-within div, .comfy-settings .setting-row .col.description .x-settings-tooltip:hover div {
-  color: var(--spice-text);
+.comfy-settings .setting-row .col.description .x-settings-tooltip svg:focus-within, .comfy-settings .setting-row .col.description .x-settings-tooltip svg:hover {
+  fill: var(--spice-text);
   cursor: help;
 }
 .comfy-settings .setting-row .col.action {
@@ -803,6 +803,7 @@
   --cover-art-height: 84px;
   --cover-art-radius: 8px;
   --cover-art-bottom: 20px;
+  --tracklist-gradient-height: 232px;
 }
 :root button,
 :root button span,

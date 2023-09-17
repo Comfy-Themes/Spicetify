@@ -273,7 +273,7 @@
     .main-actionBarBackground-background {
       background: linear-gradient(
           rgba(var(--spice-rgb-main-transition), 0.6) 0,
-          var(--spice-main) 232px
+          var(--spice-main) var(--tracklist-gradient-height)
         ),
         var(--background-noise) !important;
       height: calc(100% - 300px);
