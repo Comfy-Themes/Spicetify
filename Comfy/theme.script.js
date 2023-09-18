@@ -645,7 +645,7 @@
           type: Input,
           inputType: "number",
           name: "Tracklist-Gradient-Height",
-          desc: "Tracklist Gradient Height",
+          desc: "Gradient Height",
           defaultVal: "232",
           tippy: Spicetify.React.createElement(
             Spicetify.React.Fragment,
