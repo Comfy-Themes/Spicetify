@@ -955,6 +955,7 @@
         isLarge: true,
       });
 
+      // Discord Text
       const header = document.querySelector(".main-trackCreditsModal-header");
       const container = document.createElement("div");
       const extraText = document.createElement("a");
@@ -965,6 +966,25 @@
       container.appendChild(document.querySelector("h1.main-type-alto"));
       container.appendChild(extraText);
       header.prepend(container);
+
+      // Scroll Position
+      const section = document.querySelector(".main-trackCreditsModal-mainSection");
+      const cache = sessionStorage.getItem("comfy-settings-scroll");
+      const scrollVal = cache ? cache * (section.scrollHeight - section.clientHeight) : 0;
+
+      function handleScroll(event) {
+        const a = section.scrollTop;
+        const b = section.scrollHeight - section.clientHeight;
+        const c = a / b;
+        sessionStorage.setItem("comfy-settings-scroll", c);
+
+        // If section is no longer in the DOM, remove the event listener
+        if (!document.contains(section)) {
+          section.removeEventListener("scroll", handleScroll);
+        }
+      }
+      section.scrollTo(null, scrollVal);
+      section.addEventListener("scroll", handleScroll);
     },
     false,
     true
