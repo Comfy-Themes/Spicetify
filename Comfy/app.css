@@ -105,7 +105,7 @@
 :root .Root__main-view .main-view-container .main-trackList-trackListRowGrid {
   border-radius: var(--border-radius);
   border: none;
-  padding-left: 2px;
+  padding-left: 18px;
   transition: 200ms background-color;
 }
 :root .Root__main-view .main-view-container .main-trackList-trackListRowGrid .main-type-mesto,
@@ -129,6 +129,11 @@
   height: 40px;
   justify-content: center;
   text-indent: -1000px;
+}
+:root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackList .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackList .main-trackList-trackListRowGrid,
+:root .Root__main-view .main-view-container section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) .main-trackList-trackList .main-trackList-trackListRowGrid {
+  padding-left: 2px;
 }
 :root .Root__main-view .main-view-container .uCHqQ74vvHOnctGg0X0B .main-trackList-trackList[aria-colcount="3"] .main-trackList-trackListRow,
 :root .Root__main-view .main-view-container .queue-queuePage-queuePage .main-trackList-trackList[aria-colcount="3"] .main-trackList-trackListRow,

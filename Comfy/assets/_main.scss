@@ -137,7 +137,7 @@
 		.main-trackList-trackListRowGrid {
 			border-radius: var(--border-radius);
 			border: none;
-			padding-left: 2px;
+			padding-left: 18px;
 			transition: 200ms background-color;
 
 			.main-type-mesto,
@@ -168,6 +168,10 @@
 					height: 40px;
 					justify-content: center;
 					text-indent: -1000px;
+				}
+
+				.main-trackList-trackListRowGrid {
+					padding-left: 2px;
 				}
 
 				@for $i from 3 through 6 {
