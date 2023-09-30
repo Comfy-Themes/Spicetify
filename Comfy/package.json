@@ -1,27 +1,24 @@
 {
-  "name": "comfy",
-  "version": "1.0.0",
-  "description": "Stay comfy while listening to music",
-  "main": "theme.script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile-scss": "sass app.scss app.css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Comfy-Themes/Spicetify.git"
-  },
-  "keywords": [
-    "comfy",
-    "spicetify"
-  ],
-  "author": "Comfy-Themes",
-  "license": "WTFPL",
-  "bugs": {
-    "url": "https://github.com/Comfy-Themes/Spicetify/issues"
-  },
-  "homepage": "https://github.com/Comfy-Themes/Spicetify#readme",
-  "dependencies": {
-    "node-sass": "^7.0.3"
-  }
+	"name": "comfy",
+	"version": "1.0.0",
+	"description": "Stay comfy while listening to music",
+	"main": "theme.script.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"compile-scss": "sass app.scss app.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Comfy-Themes/Spicetify.git"
+	},
+	"keywords": ["comfy", "spicetify"],
+	"author": "Comfy-Themes",
+	"license": "WTFPL",
+	"bugs": {
+		"url": "https://github.com/Comfy-Themes/Spicetify/issues"
+	},
+	"homepage": "https://github.com/Comfy-Themes/Spicetify#readme",
+	"dependencies": {
+		"node-sass": "^7.0.3"
+	}
 }

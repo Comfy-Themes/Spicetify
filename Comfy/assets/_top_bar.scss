@@ -1,83 +1,83 @@
 :root .Root__top-bar header {
-  // Search bar
-  .main-topBar-searchBar {
-    > form input {
-      &::placeholder {
-        color: rgba(var(--spice-rgb-selected-row), 0.7);
-      }
-      height: 32px;
-      background-color: rgba(var(--spice-rgb-shadow), 0.7);
-    }
-    > div {
-      span {
-        align-self: end;
-      }
-      button {
-        height: 16px;
-      }
-    }
-  }
+	// Search bar
+	.main-topBar-searchBar {
+		> form input {
+			&::placeholder {
+				color: rgba(var(--spice-rgb-selected-row), 0.7);
+			}
+			height: 32px;
+			background-color: rgba(var(--spice-rgb-shadow), 0.7);
+		}
+		> div {
+			span {
+				align-self: end;
+			}
+			button {
+				height: 16px;
+			}
+		}
+	}
 
-  .main-entityHeader-topbarTitle {
-    padding: 0 0px;
-  }
-  .main-topBar-historyButtons > button:hover {
-    transform: scale(1.1);
-  }
-  .main-playButton-PlayButton {
-    display: none !important;
-  }
-  .main-topBar-background {
-    background-color: rgba(var(--spice-rgb-main), 1) !important;
-  }
-  .main-topBar-overlay {
-    background-color: transparent !important;
-  }
+	.main-entityHeader-topbarTitle {
+		padding: 0 0px;
+	}
+	.main-topBar-historyButtons > button:hover {
+		transform: scale(1.1);
+	}
+	.main-playButton-PlayButton {
+		display: none !important;
+	}
+	.main-topBar-background {
+		background-color: rgba(var(--spice-rgb-main), 1) !important;
+	}
+	.main-topBar-overlay {
+		background-color: transparent !important;
+	}
 
-  .main-topBar-UpgradeButton {
-    font-size: 0;
-    overflow: hidden;
-    background: url("https://i.imgur.com/nzAfcIL.png") 50% / contain no-repeat;
-    border: none;
-    padding: 5px;
-    box-sizing: content-box;
-    width: 12px;
-  }
+	.main-topBar-UpgradeButton {
+		font-size: 0;
+		overflow: hidden;
+		background: url("https://i.imgur.com/nzAfcIL.png") 50% / contain no-repeat;
+		border: none;
+		padding: 5px;
+		box-sizing: content-box;
+		width: 12px;
+	}
 
-  .main-userWidget-box {
-    height: unset;
-    padding: 0;
-    gap: 12px;
+	.main-userWidget-box {
+		height: unset;
+		padding: 0;
+		gap: 12px;
 
-    > div {
-      &:last-child {
-        display: none;
-      }
-    }
+		> div {
+			&:last-child {
+				display: none;
+			}
+		}
 
-    .main-avatar-avatar {
-      width: 40px !important;
-      height: 40px !important;
-      display: flex;
+		.main-avatar-avatar {
+			width: 40px !important;
+			height: 40px !important;
+			display: flex;
 
-      @media (min-width: 1024px) {
-        .main-avatar-image {
-          border-radius: var(--border-radius) 0 0 var(--border-radius);
-        }
-      }
+			@media (min-width: 1024px) {
+				.main-avatar-image {
+					border-radius: var(--border-radius) 0 0 var(--border-radius);
+				}
+			}
 
-      & > div {
-        width: unset !important;
-        height: unset !important;
-      }
-    }
+			& > div {
+				width: unset !important;
+				height: unset !important;
+			}
+		}
 
-    .main-userWidget-displayName {
-      padding-right: 12px;
-    }
+		.main-userWidget-displayName {
+			padding-right: 12px;
+		}
 
-    .main-userWidget-chevron {
-      display: none;
-    }
-  }
+		.main-userWidget-chevron {
+			display: none;
+		}
+	}
 }

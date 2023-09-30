@@ -1,8 +1,8 @@
 ![banner](../images/banner.png)
 
-### 🎨 Color Schemes 
+### 🎨 Color Schemes
 
-#### Collection 
+#### Collection
 
 <details><summary>Catppuccin</summary>
 <details><summary>🌻 Latte</summary>
@@ -76,6 +76,7 @@
 </details></details>
 
 #### Individual
+
 <details><summary>Comfy</summary>
 
 ![gif](../images/color-schemes/gif/comfy.gif)
@@ -193,7 +194,6 @@
 
 </details>
 
-
 ### 📳 Panels
 
 <details><summary>Comfy Settings</summary>
@@ -243,7 +243,6 @@
 ![gif](../images/panels/queue.png)
 
 </details>
-
 
 ### ⚙️ Settings
 

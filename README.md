@@ -18,8 +18,6 @@
   </tr>
 </table>
 
-
-
 ### 📥 Automatic Installation
 
 ---
@@ -85,6 +83,7 @@ Go into your theme folder and open either :
 `theme.js` for settings
 
 ### ♥ Donation Guide
+
 ---
 
 Thinking of donating? Please consider what you value most when deciding who to donate to:

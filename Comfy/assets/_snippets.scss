@@ -1,292 +1,288 @@
-.spotify__container--is-desktop.spotify__os--is-windows
-  #main.Topbar-Inside-Titlebar-Snippet
-  .main-topBar-container {
-  padding-inline: 60px 150px !important;
-  padding-bottom: 64px !important;
+.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
+	padding-inline: 60px 150px !important;
+	padding-bottom: 64px !important;
 }
 
 :root {
-  &:has(#main.Flatten-Colors-normal) {
-    --spice-main: var(--spice-sidebar);
-    --spice-main-transition: var(--spice-sidebar);
-    --spice-rgb-main: var(--spice-rgb-sidebar);
-    --spice-rgb-main-transition: var(--spice-rgb-sidebar);
-  }
-  &:has(#main.Flatten-Colors-reverse) {
-    --spice-sidebar: var(--spice-main);
-    --spice-rgb-sidebar: var(--spice-rgb-main);
-  }
-  #main {
-    &.Comfy-mono-Snippet {
-      .cover-art {
-        box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
-      }
+	&:has(#main.Flatten-Colors-normal) {
+		--spice-main: var(--spice-sidebar);
+		--spice-main-transition: var(--spice-sidebar);
+		--spice-rgb-main: var(--spice-rgb-sidebar);
+		--spice-rgb-main-transition: var(--spice-rgb-sidebar);
+	}
+	&:has(#main.Flatten-Colors-reverse) {
+		--spice-sidebar: var(--spice-main);
+		--spice-rgb-sidebar: var(--spice-rgb-main);
+	}
+	#main {
+		&.Comfy-mono-Snippet {
+			.cover-art {
+				box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
+			}
 
-      .main-coverSlotCollapsed-expandButton,
-      .main-editImageButton-icon.icon,
-      svg.main-coverSlotExpandedCollapseButton-chevron {
-        color: #000000;
-      }
-    }
+			.main-coverSlotCollapsed-expandButton,
+			.main-editImageButton-icon.icon,
+			svg.main-coverSlotExpandedCollapseButton-chevron {
+				color: #000000;
+			}
+		}
 
-    &.Comfy-nord-Snippet {
-      .Root__now-playing-bar {
-        background: var(--spice-player);
-        border-radius: var(--border-radius);
-    
-        .main-nowPlayingBar-nowPlayingBar {
-          padding: 0 18px 6px 18px !important;
-          margin-bottom: 0 !important;
+		&.Comfy-nord-Snippet {
+			.Root__now-playing-bar {
+				background: var(--spice-player);
+				border-radius: var(--border-radius);
 
-          .playback-bar {
-            position: absolute !important;
+				.main-nowPlayingBar-nowPlayingBar {
+					padding: 0 18px 6px 18px !important;
+					margin-bottom: 0 !important;
 
-            .playback-bar__progress-time-elapsed,
-            .main-playbackBarRemainingTime-container {
-                position: absolute;
-                bottom: 18px;
-                right: 0px;
-                grid-area: none !important;
-            }
-            .playback-bar__progress-time-elapsed {
-                transform: translateX(calc(-100% - 20px));
-            }
-            .playback-bar__progress-time-elapsed::after {
-                position: absolute;
-                left: calc(100% + 10px);
-                font-weight: bold;
-                color: rgba(var(--spice-rgb-custom-subdued), 0.8);
-                content: "/";
-                transform: translateX(-50%);
-            }
+					.playback-bar {
+						position: absolute !important;
 
-            .x-progressBar-progressBarBg,
-            .x-progressBar-sliderArea {
-              border-radius: 0 0 8px 8px !important;
-              height: 6px !important;
-            }
-    
-            > div,
-            .x-progressBar-fillColor {
-              height: 6px !important;
-              border-radius: 50px !important;
-            }
-          }
-        }
-      }
-    }
-    
-    &.visible-column-bar-Snippet {
-      .main-trackList-trackListHeader,
-      .main-trackList-trackListHeaderStuck {
-        position: static;
-      }
-      
-      .main-trackList-trackListHeader {
-        display: block !important;
-        > div {
-          padding-left: 18px;
-        }
-      }
-      
-      .main-trackList-trackListHeaderStuck {
-        background: none;
-        box-shadow: none;
-        border: none;
-      }
-    }
+						.playback-bar__progress-time-elapsed,
+						.main-playbackBarRemainingTime-container {
+							position: absolute;
+							bottom: 18px;
+							right: 0px;
+							grid-area: none !important;
+						}
+						.playback-bar__progress-time-elapsed {
+							transform: translateX(calc(-100% - 20px));
+						}
+						.playback-bar__progress-time-elapsed::after {
+							position: absolute;
+							left: calc(100% + 10px);
+							font-weight: bold;
+							color: rgba(var(--spice-rgb-custom-subdued), 0.8);
+							content: "/";
+							transform: translateX(-50%);
+						}
 
-    &.Home-Header-Snippet {
-      .main-home-homeHeader {
-        display: block !important;
-      }
-    }
+						.x-progressBar-progressBarBg,
+						.x-progressBar-sliderArea {
+							border-radius: 0 0 8px 8px !important;
+							height: 6px !important;
+						}
 
-    &.Horizontal-pageLinks-Snippet {
-      ul#spicetify-sticky-list {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-      }
+						> div,
+						.x-progressBar-fillColor {
+							height: 6px !important;
+							border-radius: 50px !important;
+						}
+					}
+				}
+			}
+		}
 
-      span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
-        display: none;
-      }
-    }
+		&.visible-column-bar-Snippet {
+			.main-trackList-trackListHeader,
+			.main-trackList-trackListHeaderStuck {
+				position: static;
+			}
 
-    &.Remove-Progress-Bar-Gradient-Snippet {
-      .x-progressBar-fillColor {
-        background-color: var(--fg-color) !important;
-        border-radius: var(--progress-bar-radius) !important;
-        height: var(--progress-bar-height) !important;
-        transform: translateX(
-          calc(-100% + var(--progress-bar-transform))
-        ) !important;
-        width: 100% !important;
-      }
-    }
+			.main-trackList-trackListHeader {
+				display: block !important;
+				> div {
+					padding-left: 18px;
+				}
+			}
 
-    &.Remove-Device-Picker-Notification-Snippet {
-      .main-connectBar-connected {
-        display: none !important;
-      }
-    }
+			.main-trackList-trackListHeaderStuck {
+				background: none;
+				box-shadow: none;
+				border: none;
+			}
+		}
 
-    &.Remove-Lyrics-Button-Snippet {
-      .main-nowPlayingBar-lyricsButton {
-        display: none !important;
-      }
-    }
+		&.Home-Header-Snippet {
+			.main-home-homeHeader {
+				display: block !important;
+			}
+		}
 
-    &.Hoverable-Timers-Snippet {
-      .playback-bar {
-        > div {
-          transition: all 0.3s ease;
-          opacity: 0;
-        }
+		&.Horizontal-pageLinks-Snippet {
+			ul#spicetify-sticky-list {
+				justify-content: center;
+				align-items: center;
+				display: flex;
+				flex-wrap: wrap;
+			}
 
-        &:hover > div {
-          transition: all 0.3s ease;
-          opacity: 1 !important;
-        }
+			span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+				display: none;
+			}
+		}
 
-        .playback-progressbar {
-          opacity: 1 !important;
-        }
-      }
-    }
+		&.Remove-Progress-Bar-Gradient-Snippet {
+			.x-progressBar-fillColor {
+				background-color: var(--fg-color) !important;
+				border-radius: var(--progress-bar-radius) !important;
+				height: var(--progress-bar-height) !important;
+				transform: translateX(calc(-100% + var(--progress-bar-transform))) !important;
+				width: 100% !important;
+			}
+		}
 
-    &.Right-Art-Snippet {
-      .main-coverSlotExpanded-container {
-        position: fixed;
-        top: calc(100% - 318px);
-        left: calc(100% - 230px);
-        width: 200px;
-        height: 200px;
-      }
-      .main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
-        padding-bottom: 0 !important; // tweaked
-      }
-    }
+		&.Remove-Device-Picker-Notification-Snippet {
+			.main-connectBar-connected {
+				display: none !important;
+			}
+		}
 
-    &.Topbar-Inside-Titlebar-Snippet {
-      .Root__top-container {
-        grid-template-areas:
-          "top-bar top-bar top-bar"
-          "left-sidebar main-view right-sidebar"
-          "now-playing-bar now-playing-bar now-playing-bar";
-        grid-template-rows: auto 1fr auto;
+		&.Remove-Lyrics-Button-Snippet {
+			.main-nowPlayingBar-lyricsButton {
+				display: none !important;
+			}
+		}
 
-        .Root__top-bar {
-          grid-area: top-bar;
-          height: 32px;
-          margin-top: -32px;
+		&.Hoverable-Timers-Snippet {
+			.playback-bar {
+				> div {
+					transition: all 0.3s ease;
+					opacity: 0;
+				}
 
-          .main-topBar-container {
-            padding-inline: 80px 0px;
-            padding-bottom: 64px;
-            pointer-events: none;
+				&:hover > div {
+					transition: all 0.3s ease;
+					opacity: 1 !important;
+				}
 
-            .main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
-            .main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
-              justify-content: center;
-              display: flex;
-            }
+				.playback-progressbar {
+					opacity: 1 !important;
+				}
+			}
+		}
 
-            .main-topBar-topbarContent {
-              app-region: drag !important;
+		&.Right-Art-Snippet {
+			.main-coverSlotExpanded-container {
+				position: fixed;
+				top: calc(100% - 318px);
+				left: calc(100% - 230px);
+				width: 200px;
+				height: 200px;
+			}
+			.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+				padding-bottom: 0 !important; // tweaked
+			}
+		}
 
-              .main-entityHeader-topbarTitle {
-                height: 32px;
-              }
-            }
+		&.Topbar-Inside-Titlebar-Snippet {
+			.Root__top-container {
+				grid-template-areas:
+					"top-bar top-bar top-bar"
+					"left-sidebar main-view right-sidebar"
+					"now-playing-bar now-playing-bar now-playing-bar";
+				grid-template-rows: auto 1fr auto;
 
-            .main-topBar-background {
-              display: none;
-            }
-          }
-        }
-      }
+				.Root__top-bar {
+					grid-area: top-bar;
+					height: 32px;
+					margin-top: -32px;
 
-      .body-drag-top {
-        height: 48px;
-      }
+					.main-topBar-container {
+						padding-inline: 80px 0px;
+						padding-bottom: 64px;
+						pointer-events: none;
 
-      .main-view-container__scroll-node-child-spacer {
-        height: 15px;
-      }
+						.main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
+						.main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
+							justify-content: center;
+							display: flex;
+						}
 
-      .playlist-playlist-playlist,
-      .profile-userOverview-container,
-      .artist-artistOverview-overview,
-      .album-albumPage-sectionWrapper,
-      .show-showPage-sectionWrapper,
-      .A4dupilHPIEDfhXDE0m0,
-      .uCHqQ74vvHOnctGg0X0B,
-      .lXcKpCtaEeFf1HifX139,
-      .MlK79hskRbFrN2OBjMkl,
-      .dpN5ViPOceUWNB5EQPHN,
-      .mmCZ5VczybT9VqKB5wFU {
-        margin-top: -15px !important;
-      }
+						.main-topBar-topbarContent {
+							app-region: drag !important;
 
-      .queue-queuePage-queuePage,
-      .search-searchCategory-SearchCategory,
-      .artist-artistDiscography-topBar {
-        margin-top: 0 !important;
-        top: 0 !important;
-      }
-    }
-    &.Apple-Music-Gradient-Snippet {
-      .frame {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        filter: blur(calc(var(--image-blur) * 10));
-        background-image: var(--gradient-background-image);
+							.main-entityHeader-topbarTitle {
+								height: 32px;
+							}
+						}
 
-        .mainImage,
-        .secondaryImage {
-          position: absolute;
-          width: var(--gradient-width);
-          animation: rotate var(--gradient-speed) linear infinite;
-          border-radius: var(--gradient-radius) !important;
-          mix-blend-mode: var(--gradient-blend-mode);
-        }
+						.main-topBar-background {
+							display: none;
+						}
+					}
+				}
+			}
 
-        .mainImage {
-          /* Nullify all the values */
-          height: revert;
-          left: unset;
-          object-fit: unset;
-          object-position: unset;
-          filter: none;
-          -webkit-mask-image: none;
-          mask-image: none;
-          right: 0;
-          top: 0;
-          z-index: 10;
-        }
+			.body-drag-top {
+				height: 48px;
+			}
 
-        .secondaryImage {
-          display: revert;
-          left: 0;
-          bottom: 0;
-          animation-direction: reverse;
-        }
-      }
+			.main-view-container__scroll-node-child-spacer {
+				height: 15px;
+			}
 
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
+			.playlist-playlist-playlist,
+			.profile-userOverview-container,
+			.artist-artistOverview-overview,
+			.album-albumPage-sectionWrapper,
+			.show-showPage-sectionWrapper,
+			.A4dupilHPIEDfhXDE0m0,
+			.uCHqQ74vvHOnctGg0X0B,
+			.lXcKpCtaEeFf1HifX139,
+			.MlK79hskRbFrN2OBjMkl,
+			.dpN5ViPOceUWNB5EQPHN,
+			.mmCZ5VczybT9VqKB5wFU {
+				margin-top: -15px !important;
+			}
 
-        to {
-          transform: rotate(360deg);
-        }
-      }
-    }
-  }
+			.queue-queuePage-queuePage,
+			.search-searchCategory-SearchCategory,
+			.artist-artistDiscography-topBar {
+				margin-top: 0 !important;
+				top: 0 !important;
+			}
+		}
+		&.Apple-Music-Gradient-Snippet {
+			.frame {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				filter: blur(calc(var(--image-blur) * 10));
+				background-image: var(--gradient-background-image);
+
+				.mainImage,
+				.secondaryImage {
+					position: absolute;
+					width: var(--gradient-width);
+					animation: rotate var(--gradient-speed) linear infinite;
+					border-radius: var(--gradient-radius) !important;
+					mix-blend-mode: var(--gradient-blend-mode);
+				}
+
+				.mainImage {
+					/* Nullify all the values */
+					height: revert;
+					left: unset;
+					object-fit: unset;
+					object-position: unset;
+					filter: none;
+					-webkit-mask-image: none;
+					mask-image: none;
+					right: 0;
+					top: 0;
+					z-index: 10;
+				}
+
+				.secondaryImage {
+					display: revert;
+					left: 0;
+					bottom: 0;
+					animation-direction: reverse;
+				}
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		}
+	}
 }

@@ -1,39 +1,39 @@
 :root .Root__nav-bar {
-  .main-rootlist-wrapper {
-    div:nth-child(2) {
-      > li {
-        .main-yourLibraryX-listRowEntityImage {
-          border-radius: var(--border-radius) !important;
-        }
-        > div {
-          &:active::after {
-            background-color: var(--spice-highlight-elevated);
-            border-radius: 20px !important;
-          }
-          .x-entityImage-imageContainer {
-            box-shadow: none !important;
-          }
-        }
-      }
-    }
-  }
+	.main-rootlist-wrapper {
+		div:nth-child(2) {
+			> li {
+				.main-yourLibraryX-listRowEntityImage {
+					border-radius: var(--border-radius) !important;
+				}
+				> div {
+					&:active::after {
+						background-color: var(--spice-highlight-elevated);
+						border-radius: 20px !important;
+					}
+					.x-entityImage-imageContainer {
+						box-shadow: none !important;
+					}
+				}
+			}
+		}
+	}
 
-  // Library header shadow
-  .main-yourLibraryX-isScrolled {
-    box-shadow: none !important;
-  }
+	// Library header shadow
+	.main-yourLibraryX-isScrolled {
+		box-shadow: none !important;
+	}
 
-  // Cover art expanded
-  .cover-art .cover-art-image,
-  .main-coverSlotExpanded-container {
-    border-radius: 4px !important;
-  }
-  .main-yourLibraryX-libraryContainer.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
-    padding-bottom: 272px !important; // tweaked
-  }
+	// Cover art expanded
+	.cover-art .cover-art-image,
+	.main-coverSlotExpanded-container {
+		border-radius: 4px !important;
+	}
+	.main-yourLibraryX-libraryContainer.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
+		padding-bottom: 272px !important; // tweaked
+	}
 
-  // Scrollbar
-  .os-scrollbar {
-    display: none;
-  }
+	// Scrollbar
+	.os-scrollbar {
+		display: none;
+	}
 }
