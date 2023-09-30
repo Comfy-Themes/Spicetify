@@ -137,7 +137,7 @@
     .main-trackList-trackListRowGrid {
       border-radius: var(--border-radius);
       border: none;
-      padding-left: 18px;
+      padding-left: 2px;
       transition: 200ms background-color;
 
       .main-type-mesto,
@@ -158,34 +158,33 @@
     .queue-queuePage-queuePage, // Has section but its merged with contentSpacing
     section:not(.album-albumPage-sectionWrapper):not(.search-searchResult-tracklistContainer) .contentSpacing:not(.artist-artistDiscography-tracklist) {
         // Tracklist Grid Layout
-        .main-trackList-trackListRow {
-          grid-template-columns: [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-              120px,
-              1fr
-            ) !important; // Adjust grid template columns
-
-          & > .main-trackList-rowSectionIndex {
-            position: absolute;
+        .main-trackList-trackList {
+          .main-trackList-trackListRow > .main-trackList-rowSectionIndex {
+            position: relative;
             z-index: 1000;
             top: 8px;
-            left: 18px;
+            left: 56px;
             width: 40px;
             height: 40px;
             justify-content: center;
             text-indent: -1000px;
           }
+          
+          @for $i from 3 through 6 {
+            &[aria-colcount="#{$i}"] .main-trackList-trackListRow {
+              @if $i == 3 {
+                grid-template-columns: [index] 0px [first] 4fr [last] minmax(120px, 1fr) !important;
+              } @else if $i == 4 {
+                grid-template-columns: [index] 0px [first] 4fr [var1] 2fr [last] minmax(120px, 1fr) !important;
+              } @else if $i == 5 {
+                grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+              } @else if $i == 6 {
+                grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
+              }
+            }
+          }
         }
-
-        .main-trackList-trackList[aria-colcount="6"]
-          .main-trackList-trackListRow {
-          grid-template-columns:
-            [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr)
-            [last] minmax(
-              120px,
-              1fr
-            ) !important; // Adjust grid template columns for specific case
-        }
-
+        
         // Tracklist Image overlay + Button Overlay
         .main-trackList-rowImageFallback {
           border-radius: var(--border-radius);
