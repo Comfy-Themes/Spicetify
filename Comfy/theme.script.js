@@ -486,7 +486,8 @@
             "Note: default value can be lost"
           ),
           callback: async (value) => {
-            await Spicetify.Platform.UserAPI._product_state.delOverridesValues({ keys: ["name"] });
+            const productState = Spicetify.Platform.UserAPI._product_state ?? Spicetify.Platform.UserAPI._product_state_service
+            await productState.delOverridesValues({ keys: ["name"] });
             if (value) await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
           },
         },
