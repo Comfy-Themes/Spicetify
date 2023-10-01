@@ -719,23 +719,23 @@
   -webkit-text-stroke: thin;
 }
 
-.main-trackList-trackListRowGrid {
+.main-trackList-trackListRow {
   border-radius: var(--border-radius);
   border: none;
   transition: 200ms background-color;
 }
-.main-trackList-trackListRowGrid:hover {
+.main-trackList-trackListRow:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
+}
+.main-trackList-trackListRow.main-trackList-selected {
   background-color: rgba(var(--spice-rgb-selected-row), 0.1);
 }
-.main-trackList-trackListRowGrid .main-type-mesto,
-.main-trackList-trackListRowGrid .main-type-ballad {
+.main-trackList-trackListRow.main-trackList-selected:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.15);
+}
+.main-trackList-trackListRow .main-type-mesto,
+.main-trackList-trackListRow .main-type-ballad {
   transition: 300ms color;
-}
-.main-trackList-trackListRowGrid .main-trackList-selected {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.2);
-}
-.main-trackList-trackListRowGrid .main-trackList-selected:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
 }
 
 .main-trackList-trackList:has(.main-trackList-rowSectionStart img) .main-trackList-trackListHeader .main-trackList-rowSectionIndex {

@@ -5,25 +5,25 @@
 	-webkit-text-stroke: thin;
 }
 
-.main-trackList-trackListRowGrid {
+.main-trackList-trackListRow {
 	border-radius: var(--border-radius);
 	border: none;
 	transition: 200ms background-color;
 
 	&:hover {
+		background-color: rgba(var(--spice-rgb-selected-row), 0.05);
+	}
+
+	&.main-trackList-selected {
 		background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+		&:hover {
+			background-color: rgba(var(--spice-rgb-selected-row), 0.15);
+		}
 	}
 
 	.main-type-mesto,
 	.main-type-ballad {
 		transition: 300ms color;
-	}
-
-	.main-trackList-selected {
-		background-color: rgba(var(--spice-rgb-selected-row), 0.2);
-		&:hover {
-			background-color: rgba(var(--spice-rgb-selected-row), 0.3);
-		}
 	}
 }
 
