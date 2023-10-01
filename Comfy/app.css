@@ -724,15 +724,18 @@
   border: none;
   transition: 200ms background-color;
 }
+.main-trackList-trackListRowGrid:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+}
 .main-trackList-trackListRowGrid .main-type-mesto,
 .main-trackList-trackListRowGrid .main-type-ballad {
   transition: 300ms color;
 }
-.main-trackList-trackListRowGrid:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.main-trackList-trackListRowGrid .main-trackList-selected {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.2);
 }
-.main-trackList-trackListRowGrid.main-trackList-selected {
-  background-color: rgba(255, 255, 255, 0.1);
+.main-trackList-trackListRowGrid .main-trackList-selected:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
 }
 
 .main-trackList-trackList:has(.main-trackList-rowSectionStart img) .main-trackList-trackListHeader .main-trackList-rowSectionIndex {

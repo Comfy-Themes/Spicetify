@@ -10,17 +10,20 @@
 	border: none;
 	transition: 200ms background-color;
 
+	&:hover {
+		background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+	}
+
 	.main-type-mesto,
 	.main-type-ballad {
 		transition: 300ms color;
 	}
 
-	&:hover {
-		background-color: rgba(255, 255, 255, 0.05);
-	}
-
-	&.main-trackList-selected {
-		background-color: rgba(255, 255, 255, 0.1);
+	.main-trackList-selected {
+		background-color: rgba(var(--spice-rgb-selected-row), 0.2);
+		&:hover {
+			background-color: rgba(var(--spice-rgb-selected-row), 0.3);
+		}
 	}
 }
 
