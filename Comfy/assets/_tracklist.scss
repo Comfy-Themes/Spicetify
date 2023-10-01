@@ -1,0 +1,93 @@
+// Tracklist
+.main-trackList-active .main-trackList-rowTitle {
+	color: var(--spice-text) !important;
+	text-shadow: 0px 0px 6px var(--spice-text);
+	-webkit-text-stroke: thin;
+}
+
+.main-trackList-trackListRowGrid {
+	border-radius: var(--border-radius);
+	border: none;
+	transition: 200ms background-color;
+
+	.main-type-mesto,
+	.main-type-ballad {
+		transition: 300ms color;
+	}
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	&.main-trackList-selected {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+// Image Tracklist
+.main-trackList-trackList:has(.main-trackList-rowSectionStart img) {
+	.main-trackList-trackListHeader {
+		.main-trackList-rowSectionIndex {
+			text-indent: -1000px;
+		}
+	}
+
+	.main-trackList-trackListRow {
+		&:hover,
+		&:focus-within {
+			.main-trackList-rowImagePlayPauseButton,
+			.main-trackList-rowSectionIndex,
+			.main-trackList-rowImagePlayButton {
+				background: rgba(var(--spice-rgb-play-button), 0.5);
+				border-radius: var(--border-radius);
+				opacity: 1;
+				color: black;
+			}
+		}
+
+		> .main-trackList-rowSectionIndex {
+			position: relative;
+			z-index: 1000;
+			top: 8px;
+			left: 56px;
+			width: 40px;
+			height: 40px;
+			justify-content: center;
+			text-indent: -1000px;
+		}
+	}
+
+	.main-trackList-active {
+		.main-trackList-rowImagePlayPauseButton,
+		.main-trackList-rowSectionIndex,
+		.main-trackList-rowImagePlayButton {
+			background: rgba(var(--spice-rgb-play-button), 0.5);
+			border-radius: var(--border-radius);
+			opacity: 1;
+			color: black;
+		}
+	}
+
+	.main-trackList-rowImageFallback {
+		border-radius: var(--border-radius);
+	}
+}
+
+// Image Tracklist with Index
+.main-trackList-indexable:has(.main-trackList-rowSectionStart img) {
+	@for $i from 3 through 6 {
+		&[aria-colcount="#{$i}"] .main-trackList-trackListRowGrid {
+			padding-left: 2px;
+
+			@if $i == 3 {
+				grid-template-columns: [index] 0px [first] 4fr [last] minmax(120px, 1fr) !important;
+			} @else if $i == 4 {
+				grid-template-columns: [index] 0px [first] 4fr [var1] 2fr [last] minmax(120px, 1fr) !important;
+			} @else if $i == 5 {
+				grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+			} @else if $i == 6 {
+				grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
+			}
+		}
+	}
+}
