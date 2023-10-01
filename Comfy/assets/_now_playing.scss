@@ -48,17 +48,19 @@
 		// Connect Bar
 		.main-connectBar-connectBar {
 			position: absolute;
-			top: -15px;
+			top: -20px;
 			right: 15px;
 			padding: 4px 8px;
 			box-sizing: content-box;
 			border-radius: var(--border-radius);
-			color: #fff;
-			background-color: var(--spice-sidebar);
 
 			&::after {
 				content: none;
 			}
+		}
+		.main-devicePicker-indicator {
+			bottom: 30px;
+			transform: rotate(180deg);
 		}
 
 		// Volume Bar

@@ -121,7 +121,8 @@
 		}
 
 		&.Remove-Device-Picker-Notification-Snippet {
-			.main-connectBar-connected {
+			.main-connectBar-connected,
+			.main-devicePicker-indicator {
 				display: none !important;
 			}
 		}
