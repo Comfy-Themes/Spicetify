@@ -1,0 +1,25 @@
+on:
+  push:
+    branches: [main]
+
+name: Build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+
+      - name: Compile Sass
+        run: npx sass Comfy/app.scss:catppuccin/app.css --no-source-map --style=compressed
+
+      - name: Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: ${{ github.repository == 'Comfy-Themes/Spicetify' && github.ref == 'refs/heads/main' }}
+        with:
+          commit_message: "chore: compile scss"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          branch: ${{ github.ref }}
