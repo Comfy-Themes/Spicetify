@@ -14,7 +14,7 @@ jobs:
           node-version: "lts/*"
 
       - name: Compile Sass
-        run: npx sass Comfy/app.scss:catppuccin/app.css --no-source-map --style=compressed
+        run: npx sass Comfy/app.scss:Comfy/app.css --no-source-map --style=compressed
 
       - name: Push Changes
         uses: stefanzweifel/git-auto-commit-action@v4
