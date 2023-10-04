@@ -28,7 +28,8 @@
 }
 
 // Image Tracklist
-.main-trackList-trackList:has(.main-trackList-rowSectionStart img) {
+.main-trackList-trackList:has(.main-trackList-rowSectionStart img),
+.main-trackList-trackList:has(.main-trackList-rowSectionStart .main-trackList-rowImageFallback) {
 	.main-trackList-trackListHeader {
 		.main-trackList-rowSectionIndex {
 			text-indent: -1000px;
@@ -37,12 +38,15 @@
 
 	.main-trackList-trackListRow {
 		&:hover,
-		&:focus-within {
+		&:focus-within,
+		&.main-trackList-active {
 			.main-trackList-rowImagePlayPauseButton,
-			.main-trackList-rowSectionIndex,
-			.main-trackList-rowImagePlayButton {
+			.main-trackList-rowSectionIndex {
 				background: rgba(var(--spice-rgb-play-button), 0.5);
 				border-radius: var(--border-radius);
+			}
+			.main-trackList-rowImagePlayButton,
+			.main-trackList-rowImagePlayPauseButton {
 				opacity: 1;
 				color: black;
 			}
@@ -60,15 +64,10 @@
 		}
 	}
 
-	.main-trackList-active {
-		.main-trackList-rowImagePlayPauseButton,
-		.main-trackList-rowSectionIndex,
-		.main-trackList-rowImagePlayButton {
-			background: rgba(var(--spice-rgb-play-button), 0.5);
-			border-radius: var(--border-radius);
-			opacity: 1;
-			color: black;
-		}
+	// Temp fix for right queue panel, they weirdly show all active songs of same type with no new selector except this subclassname
+	// could technically just apply the border radius opacity and stuff AGAIN here but duplication bad so i'll find a selector good enough
+	.main-trackList-rowImagePlayPauseButtonPlaying {
+		opacity: 0;
 	}
 
 	.main-trackList-rowImageFallback {
