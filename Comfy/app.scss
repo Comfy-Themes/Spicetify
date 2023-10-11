@@ -114,6 +114,10 @@
 	#context-menu {
 		overflow: hidden;
 
+		.main-popper-arrow {
+			background-color: var(--spice-player) !important;
+		}
+
 		ul:not([aria-labelledby~="device-picker-header"]) {
 			background-color: var(--spice-player);
 
