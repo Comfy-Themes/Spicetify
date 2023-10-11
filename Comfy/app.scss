@@ -114,7 +114,8 @@
 	#context-menu {
 		overflow: hidden;
 
-		.main-popper-arrow {
+		.main-popper-arrow,
+		.main-popper-arrow::before {
 			background-color: var(--spice-player) !important;
 		}
 
