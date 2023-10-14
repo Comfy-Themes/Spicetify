@@ -38,6 +38,25 @@
 		--border-radius: var(--button-radius) !important;
 	}
 
+	// Fonts
+	body,
+	button,
+	input,
+	select,
+	textarea {
+		font-family: var(
+			--font-family,
+			CircularSp,
+			CircularSp-Arab,
+			CircularSp-Hebr,
+			CircularSp-Cyrl,
+			CircularSp-Grek,
+			CircularSp-Deva,
+			var(--fallback-fonts, sans-serif),
+			sans-serif
+		);
+	}
+
 	// remove overflow
 	.Root__top-container {
 		overflow: hidden;
