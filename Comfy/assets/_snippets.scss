@@ -169,8 +169,8 @@
 				grid-template-areas:
 					"top-bar top-bar top-bar"
 					"left-sidebar main-view right-sidebar"
-					"now-playing-bar now-playing-bar now-playing-bar";
-				grid-template-rows: auto 1fr auto;
+					"now-playing-bar now-playing-bar now-playing-bar" !important;
+				grid-template-rows: auto 1fr auto !important;
 
 				.Root__top-bar {
 					grid-area: top-bar;
