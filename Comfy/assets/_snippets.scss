@@ -14,6 +14,12 @@
 		--spice-sidebar: var(--spice-main);
 		--spice-rgb-sidebar: var(--spice-rgb-main);
 	}
+	&:has(#main.Comfy-Dark-Modals-Snippet) {
+		.ABD0FGjBGqGZG33bP7Lc {
+			background-color: var(--spice-main);
+			color: var(--spice-text);
+		}
+	}	
 	#main {
 		&.Comfy-mono-Snippet {
 			.cover-art {

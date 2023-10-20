@@ -467,6 +467,59 @@
 						main.classList.remove(...options.map(option => `Comfy-${option}-Snippet`));
 						if (value !== "Select an option") main.classList.add(`Comfy-${value}-Snippet`);
 					}
+				},
+				{
+					type: Dropdown,
+					name: "Flatten-Colors",
+					desc: "Flatten Theme Colors",
+					defaultVal: "off",
+					options: ["off", "normal", "reverse"],
+					tippy: Spicetify.React.createElement(
+						Spicetify.React.Fragment,
+						null,
+						Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar")
+					),
+					callback: (name, value, options, defaultVal) => {
+						const main = document.getElementById("main");
+						main.classList.remove(...options.map(option => `${name}-${option}`));
+						if (value !== defaultVal) main.classList.add(`${name}-${value}`);
+					}
+				},
+				{
+					type: Dropdown,
+					name: "Dark-Modals",
+					desc: "Modal Colors",
+					defaultVal: "light",
+					options: ["light", "dark"],
+					tippy: Spicetify.React.createElement(
+						Spicetify.React.Fragment,
+						null,
+						Spicetify.React.createElement("h4", null, "Overwrites the default modal colors, if not default this can impact startup times.")
+					),
+					callback: (name, value, options, defaultVal) => {
+						const main = document.getElementById("main");
+						const customXpui = document.getElementById("/xpui.css");
+
+						if (value === defaultVal && customXpui) {
+							customXpui.remove();
+							main.classList.remove(`Comfy-${name}-Snippet`);
+						}
+
+						if (value !== defaultVal && !customXpui) {
+							fetch("xpui.css")
+								.then(res => res.text())
+								.then(text => {
+									const result = text.replace(/(\.encore-dark-theme,\.encore-dark-theme)/g, ".GenericModal__overlay .encore-light-theme,$1");
+
+									const newStyle = document.createElement("style");
+									newStyle.textContent = result;
+									newStyle.id = "/xpui.css";
+									document.head.appendChild(newStyle);
+									main.classList.add(`Comfy-${name}-Snippet`);
+								})
+								.catch(e => console.log(e));
+						}
+					}
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Interface" }, [
@@ -570,23 +623,6 @@
 							}
 						}
 					]
-				},
-				{
-					type: Dropdown,
-					name: "Flatten-Colors",
-					desc: "Flatten Theme Colors",
-					defaultVal: "off",
-					options: ["off", "normal", "reverse"],
-					tippy: Spicetify.React.createElement(
-						Spicetify.React.Fragment,
-						null,
-						Spicetify.React.createElement("h4", null, "Sets main color to the same color as sidebar")
-					),
-					callback: (name, value, options, defaultVal) => {
-						const main = document.getElementById("main");
-						main.classList.remove(...options.map(option => `${name}-${option}`));
-						if (value !== defaultVal) main.classList.add(`${name}-${value}`);
-					}
 				},
 				{
 					type: Slider,
