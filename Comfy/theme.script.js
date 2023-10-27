@@ -461,7 +461,7 @@
 					type: Dropdown,
 					name: `Scheme-Features`,
 					desc: `Additional Features`,
-					options: ["nord", "mono"],
+					options: ["nord", "mono", "kitty"],
 					callback: (name, value, options) => {
 						const main = document.getElementById("main");
 						main.classList.remove(...options.map(option => `Comfy-${option}-Snippet`));

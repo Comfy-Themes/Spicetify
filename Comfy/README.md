@@ -107,6 +107,11 @@
 ![gif](../images/color-schemes/gif/yami.gif)
 
 </details>
+<details><summary>Kitty</summary>
+
+![gif](../images/color-schemes/gif/kitty.gif)
+
+</details>
 
 ### 📑 Pages
 

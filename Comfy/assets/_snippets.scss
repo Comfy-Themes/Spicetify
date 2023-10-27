@@ -79,7 +79,15 @@
 				}
 			}
 		}
-
+		&.Comfy-kitty-Snippet {
+			.Root__main-view {
+				background-image: url("https://media0.giphy.com/media/lVHOm4nZ0yfFXI8cgd/giphy.gif?cid=790b7611hvc1po0u3gn3yrlgmhu5gqhjv9cve7hp84f9aoox&ep=v1_gifs_search&rid=giphy.gif") !important;
+				background-position-x: center !important;
+				background-position-y: center !important;
+				background-size: 610px !important;
+				background-repeat: no-repeat !important;
+			}
+		}
 		&.visible-column-bar-Snippet {
 			.main-trackList-trackListHeader,
 			.main-trackList-trackListHeaderStuck {
