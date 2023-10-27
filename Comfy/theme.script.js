@@ -539,7 +539,7 @@
 					callback: async value => {
 						const productState = Spicetify.Platform.UserAPI._product_state ?? Spicetify.Platform.UserAPI._product_state_service;
 						await productState.delOverridesValues({ keys: ["name"] });
-						if (value) await Spicetify.Platform.UserAPI._product_state.putOverridesValues({ pairs: { name: value } });
+						if (value) await productState.putOverridesValues({ pairs: { name: value } });
 					}
 				},
 				{
