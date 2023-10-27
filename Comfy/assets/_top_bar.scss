@@ -1,4 +1,4 @@
-:root .Root__top-bar header {
+:root .main-topBar-container {
 	// Search bar
 	.main-topBar-searchBar {
 		> form input {
@@ -9,9 +9,6 @@
 			background-color: rgba(var(--spice-rgb-shadow), 0.7);
 		}
 		> div {
-			span {
-				align-self: end;
-			}
 			button {
 				height: 16px;
 			}

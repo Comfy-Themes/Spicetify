@@ -17,12 +17,9 @@
 	}
 
 	.main-view-container {
-		z-index: 1 !important;
-
 		// Main Page Tweaks
 		main {
 			position: sticky;
-
 			.os-host-overflow,
 			.os-padding,
 			.os-viewport {
@@ -139,6 +136,9 @@
 			.view-homeShortcutsGrid-imageWrapper {
 				border-radius: calc(var(--border-radius) + 15px);
 			}
+			.main-playButton-PlayButton {
+				background: none !important;
+			}
 		}
 
 		// Lyrics plus
@@ -177,7 +177,8 @@
 		.main-actionBarBackground-background {
 			background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)),
 				var(--background-noise) !important;
-			height: calc(100% - 300px);
+			height: calc(100% - var(--tracklist-gradient-height));
+			min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
 		}
 
 		// Playlists

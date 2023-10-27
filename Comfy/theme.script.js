@@ -32,7 +32,7 @@
 
 	// Header Image(s)
 	const { Player, Platform } = Spicetify;
-	const main = document.querySelector(".Root__main-view");
+	const main = document.querySelector(".under-main-view");
 	const channels = [
 		/^\/playlist\//,
 		/^\/station\/playlist\//,
@@ -634,7 +634,13 @@
 					type: Slider,
 					name: "Topbar-Inside-Titlebar-Snippet",
 					desc: "Move Topbar Inside Titlebar",
-					defaultVal: false
+					defaultVal: false,
+					callback: value => {
+						const grid = value ? document.querySelector(".Root__top-container") : document.querySelector(".Root__main-view");
+						const topbar = document.querySelector(".main-topBar-container");
+
+						grid.insertBefore(topbar, grid.firstChild);
+					}
 				},
 				{
 					type: Slider,

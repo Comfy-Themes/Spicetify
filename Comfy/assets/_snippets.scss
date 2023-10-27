@@ -178,33 +178,30 @@
 					"now-playing-bar now-playing-bar now-playing-bar" !important;
 				grid-template-rows: auto 1fr auto !important;
 
-				.Root__top-bar {
+				.main-topBar-container {
+					padding-inline: 80px 0px;
+					padding-bottom: 64px;
+					pointer-events: none;
 					grid-area: top-bar;
 					height: 32px;
 					margin-top: -32px;
 
-					.main-topBar-container {
-						padding-inline: 80px 0px;
-						padding-bottom: 64px;
-						pointer-events: none;
+					.main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
+					.main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
+						justify-content: center;
+						display: flex;
+					}
 
-						.main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
-						.main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
-							justify-content: center;
-							display: flex;
+					.main-topBar-topbarContent {
+						app-region: drag !important;
+
+						.main-entityHeader-topbarTitle {
+							height: 32px;
 						}
+					}
 
-						.main-topBar-topbarContent {
-							app-region: drag !important;
-
-							.main-entityHeader-topbarTitle {
-								height: 32px;
-							}
-						}
-
-						.main-topBar-background {
-							display: none;
-						}
+					.main-topBar-background {
+						display: none;
 					}
 				}
 			}
