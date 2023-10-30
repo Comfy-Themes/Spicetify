@@ -54,7 +54,7 @@
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["Comfy/theme.js"],
+		"include": ["Comfy/theme.script.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
