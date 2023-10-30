@@ -1,6 +1,5 @@
 .spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
 	padding-inline: 60px 150px !important;
-	padding-bottom: 64px !important;
 }
 
 :root {
@@ -188,7 +187,6 @@
 
 				.main-topBar-container {
 					padding-inline: 80px 0px;
-					padding-bottom: 64px;
 					pointer-events: none;
 					grid-area: top-bar;
 					height: 32px;
