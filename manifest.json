@@ -50,11 +50,11 @@
 	{
 		"name": "Comfy (Beta)",
 		"description": "Not recommended, purely for development purposes",
-		"preview": "Comfy/preview/preview.png",
+		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["Comfy/theme.js"],
+		"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
@@ -69,6 +69,7 @@
 				"url": "https://github.com/kyrie25"
 			}
 		],
+		"tags": ["Nord", "Catppuccin", "Rosé Pine"]
 		"branch": "settings-rework"
 	}
 ]
