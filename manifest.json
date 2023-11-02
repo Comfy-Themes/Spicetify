@@ -30,7 +30,7 @@
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["Comfy/theme.js"],
+		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/legacy/Comfy/theme.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
@@ -54,7 +54,7 @@
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["Comfy/theme.script.js"],
+		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/settings-rework/Comfy/theme.script.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
