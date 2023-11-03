@@ -1,8 +1,9 @@
 /* 
 todo:
+- add warning message if using unsupported versions
+
 - remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- reset button + export + import - callbacks needed, component done
 - rename dropdown classes
 - add more main-type-mestoBold
 - add icons to card dropdowns? maybe a tippy saying open/close instead?
@@ -14,36 +15,22 @@ todo:
 */
 
 (async function comfy() {
-	// Startup Check + DOM Element Dependencies
-	const underMainView = document.querySelector(".under-main-view");
-	if (
-		!(
-			Spicetify.Player?.data &&
-			Spicetify.Platform &&
-			Spicetify.PopupModal &&
-			Spicetify.React &&
-			Spicetify.ReactDOM &&
-			Spicetify.AppTitle &&
-			underMainView
-		)
-	) {
-		setTimeout(comfy, 300);
+	// Block Until Deps Loaded
+	if (!(Spicetify.Player?.data && Spicetify.Platform && Spicetify.PopupModal && Spicetify.React && Spicetify.ReactDOM && Spicetify.AppTitle)) {
+		setTimeout(comfy, 10);
 		return;
 	}
 
-	// Settings Config
+	// Initialize Config
 	let config = JSON.parse(localStorage.getItem("comfy:settings") || "{}");
-	let colorSchemes = getConfig("Color-Schemes");
+	let defaultScheme = Spicetify.Config?.color_scheme || "Comfy";
 
-	function getConfig(key) {
-		return config[key] ?? null;
-	}
-	function setConfig(key, value, message) {
-		if (value !== getConfig(key)) {
-			console.log(`[Comfy-Config]: ${message ?? key + " ="}`, value);
-			config[key] = value;
-			localStorage.setItem("comfy:settings", JSON.stringify(config));
-		}
+	// Preload Applied Colorscheme
+	let preloadedScheme = false;
+	const colorScheme = getConfig("Color-Scheme");
+	if (colorScheme) {
+		updateScheme(colorScheme);
+		preloadedScheme = true;
 	}
 
 	// Update Colorschemes
@@ -51,7 +38,7 @@ todo:
 		.then(response => response.text())
 		.then(iniContent => {
 			setConfig("Color-Schemes", parseIni(iniContent), "Successfully updated color schemes!");
-			colorSchemes = getConfig("Color-Schemes");
+			updateScheme(getConfig("Color-Scheme"));
 		})
 		.catch(error => {
 			console.warn("[Comfy]: Failed to update color schemes:", error);
@@ -73,7 +60,7 @@ todo:
 		/^\/genre\//
 	];
 
-	// Create image container + preload image
+	// Create banner container
 	const frame = document.createElement("div");
 	const mainImage = document.createElement("img");
 	const secondaryImage = document.createElement("img");
@@ -83,24 +70,26 @@ todo:
 	secondaryImage.className = "secondaryImage";
 
 	frame.append(mainImage, secondaryImage);
-	underMainView.appendChild(frame);
+	waitForElement(".under-main-view").then(underMainView => underMainView.appendChild(frame));
 
 	// Source Checks + Image Updater
-	const sourceCheck = () =>
-		getConfig("Custom-Image") ? getConfig("Custom-Image-URL")?.replace(/"/g, "") : Spicetify.Player.data.track.metadata.image_xlarge_url;
-	function updateImageDisplay() {
-		const source = sourceCheck();
-		if (mainImage.src !== source) console.log(`[Comfy-imageEvent]: ${mainImage.src} -> ${source}`);
-		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
-		mainImage.src = secondaryImage.src = source;
-		mainImage.style.display = source === "" ? "none" : "";
-	}
-
-	updateImageDisplay();
-	Spicetify.Platform.History.listen(updateImageDisplay);
-	Spicetify.Player.addEventListener("songchange", updateImageDisplay);
+	updateBanner();
+	Spicetify.Platform.History.listen(updateBanner);
+	Spicetify.Player.addEventListener("songchange", updateBanner);
 
 	// Utility Functions
+	function getConfig(key) {
+		return config[key] ?? null;
+	}
+
+	function setConfig(key, value, message) {
+		if (value !== getConfig(key)) {
+			console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
+			config[key] = value;
+			localStorage.setItem("comfy:settings", JSON.stringify(config));
+		}
+	}
+
 	function isPromise(p) {
 		if (typeof p === "object" && typeof p.then === "function") {
 			return true;
@@ -108,18 +97,54 @@ todo:
 		return false;
 	}
 
-	const isValidUrl = urlString => {
+	function isValidUrl(urlString) {
 		try {
 			return Boolean(new URL(urlString));
 		} catch (e) {
 			return false;
 		}
-	};
+	}
 
-	function applyTheme(scheme) {
+	function waitForElement(selector) {
+		return new Promise(resolve => {
+			const element = document.querySelector(selector);
+			if (element) resolve(element);
+			else {
+				const observer = new MutationObserver(() => {
+					const updatedElement = document.querySelector(selector);
+					if (updatedElement) {
+						observer.disconnect();
+						resolve(updatedElement);
+					}
+				});
+				observer.observe(document.documentElement, { childList: true, subtree: true });
+			}
+		});
+	}
+
+	function updateBanner() {
+		const source = getConfig("Custom-Image")
+			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
+			: Spicetify.Player.data.track.metadata.image_xlarge_url;
+		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+
+		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
+		mainImage.src = secondaryImage.src = source;
+		mainImage.style.display = source === "" ? "none" : "";
+	}
+
+	function updateScheme(scheme) {
+		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
+		const colorSchemes = getConfig("Color-Schemes");
 		const existingScheme = document.querySelector("style.comfyScheme");
-		if (existingScheme) existingScheme.remove();
-		if (!scheme) return;
+
+		existingScheme?.remove();
+		if (scheme && colorSchemes && !marketplace && scheme !== defaultScheme) {
+			console.debug(`[Comfy-Event]: Scheme applied - ${scheme}`);
+			scheme = colorSchemes[scheme];
+		} else {
+			return;
+		}
 
 		const schemeTag = document.createElement("style");
 		schemeTag.classList.add("comfyScheme");
@@ -134,12 +159,7 @@ todo:
 		document.body.appendChild(schemeTag);
 	}
 
-	function removeTheme() {
-		const existingScheme = document.querySelector("style.comfyScheme");
-		if (existingScheme) existingScheme.remove();
-	}
-
-	const parseIni = data => {
+	function parseIni(data) {
 		const regex = {
 			section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
 			param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
@@ -182,9 +202,9 @@ todo:
 		});
 
 		return value;
-	};
+	}
 
-	const hexToRGB = hex => {
+	function hexToRGB(hex) {
 		if (hex.length === 3) {
 			hex = hex
 				.split("")
@@ -204,7 +224,7 @@ todo:
 		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
 
 		return aRgb;
-	};
+	}
 
 	// React components
 	const Section = ({ name, children, condition = true }) => {
@@ -244,6 +264,8 @@ todo:
 	};
 
 	const Button = ({ name, title, condition = true, callback }) => {
+		const [state, setState] = Spicetify.React.useState(title);
+
 		if (condition === false) return;
 
 		return Spicetify.React.createElement(
@@ -252,10 +274,10 @@ todo:
 				className: "main-buttons-button main-button-secondary",
 				id: name,
 				onClick: () => {
-					callback();
+					callback(state, setState);
 				}
 			},
-			title
+			state
 		);
 	};
 
@@ -301,13 +323,13 @@ todo:
 								const state = getConfig(item.name) ?? both();
 								setConfig(item.name, state);
 								if (state !== both()) {
-									console.log(`[Comfy-subCallback]: ${item.name}`, state);
+									console.debug(`[Comfy-subCallback]: ${item.name}`, state);
 									item.callback?.(state);
 								}
 							});
 						} else {
 							// if subsection disabled -> run subsection callback
-							console.log(`[Comfy-subCallback]: ${name}`, value);
+							console.debug(`[Comfy-subCallback]: ${name}`, value);
 							callback?.(value);
 						}
 					},
@@ -384,7 +406,7 @@ todo:
 
 			setConfig(name, state);
 			if (state || !startup) {
-				console.log(`[Comfy-Callback]: ${name} =`, state);
+				console.debug(`[Comfy-Callback]: ${name} =`, state);
 				document.getElementById("main")?.classList.toggle(name, state);
 				callback?.(state);
 			}
@@ -432,7 +454,7 @@ todo:
 
 			setConfig(name, value);
 			if (value !== "" || !startup) {
-				console.log(`[Comfy-Callback]: ${name} =`, value);
+				console.debug(`[Comfy-Callback]: ${name} =`, value);
 				callback?.(value, name);
 			}
 		}, [value]);
@@ -481,19 +503,14 @@ todo:
 			}
 
 			setConfig(name, selectedValue);
-			if (selectedValue !== defaultVal || !startup) {
-				console.log(`[Comfy-Callback]: ${name} =`, selectedValue);
+			if ((condition && selectedValue !== defaultVal) || !startup) {
+				console.debug(`[Comfy-Callback]: ${name} =`, selectedValue);
 				callback?.(name, selectedValue, options, defaultVal);
 				setButtonEnabled(selectedValue !== defaultVal);
 			}
 		}, [selectedValue]);
 
 		if (!condition) return null;
-
-		const toggleDropdown = () => {
-			setIsOpen(!isOpen);
-		};
-
 		return Spicetify.React.createElement(CardLayout, {
 			title,
 			desc,
@@ -524,7 +541,7 @@ todo:
 					{ className: `Dropdown-root main-type-mestoBold ${isOpen ? "is-open" : ""}`, id: name },
 					Spicetify.React.createElement(
 						"div",
-						{ className: "Dropdown-control", "aria-haspopup": "listbox", onClick: toggleDropdown },
+						{ className: "Dropdown-control", "aria-haspopup": "listbox", onClick: () => setIsOpen(!isOpen) },
 						Spicetify.React.createElement("div", { className: "Dropdown-placeholder is-selected" }, selectedValue),
 						Spicetify.React.createElement(
 							"div",
@@ -568,15 +585,11 @@ todo:
 					name: "Color-Scheme",
 					title: `Color Scheme`,
 					desc: "For faster loadtimes use cli to change color schemes",
-					options: colorSchemes ? Object.keys(colorSchemes) : [Spicetify.Config?.color_scheme || "Comfy"],
-					defaultVal: Spicetify.Config?.color_scheme || "Comfy",
-					condition: !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
-					callback: (name, value, options, defaultVal) => {
-						if (value !== defaultVal && colorSchemes) {
-							applyTheme(colorSchemes[value]);
-						} else {
-							removeTheme();
-						}
+					options: getConfig("Color-Schemes") ? Object.keys(getConfig("Color-Schemes")) : [defaultScheme],
+					defaultVal: defaultScheme,
+					condition: !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
+					callback: (name, value) => {
+						updateScheme(value);
 					}
 				},
 				{
@@ -1019,7 +1032,7 @@ todo:
 					name: "Custom-Image",
 					title: "Custom Image",
 					defaultVal: false,
-					callback: updateImageDisplay,
+					callback: updateBanner,
 					items: [
 						{
 							type: Input,
@@ -1034,7 +1047,7 @@ todo:
 								Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'"),
 								Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box")
 							),
-							callback: updateImageDisplay
+							callback: updateBanner
 						}
 					]
 				}
@@ -1048,8 +1061,24 @@ todo:
 							type: Button,
 							name: "Import",
 							title: "Import",
-							callback: () => {
-								// import from file
+							callback: async (state, setState) => {
+								const paste = await Spicetify.Platform.ClipboardAPI.paste();
+								try {
+									JSON.parse(paste);
+									localStorage.setItem("comfy:settings", paste);
+
+									setState("Success!");
+									new Promise(resolve => setTimeout(resolve, 500)).then(() => {
+										location.reload();
+									});
+								} catch (e) {
+									setState("Invalid Format!");
+									new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
+										setState(state);
+									});
+								}
+
+								// give error for invalid format, or success
 								// reload
 								// open modal again somehow?
 							}
@@ -1058,9 +1087,13 @@ todo:
 							type: Button,
 							name: "Export",
 							title: "Export",
-							callback: () => {
-								// clipboard copy
-								// change name to copied for 2 seconds since notifications dont show over modals
+							callback: (state, setState) => {
+								Spicetify.Platform.ClipboardAPI.copy(localStorage.getItem("comfy:settings"));
+
+								setState("Copied!");
+								new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
+									setState(state);
+								});
 							}
 						},
 						{
@@ -1068,10 +1101,12 @@ todo:
 							name: "Reset",
 							title: "Reset",
 							callback: () => {
-								// show warning modal
-								// remove comfy localstorage object
-								// reload
-								// open modal again somehow?
+								// confirmdialog component - warning
+
+								new Promise(resolve => setTimeout(resolve, 0)).then(() => {
+									localStorage.removeItem("comfy:settings");
+									location.reload();
+								});
 							}
 						}
 					]
@@ -1080,14 +1115,16 @@ todo:
 		);
 	};
 
-	// Settings Button + Register Modal
+	// Settings Button
 	new Spicetify.Topbar.Button(
 		"Comfy Settings",
 		`<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
 		() => {
-			// prevent callbacks firing on modal open
+			// reset startup preventions
 			startup = false;
+			preloadedScheme = false;
 
+			// Trigger Modal
 			Spicetify.PopupModal.display({
 				title: "Comfy Settings",
 				content: Spicetify.React.createElement(Content),
