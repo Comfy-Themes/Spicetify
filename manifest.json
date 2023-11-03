@@ -40,7 +40,7 @@
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/app.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/settings-rework/Comfy/theme.script.js"],
-		"branch": "settings-rework"
+		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/beta/Comfy/theme.script.js"],
+		"branch": "beta"
 	}
 ]
