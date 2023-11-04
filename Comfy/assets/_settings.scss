@@ -151,15 +151,14 @@
 
 			&[type="number"] {
 				width: 50px;
+				transition: width 0.2s;
 
 				&::-webkit-inner-spin-button,
 				&::-webkit-outer-spin-button {
 					display: none;
 				}
-			}
 
-			&:hover {
-				&[type="number"] {
+				&:hover {
 					width: 60px;
 
 					&::-webkit-inner-spin-button,
@@ -221,6 +220,7 @@
 			margin-top: -1px;
 			max-height: 200px;
 			overflow-y: auto;
+			overflow-x: hidden;
 			position: absolute;
 			top: 100%;
 			width: 100%;
@@ -290,18 +290,22 @@
 	.x-settings-tooltip {
 		cursor: help !important;
 
-		&:focus-within,
-		&:hover {
-			svg {
-				fill: var(--spice-text);
-			}
-		}
 		.x-settings-tooltipIconWrapper {
 			padding: 0px 8px 0px 8px !important;
 
 			svg {
 				fill: var(--spice-subtext);
 			}
+
+			&:focus-within,
+			&:hover {
+				svg {
+					fill: var(--spice-text) !important;
+				}
+			}
 		}
+	}
+	.x-toggle-indicatorWrapper {
+		transition: background-color 0.2s;
 	}
 }
