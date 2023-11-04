@@ -227,6 +227,32 @@ todo:
 	}
 
 	// React components
+	const Dialog = Spicetify.React.memo(props => {
+		const [state, setState] = Spicetify.React.useState(true);
+		const self = document.querySelector(".ReactModalPortal:last-of-type");
+
+		Spicetify.React.useEffect(() => {
+			if (state) {
+				props.onOpen?.();
+			}
+		}, [state]);
+
+		return Spicetify.ReactComponent.ConfirmDialog({
+			...props,
+			isOpen: state,
+			onClose: () => {
+				setState(false);
+				props.onClose();
+				self.remove();
+			},
+			onConfirm: () => {
+				setState(false);
+				props.onConfirm();
+				self.remove();
+			}
+		});
+	});
+
 	const Section = ({ name, children, condition = true }) => {
 		if (condition === false) return null;
 		return Spicetify.React.createElement(
@@ -1065,10 +1091,10 @@ todo:
 								const paste = await Spicetify.Platform.ClipboardAPI.paste();
 								try {
 									JSON.parse(paste);
-									localStorage.setItem("comfy:settings", paste);
-
 									setState("Success!");
+
 									new Promise(resolve => setTimeout(resolve, 500)).then(() => {
+										localStorage.setItem("comfy:settings", paste);
 										location.reload();
 									});
 								} catch (e) {
@@ -1077,10 +1103,6 @@ todo:
 										setState(state);
 									});
 								}
-
-								// give error for invalid format, or success
-								// reload
-								// open modal again somehow?
 							}
 						},
 						{
@@ -1089,8 +1111,8 @@ todo:
 							title: "Export",
 							callback: (state, setState) => {
 								Spicetify.Platform.ClipboardAPI.copy(localStorage.getItem("comfy:settings"));
-
 								setState("Copied!");
+
 								new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
 									setState(state);
 								});
@@ -1101,12 +1123,42 @@ todo:
 							name: "Reset",
 							title: "Reset",
 							callback: () => {
-								// confirmdialog component - warning
+								// Force all webpack modules to loa
+								const require = webpackChunkopen.push([[Symbol()], {}, re => re]);
+								const cache = Object.keys(require.m).map(id => require(id));
+								const modules = cache
+									.filter(module => typeof module === "object")
+									.map(module => {
+										try {
+											return Object.values(module);
+										} catch {}
+									})
+									.flat();
+								const functionModules = modules.filter(module => typeof module === "function");
+								Spicetify.ReactComponent.ConfirmDialog = functionModules.find(
+									m => m.toString().includes("isOpen") && m.toString().includes("shouldCloseOnEsc") && m.toString().includes("onClose")
+								);
 
-								new Promise(resolve => setTimeout(resolve, 0)).then(() => {
-									localStorage.removeItem("comfy:settings");
-									location.reload();
-								});
+								const settings = document.querySelector(".GenericModal__overlay:has(.comfy-settings)");
+								Spicetify.ReactDOM.render(
+									Spicetify.React.createElement(Dialog, {
+										titleText: "Are you sure?",
+										descriptionText: "This will reset all settings to default!",
+										cancelText: "Cancel",
+										confirmText: "Reset",
+										onOpen: () => {
+											settings.style.zIndex = 0;
+										},
+										onClose: () => {
+											settings.style.zIndex = 100;
+										},
+										onConfirm: () => {
+											localStorage.removeItem("comfy:settings");
+											location.reload();
+										}
+									}),
+									document.createElement("div")
+								);
 							}
 						}
 					]
