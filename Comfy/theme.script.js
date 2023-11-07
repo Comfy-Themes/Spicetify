@@ -1,4 +1,7 @@
 /* 
+fix:
+resetting of number input weirdness, gradient leaving s or px and others not removing them at all
+
 todo:
 - add warning message if using unsupported versions
 
@@ -1123,22 +1126,6 @@ todo:
 							name: "Reset",
 							title: "Reset",
 							callback: () => {
-								// Force all webpack modules to loa
-								const require = webpackChunkopen.push([[Symbol()], {}, re => re]);
-								const cache = Object.keys(require.m).map(id => require(id));
-								const modules = cache
-									.filter(module => typeof module === "object")
-									.map(module => {
-										try {
-											return Object.values(module);
-										} catch {}
-									})
-									.flat();
-								const functionModules = modules.filter(module => typeof module === "function");
-								Spicetify.ReactComponent.ConfirmDialog = functionModules.find(
-									m => m.toString().includes("isOpen") && m.toString().includes("shouldCloseOnEsc") && m.toString().includes("onClose")
-								);
-
 								const settings = document.querySelector(".GenericModal__overlay:has(.comfy-settings)");
 								Spicetify.ReactDOM.render(
 									Spicetify.React.createElement(Dialog, {
