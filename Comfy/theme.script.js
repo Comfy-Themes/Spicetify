@@ -13,41 +13,46 @@ todo:
 - update image tippy sizes - maybe make it a button that changes modal content instead?
 - create color picker
 - more consistent coloring - sliders etc
+- once props are simplified convert all callback events to be name - ...props
 
 - convert css to sass
 */
 
 (async function comfy() {
-	// Block Until Deps Loaded
-	if (!(Spicetify.Player?.data && Spicetify.Platform && Spicetify.PopupModal && Spicetify.React && Spicetify.ReactDOM && Spicetify.AppTitle)) {
+	// Block Until Mass Usage Deps Loaded
+	if (!(Spicetify.React && Spicetify.ReactDOM && Spicetify.Config)) {
 		setTimeout(comfy, 10);
 		return;
 	}
+	console.debug("[Comfy-Event]: Dependencies loaded");
 
 	// Initialize Config
-	let config = JSON.parse(localStorage.getItem("comfy:settings") || "{}");
+	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
 	let defaultScheme = Spicetify.Config?.color_scheme || "Comfy";
+	let preloadedScheme = false;
+	let startup = true;
+	let preloadContainer = document.createElement("div");
+	console.debug(`[Comfy-Event]: Config Initialized`);
 
 	// Preload Applied Colorscheme
-	let preloadedScheme = false;
 	const colorScheme = getConfig("Color-Scheme");
 	if (colorScheme) {
-		updateScheme(colorScheme);
 		preloadedScheme = true;
+		updateScheme(colorScheme, "preloaded");
 	}
 
 	// Update Colorschemes
 	fetch("https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/color.ini")
 		.then(response => response.text())
 		.then(iniContent => {
-			setConfig("Color-Schemes", parseIni(iniContent), "Successfully updated color schemes!");
-			updateScheme(getConfig("Color-Scheme"));
+			setConfig("Color-Schemes", parseIni(iniContent), "Successfully updated color schemes");
+			updateScheme(getConfig("Color-Scheme"), "updated");
 		})
 		.catch(error => {
-			console.warn("[Comfy]: Failed to update color schemes:", error);
+			console.warn("[Comfy-Warning]: Failed to update color schemes:", error);
 		});
 
-	// Apply Banner Image(s)
+	// Banner Image(s)
 	const channels = [
 		/^\/playlist\//,
 		/^\/station\/playlist\//,
@@ -63,7 +68,6 @@ todo:
 		/^\/genre\//
 	];
 
-	// Create banner container
 	const frame = document.createElement("div");
 	const mainImage = document.createElement("img");
 	const secondaryImage = document.createElement("img");
@@ -71,163 +75,15 @@ todo:
 	frame.className = "frame";
 	mainImage.className = "mainImage";
 	secondaryImage.className = "secondaryImage";
-
 	frame.append(mainImage, secondaryImage);
-	waitForElement(".under-main-view").then(underMainView => underMainView.appendChild(frame));
 
-	// Source Checks + Image Updater
+	waitForElement(".under-main-view").then(underMainView => {
+		console.debug("[Comfy-Event]: Banner Frame Added");
+		underMainView.appendChild(frame);
+	});
+	await waitForDeps(["Spicetify.Platform"], () => Spicetify.Platform.History.listen(updateBanner));
+	await waitForDeps(["Spicetify.Player"], () => Spicetify.Player.addEventListener("songchange", updateBanner));
 	updateBanner();
-	Spicetify.Platform.History.listen(updateBanner);
-	Spicetify.Player.addEventListener("songchange", updateBanner);
-
-	// Utility Functions
-	function getConfig(key) {
-		return config[key] ?? null;
-	}
-
-	function setConfig(key, value, message) {
-		if (value !== getConfig(key)) {
-			console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
-			config[key] = value;
-			localStorage.setItem("comfy:settings", JSON.stringify(config));
-		}
-	}
-
-	function isPromise(p) {
-		if (typeof p === "object" && typeof p.then === "function") {
-			return true;
-		}
-		return false;
-	}
-
-	function isValidUrl(urlString) {
-		try {
-			return Boolean(new URL(urlString));
-		} catch (e) {
-			return false;
-		}
-	}
-
-	function waitForElement(selector) {
-		return new Promise(resolve => {
-			const element = document.querySelector(selector);
-			if (element) resolve(element);
-			else {
-				const observer = new MutationObserver(() => {
-					const updatedElement = document.querySelector(selector);
-					if (updatedElement) {
-						observer.disconnect();
-						resolve(updatedElement);
-					}
-				});
-				observer.observe(document.documentElement, { childList: true, subtree: true });
-			}
-		});
-	}
-
-	function updateBanner() {
-		const source = getConfig("Custom-Image")
-			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
-			: Spicetify.Player.data.track.metadata.image_xlarge_url;
-		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
-
-		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
-		mainImage.src = secondaryImage.src = source;
-		mainImage.style.display = source === "" ? "none" : "";
-	}
-
-	function updateScheme(scheme) {
-		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
-		const colorSchemes = getConfig("Color-Schemes");
-		const existingScheme = document.querySelector("style.comfyScheme");
-
-		existingScheme?.remove();
-		if (scheme && colorSchemes && !marketplace && scheme !== defaultScheme) {
-			console.debug(`[Comfy-Event]: Scheme applied - ${scheme}`);
-			scheme = colorSchemes[scheme];
-		} else {
-			return;
-		}
-
-		const schemeTag = document.createElement("style");
-		schemeTag.classList.add("comfyScheme");
-		let injectStr = ":root {";
-		const themeIniKeys = Object.keys(scheme);
-		themeIniKeys.forEach(key => {
-			injectStr += `--spice-${key}: #${scheme[key]};`;
-			injectStr += `--spice-rgb-${key}: ${hexToRGB(scheme[key])};`;
-		});
-		injectStr += "}";
-		schemeTag.innerHTML = injectStr;
-		document.body.appendChild(schemeTag);
-	}
-
-	function parseIni(data) {
-		const regex = {
-			section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
-			param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
-			comment: /^\s*;.*$/
-		};
-		const value = {};
-		let section = null;
-
-		const lines = data.split(/[\r\n]+/);
-
-		lines.forEach(function (line) {
-			if (regex.comment.test(line)) {
-				return;
-			} else if (regex.param.test(line)) {
-				if (line.includes("xrdb")) {
-					delete value[section || ""];
-					section = null;
-					return;
-				}
-
-				const match = line.match(regex.param);
-
-				if (match && match.length === 3) {
-					if (section) {
-						if (!value[section]) {
-							value[section] = {};
-						}
-						value[section][match[1]] = match[2].split(";")[0].trim();
-					}
-				}
-			} else if (regex.section.test(line)) {
-				const match = line.match(regex.section);
-				if (match) {
-					value[match[1]] = {};
-					section = match[1];
-				}
-			} else if (line.length === 0 && section) {
-				section = null;
-			}
-		});
-
-		return value;
-	}
-
-	function hexToRGB(hex) {
-		if (hex.length === 3) {
-			hex = hex
-				.split("")
-				.map(char => char + char)
-				.join("");
-		} else if (hex.length != 6) {
-			throw "Only 3- or 6-digit hex colours are allowed";
-		} else if (hex.match(/[^0-9a-f]/i)) {
-			throw "Only hex colours are allowed";
-		}
-
-		const aRgbHex = hex.match(/.{1,2}/g);
-		if (!aRgbHex || aRgbHex.length !== 3) {
-			throw "Could not parse hex colour";
-		}
-
-		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
-
-		return aRgb;
-	}
 
 	// React components
 	const Dialog = Spicetify.React.memo(props => {
@@ -353,7 +209,7 @@ todo:
 								setConfig(item.name, state);
 								if (state !== both()) {
 									console.debug(`[Comfy-subCallback]: ${item.name}`, state);
-									item.callback?.(state);
+									item.callback?.(state, item.name);
 								}
 							});
 						} else {
@@ -685,10 +541,11 @@ todo:
 					inputType: "text",
 					name: "App-Title",
 					title: "Application Title",
-					defaultVal: Spicetify.AppTitle.get(),
+					defaultVal: Spicetify.AppTitle?.get(),
 					desc: "Change the title of the application, leave blank to reset",
 					callback: async value => {
-						const productState = Spicetify.Platform.UserAPI?._product_state || Spicetify.Platform.UserAPI?._product_state_service;
+						await waitForDeps(["Spicetify.Platform.UserAPI"]);
+						const productState = Spicetify.Platform.UserAPI._product_state || Spicetify.Platform.UserAPI._product_state_service;
 						await productState.delOverridesValues({ keys: ["name"] });
 						if (value) await productState.putOverridesValues({ pairs: { name: value } });
 					}
@@ -776,10 +633,34 @@ todo:
 					]
 				},
 				{
-					type: Slider,
+					type: SubSection,
 					name: "Home-Header-Snippet",
 					title: "Colorful Home Header",
-					defaultVal: true
+					defaultVal: true,
+					callback: value => {
+						if (!value) {
+							document.getElementById("main").classList.remove("Home-Header-Snippet");
+							document.documentElement.style.setProperty("--home-header-color", "");
+						}
+					},
+					items: [
+						{
+							type: Input,
+							inputType: "text",
+							name: "Home-Header-Color",
+							title: "Custom Color",
+							defaultVal: "none",
+							callback: (value, name) => {
+								const main = document.getElementById("main");
+								main.classList.remove(name);
+								document.documentElement.style.setProperty("--home-header-color", "");
+								if (value !== "") {
+									document.documentElement.style.setProperty("--home-header-color", value);
+									main.classList.add(name);
+								}
+							}
+						}
+					]
 				},
 				{
 					type: Slider,
@@ -1097,7 +978,7 @@ todo:
 									setState("Success!");
 
 									new Promise(resolve => setTimeout(resolve, 500)).then(() => {
-										localStorage.setItem("comfy:settings", paste);
+										localStorage.setItem("comfy:config", paste);
 										location.reload();
 									});
 								} catch (e) {
@@ -1113,7 +994,7 @@ todo:
 							name: "Export",
 							title: "Export",
 							callback: (state, setState) => {
-								Spicetify.Platform.ClipboardAPI.copy(localStorage.getItem("comfy:settings"));
+								Spicetify.Platform.ClipboardAPI.copy(localStorage.getItem("comfy:config"));
 								setState("Copied!");
 
 								new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
@@ -1140,7 +1021,7 @@ todo:
 											settings.style.zIndex = 100;
 										},
 										onConfirm: () => {
-											localStorage.removeItem("comfy:settings");
+											localStorage.removeItem("comfy:config");
 											location.reload();
 										}
 									}),
@@ -1154,52 +1035,233 @@ todo:
 		);
 	};
 
-	// Settings Button
-	new Spicetify.Topbar.Button(
-		"Comfy Settings",
-		`<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
-		() => {
-			// reset startup preventions
-			startup = false;
-			preloadedScheme = false;
+	// Settings Button + Modal
+	await waitForDeps(["Spicetify.Topbar.Button"], () => {
+		new Spicetify.Topbar.Button(
+			"Comfy Settings",
+			`<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
+			() => {
+				// reset startup preventions
+				startup = false;
+				preloadedScheme = false;
 
-			// Trigger Modal
-			Spicetify.PopupModal.display({
-				title: "Comfy Settings",
-				content: Spicetify.React.createElement(Content),
-				isLarge: true
-			});
+				// Trigger Modal
+				Spicetify.PopupModal.display({
+					title: "Comfy Settings",
+					content: Spicetify.React.createElement(Content),
+					isLarge: true
+				});
 
-			// Discord Text
-			const header = document.querySelector(".main-trackCreditsModal-header");
-			const container = document.createElement("div");
-			const extraText = document.createElement("a");
-			extraText.textContent = "Need support? Click here!";
-			extraText.href = "https://discord.gg/rtBQX5D3bD";
-			extraText.style.color = "lightgreen";
+				// Discord Text
+				const header = document.querySelector(".main-trackCreditsModal-header");
+				const container = document.createElement("div");
+				const extraText = document.createElement("a");
+				extraText.textContent = "Need support? Click here!";
+				extraText.href = "https://discord.gg/rtBQX5D3bD";
+				extraText.style.color = "lightgreen";
 
-			container.appendChild(document.querySelector("h1.main-type-alto"));
-			container.appendChild(extraText);
-			header.prepend(container);
+				container.appendChild(document.querySelector("h1.main-type-alto"));
+				container.appendChild(extraText);
+				header.prepend(container);
 
-			// Scroll Position
-			const section = document.querySelector(".main-trackCreditsModal-mainSection");
-			const cache = sessionStorage.getItem("comfy-settings-scroll");
-			const scrollVal = cache ? cache * (section.scrollHeight - section.clientHeight) : 0;
+				// Scroll Position
+				const section = document.querySelector(".main-trackCreditsModal-mainSection");
+				const cache = sessionStorage.getItem("comfy-settings-scroll");
+				const scrollVal = cache ? cache * (section.scrollHeight - section.clientHeight) : 0;
 
-			section.scrollTo(null, scrollVal);
-			section.addEventListener("scroll", () => {
-				const scrollTop = section.scrollTop;
-				const scrollHeight = section.scrollHeight - section.clientHeight;
-				const scrollPercentage = scrollTop / scrollHeight;
-				sessionStorage.setItem("comfy-settings-scroll", scrollPercentage);
-			});
-		},
-		false,
-		true
-	);
+				section.scrollTo(null, scrollVal);
+				section.addEventListener("scroll", () => {
+					const scrollTop = section.scrollTop;
+					const scrollHeight = section.scrollHeight - section.clientHeight;
+					const scrollPercentage = scrollTop / scrollHeight;
+					sessionStorage.setItem("comfy-settings-scroll", scrollPercentage);
+				});
+			},
+			false,
+			true
+		);
+	});
 
-	// Workaround for hotloading assets
-	let startup = true;
-	Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), document.createElement("div"));
+	// Preloading settings callbacks
+	console.debug("[Comfy-Event]: Preloading Settings...");
+	Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), preloadContainer);
+
+	Spicetify.ReactDOM.unmountComponentAtNode(preloadContainer);
+	console.debug("[Comfy-Event]: Finished Preloading Settings!");
+
+	// Functions
+	function getConfig(key) {
+		return config[key] ?? null;
+	}
+
+	function setConfig(key, value, message) {
+		if (value !== getConfig(key)) {
+			console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
+			config[key] = value;
+			localStorage.setItem("comfy:config", JSON.stringify(config));
+		}
+	}
+
+	function isPromise(p) {
+		if (typeof p === "object" && typeof p.then === "function") {
+			return true;
+		}
+		return false;
+	}
+
+	function isValidUrl(urlString) {
+		try {
+			return Boolean(new URL(urlString));
+		} catch (e) {
+			return false;
+		}
+	}
+
+	function waitForElement(selector) {
+		return new Promise(resolve => {
+			const element = document.querySelector(selector);
+			if (element) resolve(element);
+			else {
+				const observer = new MutationObserver(() => {
+					const updatedElement = document.querySelector(selector);
+					if (updatedElement) {
+						observer.disconnect();
+						resolve(updatedElement);
+					}
+				});
+				observer.observe(document.documentElement, { childList: true, subtree: true });
+			}
+		});
+	}
+
+	async function waitForDeps(dependencies, callback) {
+		return new Promise(resolve => {
+			let allDependenciesLoaded = false;
+
+			async function checkDependencies() {
+				for (const dependency of dependencies) {
+					if (!eval(dependency)) {
+						allDependenciesLoaded = false;
+						setTimeout(checkDependencies, 10);
+						return;
+					}
+				}
+
+				if (!allDependenciesLoaded) {
+					allDependenciesLoaded = true;
+					if (callback) callback();
+					resolve();
+				}
+			}
+
+			checkDependencies();
+		});
+	}
+
+	async function updateBanner() {
+		await waitForDeps(["Spicetify.Player.data", "Spicetify.Platform.History.location"]);
+
+		const source = getConfig("Custom-Image")
+			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
+			: Spicetify.Player.data.track.metadata.image_xlarge_url;
+		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+
+		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
+		mainImage.src = secondaryImage.src = source;
+		mainImage.style.display = source === "" ? "none" : "";
+	}
+
+	function updateScheme(scheme, message) {
+		// probably check if marketplace is in  config and if it is wait for it to be loaded?
+		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
+		const colorSchemes = getConfig("Color-Schemes");
+		const existingScheme = document.querySelector("style.comfyScheme");
+
+		existingScheme?.remove();
+		if (scheme && colorSchemes && !marketplace && scheme !== defaultScheme) {
+			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${scheme}`);
+			scheme = colorSchemes[scheme];
+		} else {
+			return;
+		}
+
+		const schemeTag = document.createElement("style");
+		schemeTag.classList.add("comfyScheme");
+		let injectStr = ":root {";
+		const themeIniKeys = Object.keys(scheme);
+		themeIniKeys.forEach(key => {
+			injectStr += `--spice-${key}: #${scheme[key]};`;
+			injectStr += `--spice-rgb-${key}: ${hexToRGB(scheme[key])};`;
+		});
+		injectStr += "}";
+		schemeTag.innerHTML = injectStr;
+		document.body.appendChild(schemeTag);
+	}
+
+	function parseIni(data) {
+		const regex = {
+			section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
+			param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
+			comment: /^\s*;.*$/
+		};
+		const value = {};
+		let section = null;
+
+		const lines = data.split(/[\r\n]+/);
+
+		lines.forEach(function (line) {
+			if (regex.comment.test(line)) {
+				return;
+			} else if (regex.param.test(line)) {
+				if (line.includes("xrdb")) {
+					delete value[section || ""];
+					section = null;
+					return;
+				}
+
+				const match = line.match(regex.param);
+
+				if (match && match.length === 3) {
+					if (section) {
+						if (!value[section]) {
+							value[section] = {};
+						}
+						value[section][match[1]] = match[2].split(";")[0].trim();
+					}
+				}
+			} else if (regex.section.test(line)) {
+				const match = line.match(regex.section);
+				if (match) {
+					value[match[1]] = {};
+					section = match[1];
+				}
+			} else if (line.length === 0 && section) {
+				section = null;
+			}
+		});
+
+		return value;
+	}
+
+	function hexToRGB(hex) {
+		if (hex.length === 3) {
+			hex = hex
+				.split("")
+				.map(char => char + char)
+				.join("");
+		} else if (hex.length != 6) {
+			throw "Only 3- or 6-digit hex colours are allowed";
+		} else if (hex.match(/[^0-9a-f]/i)) {
+			throw "Only hex colours are allowed";
+		}
+
+		const aRgbHex = hex.match(/.{1,2}/g);
+		if (!aRgbHex || aRgbHex.length !== 3) {
+			throw "Could not parse hex colour";
+		}
+
+		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
+
+		return aRgb;
+	}
 })();

@@ -109,6 +109,11 @@
 				display: block !important;
 			}
 		}
+		&.Home-Header-Color {
+			.main-home-homeHeader {
+				background-color: var(--home-header-color) !important;
+			}
+		}
 
 		&.Horizontal-pageLinks-Snippet {
 			ul#spicetify-sticky-list {
