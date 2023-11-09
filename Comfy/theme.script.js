@@ -650,6 +650,14 @@ todo:
 							name: "Home-Header-Color",
 							title: "Custom Color",
 							defaultVal: "none",
+							tippy: Spicetify.React.createElement(
+								Spicetify.React.Fragment,
+								null,
+								Spicetify.React.createElement("li", null, "name (red, blue, (--var), etc)"),
+								Spicetify.React.createElement("li", null, "hex (#000000)"),
+								Spicetify.React.createElement("li", null, "rgb (0, 0, 0)"),
+								Spicetify.React.createElement("li", null, "rgba (0, 0, 0, 1)")
+							),
 							callback: (value, name) => {
 								const main = document.getElementById("main");
 								main.classList.remove(name);
