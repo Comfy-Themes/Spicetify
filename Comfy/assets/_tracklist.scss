@@ -5,7 +5,8 @@
 	-webkit-text-stroke: thin;
 }
 
-.main-trackList-trackListRow {
+.main-trackList-trackListRow,
+.main-trackList-trackListHeaderRow {
 	border-radius: var(--border-radius);
 	border: none;
 	transition: 200ms background-color;
