@@ -29,6 +29,224 @@
 }
 
 .comfy-settings {
+	// Section Styling
+	.setting-header {
+		text-align: center;
+		padding: 5px 0;
+	}
+
+	.setting-card {
+		background-color: var(--spice-highlight);
+		border-radius: 10px;
+		margin: 8px 0;
+
+		.setting-container {
+			padding: 12px 16px;
+			display: flex;
+			flex-direction: column;
+
+			.setting-item {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+
+				.setting-title {
+					padding-right: 15px;
+					font-weight: 600;
+				}
+				.x-settings-tooltip {
+					cursor: help !important;
+
+					.x-settings-tooltipIconWrapper {
+						padding: 0px 8px 0px 8px !important;
+
+						svg {
+							fill: var(--spice-subtext);
+							transition: fill 0.2s;
+						}
+
+						&:focus-within,
+						&:hover {
+							svg {
+								fill: var(--spice-text) !important;
+							}
+						}
+					}
+				}
+			}
+
+			.setting-action,
+			.setting-title {
+				display: flex;
+				align-items: center;
+				padding: 8px 0;
+			}
+		}
+
+		.setting-description {
+			font-size: 0.9rem;
+			color: var(--spice-subtext);
+		}
+
+		.setting-description-spacer {
+			height: 0.9rem;
+		}
+
+		.setting-action {
+			text-align: right;
+
+			.x-toggle-wrapper {
+				cursor: pointer;
+
+				.x-toggle-input {
+					width: 100%;
+				}
+
+				.x-toggle-indicatorWrapper {
+					transition: background-color 0.2s;
+				}
+			}
+
+			button.switch {
+				border: 0px;
+				background-color: var(--spice-sidebar);
+				cursor: pointer;
+				display: flex;
+				padding: 10px;
+				margin-inline-end: 12px;
+				transition: all 0.2s;
+
+				&:hover {
+					transform: scale(1.04);
+					color: var(--spice-text);
+				}
+				&:active {
+					transform: scale(0.98);
+					color: var(--spice-subtext);
+				}
+			}
+
+			input {
+				padding-inline: 10px;
+				text-align: center;
+				background-color: var(--spice-sidebar);
+				border: none;
+				height: 32px;
+				width: 120px;
+
+				&::placeholder {
+					color: rgba(var(--spice-rgb-text), 0.3);
+				}
+
+				&[type="number"] {
+					width: 50px;
+					transition: width 0.2s;
+
+					&::-webkit-inner-spin-button,
+					&::-webkit-outer-spin-button {
+						display: none;
+					}
+
+					&:hover {
+						width: 60px;
+
+						&::-webkit-inner-spin-button,
+						&::-webkit-outer-spin-button {
+							display: block;
+						}
+					}
+				}
+			}
+
+			.dropdown-wrapper {
+				position: relative;
+
+				&.menu-open {
+					.dropdown-button {
+						border-bottom-left-radius: 0;
+						border-bottom-right-radius: 0;
+					}
+					.dropdown-arrow {
+						border-color: transparent transparent rgba(var(--spice-rgb-text), 0.7);
+						border-width: 0 5px 5px;
+					}
+					.dropdown-menu {
+						border-top-left-radius: 0;
+						border-top-right-radius: 0;
+					}
+				}
+
+				.dropdown-button {
+					position: relative;
+					background-color: var(--spice-sidebar);
+					border: 0;
+					border-radius: var(--button-radius);
+					box-sizing: border-box;
+					color: rgba(var(--spice-rgb-text), 0.7);
+					cursor: default;
+					outline: 0;
+					padding: 0 36px 0 16px;
+					transition: all 0.2s ease;
+					height: 36px;
+
+					&:hover {
+						color: rgb(var(--spice-rgb-text));
+						background-color: var(--spice-button-disabled);
+					}
+
+					.dropdown-selection {
+						display: flex;
+						align-items: center;
+						padding: 8px 0;
+					}
+				}
+				.dropdown-arrow {
+					border-color: rgba(var(--spice-rgb-text), 0.7) transparent transparent;
+					border-style: solid;
+					border-width: 5px 5px 0;
+					content: " ";
+					display: block;
+					height: 0;
+					margin-top: -ceil(2.5);
+					position: absolute;
+					right: 16px;
+					top: 16px;
+					width: 0;
+				}
+				.dropdown-menu {
+					background-color: var(--spice-sidebar);
+					border: 0;
+					border-radius: 8px;
+					box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+					box-sizing: border-box;
+					margin-top: -1px;
+					max-height: 200px;
+					overflow-y: auto;
+					overflow-x: hidden;
+					position: absolute;
+					top: 100%;
+					width: 100%;
+					z-index: 1000;
+					-webkit-overflow-scrolling: touch;
+				}
+				.dropdown-option {
+					box-sizing: border-box;
+					color: rgba(var(--spice-rgb-text), 0.7);
+					cursor: pointer;
+					display: block;
+					padding: 8px 10px;
+					text-align: center;
+
+					&:hover {
+						background-color: rgb(var(--spice-rgb-text));
+						color: var(--spice-sidebar);
+					}
+				}
+			}
+		}
+	}
+
+	// Subsection Specific Styling
 	.setting-subSection {
 		&#enabled {
 			.setting-card {
@@ -67,245 +285,47 @@
 		}
 	}
 
-	.setting-card {
-		background-color: var(--spice-highlight);
-		border-radius: 10px;
-		margin: 8px 0;
-	}
-
-	.setting-container {
-		padding: 12px 16px;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.setting-item {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.setting-title {
-		padding-right: 15px;
-		font-weight: 600;
-	}
-	.setting-action,
-	.setting-title {
-		display: flex;
-		align-items: center;
-		padding: 8px 0;
-	}
-	.setting-action {
-		text-align: right;
-	}
-
-	.setting-description {
-		font-size: 0.9rem;
-		color: var(--spice-subtext);
-	}
-	.setting-description-spacer {
-		height: 0.9rem;
-	}
-	.setting-header {
-		text-align: center;
-		padding: 5px 0;
-	}
-
-	.setting-action {
-		.x-toggle-wrapper {
-			cursor: pointer;
-			.x-toggle-input {
-				width: 100%;
-			}
-		}
-
-		button.switch {
-			border: 0px;
-			background-color: var(--spice-sidebar);
-			cursor: pointer;
-			display: flex;
-			padding: 10px;
-			margin-inline-end: 12px;
-			transition: all 0.2s;
-
-			&:hover {
-				transform: scale(1.04);
-				color: var(--spice-text);
-			}
-			&:active {
-				transform: scale(0.98);
-				color: var(--spice-subtext);
-			}
-		}
-
-		input {
-			padding-inline: 10px;
-			text-align: center;
-			background-color: var(--spice-sidebar);
-			border: none;
-			height: 32px;
-			width: 120px;
-
-			&::placeholder {
-				color: rgba(var(--spice-rgb-text), 0.3);
-			}
-
-			&[type="number"] {
-				width: 50px;
-				transition: width 0.2s;
-
-				&::-webkit-inner-spin-button,
-				&::-webkit-outer-spin-button {
-					display: none;
-				}
-
-				&:hover {
-					width: 60px;
-
-					&::-webkit-inner-spin-button,
-					&::-webkit-outer-spin-button {
-						display: block;
-					}
-				}
-			}
-		}
-		.Dropdown-root {
-			position: relative;
-		}
-		.Dropdown-root.is-open .Dropdown-control {
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-		.Dropdown-control {
-			position: relative;
-			background-color: var(--spice-sidebar);
-			border: 0;
-			border-radius: 8px;
-			box-sizing: border-box;
-			color: rgba(var(--spice-rgb-text), 0.7);
-			cursor: default;
-			outline: 0;
-			padding: 8px 36px 8px 16px;
-			transition: all 0.2s ease;
-		}
-
-		.Dropdown-root.is-open .Dropdown-arrow {
-			border-color: transparent transparent rgba(var(--spice-rgb-text), 0.7);
-			border-width: 0 5px 5px;
-		}
-		.Dropdown-arrow {
-			border-color: rgba(var(--spice-rgb-text), 0.7) transparent transparent;
-			border-style: solid;
-			border-width: 5px 5px 0;
-			content: " ";
-			display: block;
-			height: 0;
-			margin-top: -ceil(2.5);
-			position: absolute;
-			right: 16px;
-			top: 16px;
-			width: 0;
-		}
-
-		.Dropdown-root.is-open .Dropdown-menu {
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
-
-		.Dropdown-menu {
-			background-color: var(--spice-sidebar);
-			border: 0;
-			border-radius: 8px;
-			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-			box-sizing: border-box;
-			margin-top: -1px;
-			max-height: 200px;
-			overflow-y: auto;
-			overflow-x: hidden;
-			position: absolute;
-			top: 100%;
-			width: 100%;
-			z-index: 1000;
-			-webkit-overflow-scrolling: touch;
-		}
-
-		.Dropdown-option {
-			box-sizing: border-box;
-			color: rgba(var(--spice-rgb-text), 0.7);
-			cursor: pointer;
-			display: block;
-			padding: 8px 10px;
-			text-align: center;
-		}
-		.Dropdown-control:hover {
-			color: rgb(var(--spice-rgb-text));
-			background-color: var(--spice-button-disabled);
-		}
-		.Dropdown-option:hover {
-			background-color: rgb(var(--spice-rgb-text));
-			color: var(--spice-sidebar);
-		}
-	}
+	// Footer Buttons
 	.setting-button-row {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
 
-	.setting-button-row button {
-		margin: 5px 10px;
-		transform: all 0.2s;
+		button {
+			margin: 5px 10px;
+			transform: all 0.2s;
 
-		&:hover {
-			transform: scale(1.02);
-			filter: brightness(1.2);
-		}
-		&:active {
-			transform: scale(0.98);
-			filter: brightness(0.8);
-		}
-	}
-
-	.main-button-secondary {
-		background-color: transparent;
-		color: var(--spice-button);
-		border: 2px solid var(--spice-button) !important;
-	}
-
-	.main-buttons-button {
-		border: 2px solid transparent;
-		border-radius: 10px;
-		cursor: pointer;
-		display: inline-block;
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 1.76px;
-		line-height: 18px;
-		padding: 8px 34px;
-		text-align: center;
-		text-transform: uppercase;
-		transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
-		white-space: nowrap;
-		will-change: transform;
-	}
-	.x-settings-tooltip {
-		cursor: help !important;
-
-		.x-settings-tooltipIconWrapper {
-			padding: 0px 8px 0px 8px !important;
-
-			svg {
-				fill: var(--spice-subtext);
-			}
-
-			&:focus-within,
 			&:hover {
-				svg {
-					fill: var(--spice-text) !important;
-				}
+				transform: scale(1.02);
+				filter: brightness(1.2);
+			}
+			&:active {
+				transform: scale(0.98);
+				filter: brightness(0.8);
 			}
 		}
-	}
-	.x-toggle-indicatorWrapper {
-		transition: background-color 0.2s;
+
+		.main-button-secondary {
+			background-color: transparent;
+			color: var(--spice-button);
+			border: 2px solid var(--spice-button) !important;
+		}
+
+		.main-buttons-button {
+			border: 2px solid transparent;
+			border-radius: 10px;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 1.76px;
+			line-height: 18px;
+			padding: 8px 34px;
+			text-align: center;
+			text-transform: uppercase;
+			transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+			white-space: nowrap;
+			will-change: transform;
+		}
 	}
 }

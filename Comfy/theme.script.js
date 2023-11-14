@@ -8,15 +8,12 @@ todo:
 
 - remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- rename dropdown classes
 - add more main-type-mestoBold
 - add icons to card dropdowns? maybe a tippy saying open/close instead?
 - update image tippy sizes - maybe make it a button that changes modal content instead?
 - create color picker
 - more consistent coloring - sliders etc
 - once props are simplified convert all callback events to be name - ...props
-
-- convert css to sass
 */
 
 (async function comfy() {
@@ -370,7 +367,7 @@ todo:
 
 		const [selectedValue, setSelectedValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 		const [buttonEnabled, setButtonEnabled] = Spicetify.React.useState(selectedValue !== defaultVal);
-		const [isOpen, setIsOpen] = Spicetify.React.useState(false);
+		const [menuOpen, setMenuOpen] = Spicetify.React.useState(false);
 		const isFirstRender = Spicetify.React.useRef(true);
 
 		Spicetify.React.useEffect(() => {
@@ -380,8 +377,8 @@ todo:
 					const parent = document.querySelector('[aria-label="Comfy Settings"]');
 					const current = document.getElementById(name);
 					parent.addEventListener("click", event => {
-						if (event.target.closest(".Dropdown-root") !== current) {
-							setIsOpen(false);
+						if (event.target.closest(".dropdown-wrapper") !== current) {
+							setMenuOpen(false);
 						}
 					});
 					return;
@@ -424,32 +421,32 @@ todo:
 					),
 				Spicetify.React.createElement(
 					"div",
-					{ className: `Dropdown-root main-type-mestoBold ${isOpen ? "is-open" : ""}`, id: name },
+					{ className: `dropdown-wrapper main-type-mestoBold ${menuOpen ? "menu-open" : ""}`, id: name },
 					Spicetify.React.createElement(
 						"div",
-						{ className: "Dropdown-control", "aria-haspopup": "listbox", onClick: () => setIsOpen(!isOpen) },
-						Spicetify.React.createElement("div", { className: "Dropdown-placeholder is-selected" }, selectedValue),
+						{ className: "dropdown-button", onClick: () => setMenuOpen(!menuOpen) },
+						Spicetify.React.createElement("div", { className: "dropdown-selection" }, selectedValue),
 						Spicetify.React.createElement(
 							"div",
-							{ className: "Dropdown-arrow-wrapper" },
-							Spicetify.React.createElement("span", { className: "Dropdown-arrow" })
+							{ className: "dropdown-arrow-wrapper" },
+							Spicetify.React.createElement("span", { className: "dropdown-arrow" })
 						)
 					),
-					isOpen &&
+					menuOpen &&
 						Spicetify.React.createElement(
 							"div",
-							{ className: "Dropdown-menu" },
+							{ className: "dropdown-menu" },
 							options.map(option =>
 								Spicetify.React.createElement(
 									"div",
 									{
 										key: option,
-										className: "Dropdown-option",
+										className: "dropdown-option",
 										role: "option",
 										onClick: event => {
 											event.stopPropagation(); // Prevent event from propagating up
 											setSelectedValue(option);
-											setIsOpen(false);
+											setMenuOpen(false);
 										}
 									},
 									option
