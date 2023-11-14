@@ -1,6 +1,7 @@
 /* 
 fix:
 resetting of number input weirdness, gradient leaving s or px and others not removing them at all
+if colorscheme name isnt the same capitalization or is custom it breaks the reset button, probably just check if config.current_theme is in the list of fetched colorschemes or something
 
 todo:
 - add warning message if using unsupported versions
