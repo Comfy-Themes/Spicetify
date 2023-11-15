@@ -4,15 +4,15 @@ resetting of number input weirdness, gradient leaving s or px and others not rem
 if colorscheme name isnt the same capitalization or is custom it breaks the reset button, probably just check if config.current_theme is in the list of fetched colorschemes or something
 
 todo:
+- more consistent coloring - sliders etc
 - add warning message if using unsupported versions
+- update image tippy sizes - maybe make it a button that changes modal content instead?
+- add more main-type-mestoBold
+- create color picker
 
+torefactor:
 - remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- add more main-type-mestoBold
-- add icons to card dropdowns? maybe a tippy saying open/close instead?
-- update image tippy sizes - maybe make it a button that changes modal content instead?
-- create color picker
-- more consistent coloring - sliders etc
 - once props are simplified convert all callback events to be name - ...props
 */
 

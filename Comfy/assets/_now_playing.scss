@@ -49,19 +49,20 @@
 
 			// Connect Bar
 			.main-connectBar-connectBar {
-				position: absolute;
-				top: -20px;
-				right: 15px;
-				padding: 4px 8px;
-				box-sizing: content-box;
 				border-radius: var(--border-radius);
+				top: -18px;
+				padding: 13px;
+				position: absolute;
+				left: 91%;
+				transform: translateX(-91%);
+				width: max-content;
 
 				&::after {
 					content: none;
 				}
 			}
 			.main-devicePicker-indicator {
-				bottom: 30px;
+				bottom: 34px;
 				transform: rotate(180deg);
 			}
 
