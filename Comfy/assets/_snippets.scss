@@ -241,9 +241,14 @@
 
 			.queue-queuePage-queuePage,
 			.search-searchCategory-SearchCategory,
-			.artist-artistDiscography-topBar {
+			.artist-artistDiscography-topBar,
+			.marketplace-header {
 				margin-top: 0 !important;
 				top: 0 !important;
+			}
+
+			.marketplace-header {
+				padding-top: 8px !important;
 			}
 		}
 		&.Apple-Music-Gradient-Snippet {
