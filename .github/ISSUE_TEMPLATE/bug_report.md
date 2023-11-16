@@ -13,7 +13,7 @@ assignees: ohitstom
 - Platform (WIN, MAC, LINUX): `placeholder`
 
 **Addons**
-*[name1, name2] or [] if none*
+*`[name1, name2]` or `[]` if none*
 - Extensions: `placeholder`
 - Custom Apps: `placeholder`
 - Snippets: `placeholder`
@@ -32,6 +32,7 @@ A clear and concise description of what the bug is.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
+
 Please also provide devtools errors/debug messages if possible:
 - Spicetify enable-devtools
 - open devtools (ctrl+shift+i on windows)
