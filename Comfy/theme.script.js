@@ -22,7 +22,7 @@ torefactor:
 		setTimeout(comfy, 10);
 		return;
 	}
-	console.debug("[Comfy-Event]: Dependencies loaded");
+	console.debug("[Comfy-Event]: Global Dependencies loaded");
 
 	// Initialize Config
 	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
@@ -75,12 +75,16 @@ torefactor:
 	secondaryImage.className = "secondaryImage";
 	frame.append(mainImage, secondaryImage);
 
-	waitForElement(".under-main-view").then(underMainView => {
-		console.debug("[Comfy-Event]: Banner Frame Added");
-		underMainView.appendChild(frame);
-	});
-	await waitForDeps(["Spicetify.Platform"], () => Spicetify.Platform.History.listen(updateBanner));
-	await waitForDeps(["Spicetify.Player"], () => Spicetify.Player.addEventListener("songchange", updateBanner));
+	waitForDeps(
+		".under-main-view",
+		underMainView => {
+			console.debug("[Comfy-Event]: Banner Frame Added");
+			underMainView.appendChild(frame);
+		},
+		true
+	);
+	waitForDeps("Spicetify.Platform", () => Spicetify.Platform.History.listen(updateBanner));
+	waitForDeps("Spicetify.Player", () => Spicetify.Player.addEventListener("songchange", updateBanner));
 	updateBanner();
 
 	// React components
@@ -289,9 +293,16 @@ torefactor:
 
 			setConfig(name, state);
 			if (state || !startup) {
-				console.debug(`[Comfy-Callback]: ${name} =`, state);
-				document.getElementById("main")?.classList.toggle(name, state);
-				callback?.(state);
+				waitForDeps(
+					"main",
+					main => {
+						console.debug(`[Comfy-Callback]: ${name} =`, state);
+						main.classList.toggle(name, state);
+						callback?.(state);
+					},
+					true,
+					"getElementById"
+				);
 			}
 		}, [state]);
 
@@ -482,9 +493,15 @@ torefactor:
 					description: "Extra tweaks to complete specific color schemes",
 					options: ["nord", "mono", "kitty"],
 					callback: (name, value, options, defaultVal) => {
-						const main = document.getElementById("main");
-						main.classList.remove(...options.map(option => `Comfy-${option}-Snippet`));
-						if (value !== defaultVal) main.classList.add(`Comfy-${value}-Snippet`);
+						waitForDeps(
+							"main",
+							main => {
+								main.classList.remove(...options.map(option => `Comfy-${option}-Snippet`));
+								if (value !== defaultVal) main.classList.add(`Comfy-${value}-Snippet`);
+							},
+							true,
+							"getElementById"
+						);
 					}
 				},
 				{
@@ -495,9 +512,15 @@ torefactor:
 					defaultVal: "off",
 					options: ["off", "normal", "reverse"],
 					callback: (name, value, options, defaultVal) => {
-						const main = document.getElementById("main");
-						main.classList.remove(...options.map(option => `${name}-${option}`));
-						if (value !== defaultVal) main.classList.add(`${name}-${value}`);
+						waitForDeps(
+							"main",
+							main => {
+								main.classList.remove(...options.map(option => `${name}-${option}`));
+								if (value !== defaultVal) main.classList.add(`${name}-${value}`);
+							},
+							true,
+							"getElementById"
+						);
 					}
 				},
 				{
@@ -508,28 +531,34 @@ torefactor:
 					defaultVal: "light",
 					options: ["light", "dark"],
 					callback: (name, value, options, defaultVal) => {
-						const main = document.getElementById("main");
-						const customXpui = document.getElementById("/xpui.css");
+						waitForDeps(
+							"main",
+							main => {
+								const customXpui = document.getElementById("/xpui.css");
 
-						if (value === defaultVal && customXpui) {
-							customXpui.remove();
-							main.classList.remove(`Comfy-${name}-Snippet`);
-						}
+								if (value === defaultVal && customXpui) {
+									customXpui.remove();
+									main.classList.remove(`Comfy-${name}-Snippet`);
+								}
 
-						if (value !== defaultVal && !customXpui) {
-							fetch("xpui.css")
-								.then(res => res.text())
-								.then(text => {
-									const result = text.replace(/(\.encore-dark-theme,\.encore-dark-theme)/g, ".GenericModal__overlay .encore-light-theme,$1");
+								if (value !== defaultVal && !customXpui) {
+									fetch("xpui.css")
+										.then(res => res.text())
+										.then(text => {
+											const result = text.replace(/(\.encore-dark-theme,\.encore-dark-theme)/g, ".GenericModal__overlay .encore-light-theme,$1");
 
-									const newStyle = document.createElement("style");
-									newStyle.textContent = result;
-									newStyle.id = "/xpui.css";
-									document.head.appendChild(newStyle);
-									main.classList.add(`Comfy-${name}-Snippet`);
-								})
-								.catch(e => console.error(`[Comfy-Error]: ${name}`, e));
-						}
+											const newStyle = document.createElement("style");
+											newStyle.textContent = result;
+											newStyle.id = "/xpui.css";
+											document.head.appendChild(newStyle);
+											main.classList.add(`Comfy-${name}-Snippet`);
+										})
+										.catch(e => console.error(`[Comfy-Error]: ${name}`, e));
+								}
+							},
+							true,
+							"getElementById"
+						);
 					}
 				}
 			]),
@@ -541,11 +570,12 @@ torefactor:
 					title: "Application Title",
 					defaultVal: Spicetify.AppTitle?.get(),
 					desc: "Change the title of the application, leave blank to reset",
-					callback: async value => {
-						await waitForDeps(["Spicetify.Platform.UserAPI"]);
-						const productState = Spicetify.Platform.UserAPI._product_state || Spicetify.Platform.UserAPI._product_state_service;
-						await productState.delOverridesValues({ keys: ["name"] });
-						if (value) await productState.putOverridesValues({ pairs: { name: value } });
+					callback: value => {
+						waitForDeps("Spicetify.Platform.UserAPI", async () => {
+							const productState = Spicetify.Platform.UserAPI._product_state || Spicetify.Platform.UserAPI._product_state_service;
+							await productState.delOverridesValues({ keys: ["name"] });
+							if (value) await productState.putOverridesValues({ pairs: { name: value } });
+						});
 					}
 				},
 				{
@@ -637,8 +667,15 @@ torefactor:
 					defaultVal: true,
 					callback: value => {
 						if (!value) {
-							document.getElementById("main").classList.remove("Home-Header-Snippet");
-							document.documentElement.style.setProperty("--home-header-color", "");
+							waitForDeps(
+								"main",
+								main => {
+									main.classList.remove("Home-Header-Snippet");
+									document.documentElement.style.setProperty("--home-header-color", "");
+								},
+								true,
+								"getElementById"
+							);
 						}
 					},
 					items: [
@@ -657,13 +694,19 @@ torefactor:
 								Spicetify.React.createElement("li", null, "rgba (0, 0, 0, 1)")
 							),
 							callback: (value, name) => {
-								const main = document.getElementById("main");
-								main.classList.remove(name);
-								document.documentElement.style.setProperty("--home-header-color", "");
-								if (value !== "") {
-									document.documentElement.style.setProperty("--home-header-color", value);
-									main.classList.add(name);
-								}
+								waitForDeps(
+									"main",
+									main => {
+										main.classList.remove(name);
+										document.documentElement.style.setProperty("--home-header-color", "");
+										if (value !== "") {
+											document.documentElement.style.setProperty("--home-header-color", value);
+											main.classList.add(name);
+										}
+									},
+									true,
+									"getElementById"
+								);
 							}
 						}
 					]
@@ -674,12 +717,17 @@ torefactor:
 					title: "Move Topbar Inside Titlebar",
 					defaultVal: false,
 					callback: value => {
-						const grid = value
-							? document.querySelector(".Root__top-container")
-							: document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
-						const topbar = document.querySelector(".main-topBar-container");
+						waitForDeps(
+							[".Root__top-container", ".main-topBar-container"],
+							async elements => {
+								const [container, topbar] = elements;
+								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
+								const grid = value ? container : entryPoint;
 
-						grid.insertBefore(topbar, grid.firstChild);
+								grid.insertBefore(topbar, grid.firstChild);
+							},
+							true
+						);
 					}
 				},
 				{
@@ -1042,7 +1090,7 @@ torefactor:
 	};
 
 	// Settings Button + Modal
-	await waitForDeps(["Spicetify.Topbar.Button"], () => {
+	waitForDeps("Spicetify.Topbar.Button", () => {
 		new Spicetify.Topbar.Button(
 			"Comfy Settings",
 			`<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
@@ -1088,12 +1136,10 @@ torefactor:
 		);
 	});
 
-	// Preloading settings callbacks
-	console.debug("[Comfy-Event]: Preloading Settings...");
+	// Preloading settings
+	console.debug("[Comfy-Event]: Settings Preload Started");
 	Spicetify.ReactDOM.render(Spicetify.React.createElement(Content), preloadContainer);
-
 	Spicetify.ReactDOM.unmountComponentAtNode(preloadContainer);
-	console.debug("[Comfy-Event]: Finished Preloading Settings!");
 
 	// Functions
 	function getConfig(key) {
@@ -1123,44 +1169,52 @@ torefactor:
 		}
 	}
 
-	function waitForElement(selector) {
-		return new Promise(resolve => {
-			const element = document.querySelector(selector);
-			if (element) resolve(element);
-			else {
-				const observer = new MutationObserver(() => {
-					const updatedElement = document.querySelector(selector);
-					if (updatedElement) {
-						observer.disconnect();
-						resolve(updatedElement);
-					}
-				});
-				observer.observe(document.documentElement, { childList: true, subtree: true });
-			}
-		});
-	}
-
-	async function waitForDeps(dependencies, callback) {
+	async function waitForDeps(dependencies, callback, element = false, elementType = "querySelector", timeout = 5000) {
 		return new Promise(resolve => {
 			let allDependenciesLoaded = false;
+			let startTime = Date.now();
+
+			async function checkElements() {
+				const check = () =>
+					Array.isArray(dependencies) ? dependencies.every(element => document[elementType](element)) : document[elementType](dependencies);
+				if (check()) {
+					callback?.(Array.isArray(dependencies) ? dependencies.map(d => document[elementType](d)) : document[elementType](dependencies));
+					resolve();
+				} else {
+					const observer = new MutationObserver(() => {
+						if (check()) {
+							observer.disconnect();
+							callback?.(Array.isArray(dependencies) ? dependencies.map(d => document[elementType](d)) : document[elementType](dependencies));
+							resolve();
+						}
+					});
+					observer.observe(document.documentElement, { childList: true, subtree: true });
+				}
+			}
 
 			async function checkDependencies() {
-				for (const dependency of dependencies) {
+				for (const dependency of Array.isArray(dependencies) ? dependencies : [dependencies]) {
 					if (!eval(dependency)) {
-						allDependenciesLoaded = false;
-						setTimeout(checkDependencies, 10);
+						if (Date.now() - startTime < timeout) {
+							setTimeout(checkDependencies, 10);
+						} else {
+							console.error(`[Comfy-Error]: Dependency Timeout -`, dependencies);
+							resolve();
+						}
 						return;
 					}
 				}
 
 				if (!allDependenciesLoaded) {
 					allDependenciesLoaded = true;
-					if (callback) callback();
+
+					callback?.(Array.isArray(dependencies) ? dependencies.map(d => eval(d)) : eval(dependencies));
+
 					resolve();
 				}
 			}
 
-			checkDependencies();
+			element ? checkElements() : checkDependencies();
 		});
 	}
 
