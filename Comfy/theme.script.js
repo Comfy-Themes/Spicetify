@@ -545,7 +545,10 @@ torefactor:
 									fetch("xpui.css")
 										.then(res => res.text())
 										.then(text => {
-											const result = text.replace(/(\.encore-dark-theme,\.encore-dark-theme)/g, ".GenericModal__overlay .encore-light-theme,$1");
+											const result = text.replace(
+												/(\.encore-dark-theme,\.encore-dark-theme)/g,
+												".GenericModal__overlay .encore-light-theme,dialog .encore-light-theme,$1"
+											);
 
 											const newStyle = document.createElement("style");
 											newStyle.textContent = result;
