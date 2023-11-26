@@ -64,6 +64,7 @@
 	// Filtering
 	.main-trackList-playingIcon,
 	.view-homeShortcutsGrid-playingIcon,
+	[src*="equaliser"],
 	.x-settings-equalizerPanelCanvas {
 		filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%) !important;
 		border-radius: 0 !important;

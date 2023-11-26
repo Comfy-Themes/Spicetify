@@ -20,7 +20,8 @@
 		--spice-rgb-sidebar: var(--spice-rgb-main);
 	}
 	&:has(#main.Comfy-Dark-Modals-Snippet) {
-		.ABD0FGjBGqGZG33bP7Lc {
+		.ABD0FGjBGqGZG33bP7Lc,
+		.main-duplicateTrackModal-container {
 			background-color: var(--spice-main);
 			color: var(--spice-text);
 		}
