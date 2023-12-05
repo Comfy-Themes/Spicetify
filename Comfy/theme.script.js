@@ -14,6 +14,7 @@ torefactor:
 - remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
 - once props are simplified convert all callback events to be name - ...props
+- create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
 */
 
 (async function comfy() {
