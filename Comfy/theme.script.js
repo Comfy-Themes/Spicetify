@@ -14,6 +14,7 @@ torefactor:
 - remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
 - once props are simplified convert all callback events to be name - ...props
+- create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
 */
 
 (async function comfy() {
@@ -1226,7 +1227,7 @@ torefactor:
 
 		const source = getConfig("Custom-Image")
 			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
-			: Spicetify.Player.data.track.metadata.image_xlarge_url;
+			: Spicetify.Player.data.item?.metadata.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
 		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
 
 		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
