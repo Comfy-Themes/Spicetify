@@ -787,6 +787,12 @@ torefactor:
 			Spicetify.React.createElement(Section, { name: "Playbar" }, [
 				{
 					type: Slider,
+					name: "Custom-Playbar-Snippet",
+					title: "Custom Playbar Layout",
+					defaultVal: true
+				},
+				{
+					type: Slider,
 					name: "Hoverable-Timers-Snippet",
 					title: "Hoverable Playback Timers",
 					defaultVal: false
