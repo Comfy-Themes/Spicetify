@@ -276,6 +276,12 @@
 			}
 		}
 
+		&.AM-Gradient-Include-Existing-Snippet {
+			.under-main-view div:has(.main-entityHeader-gradient) {
+				display: none;
+			}
+		}
+
 		&.Apple-Music-Gradient-Snippet {
 			.frame {
 				position: absolute;
@@ -289,9 +295,11 @@
 				.secondaryImage {
 					position: absolute;
 					width: var(--gradient-width);
+					aspect-ratio: 1;
 					animation: rotate var(--gradient-speed) linear infinite;
 					border-radius: var(--gradient-radius) !important;
 					mix-blend-mode: var(--gradient-blend-mode);
+					object-fit: cover !important;
 				}
 
 				.mainImage {

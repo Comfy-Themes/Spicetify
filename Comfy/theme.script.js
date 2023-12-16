@@ -960,10 +960,18 @@ torefactor:
 					),
 					items: [
 						{
+							type: Slider,
+							name: "AM-Gradient-Include-Existing-Snippet",
+							title: "Existing Images",
+							defaultVal: false,
+							desc: "Apply the gradient to existing images on the page (e.g. artist banners)",
+							callback: updateBanner
+						},
+						{
 							type: Input,
 							inputType: "text",
 							name: "Gradient-Noise",
-							title: "Noise URL - Advanced",
+							title: "Noise URL",
 							defaultVal: "none",
 							desc: "Overlays an image below the blur and over the art, can be used for noise",
 							callback: value => document.documentElement.style.setProperty("--gradient-background-image", value ? `url('${value}')` : "")
@@ -972,7 +980,7 @@ torefactor:
 							type: Input,
 							inputType: "text",
 							name: "Gradient-Blend",
-							title: "Blend Mode - Advanced",
+							title: "Blend Mode",
 							defaultVal: "luminosity",
 							desc: "'difference' works well with noise",
 							callback: value => document.documentElement.style.setProperty("--gradient-blend-mode", value || "")
@@ -981,7 +989,7 @@ torefactor:
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Speed",
-							title: "Speed - Advanced",
+							title: "Speed",
 							defaultVal: "50",
 							min: "0",
 							tippy: Spicetify.React.createElement(
@@ -996,7 +1004,7 @@ torefactor:
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Size",
-							title: "Size - Advanced",
+							title: "Size",
 							defaultVal: "150",
 							min: "0",
 							tippy: Spicetify.React.createElement(
@@ -1011,7 +1019,7 @@ torefactor:
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Radius",
-							title: "Radius - Advanced",
+							title: "Radius",
 							desc: "Radius of circles (in px)",
 							defaultVal: "500",
 							min: "0",
@@ -1250,14 +1258,37 @@ torefactor:
 	async function updateBanner() {
 		await waitForDeps(["Spicetify.Player.data", "Spicetify.Platform.History.location"]);
 
-		const source = getConfig("Custom-Image")
-			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
-			: Spicetify.Player.data.item?.metadata.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
-		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+		const pathname = Spicetify.Platform.History.location.pathname;
+		let source;
 
-		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
+		if (getConfig("Custom-Image")) {
+			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
+		} else if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
+			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
+
+			if (isPlaylist || isArtist) {
+				const uri = `spotify:${isPlaylist ? "playlist" : "artist"}:${pathname.split("/").pop()}`;
+				const metadata = isPlaylist
+					? await Spicetify.Platform.PlaylistAPI.getMetadata(uri)
+					: await Spicetify.GraphQL.Request(Spicetify.GraphQL.QueryDefinitions.queryArtistOverview, {
+							uri: uri,
+							includePrerelease: true,
+							locale: null
+					  });
+
+				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage.sources[0]?.url;
+			}
+		}
+
+		source = source ?? Spicetify.Player.data.item?.metadata.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
+
+		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
 		mainImage.src = secondaryImage.src = source;
-		mainImage.style.display = source === "" ? "none" : "";
+		mainImage.style.display = source ? "" : "none";
+
+		if (mainImage.src !== source) {
+			console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+		}
 	}
 
 	function updateScheme(scheme, message) {
