@@ -6,15 +6,16 @@ if colorscheme name isnt the same capitalization or is custom it breaks the rese
 todo:
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
-- update image tippy sizes - maybe make it a button that changes modal content instead?
+- update image tippy sizes / fix tippy height
 - add more main-type-mestoBold
 - create color picker
 
 torefactor:
-- remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- once props are simplified convert all callback events to be name - ...props
+- once props are simplified convert all callback events to be "name - ...props"
 - create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
+- use spicetify slider component
+- fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
 (async function comfy() {
@@ -203,27 +204,35 @@ torefactor:
 				Spicetify.React.createElement(Slider, {
 					name,
 					callback: value => {
+						callback?.(value);
 						setState(value);
-						if (value) {
-							// if subsection enabled -> run all item callbacks
-							items.forEach(item => {
-								const both = () => (item.type === Input ? "" : item.defaultVal);
-								const state = getConfig(item.name) ?? both();
-								setConfig(item.name, state);
-								if (state !== both()) {
-									console.debug(`[Comfy-subCallback]: ${item.name}`, state);
-									item.callback?.(state, item.name);
-								}
-							});
-						} else {
-							// if subsection disabled -> run subsection callback
-							console.debug(`[Comfy-subCallback]: ${name}`, value);
-							callback?.(value);
-						}
+
+						items.forEach(item => {
+							const both = () => (item.type === Input ? "" : item.defaultVal);
+							const state = getConfig(item.name) ?? both();
+
+							setConfig(item.name, state);
+							if (item.type === Slider) {
+								if (state || !value)
+									waitForDeps(
+										"main",
+										main => {
+											console.debug(`[Comfy-subCallback]: ${item.name} =`, state);
+											main.classList.toggle(item.name, value ? state : false);
+											item.callback?.(state);
+										},
+										true,
+										"getElementById"
+									);
+							} else if (value && state !== both()) {
+								console.debug(`[Comfy-subCallback]: ${item.name}`, state);
+								item.callback?.(state, item.name);
+							}
+						});
 					},
 					onClick: () => {
 						if (state) {
-							setConfig(`${name}-Collapsed`, !collapseItems);
+							setConfig(`${name}-Collapsed`, !collapseItems, null, true);
 							setCollapseItems(!collapseItems);
 						}
 					},
@@ -713,17 +722,18 @@ torefactor:
 								);
 							}
 						}
-					]
+					],
+					collapseItems: true
 				},
 				{
-					type: Slider,
+					type: SubSection,
 					name: "Topbar-Inside-Titlebar-Snippet",
 					title: "Move Topbar Inside Titlebar",
 					defaultVal: false,
 					callback: value => {
 						waitForDeps(
 							[".Root__top-container", ".main-topBar-container"],
-							async elements => {
+							elements => {
 								const [container, topbar] = elements;
 								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
 								const grid = value ? container : entryPoint;
@@ -732,7 +742,16 @@ torefactor:
 							},
 							true
 						);
-					}
+					},
+					items: [
+						{
+							type: Slider,
+							name: "Collapse-Topbar-Snippet",
+							title: "Collapse List Items",
+							defaultVal: true
+						}
+					],
+					collapseItems: true
 				},
 				{
 					type: Slider,
@@ -1156,9 +1175,9 @@ torefactor:
 		return config[key] ?? null;
 	}
 
-	function setConfig(key, value, message) {
+	function setConfig(key, value, message, silent) {
 		if (value !== getConfig(key)) {
-			console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
+			if (!silent) console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
 			config[key] = value;
 			localStorage.setItem("comfy:config", JSON.stringify(config));
 		}

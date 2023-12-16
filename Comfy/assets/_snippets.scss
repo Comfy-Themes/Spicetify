@@ -203,17 +203,24 @@
 					height: 32px;
 					margin-top: -32px;
 
-					.main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
-					.main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
-						justify-content: center;
-						display: flex;
+					.main-topBar-topbarContentWrapper {
+						> *:not(.main-topBar-searchBar):not(:has(ul)) {
+							justify-content: center;
+							display: flex;
+						}
+						ul {
+							text-align: center !important;
+						}
+						.queue-tabBar-headerItemLink {
+							padding: 5px 16px;
+						}
 					}
 
 					.main-topBar-topbarContent {
 						app-region: drag !important;
 
 						.main-entityHeader-topbarTitle {
-							height: 32px;
+							height: 100%;
 						}
 					}
 
@@ -259,6 +266,14 @@
 				padding-top: 8px !important;
 			}
 		}
+
+		&.Collapse-Topbar-Snippet {
+			.main-topBar-topbarContentWrapper nav {
+				justify-content: center;
+				display: flex;
+			}
+		}
+
 		&.Apple-Music-Gradient-Snippet {
 			.frame {
 				position: absolute;
