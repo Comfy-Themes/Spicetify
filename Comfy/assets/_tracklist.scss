@@ -44,13 +44,19 @@
 			.main-trackList-rowImagePlayPauseButton,
 			.main-trackList-rowSectionIndex {
 				background: rgba(var(--spice-rgb-play-button), 0.5);
-				border-radius: var(--border-radius);
 			}
 			.main-trackList-rowImagePlayButton,
 			.main-trackList-rowImagePlayPauseButton {
 				opacity: 1;
-				color: var(--spice-sidebar);
 			}
+		}
+		
+		.main-trackList-rowImagePlayButton,
+		.main-trackList-rowImagePlayPauseButton,
+		.main-trackList-rowSectionIndex {
+			color: var(--spice-sidebar);
+			border-radius: var(--border-radius);
+			transition: 200ms opacity, 200ms background;
 		}
 
 		> .main-trackList-rowSectionIndex {
