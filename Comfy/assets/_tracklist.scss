@@ -70,13 +70,7 @@
 			text-indent: -1000px;
 		}
 	}
-
-	// Temp fix for right queue panel, they weirdly show all active songs of same type with no new selector except this subclassname
-	// could technically just apply the border radius opacity and stuff AGAIN here but duplication bad so i'll find a selector good enough
-	.main-trackList-rowImagePlayPauseButtonPlaying {
-		opacity: 0;
-	}
-
+	
 	.main-trackList-rowImageFallback {
 		border-radius: var(--border-radius) !important;
 	}
