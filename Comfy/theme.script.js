@@ -1276,7 +1276,7 @@ torefactor:
 							locale: null
 					  });
 
-				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage.sources[0]?.url;
+				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage?.sources?.[0]?.url;
 			}
 		}
 
