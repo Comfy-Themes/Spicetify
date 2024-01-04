@@ -1,18 +1,55 @@
-:root .Root__main-view {
-	// Background Image - Behind the main view (container)
-	.mainImage {
-		position: absolute; // Positioned absolutely to cover the entire viewport
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		object-fit: cover;
-		object-position: top;
-		filter: blur(var(--image-blur));
-		-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-		mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+:root #main.Banner-Enabled {
+	.frame {
+		display: block;
+
+		.mainImage {
+			position: absolute; // Positioned absolutely to cover the entire viewport
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			object-position: top;
+			filter: blur(var(--image-blur));
+			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+		}
+
+		.secondaryImage {
+			display: none;
+		}
 	}
-	.secondaryImage {
+
+	.main-entityHeader-backgroundColor {
+		background: none !important;
+	}
+
+	.artist-artistOverview-artistOverviewContent,
+	.main-actionBarBackground-background {
+		background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)),
+			var(--background-noise) !important;
+		height: calc(100% - var(--tracklist-gradient-height));
+		min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
+	}
+
+	.artist-artistOverview-artistOverviewContent {
+		position: relative !important;
+
+		.main-actionBarBackground-background {
+			background-image: none !important;
+			background-color: unset !important;
+		}
+	}
+
+	.playlist-playlist-playlistContent,
+	.dTKw7B8X1ybw7SHebMH3,
+	.xcTrtCsYOPtSElbX9inq {
+		background: none; // Remove background
+	}
+}
+
+:root .Root__main-view {
+	.frame {
 		display: none;
 	}
 
@@ -91,10 +128,6 @@
 			padding: 32px;
 			justify-content: center;
 
-			.main-entityHeader-backgroundColor {
-				background: none !important;
-			}
-
 			& > div:nth-last-of-type(2),
 			.main-entityHeader-imageContainer {
 				align-self: center;
@@ -167,35 +200,11 @@
 			}
 		}
 
-		// Artist
-		.artist-artistOverview-artistOverviewContent {
-			position: relative !important;
-
-			.main-actionBarBackground-background {
-				background-image: none !important;
-				background-color: unset !important;
-			}
-		}
-
-		.artist-artistOverview-artistOverviewContent,
-		.main-actionBarBackground-background {
-			background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)),
-				var(--background-noise) !important;
-			height: calc(100% - var(--tracklist-gradient-height));
-			min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
-		}
-
 		// Playlists
 		.playlist-playlist-playlistImageContainer {
 			height: 192px;
 			min-width: 192px;
 			width: 192px;
-		}
-
-		.playlist-playlist-playlistContent,
-		.dTKw7B8X1ybw7SHebMH3,
-		.xcTrtCsYOPtSElbX9inq {
-			background: none; // Remove background
 		}
 
 		// Shows

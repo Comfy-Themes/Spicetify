@@ -908,6 +908,13 @@ torefactor:
 			]),
 			Spicetify.React.createElement(Section, { name: "Banner Image" }, [
 				{
+					type: Slider,
+					name: "Banner-Enabled",
+					title: "Banner Image",
+					defaultVal: true,
+					desc: "Show current playing song / custom banner images instead of gradients"
+				},
+				{
 					type: Input,
 					inputType: "number",
 					name: "Image-Blur",

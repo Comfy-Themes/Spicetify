@@ -276,9 +276,9 @@
 			}
 		}
 
-		&.AM-Gradient-Include-Existing-Snippet {
+		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled {
 			.under-main-view div:has(.main-entityHeader-gradient) {
-				display: none;
+				display: none !important;
 			}
 		}
 
