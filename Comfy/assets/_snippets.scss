@@ -176,19 +176,6 @@
 			}
 		}
 
-		&.Right-Art-Snippet {
-			.main-coverSlotExpanded-container {
-				position: fixed;
-				top: calc(100% - 318px);
-				left: calc(100% - 230px);
-				width: 200px;
-				height: 200px;
-			}
-			.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
-				padding-bottom: 0 !important; // tweaked
-			}
-		}
-
 		&.Topbar-Inside-Titlebar-Snippet {
 			.Root__top-container {
 				grid-template-areas:

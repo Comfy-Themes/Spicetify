@@ -898,12 +898,6 @@ torefactor:
 							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px")
 						}
 					]
-				},
-				{
-					type: Slider,
-					name: "Right-Art-Snippet",
-					title: "Right Side Cover Art",
-					defaultVal: false
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Banner Image" }, [
