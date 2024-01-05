@@ -33,7 +33,7 @@
 .main-trackList-trackList:has(.main-trackList-rowSectionStart .main-trackList-rowImageFallback) {
 	.main-trackList-trackListHeader {
 		.main-trackList-rowSectionIndex {
-			text-indent: -1000px;
+			opacity: 0;
 		}
 	}
 
@@ -50,7 +50,7 @@
 				opacity: 1;
 			}
 		}
-		
+
 		.main-trackList-rowImagePlayButton,
 		.main-trackList-rowImagePlayPauseButton,
 		.main-trackList-rowSectionIndex {
@@ -70,7 +70,7 @@
 			text-indent: -1000px;
 		}
 	}
-	
+
 	.main-trackList-rowImageFallback {
 		border-radius: var(--border-radius) !important;
 	}
@@ -83,13 +83,15 @@
 			padding-left: 2px;
 
 			@if $i == 3 {
-				grid-template-columns: [index] 0px [first] 4fr [last] minmax(120px, 1fr) !important;
+				grid-template-columns: [index] 0px [first] var(--col1, 4fr) [last] minmax(120px, var(--col2, 1fr)) !important;
 			} @else if $i == 4 {
-				grid-template-columns: [index] 0px [first] 4fr [var1] 2fr [last] minmax(120px, 1fr) !important;
+				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 4fr)) [var1] minmax(120px, var(--col2, 2fr)) [last] minmax(120px, var(--col3, 1fr)) !important;
 			} @else if $i == 5 {
-				grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr) !important;
+				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [last] minmax(120px, minmax(120px, var(--col4, 1fr))) !important;
 			} @else if $i == 6 {
-				grid-template-columns: [index] 0px [first] 6fr [var1] 4fr [var2] 3fr [var3] minmax(120px, 2fr) [last] minmax(120px, 1fr) !important;
+				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, minmax(120px, var(--col4, 2fr))) [last] minmax(120px, var(--col5, 1fr)) !important;
+			} @else if $i == 7 {
+				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, minmax(120px, var(--col4, 2fr))) [var4] minmax(120px, var(--col5, 2fr)) [last] minmax(120px, var(--col6, 1fr)) !important;
 			}
 		}
 	}
