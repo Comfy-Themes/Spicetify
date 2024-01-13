@@ -85,7 +85,7 @@ torefactor:
 		},
 		true
 	);
-	waitForDeps("Spicetify.Platform.History", () => Spicetify.Platform.History.listen(updateBanner));
+	waitForDeps("Spicetify.Platform", () => Spicetify.Platform.History.listen(updateBanner));
 	waitForDeps("Spicetify.Player", () => Spicetify.Player.addEventListener("songchange", updateBanner));
 	updateBanner();
 
