@@ -26,6 +26,19 @@ torefactor:
 	}
 	console.debug("[Comfy-Event]: Global Dependencies loaded");
 
+	// Add Global Functions
+	window.Comfy = {
+		Reset: () => {
+			localStorage.removeItem("comfy:config");
+			location.reload();
+		},
+		Config: () => {
+			console.log(JSON.parse(localStorage.getItem("comfy:config") || "{}"));
+		}
+	
+	};
+	console.debug(`[Comfy-Event]: Global Functions Added`);
+
 	// Initialize Config
 	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
 	let defaultScheme = Spicetify.Config?.color_scheme || "Comfy";
