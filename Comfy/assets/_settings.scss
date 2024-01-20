@@ -237,6 +237,11 @@
 					padding: 8px 10px;
 					text-align: center;
 
+					&.selected {
+						background-color: rgba(var(--spice-rgb-text),.7);
+						color: var(--spice-sidebar)
+					}
+
 					&:hover {
 						background-color: rgb(var(--spice-rgb-text));
 						color: var(--spice-sidebar);

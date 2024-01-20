@@ -1,7 +1,6 @@
 /* 
 tofix:
 resetting of number input weirdness, gradient leaving s or px and others not removing them at all
-if colorscheme name isnt the same capitalization or is custom it breaks the reset button, probably just check if config.current_theme is in the list of fetched colorschemes or something
 
 todo:
 - more consistent coloring - sliders etc
@@ -35,13 +34,12 @@ torefactor:
 		Config: () => {
 			console.log(JSON.parse(localStorage.getItem("comfy:config") || "{}"));
 		}
-	
 	};
 	console.debug(`[Comfy-Event]: Global Functions Added`);
 
 	// Initialize Config
 	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
-	let defaultScheme = Spicetify.Config?.color_scheme || "Comfy";
+	let configScheme = Spicetify.Config?.color_scheme || "Comfy";
 	let preloadedScheme = false;
 	let startup = true;
 	let preloadContainer = document.createElement("div");
@@ -59,6 +57,9 @@ torefactor:
 		.then(response => response.text())
 		.then(iniContent => {
 			setConfig("Color-Schemes", parseIni(iniContent), "Successfully updated color schemes");
+			configScheme =
+				(getConfig("Color-Schemes") && Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())) ||
+				configScheme;
 			updateScheme(getConfig("Color-Scheme"), "updated");
 		})
 		.catch(error => {
@@ -396,8 +397,9 @@ torefactor:
 	});
 
 	const Dropdown = Spicetify.React.memo(({ name, title, desc, options, defaultVal, condition = true, tippy, callback }) => {
-		const fallbackVal = "Select an option";
-		if (!defaultVal) defaultVal = fallbackVal;
+		if (!condition) return null;
+		if (!defaultVal) defaultVal = "Select an option";
+		if (typeof options === "function") options = options();
 
 		const [selectedValue, setSelectedValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 		const [buttonEnabled, setButtonEnabled] = Spicetify.React.useState(selectedValue !== defaultVal);
@@ -427,7 +429,6 @@ torefactor:
 			}
 		}, [selectedValue]);
 
-		if (!condition) return null;
 		return Spicetify.React.createElement(CardLayout, {
 			title,
 			desc,
@@ -475,8 +476,9 @@ torefactor:
 									"div",
 									{
 										key: option,
-										className: "dropdown-option",
+										className: `dropdown-option${selectedValue === option ? " selected" : ""}`,
 										role: "option",
+										"aria-selected": selectedValue === option,
 										onClick: event => {
 											event.stopPropagation(); // Prevent event from propagating up
 											setSelectedValue(option);
@@ -502,9 +504,23 @@ torefactor:
 					name: "Color-Scheme",
 					title: `Color Scheme`,
 					desc: "For faster loadtimes use cli to change color schemes",
-					options: getConfig("Color-Schemes") ? Object.keys(getConfig("Color-Schemes")) : [defaultScheme],
-					defaultVal: defaultScheme,
-					condition: !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
+					options: () => {
+						const schemes = Object.keys(getConfig("Color-Schemes"));
+						const decapSchemes = schemes.map(function (x) {
+							return x.toLowerCase();
+						});
+
+						if (!decapSchemes.includes(configScheme.toLowerCase())) {
+							schemes.unshift(configScheme);
+						}
+
+						return schemes;
+					},
+					defaultVal: (configScheme =
+						(getConfig("Color-Schemes") &&
+							Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())) ||
+						configScheme),
+					condition: getConfig("Color-Schemes") && !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
 					callback: (name, value) => {
 						updateScheme(value);
 					}
@@ -1306,13 +1322,12 @@ torefactor:
 	}
 
 	function updateScheme(scheme, message) {
-		// probably check if marketplace is in  config and if it is wait for it to be loaded?
 		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
 		const colorSchemes = getConfig("Color-Schemes");
 		const existingScheme = document.querySelector("style.comfyScheme");
 
 		existingScheme?.remove();
-		if (scheme && colorSchemes && !marketplace && scheme !== defaultScheme) {
+		if (colorSchemes[scheme] && !marketplace && scheme !== configScheme) {
 			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${scheme}`);
 			scheme = colorSchemes[scheme];
 		} else {
