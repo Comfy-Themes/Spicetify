@@ -1,7 +1,4 @@
 /* 
-tofix:
-resetting of number input weirdness, gradient leaving s or px and others not removing them at all
-
 todo:
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
@@ -633,7 +630,7 @@ torefactor:
 						Spicetify.React.createElement("li", null, "Comfy default: 8px"),
 						Spicetify.React.createElement("li", null, "Spotify default: 50px")
 					),
-					callback: value => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px")
+					callback: value => document.documentElement.style.setProperty("--button-radius", value ? value + "px" : "")
 				},
 				{
 					type: SubSection,
@@ -829,7 +826,7 @@ torefactor:
 						null,
 						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient!")
 					),
-					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", (value || "232") + "px")
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? value + "px" : "")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Playbar" }, [
@@ -893,7 +890,7 @@ torefactor:
 							name: "Cover-Art-Width",
 							title: "Width",
 							defaultVal: "84px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-width", (value || "84") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-width", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -901,7 +898,7 @@ torefactor:
 							name: "Cover-Art-Height",
 							title: "Height",
 							defaultVal: "84px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-height", (value || "84") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-height", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -909,7 +906,7 @@ torefactor:
 							name: "Cover-Art-Radius",
 							title: "Border Radius",
 							defaultVal: "8px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-radius", (value || "8") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-radius", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -924,7 +921,7 @@ torefactor:
 								Spicetify.React.createElement("li", null, "Comfy default: 20px"),
 								Spicetify.React.createElement("li", null, "Spotify default: 0px")
 							),
-							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", value ? value + "px" : "")
 						}
 					]
 				}
@@ -950,7 +947,7 @@ torefactor:
 						Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
 						Spicetify.React.createElement("li", null, "Comfy default: 4px")
 					),
-					callback: value => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px")
+					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
 				},
 				{
 					type: SubSection,
@@ -1028,7 +1025,7 @@ torefactor:
 								Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
 								Spicetify.React.createElement("li", null, "Comfy default: 50")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-speed", value + "s" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-speed", value ? value + "s" : "")
 						},
 						{
 							type: Input,
@@ -1043,7 +1040,7 @@ torefactor:
 								Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
 								Spicetify.React.createElement("li", null, "Comfy default: 150")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-width", value + "%" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-width", value ? value + "%" : "")
 						},
 						{
 							type: Input,
@@ -1053,7 +1050,7 @@ torefactor:
 							desc: "Radius of circles (in px)",
 							defaultVal: "500",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--gradient-radius", value + "px" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? value + "px" : "")
 						}
 					],
 					collapseItems: true
