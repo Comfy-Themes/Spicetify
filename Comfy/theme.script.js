@@ -789,10 +789,17 @@ torefactor:
 			Spicetify.React.createElement(Section, { name: "Tracklist" }, [
 				{
 					type: Slider,
-					name: "visible-column-bar-Snippet",
-					title: "Visible Column Bar",
-					desc: "Unhides the column bar above tracklist",
-					defaultVal: false,
+					name: "Remove-Tracklist-Index",
+					title: "Remove Tracklist Index",
+					desc: "Hides the numbers / count next to songs",
+					defaultVal: true
+				},
+				{
+					type: Slider,
+					name: "Remove-Column-Bar-Snippet",
+					title: "Remove Column Bar",
+					desc: "Hides the column bar above tracklist",
+					defaultVal: true,
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
 						null,
@@ -834,7 +841,8 @@ torefactor:
 					type: Slider,
 					name: "Custom-Playbar-Snippet",
 					title: "Custom Playbar Layout",
-					defaultVal: true
+					defaultVal: true,
+					desc: "Comfy's out of box playbar design"
 				},
 				{
 					type: Slider,
@@ -932,7 +940,7 @@ torefactor:
 					name: "Banner-Enabled",
 					title: "Banner Image",
 					defaultVal: true,
-					desc: "Show current playing song / custom banner images instead of gradients"
+					desc: "Show current playing song / custom banner images instead of gradients (all settings in this category will be ignored if disabled)"
 				},
 				{
 					type: Input,

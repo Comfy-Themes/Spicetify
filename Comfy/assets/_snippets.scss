@@ -94,20 +94,9 @@
 				background-repeat: no-repeat !important;
 			}
 		}
-		&.visible-column-bar-Snippet {
-			.main-trackList-trackListHeader,
-			.main-trackList-trackListHeaderStuck {
-				position: static;
-			}
-
+		&.Remove-Column-Bar-Snippet {
 			.main-trackList-trackListHeader {
-				display: block !important;
-			}
-
-			.main-trackList-trackListHeaderStuck {
-				background: none;
-				box-shadow: none;
-				border: none;
+				display: none;
 			}
 		}
 

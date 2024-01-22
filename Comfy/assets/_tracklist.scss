@@ -26,72 +26,74 @@
 	.main-type-ballad {
 		transition: 300ms color;
 	}
-}
-
-// Image Tracklist
-.main-trackList-trackList:has(.main-trackList-rowSectionStart img),
-.main-trackList-trackList:has(.main-trackList-rowSectionStart .main-trackList-rowImageFallback) {
-	.main-trackList-trackListHeader {
-		.main-trackList-rowSectionIndex {
-			opacity: 0;
-		}
-	}
-
-	.main-trackList-trackListRow {
-		&:hover,
-		&:focus-within,
-		&.main-trackList-active {
-			.main-trackList-rowImagePlayPauseButton,
-			.main-trackList-rowSectionIndex {
-				background: rgba(var(--spice-rgb-play-button), 0.5);
-			}
-			.main-trackList-rowImagePlayButton,
-			.main-trackList-rowImagePlayPauseButton {
-				opacity: 1;
-			}
-		}
-
-		.main-trackList-rowImagePlayButton,
-		.main-trackList-rowImagePlayPauseButton,
-		.main-trackList-rowSectionIndex {
-			color: var(--spice-sidebar);
-			border-radius: var(--border-radius);
-			transition: 200ms opacity, 200ms background;
-		}
-
-		> .main-trackList-rowSectionIndex {
-			position: relative;
-			z-index: 1000;
-			top: 8px;
-			left: 56px;
-			width: 40px;
-			height: 40px;
-			justify-content: center;
-			text-indent: -1000px;
-		}
-	}
 
 	.main-trackList-rowImageFallback {
 		border-radius: var(--border-radius) !important;
 	}
 }
 
-// Image Tracklist with Index
-.main-trackList-indexable:has(.main-trackList-rowSectionStart img) {
-	@for $i from 3 through 6 {
-		&[aria-colcount="#{$i}"] .main-trackList-trackListRowGrid {
-			padding-left: 2px;
+:root #main.Remove-Tracklist-Index {
+	// Image Tracklist
+	.main-trackList-trackList:has(.main-trackList-rowSectionStart img),
+	.main-trackList-trackList:has(.main-trackList-rowSectionStart .main-trackList-rowImageFallback) {
+		.main-trackList-trackListHeader {
+			.main-trackList-rowSectionIndex {
+				opacity: 0;
+			}
+		}
 
-			@if $i == 3 {
-				grid-template-columns: [index] 0px [first] var(--col1, 4fr) [last] minmax(120px, var(--col2, 1fr)) !important;
-			} @else if $i == 4 {
-				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 4fr)) [var1] minmax(120px, var(--col2, 2fr)) [last] minmax(120px, var(--col3, 1fr)) !important;
-			} @else if $i == 5 {
-				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [last] minmax(120px, var(--col4, 1fr)) !important;
-			} @else if $i == 6 {
-				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, var(--col4, 2fr)) [last] minmax(120px, var(--col5, 1fr)) !important;
-			} @else if $i == 7 {
-				grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, var(--col4, 2fr)) [var4] minmax(120px, var(--col5, 2fr)) [last] minmax(120px, var(--col6, 1fr)) !important;
+		.main-trackList-trackListRow {
+			&:hover,
+			&:focus-within,
+			&.main-trackList-active {
+				.main-trackList-rowImagePlayPauseButton,
+				.main-trackList-rowSectionIndex {
+					background: rgba(var(--spice-rgb-play-button), 0.5);
+				}
+				.main-trackList-rowImagePlayButton,
+				.main-trackList-rowImagePlayPauseButton {
+					opacity: 1;
+				}
+			}
+
+			.main-trackList-rowImagePlayButton,
+			.main-trackList-rowImagePlayPauseButton,
+			.main-trackList-rowSectionIndex {
+				color: var(--spice-sidebar);
+				border-radius: var(--border-radius);
+				transition: 200ms opacity, 200ms background;
+			}
+
+			> .main-trackList-rowSectionIndex {
+				position: relative;
+				z-index: 1000;
+				top: 8px;
+				left: 56px;
+				width: 40px;
+				height: 40px;
+				justify-content: center;
+				text-indent: -1000px;
+			}
+		}
+	}
+
+	// Image Tracklist with Index
+	.main-trackList-indexable:has(.main-trackList-rowSectionStart img) {
+		@for $i from 3 through 6 {
+			&[aria-colcount="#{$i}"] .main-trackList-trackListRowGrid {
+				padding-left: 2px;
+
+				@if $i == 3 {
+					grid-template-columns: [index] 0px [first] var(--col1, 4fr) [last] minmax(120px, var(--col2, 1fr)) !important;
+				} @else if $i == 4 {
+					grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 4fr)) [var1] minmax(120px, var(--col2, 2fr)) [last] minmax(120px, var(--col3, 1fr)) !important;
+				} @else if $i == 5 {
+					grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [last] minmax(120px, var(--col4, 1fr)) !important;
+				} @else if $i == 6 {
+					grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, var(--col4, 2fr)) [last] minmax(120px, var(--col5, 1fr)) !important;
+				} @else if $i == 7 {
+					grid-template-columns: [index] 0px [first] minmax(120px, var(--col1, 6fr)) [var1] minmax(120px, var(--col2, 4fr)) [var2] minmax(120px, var(--col3, 3fr)) [var3] minmax(120px, var(--col4, 2fr)) [var4] minmax(120px, var(--col5, 2fr)) [last] minmax(120px, var(--col6, 1fr)) !important;
+				}
 			}
 		}
 	}
