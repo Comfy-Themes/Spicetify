@@ -834,6 +834,20 @@ torefactor:
 						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient!")
 					),
 					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? value + "px" : "")
+				},
+				{
+					type: Input,
+					inputType: "number",
+					name: "Tracklist-Gradient-Opacity",
+					title: "Gradient Opacity",
+					defaultVal: "0.6",
+					desc: "Change the opacity of the gradient (0 -> 1)",
+					tippy: Spicetify.React.createElement(
+						Spicetify.React.Fragment,
+						null,
+						Spicetify.React.createElement("h4", null, "Set to 0 for no gradient color!")
+					),
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-opacity", value || "0.6")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Playbar" }, [

@@ -26,7 +26,10 @@
 
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
-		background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)),
+		background: linear-gradient(
+				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
+				var(--spice-main) var(--tracklist-gradient-height)
+			),
 			var(--background-noise) !important;
 		height: calc(100% - var(--tracklist-gradient-height));
 		min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
