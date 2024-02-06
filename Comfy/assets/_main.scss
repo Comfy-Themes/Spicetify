@@ -164,8 +164,8 @@
 		}
 
 		// Artist Page
-		.main-gridContainer-gridContainer:last-child {
-			padding-bottom: 50px;
+		.contentSpacing > .main-gridContainer-gridContainer {
+			padding-bottom: var(--grid-gap);
 		}
 
 		// Home Page
