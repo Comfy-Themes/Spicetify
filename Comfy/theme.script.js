@@ -1329,7 +1329,7 @@ torefactor:
 			}
 		}
 
-		source = source ?? Spicetify.Player.data.item?.metadata.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
+		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
 
 		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
 		mainImage.src = secondaryImage.src = source;
