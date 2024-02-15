@@ -151,7 +151,7 @@
 			padding: 8px 16px 16px 16px; // Adjust padding
 
 			.main-actionBar-ActionBarRow {
-				.main-playButton-PlayButton {
+				> div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
 					margin-top: -24px;
 				}
