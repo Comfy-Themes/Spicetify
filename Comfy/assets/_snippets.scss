@@ -39,7 +39,7 @@
 			}
 		}
 
-		&.Comfy-nord-Snippet {
+		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
 			.Root__now-playing-bar {
 				background: var(--spice-player);
 				border-radius: var(--border-radius);
@@ -122,6 +122,19 @@
 			span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type,
 			span.Text__TextElement-sc-if376j-0.TextElement-bodyMediumBold-text.encore-text-body-medium-bold {
 				display: none;
+			}
+		}
+
+		&.Smooth-Progress-Bar-Snippet {
+			.x-progressBar-fillColor {
+				transition: 250ms;
+				transition-delay: 0ms;
+				transition-timing-function: ease-out;
+			}
+			.progress-bar__slider {
+				transition: 250ms;
+				transition-delay: 0ms;
+				transition-timing-function: ease-out;
 			}
 		}
 
