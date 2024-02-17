@@ -873,8 +873,8 @@ torefactor:
 				},
 				{
 					type: Slider,
-					name: "Remove-Device-Picker-Notification-Snippet",
-					title: "Remove Device Picker Notification",
+					name: "Remove-Connect-Bar-Snippet",
+					title: "Remove Connect Bar",
 					defaultVal: false
 				},
 				{

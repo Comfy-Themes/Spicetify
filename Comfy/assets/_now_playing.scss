@@ -1,9 +1,9 @@
 :root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
-	// beautiful lyrics support
 	.Root__now-playing-bar {
 		.main-nowPlayingBar-container {
 			position: relative;
 			border-top: none;
+			flex-direction: column-reverse !important;
 
 			.main-nowPlayingBar-nowPlayingBar {
 				margin-bottom: 12px;
@@ -45,25 +45,6 @@
 				.main-nowPlayingBar-extraControls button:hover svg {
 					color: var(--spice-text) !important;
 				}
-			}
-
-			// Connect Bar
-			.main-connectBar-connectBar {
-				border-radius: var(--border-radius);
-				top: -18px;
-				padding: 13px;
-				position: absolute;
-				left: 91%;
-				transform: translateX(-91%);
-				width: max-content;
-
-				&::after {
-					content: none;
-				}
-			}
-			.main-devicePicker-indicator {
-				bottom: 34px;
-				transform: rotate(180deg);
 			}
 
 			// Volume Bar

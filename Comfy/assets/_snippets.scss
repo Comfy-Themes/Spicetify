@@ -40,47 +40,48 @@
 		}
 
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
-			.Root__now-playing-bar {
+			.main-connectBar-connectBar {
+				margin-bottom: 8px;
+			}
+
+			.main-nowPlayingBar-nowPlayingBar {
+				padding: 0 8px 6px 0 !important;
+				margin-bottom: 0 !important;
 				background: var(--spice-player);
 				border-radius: var(--border-radius);
 
-				.main-nowPlayingBar-nowPlayingBar {
-					padding: 0 8px 6px 0 !important;
-					margin-bottom: 0 !important;
+				.playback-bar {
+					position: absolute !important;
 
-					.playback-bar {
-						position: absolute !important;
+					.playback-bar__progress-time-elapsed,
+					.main-playbackBarRemainingTime-container {
+						position: absolute;
+						bottom: 18px;
+						right: 0px;
+						grid-area: none !important;
+					}
+					.playback-bar__progress-time-elapsed {
+						transform: translateX(calc(-100% - 20px));
+					}
+					.playback-bar__progress-time-elapsed::after {
+						position: absolute;
+						left: calc(100% + 10px);
+						font-weight: bold;
+						color: rgba(var(--spice-rgb-custom-subdued), 0.8);
+						content: "/";
+						transform: translateX(-50%);
+					}
 
-						.playback-bar__progress-time-elapsed,
-						.main-playbackBarRemainingTime-container {
-							position: absolute;
-							bottom: 18px;
-							right: 0px;
-							grid-area: none !important;
-						}
-						.playback-bar__progress-time-elapsed {
-							transform: translateX(calc(-100% - 20px));
-						}
-						.playback-bar__progress-time-elapsed::after {
-							position: absolute;
-							left: calc(100% + 10px);
-							font-weight: bold;
-							color: rgba(var(--spice-rgb-custom-subdued), 0.8);
-							content: "/";
-							transform: translateX(-50%);
-						}
+					.x-progressBar-progressBarBg,
+					.x-progressBar-sliderArea {
+						border-radius: 0 0 8px 8px !important;
+						height: 6px !important;
+					}
 
-						.x-progressBar-progressBarBg,
-						.x-progressBar-sliderArea {
-							border-radius: 0 0 8px 8px !important;
-							height: 6px !important;
-						}
-
-						> div,
-						.x-progressBar-fillColor {
-							height: 6px !important;
-							border-radius: 50px !important;
-						}
+					> div,
+					.x-progressBar-fillColor {
+						height: 6px !important;
+						border-radius: 50px !important;
 					}
 				}
 			}
@@ -148,7 +149,7 @@
 			}
 		}
 
-		&.Remove-Device-Picker-Notification-Snippet {
+		&.Remove-Connect-Bar-Snippet-Snippet {
 			.main-connectBar-connected,
 			.main-devicePicker-indicator {
 				display: none !important;
