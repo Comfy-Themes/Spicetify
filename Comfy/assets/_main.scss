@@ -31,7 +31,7 @@
 				var(--spice-main) var(--tracklist-gradient-height)
 			),
 			var(--background-noise) !important;
-		height: calc(100% - var(--tracklist-gradient-height));
+		height: calc(100% - 232px);
 		min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
 	}
 
