@@ -823,18 +823,17 @@ torefactor:
 				},
 				{
 					type: Input,
-					inputType: "text",
+					inputType: "number",
 					name: "Tracklist-Gradient-Height",
 					title: "Gradient Height",
-					defaultVal: "232px",
+					defaultVal: "232",
 					desc: "Change the height of the gradient (the transparent part of the tracklist)",
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
 						null,
-						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient"),
-						Spicetify.React.createElement("h4", null, "Set to -webkit-fill-available to cover the whole tracklist")
+						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient!")
 					),
-					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value || "")
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? value + "px" : "")
 				},
 				{
 					type: Input,
@@ -865,7 +864,7 @@ torefactor:
 					title: "Smooth Progress Bar",
 					desc: "Makes the progress bar ease its movement giving the appearance of a smoother transition",
 					defaultVal: true
-				},
+				},				
 				{
 					type: Slider,
 					name: "Hoverable-Timers-Snippet",
