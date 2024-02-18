@@ -30,7 +30,7 @@
 				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
 				var(--spice-main) var(--tracklist-gradient-height)
 			),
-			var(--background-noise) !important;
+			var(--tracklist-gradient-noise) !important;
 		height: calc(100% - 232px);
 		min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
 	}
