@@ -1157,22 +1157,26 @@ torefactor:
 							callback: () => {
 								const settings = document.querySelector(".GenericModal__overlay:has(.comfy-settings)");
 								Spicetify.ReactDOM.render(
-									Spicetify.React.createElement(Dialog, {
-										titleText: "Are you sure?",
-										descriptionText: "This will reset all settings to default!",
-										cancelText: "Cancel",
-										confirmText: "Reset",
-										onOpen: () => {
-											settings.style.zIndex = 0;
-										},
-										onClose: () => {
-											settings.style.zIndex = 100;
-										},
-										onConfirm: () => {
-											localStorage.removeItem("comfy:config");
-											location.reload();
-										}
-									}),
+									Spicetify.React.createElement(
+										Spicetify.ReactComponent.RemoteConfigProvider,
+										{ configuration: Spicetify.Platform.RemoteConfiguration },
+										Spicetify.React.createElement(Dialog, {
+											titleText: "Are you sure?",
+											descriptionText: "This will reset all settings to default!",
+											cancelText: "Cancel",
+											confirmText: "Reset",
+											onOpen: () => {
+												settings.style.zIndex = 0;
+											},
+											onClose: () => {
+												settings.style.zIndex = 100;
+											},
+											onConfirm: () => {
+												localStorage.removeItem("comfy:config");
+												location.reload();
+											}
+										})
+									),
 									document.createElement("div")
 								);
 							}
