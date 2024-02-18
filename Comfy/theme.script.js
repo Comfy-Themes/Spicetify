@@ -822,6 +822,16 @@ torefactor:
 					)
 				},
 				{
+					type: Slider,
+					name: "Remove-Tracklist-Gradient-Noise",
+					title: "Remove Gradient Noise",
+					defaultVal: false,
+					desc: "Remove the noise from the gradient",
+					callback: value => {
+						document.documentElement.style.setProperty("--tracklist-gradient-noise", value ? "none" : "");
+					}
+				},
+				{
 					type: Input,
 					inputType: "number",
 					name: "Tracklist-Gradient-Height",
@@ -848,16 +858,6 @@ torefactor:
 						Spicetify.React.createElement("h4", null, "Set to 0 for no gradient color!")
 					),
 					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-opacity", value || "")
-				},
-				{
-					type: Slider,
-					name: "Remove-Tracklist-Gradient-Noise",
-					title: "Remove Gradient Noise",
-					defaultVal: false,
-					desc: "Remove the noise from the gradient",
-					callback: value => {
-						document.documentElement.style.setProperty("--tracklist-gradient-noise", value ? "none" : "");
-					}
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Playbar" }, [
