@@ -864,7 +864,7 @@ torefactor:
 					title: "Smooth Progress Bar",
 					desc: "Makes the progress bar ease its movement giving the appearance of a smoother transition",
 					defaultVal: true
-				},				
+				},
 				{
 					type: Slider,
 					name: "Hoverable-Timers-Snippet",
