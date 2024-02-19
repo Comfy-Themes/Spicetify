@@ -12,14 +12,6 @@
 				.main-nowPlayingWidget-nowPlaying {
 					height: 0;
 
-					&.main-nowPlayingWidget-coverExpanded {
-						transform: translateX(-16px);
-
-						.main-coverSlotCollapsed-container[aria-hidden="true"] {
-							display: none;
-						}
-					}
-
 					.main-coverSlotCollapsed-container {
 						bottom: var(--cover-art-bottom);
 						border-radius: var(--cover-art-radius);
@@ -39,11 +31,12 @@
 				}
 
 				// Miscolored right side button svgs
-				.main-nowPlayingBar-extraControls * svg {
-					color: rgba(var(--spice-rgb-selected-row), 0.7) !important;
-				}
-				.main-nowPlayingBar-extraControls button:hover svg {
-					color: var(--spice-text) !important;
+				.main-nowPlayingBar-extraControls button:not(.main-genericButton-buttonActive) {
+					color: rgba(var(--spice-rgb-selected-row), 0.7);
+
+					&:hover {
+						color: var(--spice-text) !important;
+					}
 				}
 			}
 

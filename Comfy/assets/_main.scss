@@ -134,14 +134,13 @@
 			& > div:nth-last-of-type(2),
 			.main-entityHeader-imageContainer {
 				align-self: center;
-				flex-shrink: 0;
 
 				& + .main-entityHeader-headerText {
 					flex: unset;
 					justify-content: center;
 
 					.main-entityHeader-title h1 {
-						font-size: 50px !important;
+						font-size: 3rem !important;
 					}
 				}
 			}
@@ -203,13 +202,6 @@
 			}
 		}
 
-		// Playlists
-		.playlist-playlist-playlistImageContainer {
-			height: 192px;
-			min-width: 192px;
-			width: 192px;
-		}
-
 		// Shows
 		section[data-testid="your-episodes-page"] {
 			.main-actionBarBackground-background {
@@ -218,11 +210,14 @@
 		}
 
 		section[data-testid="episode"] {
-			.main-actionBar-ActionBarRow {
-				margin-top: 0 !important;
+			.main-actionBar-ActionBar {
+				flex-direction: column-reverse;
+				.main-actionBar-ActionBarRow {
+					margin-top: 0 !important;
 
-				&:nth-child(1) {
-					display: none;
+					&:nth-child(1) {
+						padding-top: 2rem;
+					}
 				}
 			}
 		}
