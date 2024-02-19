@@ -24,6 +24,7 @@
 	--tracklist-gradient-opacity: 0.6;
 	--tracklist-gradient-noise: var(--background-noise);
 
+	// Custom Radii
 	button,
 	button span,
 	input,
@@ -39,12 +40,8 @@
 		--border-radius: var(--button-radius) !important;
 	}
 
-	// Fonts - Could be redundant
-	body,
-	button,
-	input,
-	select,
-	textarea {
+	// Custom Fonts
+	* {
 		font-family: var(
 			--font-family,
 			CircularSp,
@@ -55,7 +52,7 @@
 			CircularSp-Deva,
 			var(--fallback-fonts, sans-serif),
 			sans-serif
-		);
+		) !important;
 	}
 
 	// remove overflow

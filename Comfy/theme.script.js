@@ -640,8 +640,6 @@ torefactor:
 					callback: value => {
 						if (!value) {
 							document.documentElement.style.setProperty("--font-family", "");
-							document.documentElement.style.setProperty("--encore-title-font-stack", "");
-							document.documentElement.style.setProperty("--encore-body-font-stack", "");
 						}
 					},
 					tippy: Spicetify.React.createElement(
@@ -697,8 +695,6 @@ torefactor:
 									}
 								}
 								document.documentElement.style.setProperty("--font-family", fontFamily);
-								document.documentElement.style.setProperty("--encore-title-font-stack", fontFamily);
-								document.documentElement.style.setProperty("--encore-body-font-stack", fontFamily);
 							}
 						}
 					]
