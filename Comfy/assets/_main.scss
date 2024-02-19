@@ -115,7 +115,8 @@
 		}
 
 		.main-entityHeader-background {
-			height: 100%;
+			height: calc(clamp(340px, 30vh, 400px) + var(--tracklist-gradient-height));
+			max-height: 100%;
 
 			&.main-entityHeader-overlay {
 				--bgColor: unset !important;
