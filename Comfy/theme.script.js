@@ -640,6 +640,8 @@ torefactor:
 					callback: value => {
 						if (!value) {
 							document.documentElement.style.setProperty("--font-family", "");
+							document.documentElement.style.setProperty("--encore-title-font-stack", "");
+							document.documentElement.style.setProperty("--encore-body-font-stack", "");
 						}
 					},
 					tippy: Spicetify.React.createElement(
@@ -695,6 +697,8 @@ torefactor:
 									}
 								}
 								document.documentElement.style.setProperty("--font-family", fontFamily);
+								document.documentElement.style.setProperty("--encore-title-font-stack", fontFamily);
+								document.documentElement.style.setProperty("--encore-body-font-stack", fontFamily);
 							}
 						}
 					]
@@ -1110,6 +1114,8 @@ torefactor:
 							tippy: Spicetify.React.createElement(
 								Spicetify.React.Fragment,
 								null,
+								Spicetify.React.createElement("h4", null, "Network Images:"),
+								Spicetify.React.createElement("li", null, "Enter any raw image url into text box, e.g. 'https://example.com/image.png'"),
 								Spicetify.React.createElement("h4", null, "Local Images:"),
 								Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'"),
 								Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box")
