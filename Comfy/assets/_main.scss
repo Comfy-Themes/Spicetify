@@ -26,13 +26,17 @@
 
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
-		background: linear-gradient(
+		background-image: linear-gradient(
 				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
 				var(--spice-main) var(--tracklist-gradient-height)
 			),
 			var(--tracklist-gradient-noise) !important;
-		height: calc(100% - 232px);
-		min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
+		background-color: transparent !important;
+		height: calc(100% - 252px);
+		min-height: calc(
+			100vh - min(30vh, clamp(250px, 250px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 150, 400px)) - 128px
+		);
+		background-repeat: no-repeat;
 	}
 
 	.artist-artistOverview-artistOverviewContent {
