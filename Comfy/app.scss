@@ -83,6 +83,10 @@
 		--background-press: var(--spice-play-button-active);
 	}
 
+	.encore-inverted-light-set {
+		--background-highlight: var(--spice-text);
+	}
+
 	// Premium Fullscreen Overlay
 	.npv-background-image__overlay {
 		background: linear-gradient(rgba(var(--spice-rgb-shadow), 0.5) 0, transparent 100%), var(--background-noise);

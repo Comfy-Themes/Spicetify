@@ -8,7 +8,10 @@
 				> div {
 					&:active::after {
 						background-color: var(--spice-highlight-elevated);
-						border-radius: 20px !important;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
 					}
 					.x-entityImage-imageContainer {
 						box-shadow: none !important;
