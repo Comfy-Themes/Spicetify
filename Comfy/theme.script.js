@@ -357,6 +357,15 @@ torefactor:
 		const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 		const isFirstRender = Spicetify.React.useRef(true);
 
+		const textFieldRef = Spicetify.React.useRef(null);
+		Spicetify.React.useEffect(() => {
+			textFieldRef.current.addEventListener("wheel", e => {
+				if (document.focusedElement === textFieldRef.current) {
+					e.preventDefault();
+				}
+			});
+		}, []);
+
 		Spicetify.React.useEffect(() => {
 			if (isPromise(defaultVal)) defaultVal.then(val => setDefaultState(val));
 		}, [defaultVal]);
@@ -383,6 +392,7 @@ torefactor:
 			action: Spicetify.React.createElement("input", {
 				type: inputType,
 				className: "input",
+				ref: textFieldRef,
 				value,
 				min,
 				max,
