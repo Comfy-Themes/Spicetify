@@ -7,71 +7,71 @@
 <details><summary>Catppuccin</summary>
 <details><summary>🌻 Latte</summary>
 
-![gif](../images/color-schemes/gif/catppuccin/latte.gif)
+![png](../images/color-schemes/catppuccin/latte.png)
 
 </details>
 <details><summary>🍨 Frappé</summary>
 
-![gif](../images/color-schemes/gif/catppuccin/frappe.gif)
+![png](../images/color-schemes/catppuccin/frappe.png)
 
 </details>
 <details><summary>🌺 Macchiato</summary>
 
-![gif](../images/color-schemes/gif/catppuccin/macchiato.gif)
+![png](../images/color-schemes/catppuccin/macchiato.png)
 
 </details>
 <details><summary>🌿 Mocha</summary>
 
-![gif](../images/color-schemes/gif/catppuccin/mocha.gif)
+![png](../images/color-schemes/catppuccin/mocha.png)
 
 </details></details>
 
 <details><summary>Rosé Pine</summary>
 <details><summary>Original</summary>
 
-![png](../images/color-schemes/png/rose-pine/original.png)
+![png](../images/color-schemes/rose-pine/original.png)
 
 </details>
 <details><summary>Moon</summary>
 
-![png](../images/color-schemes/png/rose-pine/moon.png)
+![png](../images/color-schemes/rose-pine/moon.png)
 
 </details>
 <details><summary>Dawn</summary>
 
-![png](../images/color-schemes/png/rose-pine/dawn.png)
+![png](../images/color-schemes/rose-pine/dawn.png)
 
 </details></details>
 
 <details><summary>Mono</summary>
 <details><summary>Original</summary>
 
-![gif](../images/color-schemes/gif/mono/mono.gif)
+![png](../images/color-schemes/mono/mono.png)
 
 </details>
 <details><summary>Forest</summary>
 
-![gif](../images/color-schemes/gif/mono/forest.gif)
+![png](../images/color-schemes/mono/forest.png)
 
 </details>
 <details><summary>Neon</summary>
 
-![gif](../images/color-schemes/gif/mono/neon.gif)
+![png](../images/color-schemes/mono/neon.png)
 
 </details>
 <details><summary>Sakura</summary>
 
-![gif](../images/color-schemes/gif/mono/sakura.gif)
+![png](../images/color-schemes/mono/sakura.png)
 
 </details>
 <details><summary>Sunset</summary>
 
-![gif](../images/color-schemes/gif/mono/sunset.gif)
+![png](../images/color-schemes/mono/sunset.png)
 
 </details>
 <details><summary>Vaporwave</summary>
 
-![gif](../images/color-schemes/gif/mono/vaporwave.gif)
+![png](../images/color-schemes/mono/vaporwave.png)
 
 </details></details>
 
@@ -79,37 +79,52 @@
 
 <details><summary>Comfy</summary>
 
-![gif](../images/color-schemes/gif/comfy.gif)
+![png](../images/color-schemes/comfy.png)
+
+</details>
+<details><summary>Spotify</summary>
+
+![png](../images/color-schemes/spotify.png)
 
 </details>
 <details><summary>Nord</summary>
 
-![gif](../images/color-schemes/gif/nord.gif)
-
-</details>
-<details><summary>Deep</summary>
-
-![gif](../images/color-schemes/gif/deep.gif)
-
-</details>
-<details><summary>Lunar</summary>
-
-![gif](../images/color-schemes/gif/lunar.gif)
-
-</details>
-<details><summary>Velvet</summary>
-
-![gif](../images/color-schemes/gif/velvet.gif)
-
-</details>
-<details><summary>Yami</summary>
-
-![gif](../images/color-schemes/gif/yami.gif)
+![png](../images/color-schemes/nord.png)
 
 </details>
 <details><summary>Kitty</summary>
 
-![gif](../images/color-schemes/gif/kitty.gif)
+![png](../images/color-schemes/kitty.png)
+
+</details>
+<details><summary>Lunar</summary>
+
+![png](../images/color-schemes/lunar.png)
+
+</details>
+<details><summary>Deep</summary>
+
+![png](../images/color-schemes/deep.png)
+
+</details>
+<details><summary>Velvet</summary>
+
+![png](../images/color-schemes/velvet.png)
+
+</details>
+<details><summary>Kanagawa</summary>
+
+![png](../images/color-schemes/kanagawa.png)
+
+</details>
+<details><summary>Yami</summary>
+
+![png](../images/color-schemes/yami.png)
+
+</details>
+<details><summary>Hikari</summary>
+
+![png](../images/color-schemes/hikari.png)
 
 </details>
 
@@ -117,85 +132,85 @@
 
 <details><summary>Album</summary>
 
-![gif](../images/pages/album.png)
+![png](../images/pages/album.png)
 
 </details>
 
 <details><summary>Artist</summary>
 
-![gif](../images/pages/artist.png)
+![png](../images/pages/artist.png)
 
 </details>
 
 <details><summary>Browse</summary>
 
-![gif](../images/pages/browse.png)
+![png](../images/pages/browse.png)
 
 </details>
 
 <details><summary>Discography</summary>
 
-![gif](../images/pages/discography.png)
+![png](../images/pages/discography.png)
 
 </details>
 
 <details><summary>Home</summary>
 
-![gif](../images/pages/home.png)
+![png](../images/pages/home.png)
 
 </details>
 
 <details><summary>Lyrics Plus</summary>
 
-![gif](../images/pages/lyrics-plus.png)
+![png](../images/pages/lyrics-plus.png)
 
 </details>
 
 <details><summary>Marketplace</summary>
 
-![gif](../images/pages/marketplace.png)
+![png](../images/pages/marketplace.png)
 
 </details>
 
 <details><summary>New Releases</summary>
 
-![gif](../images/pages/new-releases.png)
+![png](../images/pages/new-releases.png)
 
 </details>
 
 <details><summary>Playlist</summary>
 
-![gif](../images/pages/playlist.png)
+![png](../images/pages/playlist.png)
 
 </details>
 
 <details><summary>Podcasts</summary>
 
-![gif](../images/pages/podcasts.png)
+![png](../images/pages/podcasts.png)
 
 </details>
 
 <details><summary>Profile</summary>
 
-![gif](../images/pages/profile.png)
+![png](../images/pages/profile.png)
 
 </details>
 
 <details><summary>Radio</summary>
 
-![gif](../images/pages/radio.png)
+![png](../images/pages/radio.png)
 
 </details>
 
 <details><summary>Search</summary>
 
-![gif](../images/pages/search.png)
+![png](../images/pages/search.png)
 
 </details>
 
 <details><summary>Search Results</summary>
 
-![gif](../images/pages/search-results.png)
+![png](../images/pages/search-results.png)
 
 </details>
 
@@ -203,49 +218,49 @@
 
 <details><summary>Comfy Settings</summary>
 
-![gif](../images/panels/comfy-settings.png)
+![png](../images/panels/comfy-settings.png)
 
 </details>
 
 <details><summary>Friends</summary>
 
-![gif](../images/panels/friends.png)
+![png](../images/panels/friends.png)
 
 </details>
 
 <details><summary>Library</summary>
 
-![gif](../images/panels/library.png)
+![png](../images/panels/library.png)
 
 </details>
 
 <details><summary>Library Expanded</summary>
 
-![gif](../images/panels/library-expanded.png)
+![png](../images/panels/library-expanded.png)
 
 </details>
 
 <details><summary>Library Closed</summary>
 
-![gif](../images/panels/library-closed.png)
+![png](../images/panels/library-closed.png)
 
 </details>
 
 <details><summary>Library Compact</summary>
 
-![gif](../images/panels/library-compact.png)
+![png](../images/panels/library-compact.png)
 
 </details>
 
 <details><summary>Now Playing View</summary>
 
-![gif](../images/panels/npv.png)
+![png](../images/panels/npv.png)
 
 </details>
 
 <details><summary>Queue</summary>
 
-![gif](../images/panels/queue.png)
+![png](../images/panels/queue.png)
 
 </details>
 
@@ -253,7 +268,7 @@
 
 <details><summary>Apple Music Gradient</summary>
 
-![gif](../images/settings/am-blur.gif)
+![png](../images/settings/am-blur.png)
 ![png](../images/settings/am-blur.png)
 
 </details>
