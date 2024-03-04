@@ -216,12 +216,6 @@
 
 ### 📳 Panels
 
-<details><summary>Comfy Settings</summary>
-
-![png](../images/panels/comfy-settings.png)
-
-</details>
-
 <details><summary>Friends</summary>
 
 ![png](../images/panels/friends.png)
