@@ -5,13 +5,17 @@
 			border-top: none;
 			flex-direction: column-reverse !important;
 
+			&::before {
+				z-index: auto !important;
+			}
+
 			.main-nowPlayingBar-nowPlayingBar {
 				margin-bottom: 12px;
-				z-index: 1;
 
 				// Cover-art
 				.main-nowPlayingWidget-nowPlaying {
 					height: 0;
+					z-index: 1;
 
 					.main-coverSlotCollapsed-container {
 						bottom: var(--cover-art-bottom);

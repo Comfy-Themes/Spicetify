@@ -47,7 +47,7 @@
 			.main-nowPlayingBar-nowPlayingBar {
 				padding: 0 8px 6px 0 !important;
 				margin-bottom: 0 !important;
-				background: var(--spice-player);
+				background: var(--bg-img, var(--spice-player));
 				border-radius: var(--border-radius);
 
 				.playback-bar {
