@@ -40,6 +40,10 @@
 		}
 
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
+			.Root__now-playing-bar.LibraryX {
+				--cover-ambience-background: var(--spice-player, var(--spice-sidebar)) !important;
+			}
+
 			.main-connectBar-connectBar {
 				margin-bottom: 8px;
 			}
