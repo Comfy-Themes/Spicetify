@@ -195,9 +195,10 @@
 				.main-topBar-container {
 					pointer-events: none;
 					grid-area: top-bar;
-					height: 32px;
-					margin-top: -32px;
 					contain: unset;
+					top: -39px;
+					height: 48px;
+					padding-block: 8px;
 
 					.main-topBar-topbarContentWrapper {
 						> *:not(.main-topBar-searchBar):not(:has(ul)) {
