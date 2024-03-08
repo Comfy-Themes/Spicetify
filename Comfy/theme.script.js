@@ -643,8 +643,10 @@ torefactor:
 						waitForDeps(["Spicetify.CosmosAsync"], async () => {
 							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
 								type: "update_titlebar",
-								height: value
+								height: `${value}px`
 							});
+
+							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
 						});
 					}
 				},

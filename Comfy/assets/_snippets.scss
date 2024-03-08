@@ -196,8 +196,8 @@
 					pointer-events: none;
 					grid-area: top-bar;
 					contain: unset;
-					top: -39px;
-					height: 48px;
+					top: calc(var(--comfy-topbar-height, 40px) * -1 + 1px);
+					height: calc(var(--comfy-topbar-height, 40px) + 8px);
 					padding-block: 8px;
 
 					.main-topBar-topbarContentWrapper {

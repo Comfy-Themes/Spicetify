@@ -60,6 +60,11 @@
 		overflow: hidden;
 	}
 
+	// Custom Topbar Height
+	.Root__top-container {
+		padding-top: var(--comfy-topbar-height, calc(24px + var(--panel-gap)*2)) !important;
+	}
+
 	// Filtering
 	.main-trackList-playingIcon,
 	.view-homeShortcutsGrid-playingIcon,
