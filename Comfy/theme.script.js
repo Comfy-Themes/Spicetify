@@ -634,16 +634,13 @@ torefactor:
 					inputType: "number",
 					name: "App-Titlebar-Height",
 					title: "Titlebar Height",
-					desc: "You will need to restart Spotify when resetting to default (N/A)",
-					defaultVal: "N/A",
+					defaultVal: "40",
 					condition: Spicetify.Config.version >= "2.33.2",
 					callback: value => {
-						if (value === "N/A") return;
-
 						waitForDeps(["Spicetify.CosmosAsync"], async () => {
 							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
 								type: "update_titlebar",
-								height: `${value}px`
+								height: `${value || 40}px`
 							});
 
 							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");

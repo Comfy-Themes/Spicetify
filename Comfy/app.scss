@@ -60,9 +60,18 @@
 		overflow: hidden;
 	}
 
-	// Custom Topbar Height
+	// Custom Topbar Height + Bg Colour Matching
 	.Root__top-container {
-		padding-top: var(--comfy-topbar-height, calc(24px + var(--panel-gap)*2)) !important;
+		padding-top: var(--comfy-topbar-height, 40px) !important;
+	}
+	body::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		z-index: 999;
+		backdrop-filter: brightness(2.12);  
+		width: 135px;
+		height: var(--comfy-topbar-height, 40px);
 	}
 
 	// Filtering
