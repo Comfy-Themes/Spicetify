@@ -359,11 +359,13 @@ torefactor:
 
 		const textFieldRef = Spicetify.React.useRef(null);
 		Spicetify.React.useEffect(() => {
-			textFieldRef.current.addEventListener("wheel", e => {
-				if (document.focusedElement === textFieldRef.current) {
-					e.preventDefault();
-				}
-			});
+			if (textFieldRef.current) {
+				textFieldRef.current.addEventListener("wheel", e => {
+					if (document.focusedElement === textFieldRef.current) {
+						e.preventDefault();
+					}
+				});
+			}
 		}, []);
 
 		Spicetify.React.useEffect(() => {
@@ -630,6 +632,25 @@ torefactor:
 				{
 					type: Input,
 					inputType: "number",
+					name: "App-Titlebar-Height",
+					title: "Titlebar Height",
+					desc: "You will need to restart Spotify when resetting to default (N/A)",
+					defaultVal: "N/A",
+					condition: Spicetify.Config.version >= "2.33.2",
+					callback: value => {
+						if (value === "N/A") return;
+
+						waitForDeps(["Spicetify.CosmosAsync"], async () => {
+							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
+								type: "update_titlebar",
+								height: value
+							});
+						});
+					}
+				},
+				{
+					type: Input,
+					inputType: "number",
 					name: "Button-Radius",
 					title: "Button Radius",
 					defaultVal: "8",
@@ -641,6 +662,34 @@ torefactor:
 						Spicetify.React.createElement("li", null, "Spotify default: 50px")
 					),
 					callback: value => document.documentElement.style.setProperty("--button-radius", value ? value + "px" : "")
+				},
+				{
+					type: SubSection,
+					name: "Topbar-Inside-Titlebar-Snippet",
+					title: "Move Topbar Inside Titlebar",
+					defaultVal: false,
+					callback: value => {
+						waitForDeps(
+							[".Root__top-container", ".main-topBar-container"],
+							elements => {
+								const [container, topbar] = elements;
+								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
+								const grid = value ? container : entryPoint;
+
+								grid.insertBefore(topbar, grid.firstChild);
+							},
+							true
+						);
+					},
+					items: [
+						{
+							type: Slider,
+							name: "Collapse-Topbar-Snippet",
+							title: "Collapse List Items",
+							defaultVal: true
+						}
+					],
+					collapseItems: true
 				},
 				{
 					type: SubSection,
@@ -761,34 +810,6 @@ torefactor:
 									"getElementById"
 								);
 							}
-						}
-					],
-					collapseItems: true
-				},
-				{
-					type: SubSection,
-					name: "Topbar-Inside-Titlebar-Snippet",
-					title: "Move Topbar Inside Titlebar",
-					defaultVal: false,
-					callback: value => {
-						waitForDeps(
-							[".Root__top-container", ".main-topBar-container"],
-							elements => {
-								const [container, topbar] = elements;
-								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
-								const grid = value ? container : entryPoint;
-
-								grid.insertBefore(topbar, grid.firstChild);
-							},
-							true
-						);
-					},
-					items: [
-						{
-							type: Slider,
-							name: "Collapse-Topbar-Snippet",
-							title: "Collapse List Items",
-							defaultVal: true
 						}
 					],
 					collapseItems: true
