@@ -62,14 +62,14 @@
 
 	// Custom Topbar Height + Bg Colour Matching
 	.Root__top-container {
-		padding-top: var(--comfy-topbar-height, 40px) !important;
+		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
 	}
 	body::after {
-		content: '';
+		content: "";
 		position: absolute;
 		right: 0;
 		z-index: 999;
-		backdrop-filter: brightness(2.12);  
+		backdrop-filter: brightness(2.12);
 		width: 135px;
 		height: var(--comfy-topbar-height, 40px);
 	}

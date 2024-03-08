@@ -640,7 +640,7 @@ torefactor:
 						waitForDeps(["Spicetify.CosmosAsync"], async () => {
 							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
 								type: "update_titlebar",
-								height: `${value || 40}px`
+								height: `${(value === "0" ? "1" : value )|| "40"}px`
 							});
 
 							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
