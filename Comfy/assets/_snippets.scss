@@ -1,14 +1,19 @@
-.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 60px 150px !important;
-}
-.spotify__container--is-desktop.spotify__os--is-linux #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 0px 150px !important;
-}
-.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 60px 0px !important;
-}
-
 :root {
+	&.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 60px 150px !important;
+		}
+	}
+	&.spotify__container--is-desktop.spotify__os--is-linx #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 0px 150px !important;
+		}
+	}
+	&.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 60px 0px !important;
+		}
+	}
 	&:has(#main.Flatten-Colors-normal) {
 		--spice-main: var(--spice-sidebar);
 		--spice-main-transition: var(--spice-sidebar);
@@ -26,6 +31,7 @@
 			color: var(--spice-text);
 		}
 	}
+
 	#main {
 		&.Comfy-mono-Snippet {
 			.cover-art {
