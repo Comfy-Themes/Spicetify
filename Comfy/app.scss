@@ -64,7 +64,7 @@
 	.Root__top-container {
 		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
 	}
-	body::after {
+	&.spotify__container--is-desktop.spotify__os--is-windows body::after {
 		content: "";
 		position: absolute;
 		right: 0;
