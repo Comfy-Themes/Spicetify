@@ -1,14 +1,19 @@
-.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 60px 150px !important;
-}
-.spotify__container--is-desktop.spotify__os--is-linux #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 0px 150px !important;
-}
-.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet .main-topBar-container {
-	padding-inline: 60px 0px !important;
-}
-
 :root {
+	&.spotify__container--is-desktop.spotify__os--is-windows #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 60px 150px !important;
+		}
+	}
+	&.spotify__container--is-desktop.spotify__os--is-linx #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 0px 150px !important;
+		}
+	}
+	&.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet {
+		.main-topBar-container {
+			padding-inline: 60px 0px !important;
+		}
+	}
 	&:has(#main.Flatten-Colors-normal) {
 		--spice-main: var(--spice-sidebar);
 		--spice-main-transition: var(--spice-sidebar);
@@ -26,6 +31,7 @@
 			color: var(--spice-text);
 		}
 	}
+
 	#main {
 		&.Comfy-mono-Snippet {
 			.cover-art {
@@ -39,48 +45,53 @@
 			}
 		}
 
-		&.Comfy-nord-Snippet {
-			.Root__now-playing-bar {
-				background: var(--spice-player);
+		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
+			.Root__now-playing-bar.LibraryX {
+				--cover-ambience-background: var(--spice-player, var(--spice-sidebar)) !important;
+			}
+
+			.main-connectBar-connectBar {
+				margin-bottom: 8px;
+			}
+
+			.main-nowPlayingBar-nowPlayingBar {
+				padding: 0 8px 6px 0 !important;
+				margin-bottom: 0 !important;
+				background: var(--bg-img, var(--spice-player));
 				border-radius: var(--border-radius);
 
-				.main-nowPlayingBar-nowPlayingBar {
-					padding: 0 8px 6px 0 !important;
-					margin-bottom: 0 !important;
+				.playback-bar {
+					position: absolute !important;
 
-					.playback-bar {
-						position: absolute !important;
+					.playback-bar__progress-time-elapsed,
+					.main-playbackBarRemainingTime-container {
+						position: absolute;
+						bottom: 18px;
+						right: 0px;
+						grid-area: none !important;
+					}
+					.playback-bar__progress-time-elapsed {
+						transform: translateX(calc(-100% - 20px));
+					}
+					.playback-bar__progress-time-elapsed::after {
+						position: absolute;
+						left: calc(100% + 10px);
+						font-weight: bold;
+						color: rgba(var(--spice-rgb-custom-subdued), 0.8);
+						content: "/";
+						transform: translateX(-50%);
+					}
 
-						.playback-bar__progress-time-elapsed,
-						.main-playbackBarRemainingTime-container {
-							position: absolute;
-							bottom: 18px;
-							right: 0px;
-							grid-area: none !important;
-						}
-						.playback-bar__progress-time-elapsed {
-							transform: translateX(calc(-100% - 20px));
-						}
-						.playback-bar__progress-time-elapsed::after {
-							position: absolute;
-							left: calc(100% + 10px);
-							font-weight: bold;
-							color: rgba(var(--spice-rgb-custom-subdued), 0.8);
-							content: "/";
-							transform: translateX(-50%);
-						}
+					.x-progressBar-progressBarBg,
+					.x-progressBar-sliderArea {
+						border-radius: 0 0 8px 8px !important;
+						height: 6px !important;
+					}
 
-						.x-progressBar-progressBarBg,
-						.x-progressBar-sliderArea {
-							border-radius: 0 0 8px 8px !important;
-							height: 6px !important;
-						}
-
-						> div,
-						.x-progressBar-fillColor {
-							height: 6px !important;
-							border-radius: 50px !important;
-						}
+					> div,
+					.x-progressBar-fillColor {
+						height: 6px !important;
+						border-radius: 50px !important;
 					}
 				}
 			}
@@ -94,20 +105,9 @@
 				background-repeat: no-repeat !important;
 			}
 		}
-		&.visible-column-bar-Snippet {
-			.main-trackList-trackListHeader,
-			.main-trackList-trackListHeaderStuck {
-				position: static;
-			}
-
+		&.Remove-Column-Bar-Snippet {
 			.main-trackList-trackListHeader {
-				display: block !important;
-			}
-
-			.main-trackList-trackListHeaderStuck {
-				background: none;
-				box-shadow: none;
-				border: none;
+				display: none;
 			}
 		}
 
@@ -130,8 +130,22 @@
 				flex-wrap: wrap;
 			}
 
-			span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+			span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type,
+			span.Text__TextElement-sc-if376j-0.TextElement-bodyMediumBold-text.encore-text-body-medium-bold {
 				display: none;
+			}
+		}
+
+		&.Smooth-Progress-Bar-Snippet {
+			.x-progressBar-fillColor {
+				transition: 250ms;
+				transition-delay: 0ms;
+				transition-timing-function: ease-out;
+			}
+			.progress-bar__slider {
+				transition: 250ms;
+				transition-delay: 0ms;
+				transition-timing-function: ease-out;
 			}
 		}
 
@@ -145,8 +159,8 @@
 			}
 		}
 
-		&.Remove-Device-Picker-Notification-Snippet {
-			.main-connectBar-connected,
+		&.Remove-Connect-Bar-Snippet {
+			.main-connectBar-connectBar,
 			.main-devicePicker-indicator {
 				display: none !important;
 			}
@@ -176,19 +190,6 @@
 			}
 		}
 
-		&.Right-Art-Snippet {
-			.main-coverSlotExpanded-container {
-				position: fixed;
-				top: calc(100% - 318px);
-				left: calc(100% - 230px);
-				width: 200px;
-				height: 200px;
-			}
-			.main-yourLibraryX-libraryIsExpanded.main-yourLibraryX-libraryIsCollapsed {
-				padding-bottom: 0 !important; // tweaked
-			}
-		}
-
 		&.Topbar-Inside-Titlebar-Snippet {
 			.Root__top-container {
 				grid-template-areas:
@@ -200,20 +201,30 @@
 				.main-topBar-container {
 					pointer-events: none;
 					grid-area: top-bar;
-					height: 32px;
-					margin-top: -32px;
+					contain: unset;
+					top: calc(var(--comfy-topbar-height, 40px) * -1 + 1px);
+					height: calc(var(--comfy-topbar-height, 40px) + 8px);
+					padding-block: 8px;
 
-					.main-topBar-topbarContentWrapper > *:not(.main-topBar-searchBar),
-					.main-topBar-topbarContent > *:not(.main-topBar-searchBar) {
-						justify-content: center;
-						display: flex;
+					.main-topBar-topbarContentWrapper {
+						> *:not(.main-topBar-searchBar):not(:has(ul)) {
+							justify-content: center;
+							display: flex;
+						}
+						ul {
+							text-align: center !important;
+							justify-content: center;
+						}
+						.queue-tabBar-headerItemLink {
+							padding: 5px 16px;
+						}
 					}
 
 					.main-topBar-topbarContent {
 						app-region: drag !important;
 
 						.main-entityHeader-topbarTitle {
-							height: 32px;
+							height: 100%;
 						}
 					}
 
@@ -248,15 +259,31 @@
 			.queue-queuePage-queuePage,
 			.search-searchCategory-SearchCategory,
 			.artist-artistDiscography-topBar,
-			.marketplace-header {
+			.marketplace-header,
+			.f59DF4qQ_FphIrVeRYkI {
 				margin-top: 0 !important;
 				top: 0 !important;
 			}
 
-			.marketplace-header {
+			.marketplace-header,
+			.f59DF4qQ_FphIrVeRYkI {
 				padding-top: 8px !important;
 			}
 		}
+
+		&.Collapse-Topbar-Snippet {
+			.main-topBar-topbarContentWrapper nav {
+				justify-content: center;
+				display: flex;
+			}
+		}
+
+		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled {
+			.under-main-view div:has(.main-entityHeader-gradient) {
+				display: none !important;
+			}
+		}
+
 		&.Apple-Music-Gradient-Snippet {
 			.frame {
 				position: absolute;
@@ -270,9 +297,11 @@
 				.secondaryImage {
 					position: absolute;
 					width: var(--gradient-width);
+					aspect-ratio: 1;
 					animation: rotate var(--gradient-speed) linear infinite;
 					border-radius: var(--gradient-radius) !important;
 					mix-blend-mode: var(--gradient-blend-mode);
+					object-fit: cover !important;
 				}
 
 				.mainImage {

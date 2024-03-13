@@ -1,5 +1,4 @@
 :root .main-topBar-container {
-	// Search bar
 	.main-topBar-searchBar {
 		> form input {
 			&::placeholder {
@@ -8,24 +7,16 @@
 			height: 32px;
 			background-color: rgba(var(--spice-rgb-shadow), 0.7);
 		}
-		> div {
-			button {
-				height: 16px;
-			}
-		}
 	}
 
-	.main-entityHeader-topbarTitle {
-		padding: 0 0px;
-	}
 	.main-topBar-historyButtons > button:hover {
 		transform: scale(1.1);
 	}
-	.main-playButton-PlayButton {
+	.main-topBar-topbarContent > div:has([data-encore-id="buttonPrimary"]):first-child {
 		display: none !important;
 	}
 	.main-topBar-background {
-		background-color: rgba(var(--spice-rgb-main), 1) !important;
+		background-color: var(--spice-main) !important;
 	}
 	.main-topBar-overlay {
 		background-color: transparent !important;
@@ -39,42 +30,5 @@
 		padding: 5px;
 		box-sizing: content-box;
 		width: 12px;
-	}
-
-	.main-userWidget-box {
-		height: unset;
-		padding: 0;
-		gap: 12px;
-
-		> div {
-			&:last-child {
-				display: none;
-			}
-		}
-
-		.main-avatar-avatar {
-			width: 40px !important;
-			height: 40px !important;
-			display: flex;
-
-			@media (min-width: 1024px) {
-				.main-avatar-image {
-					border-radius: var(--border-radius) 0 0 var(--border-radius);
-				}
-			}
-
-			& > div {
-				width: unset !important;
-				height: unset !important;
-			}
-		}
-
-		.main-userWidget-displayName {
-			padding-right: 12px;
-		}
-
-		.main-userWidget-chevron {
-			display: none;
-		}
 	}
 }

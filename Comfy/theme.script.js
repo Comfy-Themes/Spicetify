@@ -1,20 +1,17 @@
 /* 
-tofix:
-resetting of number input weirdness, gradient leaving s or px and others not removing them at all
-if colorscheme name isnt the same capitalization or is custom it breaks the reset button, probably just check if config.current_theme is in the list of fetched colorschemes or something
-
 todo:
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
-- update image tippy sizes - maybe make it a button that changes modal content instead?
+- update image tippy sizes / fix tippy height
 - add more main-type-mestoBold
 - create color picker
 
 torefactor:
-- remove uneeded crap / reduce random calls
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- once props are simplified convert all callback events to be name - ...props
+- once props are simplified convert all callback events to be "name - ...props"
 - create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
+- use Spicetify slider component
+- fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
 (async function comfy() {
@@ -25,9 +22,21 @@ torefactor:
 	}
 	console.debug("[Comfy-Event]: Global Dependencies loaded");
 
+	// Add Global Functions
+	window.Comfy = {
+		Reset: () => {
+			localStorage.removeItem("comfy:config");
+			location.reload();
+		},
+		Config: () => {
+			console.log(JSON.parse(localStorage.getItem("comfy:config") || "{}"));
+		}
+	};
+	console.debug(`[Comfy-Event]: Global Functions Added`);
+
 	// Initialize Config
 	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
-	let defaultScheme = Spicetify.Config?.color_scheme || "Comfy";
+	let configScheme = Spicetify.Config?.color_scheme || "Comfy";
 	let preloadedScheme = false;
 	let startup = true;
 	let preloadContainer = document.createElement("div");
@@ -45,6 +54,9 @@ torefactor:
 		.then(response => response.text())
 		.then(iniContent => {
 			setConfig("Color-Schemes", parseIni(iniContent), "Successfully updated color schemes");
+			configScheme =
+				(getConfig("Color-Schemes") && Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())) ||
+				configScheme;
 			updateScheme(getConfig("Color-Scheme"), "updated");
 		})
 		.catch(error => {
@@ -84,7 +96,7 @@ torefactor:
 		},
 		true
 	);
-	waitForDeps("Spicetify.Platform", () => Spicetify.Platform.History.listen(updateBanner));
+	waitForDeps("Spicetify.Platform.History", () => Spicetify.Platform.History.listen(updateBanner));
 	waitForDeps("Spicetify.Player", () => Spicetify.Player.addEventListener("songchange", updateBanner));
 	updateBanner();
 
@@ -115,20 +127,26 @@ torefactor:
 		});
 	});
 
-	const Section = ({ name, children, condition = true }) => {
+	const Section = ({ name, children, condition = true, checked }) => {
+		checked = !checked || name === checked.label || checked.index === 0;
+
 		if (condition === false) return null;
-		return Spicetify.React.createElement(
-			Spicetify.React.Fragment,
-			null,
+
+		return (
+			checked &&
 			Spicetify.React.createElement(
-				"div",
-				{ className: "setting-section", id: name },
-				Spicetify.React.createElement("h2", { className: "setting-header" }, name),
-				children.map(child =>
-					Spicetify.React.createElement(child.type, {
-						...child,
-						tippy: Spicetify.React.createElement(Tippy, { label: child.tippy })
-					})
+				Spicetify.React.Fragment,
+				null,
+				Spicetify.React.createElement(
+					"div",
+					{ className: "setting-section", id: name },
+					Spicetify.React.createElement("h2", { className: "setting-header" }, name),
+					children.map(child =>
+						Spicetify.React.createElement(child.type, {
+							...child,
+							tippy: Spicetify.React.createElement(Tippy, { label: child.tippy })
+						})
+					)
 				)
 			)
 		);
@@ -203,27 +221,35 @@ torefactor:
 				Spicetify.React.createElement(Slider, {
 					name,
 					callback: value => {
+						callback?.(value);
 						setState(value);
-						if (value) {
-							// if subsection enabled -> run all item callbacks
-							items.forEach(item => {
-								const both = () => (item.type === Input ? "" : item.defaultVal);
-								const state = getConfig(item.name) ?? both();
-								setConfig(item.name, state);
-								if (state !== both()) {
-									console.debug(`[Comfy-subCallback]: ${item.name}`, state);
-									item.callback?.(state, item.name);
-								}
-							});
-						} else {
-							// if subsection disabled -> run subsection callback
-							console.debug(`[Comfy-subCallback]: ${name}`, value);
-							callback?.(value);
-						}
+
+						items.forEach(item => {
+							const both = () => (item.type === Input ? "" : item.defaultVal);
+							const state = getConfig(item.name) ?? both();
+
+							setConfig(item.name, state);
+							if (item.type === Slider) {
+								if (state || !value)
+									waitForDeps(
+										"main",
+										main => {
+											console.debug(`[Comfy-subCallback]: ${item.name} =`, state);
+											main.classList.toggle(item.name, value ? state : false);
+											item.callback?.(state);
+										},
+										true,
+										"getElementById"
+									);
+							} else if (value && state !== both()) {
+								console.debug(`[Comfy-subCallback]: ${item.name}`, state);
+								item.callback?.(state, item.name);
+							}
+						});
 					},
 					onClick: () => {
 						if (state) {
-							setConfig(`${name}-Collapsed`, !collapseItems);
+							setConfig(`${name}-Collapsed`, !collapseItems, null, true);
 							setCollapseItems(!collapseItems);
 						}
 					},
@@ -337,6 +363,17 @@ torefactor:
 		const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 		const isFirstRender = Spicetify.React.useRef(true);
 
+		const textFieldRef = Spicetify.React.useRef(null);
+		Spicetify.React.useEffect(() => {
+			if (textFieldRef.current) {
+				textFieldRef.current.addEventListener("wheel", e => {
+					if (document.focusedElement === textFieldRef.current) {
+						e.preventDefault();
+					}
+				});
+			}
+		}, []);
+
 		Spicetify.React.useEffect(() => {
 			if (isPromise(defaultVal)) defaultVal.then(val => setDefaultState(val));
 		}, [defaultVal]);
@@ -363,6 +400,7 @@ torefactor:
 			action: Spicetify.React.createElement("input", {
 				type: inputType,
 				className: "input",
+				ref: textFieldRef,
 				value,
 				min,
 				max,
@@ -374,8 +412,9 @@ torefactor:
 	});
 
 	const Dropdown = Spicetify.React.memo(({ name, title, desc, options, defaultVal, condition = true, tippy, callback }) => {
-		const fallbackVal = "Select an option";
-		if (!defaultVal) defaultVal = fallbackVal;
+		if (!condition) return null;
+		if (!defaultVal) defaultVal = "Select an option";
+		if (typeof options === "function") options = options();
 
 		const [selectedValue, setSelectedValue] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 		const [buttonEnabled, setButtonEnabled] = Spicetify.React.useState(selectedValue !== defaultVal);
@@ -405,7 +444,6 @@ torefactor:
 			}
 		}, [selectedValue]);
 
-		if (!condition) return null;
 		return Spicetify.React.createElement(CardLayout, {
 			title,
 			desc,
@@ -453,8 +491,9 @@ torefactor:
 									"div",
 									{
 										key: option,
-										className: "dropdown-option",
+										className: `dropdown-option${selectedValue === option ? " selected" : ""}`,
 										role: "option",
+										"aria-selected": selectedValue === option,
 										onClick: event => {
 											event.stopPropagation(); // Prevent event from propagating up
 											setSelectedValue(option);
@@ -470,19 +509,158 @@ torefactor:
 		});
 	});
 
+	const Carousel = Spicetify.React.memo(({ chips, checked, setChecked }) => {
+		const carouselRef = Spicetify.React.useRef(null);
+		const [isOverflowing, setIsOverflowing] = Spicetify.React.useState(false);
+
+		// Scroll the carousel to the left or right
+		const scrollCarousel = direction => {
+			const carousel = carouselRef.current;
+			const scrollAmount = direction === "left" ? -carousel.offsetWidth : carousel.offsetWidth;
+			carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+		};
+
+		// Check if the carousel is overflowing on the x-axis
+		Spicetify.React.useEffect(() => {
+			const carousel = carouselRef.current;
+			setIsOverflowing(carousel.scrollWidth > carousel.clientWidth);
+		}, []);
+
+		return Spicetify.React.createElement(
+			"div",
+			{ className: "search-searchCategory-SearchCategory encore-dark-theme", style: { paddingTop: "8px", top: "-16px" } },
+			Spicetify.React.createElement(
+				"div",
+				{ className: "search-searchCategory-container contentSpacing", style: { padding: "0" } },
+				Spicetify.React.createElement(
+					"div",
+					{ className: "search-searchCategory-wrapper" },
+					Spicetify.React.createElement(
+						"div",
+						{ className: "search-searchCategory-contentArea" },
+						Spicetify.React.createElement(
+							"div",
+							{ className: "search-searchCategory-catergoryGrid", role: "list", tabIndex: "0", ref: carouselRef },
+							Spicetify.React.createElement(
+								"div",
+								{ role: "presentation" },
+								chips.map((chip, index) =>
+									Spicetify.React.createElement(
+										"a",
+										{
+											key: index,
+											draggable: "false",
+											className: "search-searchCategory-categoryGridItem",
+											tabIndex: "-1",
+											onClick: () => setChecked({ index, label: chip.label })
+										},
+										Spicetify.React.createElement(
+											"button",
+											{
+												role: "checkbox",
+												"aria-checked": checked.index === index ? "true" : "false",
+												tabIndex: "-1",
+												"data-encore-id": "chip",
+												className: `Chip__ChipComponent-sc-ry3uox-0 ChipComponent-checkbox-chip${
+													checked.index === index ? "-selected" : ""
+												}-useBrowserDefaultFocusStyle`
+											},
+											Spicetify.React.createElement(
+												"span",
+												{
+													className: `ChipInner__ChipInnerComponent-sc-1ly6j4j-0 ChipInnerComponent${
+														checked.index === index ? "-selected encore-inverted-light-set" : ""
+													}`
+												},
+												chip.label
+											)
+										)
+									)
+								)
+							)
+						),
+						Spicetify.React.createElement(
+							"div",
+							{ className: "search-searchCategory-carousel" },
+							isOverflowing &&
+								Spicetify.React.createElement(
+									"button",
+									{
+										className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonVisible",
+										onClick: () => scrollCarousel("left")
+									},
+									Spicetify.React.createElement(
+										"svg",
+										{ className: "Svg-img-icon-small-textBase" },
+										Spicetify.React.createElement("path", {
+											d: "M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
+										})
+									)
+								),
+							isOverflowing &&
+								Spicetify.React.createElement(
+									"button",
+									{
+										className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonVisible",
+										onClick: () => scrollCarousel("right")
+									},
+									Spicetify.React.createElement(
+										"svg",
+										{ className: "Svg-img-icon-small-textBase" },
+										Spicetify.React.createElement("path", {
+											d: "M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
+										})
+									)
+								)
+						)
+					)
+				)
+			)
+		);
+	});
+
 	const Content = () => {
+		const [checked, setChecked] = Spicetify.React.useState({ index: 0, label: "All" });
+
 		return Spicetify.React.createElement(
 			"div",
 			{ className: "comfy-settings" },
-			Spicetify.React.createElement(Section, { name: "Colorscheme" }, [
+			Spicetify.React.createElement(Carousel, {
+				chips: [
+					{ label: "All" },
+					{ label: "Banner Image" },
+					{ label: "Cover Art" },
+					{ label: "Playbar" },
+					{ label: "Tracklist" },
+					{ label: "Interface" },
+					{ label: "Colorscheme" }
+				],
+				checked,
+				setChecked
+			}),
+			Spicetify.React.createElement(Section, { name: "Colorscheme", checked }, [
 				{
 					type: Dropdown,
 					name: "Color-Scheme",
 					title: `Color Scheme`,
 					desc: "For faster loadtimes use cli to change color schemes",
-					options: getConfig("Color-Schemes") ? Object.keys(getConfig("Color-Schemes")) : [defaultScheme],
-					defaultVal: defaultScheme,
-					condition: !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
+					options: () => {
+						const schemes = Object.keys(getConfig("Color-Schemes"));
+						const decapSchemes = schemes.map(function (x) {
+							return x.toLowerCase();
+						});
+
+						if (!decapSchemes.includes(configScheme.toLowerCase())) {
+							schemes.unshift(configScheme);
+						}
+
+						return schemes;
+					},
+					defaultVal: (configScheme =
+						(getConfig("Color-Schemes") &&
+							Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())) ||
+						configScheme),
+					condition: getConfig("Color-Schemes") && !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
 					callback: (name, value) => {
 						updateScheme(value);
 					}
@@ -566,7 +744,7 @@ torefactor:
 					}
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Interface" }, [
+			Spicetify.React.createElement(Section, { name: "Interface", checked }, [
 				{
 					type: Input,
 					inputType: "text",
@@ -585,6 +763,24 @@ torefactor:
 				{
 					type: Input,
 					inputType: "number",
+					name: "App-Titlebar-Height",
+					title: "Titlebar Height",
+					defaultVal: "40",
+					condition: Spicetify.Config.version >= "2.33.2",
+					callback: value => {
+						waitForDeps(["Spicetify.CosmosAsync"], async () => {
+							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
+								type: "update_titlebar",
+								height: `${(value === "0" ? "1" : value) || "40"}px`
+							});
+
+							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
+						});
+					}
+				},
+				{
+					type: Input,
+					inputType: "number",
 					name: "Button-Radius",
 					title: "Button Radius",
 					defaultVal: "8",
@@ -595,7 +791,35 @@ torefactor:
 						Spicetify.React.createElement("li", null, "Comfy default: 8px"),
 						Spicetify.React.createElement("li", null, "Spotify default: 50px")
 					),
-					callback: value => document.documentElement.style.setProperty("--button-radius", (value || "8") + "px")
+					callback: value => document.documentElement.style.setProperty("--button-radius", value ? value + "px" : "")
+				},
+				{
+					type: SubSection,
+					name: "Topbar-Inside-Titlebar-Snippet",
+					title: "Move Topbar Inside Titlebar",
+					defaultVal: false,
+					callback: value => {
+						waitForDeps(
+							[".Root__top-container", ".main-topBar-container"],
+							elements => {
+								const [container, topbar] = elements;
+								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
+								const grid = value ? container : entryPoint;
+
+								grid.insertBefore(topbar, grid.firstChild);
+							},
+							true
+						);
+					},
+					items: [
+						{
+							type: Slider,
+							name: "Collapse-Topbar-Snippet",
+							title: "Collapse List Items",
+							defaultVal: true
+						}
+					],
+					collapseItems: true
 				},
 				{
 					type: SubSection,
@@ -605,6 +829,8 @@ torefactor:
 					callback: value => {
 						if (!value) {
 							document.documentElement.style.setProperty("--font-family", "");
+							document.documentElement.style.setProperty("--encore-title-font-stack", "");
+							document.documentElement.style.setProperty("--encore-body-font-stack", "");
 						}
 					},
 					tippy: Spicetify.React.createElement(
@@ -660,6 +886,8 @@ torefactor:
 									}
 								}
 								document.documentElement.style.setProperty("--font-family", fontFamily);
+								document.documentElement.style.setProperty("--encore-title-font-stack", fontFamily);
+								document.documentElement.style.setProperty("--encore-body-font-stack", fontFamily);
 							}
 						}
 					]
@@ -713,26 +941,8 @@ torefactor:
 								);
 							}
 						}
-					]
-				},
-				{
-					type: Slider,
-					name: "Topbar-Inside-Titlebar-Snippet",
-					title: "Move Topbar Inside Titlebar",
-					defaultVal: false,
-					callback: value => {
-						waitForDeps(
-							[".Root__top-container", ".main-topBar-container"],
-							async elements => {
-								const [container, topbar] = elements;
-								const entryPoint = document.querySelector(".Root__top-bar") ?? document.querySelector(".Root__main-view");
-								const grid = value ? container : entryPoint;
-
-								grid.insertBefore(topbar, grid.firstChild);
-							},
-							true
-						);
-					}
+					],
+					collapseItems: true
 				},
 				{
 					type: Slider,
@@ -741,13 +951,20 @@ torefactor:
 					defaultVal: false
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Tracklist" }, [
+			Spicetify.React.createElement(Section, { name: "Tracklist", checked }, [
 				{
 					type: Slider,
-					name: "visible-column-bar-Snippet",
-					title: "Visible Column Bar",
-					desc: "Unhides the column bar above tracklist",
-					defaultVal: false,
+					name: "Remove-Tracklist-Index",
+					title: "Remove Tracklist Index",
+					desc: "Hides the numbers / count next to songs",
+					defaultVal: true
+				},
+				{
+					type: Slider,
+					name: "Remove-Column-Bar-Snippet",
+					title: "Remove Column Bar",
+					desc: "Hides the column bar above tracklist",
+					defaultVal: true,
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
 						null,
@@ -770,6 +987,16 @@ torefactor:
 					)
 				},
 				{
+					type: Slider,
+					name: "Remove-Tracklist-Gradient-Noise",
+					title: "Remove Gradient Noise",
+					defaultVal: false,
+					desc: "Remove the noise from the gradient",
+					callback: value => {
+						document.documentElement.style.setProperty("--tracklist-gradient-noise", value ? "none" : "");
+					}
+				},
+				{
 					type: Input,
 					inputType: "number",
 					name: "Tracklist-Gradient-Height",
@@ -781,10 +1008,38 @@ torefactor:
 						null,
 						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient!")
 					),
-					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", (value || "232") + "px")
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? value + "px" : "")
+				},
+				{
+					type: Input,
+					inputType: "number",
+					name: "Tracklist-Gradient-Opacity",
+					title: "Gradient Opacity",
+					defaultVal: "0.6",
+					desc: "Change the opacity of the gradient (0 -> 1)",
+					tippy: Spicetify.React.createElement(
+						Spicetify.React.Fragment,
+						null,
+						Spicetify.React.createElement("h4", null, "Set to 0 for no gradient color!")
+					),
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-opacity", value || "")
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Playbar" }, [
+			Spicetify.React.createElement(Section, { name: "Playbar", checked }, [
+				{
+					type: Slider,
+					name: "Custom-Playbar-Snippet",
+					title: "Custom Playbar Layout",
+					defaultVal: true,
+					desc: "Comfy's out of box playbar design"
+				},
+				{
+					type: Slider,
+					name: "Smooth-Progress-Bar-Snippet",
+					title: "Smooth Progress Bar",
+					desc: "Makes the progress bar ease its movement giving the appearance of a smoother transition",
+					defaultVal: true
+				},
 				{
 					type: Slider,
 					name: "Hoverable-Timers-Snippet",
@@ -793,8 +1048,8 @@ torefactor:
 				},
 				{
 					type: Slider,
-					name: "Remove-Device-Picker-Notification-Snippet",
-					title: "Remove Device Picker Notification",
+					name: "Remove-Connect-Bar-Snippet",
+					title: "Remove Connect Bar",
 					defaultVal: false
 				},
 				{
@@ -810,7 +1065,7 @@ torefactor:
 					defaultVal: false
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Cover Art" }, [
+			Spicetify.React.createElement(Section, { name: "Cover Art", checked }, [
 				{
 					type: SubSection,
 					name: "Custom-Cover-Art-Dimensions",
@@ -839,7 +1094,7 @@ torefactor:
 							name: "Cover-Art-Width",
 							title: "Width",
 							defaultVal: "84px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-width", (value || "84") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-width", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -847,7 +1102,7 @@ torefactor:
 							name: "Cover-Art-Height",
 							title: "Height",
 							defaultVal: "84px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-height", (value || "84") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-height", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -855,7 +1110,7 @@ torefactor:
 							name: "Cover-Art-Radius",
 							title: "Border Radius",
 							defaultVal: "8px",
-							callback: value => document.documentElement.style.setProperty("--cover-art-radius", (value || "8") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-radius", value ? value + "px" : "")
 						},
 						{
 							type: Input,
@@ -870,18 +1125,19 @@ torefactor:
 								Spicetify.React.createElement("li", null, "Comfy default: 20px"),
 								Spicetify.React.createElement("li", null, "Spotify default: 0px")
 							),
-							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", (value || "20") + "px")
+							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", value ? value + "px" : "")
 						}
 					]
-				},
-				{
-					type: Slider,
-					name: "Right-Art-Snippet",
-					title: "Right Side Cover Art",
-					defaultVal: false
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Banner Image" }, [
+			Spicetify.React.createElement(Section, { name: "Banner Image", checked }, [
+				{
+					type: Slider,
+					name: "Banner-Enabled",
+					title: "Banner Image",
+					defaultVal: true,
+					desc: "Show current playing song / custom banner images instead of gradients (all settings in this category will be ignored if disabled)"
+				},
 				{
 					type: Input,
 					inputType: "number",
@@ -895,7 +1151,7 @@ torefactor:
 						Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
 						Spicetify.React.createElement("li", null, "Comfy default: 4px")
 					),
-					callback: value => document.documentElement.style.setProperty("--image-blur", (value || "4") + "px")
+					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
 				},
 				{
 					type: SubSection,
@@ -935,10 +1191,18 @@ torefactor:
 					),
 					items: [
 						{
+							type: Slider,
+							name: "AM-Gradient-Include-Existing-Snippet",
+							title: "Existing Images",
+							defaultVal: false,
+							desc: "Apply the gradient to existing images on the page (e.g. artist banners)",
+							callback: updateBanner
+						},
+						{
 							type: Input,
 							inputType: "text",
 							name: "Gradient-Noise",
-							title: "Noise URL - Advanced",
+							title: "Noise URL",
 							defaultVal: "none",
 							desc: "Overlays an image below the blur and over the art, can be used for noise",
 							callback: value => document.documentElement.style.setProperty("--gradient-background-image", value ? `url('${value}')` : "")
@@ -947,7 +1211,7 @@ torefactor:
 							type: Input,
 							inputType: "text",
 							name: "Gradient-Blend",
-							title: "Blend Mode - Advanced",
+							title: "Blend Mode",
 							defaultVal: "luminosity",
 							desc: "'difference' works well with noise",
 							callback: value => document.documentElement.style.setProperty("--gradient-blend-mode", value || "")
@@ -956,7 +1220,7 @@ torefactor:
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Speed",
-							title: "Speed - Advanced",
+							title: "Speed",
 							defaultVal: "50",
 							min: "0",
 							tippy: Spicetify.React.createElement(
@@ -965,13 +1229,13 @@ torefactor:
 								Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
 								Spicetify.React.createElement("li", null, "Comfy default: 50")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-speed", value + "s" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-speed", value ? value + "s" : "")
 						},
 						{
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Size",
-							title: "Size - Advanced",
+							title: "Size",
 							defaultVal: "150",
 							min: "0",
 							tippy: Spicetify.React.createElement(
@@ -980,17 +1244,17 @@ torefactor:
 								Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
 								Spicetify.React.createElement("li", null, "Comfy default: 150")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-width", value + "%" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-width", value ? value + "%" : "")
 						},
 						{
 							type: Input,
 							inputType: "number",
 							name: "Gradient-Radius",
-							title: "Radius - Advanced",
+							title: "Radius",
 							desc: "Radius of circles (in px)",
 							defaultVal: "500",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--gradient-radius", value + "px" || "")
+							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? value + "px" : "")
 						}
 					],
 					collapseItems: true
@@ -1011,6 +1275,8 @@ torefactor:
 							tippy: Spicetify.React.createElement(
 								Spicetify.React.Fragment,
 								null,
+								Spicetify.React.createElement("h4", null, "Network Images:"),
+								Spicetify.React.createElement("li", null, "Enter any raw image url into text box, e.g. 'https://example.com/image.png'"),
 								Spicetify.React.createElement("h4", null, "Local Images:"),
 								Spicetify.React.createElement("li", null, "Place desired image in 'spotify/Apps/xpui/images'"),
 								Spicetify.React.createElement("li", null, "Enter 'images/image.png' into text box")
@@ -1067,22 +1333,26 @@ torefactor:
 							callback: () => {
 								const settings = document.querySelector(".GenericModal__overlay:has(.comfy-settings)");
 								Spicetify.ReactDOM.render(
-									Spicetify.React.createElement(Dialog, {
-										titleText: "Are you sure?",
-										descriptionText: "This will reset all settings to default!",
-										cancelText: "Cancel",
-										confirmText: "Reset",
-										onOpen: () => {
-											settings.style.zIndex = 0;
-										},
-										onClose: () => {
-											settings.style.zIndex = 100;
-										},
-										onConfirm: () => {
-											localStorage.removeItem("comfy:config");
-											location.reload();
-										}
-									}),
+									Spicetify.React.createElement(
+										Spicetify.ReactComponent.RemoteConfigProvider,
+										{ configuration: Spicetify.Platform.RemoteConfiguration },
+										Spicetify.React.createElement(Dialog, {
+											titleText: "Are you sure?",
+											descriptionText: "This will reset all settings to default!",
+											cancelText: "Cancel",
+											confirmText: "Reset",
+											onOpen: () => {
+												settings.style.zIndex = 0;
+											},
+											onClose: () => {
+												settings.style.zIndex = 100;
+											},
+											onConfirm: () => {
+												localStorage.removeItem("comfy:config");
+												location.reload();
+											}
+										})
+									),
 									document.createElement("div")
 								);
 							}
@@ -1097,7 +1367,7 @@ torefactor:
 	waitForDeps("Spicetify.Topbar.Button", () => {
 		new Spicetify.Topbar.Button(
 			"Comfy Settings",
-			`<svg viewBox="0 0 262.394 262.394" style="scale: 0.5; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
+			`<svg viewBox="0 0 262.394 262.394" style="width: 16px; height: 16px; fill: currentcolor"><path d="M245.63,103.39h-9.91c-2.486-9.371-6.197-18.242-10.955-26.432l7.015-7.015c6.546-6.546,6.546-17.159,0-23.705 l-15.621-15.621c-6.546-6.546-17.159-6.546-23.705,0l-7.015,7.015c-8.19-4.758-17.061-8.468-26.432-10.955v-9.914 C159.007,7.505,151.502,0,142.244,0h-22.091c-9.258,0-16.763,7.505-16.763,16.763v9.914c-9.37,2.486-18.242,6.197-26.431,10.954 l-7.016-7.015c-6.546-6.546-17.159-6.546-23.705,0.001L30.618,46.238c-6.546,6.546-6.546,17.159,0,23.705l7.014,7.014 c-4.758,8.19-8.469,17.062-10.955,26.433h-9.914c-9.257,0-16.762,7.505-16.762,16.763v22.09c0,9.258,7.505,16.763,16.762,16.763 h9.914c2.487,9.371,6.198,18.243,10.956,26.433l-7.015,7.015c-6.546,6.546-6.546,17.159,0,23.705l15.621,15.621 c6.546,6.546,17.159,6.546,23.705,0l7.016-7.016c8.189,4.758,17.061,8.469,26.431,10.955v9.913c0,9.258,7.505,16.763,16.763,16.763 h22.091c9.258,0,16.763-7.505,16.763-16.763v-9.913c9.371-2.487,18.242-6.198,26.432-10.956l7.016,7.017 c6.546,6.546,17.159,6.546,23.705,0l15.621-15.621c3.145-3.144,4.91-7.407,4.91-11.853s-1.766-8.709-4.91-11.853l-7.016-7.016 c4.758-8.189,8.468-17.062,10.955-26.432h9.91c9.258,0,16.763-7.505,16.763-16.763v-22.09 C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194c-33.083,0-59.998-26.915-59.998-59.997 c0-33.083,26.915-59.998,59.998-59.998s59.998,26.915,59.998,59.998C191.196,164.279,164.281,191.194,131.198,191.194z"/><path d="M131.198,101.199c-16.541,0-29.998,13.457-29.998,29.998c0,16.54,13.457,29.997,29.998,29.997s29.998-13.457,29.998-29.997 C161.196,114.656,147.739,101.199,131.198,101.199z"/></svg>`,
 			() => {
 				// reset startup preventions
 				startup = false;
@@ -1116,7 +1386,7 @@ torefactor:
 				const extraText = document.createElement("a");
 				extraText.textContent = "Need support? Click here!";
 				extraText.href = "https://discord.gg/rtBQX5D3bD";
-				extraText.style.color = "lightgreen";
+				extraText.style.color = "var(--spice-notification)";
 
 				container.appendChild(document.querySelector("h1.main-type-alto"));
 				container.appendChild(extraText);
@@ -1150,9 +1420,9 @@ torefactor:
 		return config[key] ?? null;
 	}
 
-	function setConfig(key, value, message) {
+	function setConfig(key, value, message, silent) {
 		if (value !== getConfig(key)) {
-			console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
+			if (!silent) console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
 			config[key] = value;
 			localStorage.setItem("comfy:config", JSON.stringify(config));
 		}
@@ -1225,24 +1495,46 @@ torefactor:
 	async function updateBanner() {
 		await waitForDeps(["Spicetify.Player.data", "Spicetify.Platform.History.location"]);
 
-		const source = getConfig("Custom-Image")
-			? getConfig("Custom-Image-URL")?.replace(/"/g, "")
-			: Spicetify.Player.data.track.metadata.image_xlarge_url;
-		if (mainImage.src !== source) console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+		const pathname = Spicetify.Platform.History.location.pathname;
+		let source;
 
-		frame.style.display = channels.some(channel => channel.test(Spicetify.Platform.History.location.pathname)) ? "" : "none";
+		if (getConfig("Custom-Image")) {
+			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
+		} else if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
+			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
+
+			if (isPlaylist || isArtist) {
+				const uri = `spotify:${isPlaylist ? "playlist" : "artist"}:${pathname.split("/").pop()}`;
+				const metadata = isPlaylist
+					? await Spicetify.Platform.PlaylistAPI.getMetadata(uri)
+					: await Spicetify.GraphQL.Request(Spicetify.GraphQL.QueryDefinitions.queryArtistOverview, {
+							uri: uri,
+							includePrerelease: true,
+							locale: null
+					  });
+
+				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage?.sources?.[0]?.url;
+			}
+		}
+
+		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
+
+		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
 		mainImage.src = secondaryImage.src = source;
-		mainImage.style.display = source === "" ? "none" : "";
+		mainImage.style.display = source ? "" : "none";
+
+		if (mainImage.src !== source) {
+			console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+		}
 	}
 
 	function updateScheme(scheme, message) {
-		// probably check if marketplace is in  config and if it is wait for it to be loaded?
 		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
 		const colorSchemes = getConfig("Color-Schemes");
 		const existingScheme = document.querySelector("style.comfyScheme");
 
 		existingScheme?.remove();
-		if (scheme && colorSchemes && !marketplace && scheme !== defaultScheme) {
+		if (colorSchemes[scheme] && !marketplace && scheme !== configScheme) {
 			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${scheme}`);
 			scheme = colorSchemes[scheme];
 		} else {

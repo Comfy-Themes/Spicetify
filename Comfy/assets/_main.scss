@@ -1,18 +1,75 @@
-:root .Root__main-view {
-	// Background Image - Behind the main view (container)
-	.mainImage {
-		position: absolute; // Positioned absolutely to cover the entire viewport
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		object-fit: cover;
-		object-position: top;
-		filter: blur(var(--image-blur));
-		-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-		mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+:root #main.Banner-Enabled {
+	.frame {
+		display: block;
+
+		.mainImage {
+			position: absolute; // Positioned absolutely to cover the entire viewport
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			object-position: top;
+			filter: blur(var(--image-blur));
+			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+		}
+
+		.secondaryImage {
+			display: none;
+		}
 	}
-	.secondaryImage {
+
+	.main-entityHeader-backgroundColor {
+		background: none !important;
+	}
+
+	// weird line on large heights due to the noise, not sure why...
+	.artist-artistOverview-artistOverviewContent,
+	.main-actionBarBackground-background {
+		background-image: linear-gradient(
+				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
+				var(--spice-main) var(--tracklist-gradient-height)
+			),
+			var(--tracklist-gradient-noise) !important;
+		background-color: transparent !important;
+		height: calc(100% - 232px);
+		min-height: calc(
+			100vh - min(30vh, clamp(250px, 250px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 150, 400px)) - 128px
+		);
+	}
+
+	.artist-artistOverview-artistOverviewContent {
+		position: relative !important;
+
+		.main-actionBarBackground-background {
+			background-image: none !important;
+			background-color: unset !important;
+		}
+	}
+
+	.playlist-playlist-playlistContent,
+	.dTKw7B8X1ybw7SHebMH3,
+	.xcTrtCsYOPtSElbX9inq {
+		background: none; // Remove background
+	}
+
+	.main-entityHeader-background {
+		height: calc(clamp(340px, 30vh, 400px) + var(--tracklist-gradient-height));
+		max-height: 100%;
+
+		&.main-entityHeader-overlay {
+			--bgColor: unset !important;
+		}
+	}
+
+	.main-entityHeader-withBackgroundImage {
+		height: clamp(340px, 30vh, 400px) !important;
+	}
+}
+
+:root .Root__main-view {
+	.frame {
 		display: none;
 	}
 
@@ -66,42 +123,28 @@
 		}
 
 		// Headers
-		.main-home-homeHeader,
-		.main-trackList-trackListHeader {
+		.rX_OmqCngvY5ZCoYBZgb.zyeJ9w99yrvGokL3BsMc:after {
+			background-color: var(--spice-main);
+		}
+
+		.main-home-homeHeader {
 			display: none;
-		}
-
-		.main-entityHeader-background {
-			height: 80vh;
-
-			&.main-entityHeader-overlay {
-				--bgColor: unset !important;
-			}
-		}
-
-		.main-entityHeader-withBackgroundImage {
-			height: clamp(340px, 30vh, 400px) !important;
 		}
 
 		.main-entityHeader-container {
 			padding: 32px;
 			justify-content: center;
 
-			.main-entityHeader-backgroundColor {
-				background: none !important;
-			}
-
 			& > div:nth-last-of-type(2),
 			.main-entityHeader-imageContainer {
 				align-self: center;
-				flex-shrink: 0;
 
 				& + .main-entityHeader-headerText {
 					flex: unset;
 					justify-content: center;
 
 					.main-entityHeader-title h1 {
-						font-size: 50px !important;
+						font-size: 3rem !important;
 					}
 				}
 			}
@@ -112,7 +155,7 @@
 			padding: 8px 16px 16px 16px; // Adjust padding
 
 			.main-actionBar-ActionBarRow {
-				.main-playButton-PlayButton {
+				> div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
 					margin-top: -24px;
 				}
@@ -125,8 +168,8 @@
 		}
 
 		// Artist Page
-		.main-gridContainer-gridContainer:last-child {
-			padding-bottom: 50px;
+		.artist-artistOverview-artistOverviewContent .contentSpacing > .main-gridContainer-gridContainer {
+			padding-bottom: var(--grid-gap);
 		}
 
 		// Home Page
@@ -163,37 +206,6 @@
 			}
 		}
 
-		// Artist
-		.artist-artistOverview-artistOverviewContent {
-			position: relative !important;
-
-			.main-actionBarBackground-background {
-				background-image: none !important;
-				background-color: unset !important;
-			}
-		}
-
-		.artist-artistOverview-artistOverviewContent,
-		.main-actionBarBackground-background {
-			background: linear-gradient(rgba(var(--spice-rgb-main-transition), 0.6) 0, var(--spice-main) var(--tracklist-gradient-height)),
-				var(--background-noise) !important;
-			height: calc(100% - var(--tracklist-gradient-height));
-			min-height: 60vh; // having to do this sucks i need to rework this whole gradient system
-		}
-
-		// Playlists
-		.playlist-playlist-playlistImageContainer {
-			height: 192px;
-			min-width: 192px;
-			width: 192px;
-		}
-
-		.playlist-playlist-playlistContent,
-		.dTKw7B8X1ybw7SHebMH3,
-		.xcTrtCsYOPtSElbX9inq {
-			background: none; // Remove background
-		}
-
 		// Shows
 		section[data-testid="your-episodes-page"] {
 			.main-actionBarBackground-background {
@@ -202,11 +214,14 @@
 		}
 
 		section[data-testid="episode"] {
-			.main-actionBar-ActionBarRow {
-				margin-top: 0 !important;
+			.main-actionBar-ActionBar {
+				flex-direction: column-reverse;
+				.main-actionBar-ActionBarRow {
+					margin-top: 0 !important;
 
-				&:nth-child(1) {
-					display: none;
+					&:nth-child(1) {
+						padding-top: 2rem;
+					}
 				}
 			}
 		}

@@ -1,9 +1,13 @@
-:root .Root__top-container:not(:has(.BeautifulLyricsPage.BeautifulLyricsPage.Fullscreen)) {
-	// beautiful lyrics support
+:root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
 	.Root__now-playing-bar {
 		.main-nowPlayingBar-container {
 			position: relative;
 			border-top: none;
+			flex-direction: column-reverse !important;
+
+			&::before {
+				z-index: auto !important;
+			}
 
 			.main-nowPlayingBar-nowPlayingBar {
 				margin-bottom: 12px;
@@ -11,14 +15,7 @@
 				// Cover-art
 				.main-nowPlayingWidget-nowPlaying {
 					height: 0;
-
-					&.main-nowPlayingWidget-coverExpanded {
-						transform: translateX(-16px);
-
-						.main-coverSlotCollapsed-container[aria-hidden="true"] {
-							display: none;
-						}
-					}
+					z-index: 1;
 
 					.main-coverSlotCollapsed-container {
 						bottom: var(--cover-art-bottom);
@@ -39,31 +36,13 @@
 				}
 
 				// Miscolored right side button svgs
-				.main-nowPlayingBar-extraControls * svg {
-					color: rgba(var(--spice-rgb-selected-row), 0.7) !important;
-				}
-				.main-nowPlayingBar-extraControls button:hover svg {
-					color: var(--spice-text) !important;
-				}
-			}
+				.main-nowPlayingBar-extraControls button:not(.main-genericButton-buttonActive) {
+					color: rgba(var(--spice-rgb-selected-row), 0.7);
 
-			// Connect Bar
-			.main-connectBar-connectBar {
-				border-radius: var(--border-radius);
-				top: -18px;
-				padding: 13px;
-				position: absolute;
-				left: 91%;
-				transform: translateX(-91%);
-				width: max-content;
-
-				&::after {
-					content: none;
+					&:hover {
+						color: var(--spice-text) !important;
+					}
 				}
-			}
-			.main-devicePicker-indicator {
-				bottom: 34px;
-				transform: rotate(180deg);
 			}
 
 			// Volume Bar
