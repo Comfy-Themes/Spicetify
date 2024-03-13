@@ -620,7 +620,15 @@ torefactor:
 	});
 
 	const Content = () => {
-		const [checked, setChecked] = Spicetify.React.useState({ index: 0, label: "All" });
+		const defaultFilter = sessionStorage.getItem("comfy-settings-filter") ? JSON.parse(sessionStorage.getItem("comfy-settings-filter")) : null;
+		const [checked, setChecked] = Spicetify.React.useState(defaultFilter ?? { index: 0, label: "All" });
+
+		Spicetify.React.useEffect(() => {
+			if (startup) {
+				return;
+			}
+			sessionStorage.setItem("comfy-settings-filter", JSON.stringify(checked));
+		}, [checked]);
 
 		return Spicetify.React.createElement(
 			"div",
