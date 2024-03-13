@@ -512,6 +512,7 @@ torefactor:
 	const Carousel = Spicetify.React.memo(({ chips, checked, setChecked }) => {
 		const carouselRef = Spicetify.React.useRef(null);
 		const [isOverflowing, setIsOverflowing] = Spicetify.React.useState(false);
+		const section = document.querySelector(".main-trackCreditsModal-mainSection");
 
 		// Scroll the carousel to the left or right
 		const scrollCarousel = direction => {
@@ -525,6 +526,14 @@ torefactor:
 			const carousel = carouselRef.current;
 			setIsOverflowing(carousel.scrollWidth > carousel.clientWidth);
 		}, []);
+
+		function clickCallback(index, label) {
+			setChecked({ index, label });
+
+			if (section) {
+				section.scrollTo(null, 0);
+			}
+		}
 
 		return Spicetify.React.createElement(
 			"div",
@@ -552,7 +561,7 @@ torefactor:
 											draggable: "false",
 											className: "search-searchCategory-categoryGridItem",
 											tabIndex: "-1",
-											onClick: () => setChecked({ index, label: chip.label })
+											onClick: () => clickCallback(index, chip.label)
 										},
 										Spicetify.React.createElement(
 											"button",
