@@ -549,7 +549,14 @@ torefactor:
 						{ className: "search-searchCategory-contentArea" },
 						Spicetify.React.createElement(
 							"div",
-							{ className: "search-searchCategory-catergoryGrid", role: "list", tabIndex: "0", ref: carouselRef },
+							{
+								className: `search-searchCategory-catergoryGrid ${
+									isOverflowing ? "FjMPyh7lOujDVYQRvp0H OlnSvEViCZ_vVdnc3mSQ MUloQuW1xQawwVs0mDp4" : ""
+								}`,
+								role: "list",
+								tabIndex: "0",
+								ref: carouselRef
+							},
 							Spicetify.React.createElement(
 								"div",
 								{ role: "presentation" },
