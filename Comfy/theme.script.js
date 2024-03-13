@@ -537,16 +537,41 @@ torefactor:
 
 		return Spicetify.React.createElement(
 			"div",
-			{ className: "search-searchCategory-SearchCategory encore-dark-theme", style: { paddingTop: "8px", top: "-16px" } },
+			{
+				className: "search-searchCategory-SearchCategory encore-dark-theme",
+				style: {
+					paddingTop: "8px",
+					top: "-16px",
+					background: "var(--background-base)",
+					gridColumn: "1 / -1",
+					height: "48px",
+					position: "sticky",
+					zIndex: 1
+				}
+			},
 			Spicetify.React.createElement(
 				"div",
-				{ className: "search-searchCategory-container contentSpacing", style: { padding: "0" } },
+				{ className: "search-searchCategory-container contentSpacing", style: { padding: "0", width: "100%" } },
 				Spicetify.React.createElement(
 					"div",
-					{ className: "search-searchCategory-wrapper" },
+					{
+						className: "search-searchCategory-wrapper",
+						style: {
+							display: "flex",
+							"-webkit-box-align": "center",
+							"align-items": "center",
+							overflow: "hidden"
+						}
+					},
 					Spicetify.React.createElement(
 						"div",
-						{ className: "search-searchCategory-contentArea" },
+						{
+							className: "search-searchCategory-contentArea",
+							style: {
+								overflow: "hidden",
+								position: "relative"
+							}
+						},
 						Spicetify.React.createElement(
 							"div",
 							{
@@ -568,7 +593,11 @@ torefactor:
 											draggable: "false",
 											className: "search-searchCategory-categoryGridItem",
 											tabIndex: "-1",
-											onClick: () => clickCallback(index, chip.label)
+											onClick: () => clickCallback(index, chip.label),
+											style: {
+												cursor: "pointer",
+												padding: "2px"
+											}
 										},
 										Spicetify.React.createElement(
 											"button",
@@ -579,7 +608,13 @@ torefactor:
 												"data-encore-id": "chip",
 												className: `Chip__ChipComponent-sc-ry3uox-0 ChipComponent-checkbox-chip${
 													checked.index === index ? "-selected" : ""
-												}-useBrowserDefaultFocusStyle`
+												}-useBrowserDefaultFocusStyle`,
+												style: {
+													"-webkit-margin-end": "8px",
+													"margin-inline-end": "8px",
+													"-webkit-margin-after": "0",
+													"margin-block-end": "0"
+												}
 											},
 											Spicetify.React.createElement(
 												"span",
@@ -607,7 +642,14 @@ torefactor:
 									},
 									Spicetify.React.createElement(
 										"svg",
-										{ className: "Svg-img-icon-small-textBase" },
+										{
+											className: "Svg-sc-ytk21e-0 Svg-img-icon-small-textBase",
+											style: {
+												fill: "var(--text-base, #000000)",
+												width: "var(--encore-graphic-size-decorative-smaller, 16px)",
+												height: "var(--encore-graphic-size-decorative-smaller, 16px)"
+											}
+										},
 										Spicetify.React.createElement("path", {
 											d: "M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
 										})
@@ -622,7 +664,14 @@ torefactor:
 									},
 									Spicetify.React.createElement(
 										"svg",
-										{ className: "Svg-img-icon-small-textBase" },
+										{
+											className: "Svg-sc-ytk21e-0 Svg-img-icon-small-textBase",
+											style: {
+												fill: "var(--text-base, #000000)",
+												width: "var(--encore-graphic-size-decorative-smaller, 16px)",
+												height: "var(--encore-graphic-size-decorative-smaller, 16px)"
+											}
+										},
 										Spicetify.React.createElement("path", {
 											d: "M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
 										})
