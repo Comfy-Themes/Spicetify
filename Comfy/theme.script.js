@@ -14,6 +14,8 @@ todo:
 - update image tippy sizes / fix tippy height
 - add more main-type-mestoBold
 - create color picker
+- add more font settings
+- add custom colour schemes 
 
 torefactor:
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
