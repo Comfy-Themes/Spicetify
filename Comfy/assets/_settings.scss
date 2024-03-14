@@ -36,7 +36,7 @@
 	.search-searchCategory-SearchCategory {
 		padding-top: 8px;
 		top: -16px;
-		background: var(--background-base);
+		background: var(--spice-player);
 		grid-column: 1 / -1;
 		height: 48px;
 		position: sticky;
@@ -49,11 +49,7 @@
 			max-width: var(--content-max-width);
 
 			.search-searchCategory-wrapper {
-				display: -webkit-box;
-				display: -ms-flexbox;
 				display: flex;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
 				align-items: center;
 				overflow: hidden;
 
@@ -62,10 +58,9 @@
 					padding: 2px;
 
 					button {
-						-webkit-margin-end: 8px;
 						margin-inline-end: 8px;
-						-webkit-margin-after: 0 !important;
 						margin-block-end: 0 !important;
+						margin-block-end: 8px;
 						box-sizing: border-box;
 						-webkit-tap-highlight-color: transparent;
 						background-color: transparent;
@@ -79,7 +74,6 @@
 						display: inline-flex;
 						vertical-align: middle;
 						max-inline-size: 100%;
-						margin-block-end: var(--encore-spacing-tighter-2, 8px);
 						text-decoration: none;
 						overflow-wrap: break-word;
 						position: relative;
@@ -87,26 +81,32 @@
 						z-index: 1;
 
 						span {
+							@media (min-width: 768px) {
+								font-size: 0.875rem;
+							}
 							font-size: 0.8125rem;
 							font-weight: 400;
-							font-family: var(
-								--font-family,
-								CircularSp,
-								CircularSp-Arab,
-								CircularSp-Hebr,
-								CircularSp-Cyrl,
-								CircularSp-Grek,
-								CircularSp-Deva,
-								var(--fallback-fonts, sans-serif)
-							);
+							box-sizing: border-box;
+							-webkit-tap-highlight-color: transparent;
+							border-radius: 9999px;
+							color: var(--text-base);
+							transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+							display: inline-flex;
+							min-inline-size: 0px;
+							min-block-size: 32px;
+							-webkit-box-align: center;
+							align-items: center;
+							padding: 4px 12px;
+							background-color: var(--background-tinted-base);
+							overflow-wrap: anywhere;
 						}
 					}
 				}
 
 				.search-searchCategory-carouselButton svg {
-					fill: var(--text-base, #000000);
-					width: var(--encore-graphic-size-decorative-smaller, 16px);
-					height: var(--encore-graphic-size-decorative-smaller, 16px);
+					fill: var(--text-base);
+					width: 16px;
+					height: 16px;
 				}
 			}
 		}
