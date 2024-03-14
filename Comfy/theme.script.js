@@ -1,6 +1,5 @@
 /* 
 tofix:
-- dropdowns not closing on click outside
 - carousel mouse scrolling (drag / scroll)
 - carousel keyboard scrolling (arrow keys)
 - images on preview tippy
@@ -436,7 +435,7 @@ torefactor:
 			if (isFirstRender.current) {
 				isFirstRender.current = false;
 				if (!startup) {
-					const parent = document.querySelector('[aria-label="Comfy Settings"]');
+					const parent = document.querySelector("generic-modal [aria-label='Comfy Settings']");
 					const current = document.getElementById(name);
 					parent.addEventListener("click", event => {
 						if (event.target.closest(".dropdown-wrapper") !== current) {
