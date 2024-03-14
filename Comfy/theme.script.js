@@ -6,6 +6,7 @@ tofix:
 - fix carousel keyboard scrolling (arrow keys)
 
 todo:
+- seperate chip logic from carousel logic - maybe use spicetify component for chip
 - remove uneeded stuff / simplify carousel
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
