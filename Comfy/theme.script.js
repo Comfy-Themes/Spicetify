@@ -1,5 +1,12 @@
 /* 
+tofix:
+- migrate carousel style to settings.scss
+- fix carousel css when loading playlist page with no expanded sidebar
+- fix carousel mouse scrolling (drag / scroll)
+- fix carousel keyboard scrolling (arrow keys)
+
 todo:
+- remove uneeded stuff / simplify carousel
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
 - update image tippy sizes / fix tippy height
@@ -127,13 +134,13 @@ torefactor:
 		});
 	});
 
-	const Section = ({ name, children, condition = true, checked }) => {
-		checked = !checked || name === checked.label || checked.index === 0;
+	const Section = ({ name, children, condition = true, filter }) => {
+		filter = !filter || name === filter.label || filter.index === 0;
 
 		if (condition === false) return null;
 
 		return (
-			checked &&
+			filter &&
 			Spicetify.React.createElement(
 				Spicetify.React.Fragment,
 				null,
@@ -509,24 +516,96 @@ torefactor:
 		});
 	});
 
-	const Carousel = Spicetify.React.memo(({ chips, checked, setChecked }) => {
-		const carouselRef = Spicetify.React.useRef(null);
-		const [isOverflowing, setIsOverflowing] = Spicetify.React.useState(false);
+	const Direction = {
+		LEFT: -1,
+		RIGHT: 1
+	};
+
+	function scrollTo(element, target, container) {
+		const offsetLeft = element.offsetLeft;
+		const elementWidth = element.offsetWidth;
+		const rightBound = offsetLeft + elementWidth;
+		const containerScrollLeft = container.scrollLeft;
+		const containerWidth = container.offsetWidth;
+
+		if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
+			container.scroll({
+				left: elementWidth / 2 + offsetLeft - containerWidth / 2
+			});
+		}
+	}
+
+	function focusElement(container, direction) {
+		const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
+
+		if (firstElement && firstElement instanceof HTMLElement) {
+			if (direction === Direction.RIGHT) {
+				if (document.activeElement === container || !firstElement.nextElementSibling) {
+					scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
+					return;
+				}
+
+				if (firstElement.nextElementSibling instanceof HTMLElement) {
+					scrollTo(firstElement.nextElementSibling, container, container);
+				}
+			} else if (direction === Direction.LEFT) {
+				if (document.activeElement === container || !firstElement.previousElementSibling) {
+					const links = container.querySelectorAll("a[href], button");
+					if (!links || !links.length) return;
+					scrollTo(firstElement, links[links.length - 1] || container, container);
+					return;
+				}
+
+				if (firstElement.previousElementSibling instanceof HTMLElement) {
+					scrollTo(firstElement.previousElementSibling, container, container);
+				}
+			}
+		}
+	}
+
+	const Carousel = ({ chips, className, showButtons = true, ariaLabel, applyLightThemeControls = true, checked, setChecked }) => {
+		const containerRef = Spicetify.React.useRef(null);
+		const wrapperRef = Spicetify.React.useRef(null);
+		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
+		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
 		const section = document.querySelector(".main-trackCreditsModal-mainSection");
 
-		// Scroll the carousel to the left or right
-		const scrollCarousel = direction => {
-			const carousel = carouselRef.current;
-			const scrollAmount = direction === "left" ? -carousel.offsetWidth : carousel.offsetWidth;
-			carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-		};
+		const handleResize = Spicetify.React.useCallback(() => {
+			if (!containerRef.current || !wrapperRef.current) return;
 
-		// Check if the carousel is overflowing on the x-axis
-		Spicetify.React.useEffect(() => {
-			const carousel = carouselRef.current;
-			setIsOverflowing(carousel.scrollWidth > carousel.clientWidth);
+			const container = containerRef.current;
+			const wrapper = wrapperRef.current;
+			const scrollWidth = container.scrollWidth - container.clientWidth;
+			const scrollLeft = Math.abs(container.scrollLeft);
+			const roundedScroll = scrollLeft < 1 ? Math.floor(scrollLeft) : Math.ceil(scrollLeft);
+			const hasOverflow = wrapper.offsetWidth > container.clientWidth;
+
+			setShowLeftButton(hasOverflow && scrollLeft !== 0);
+			setShowRightButton(hasOverflow && roundedScroll < scrollWidth);
 		}, []);
 
+		Spicetify.React.useEffect(() => {
+			window.addEventListener("resize", handleResize);
+			return () => {
+				window.removeEventListener("resize", handleResize);
+			};
+		}, [handleResize]);
+
+		Spicetify.React.useEffect(handleResize, [chips.length, handleResize]);
+
+		const handleScroll = Spicetify.React.useCallback(() => {
+			handleResize();
+		}, [handleResize]);
+
+		const handleKeyDown = Spicetify.React.useCallback(event => {
+			if (event.key === "ArrowLeft") {
+				event.preventDefault();
+				focusElement(containerRef.current, Direction.RIGHT);
+			} else if (event.key === "ArrowRight") {
+				event.preventDefault();
+				focusElement(containerRef.current, Direction.LEFT);
+			}
+		}, []);
 		function clickCallback(index, label) {
 			setChecked({ index, label });
 
@@ -534,6 +613,79 @@ torefactor:
 				section.scrollTo(null, 0);
 			}
 		}
+		const handleMouseDown = Spicetify.React.useCallback(() => {
+			const handleWheel = event => {
+				if (!event.deltaY) return;
+
+				const target = event.currentTarget;
+				containerRef.current.scrollLeft += event.deltaY + event.deltaX;
+				clearTimeout(timeoutRef.current);
+				timeoutRef.current = setTimeout(() => {
+					target.style.scrollBehavior = scrollBehavior.current ?? "";
+					isScrolling.current = true;
+				}, 100);
+			};
+
+			const timeoutRef = Spicetify.React.useRef(null);
+			const isScrolling = Spicetify.React.useRef(true);
+			const scrollBehavior = Spicetify.React.useRef(containerRef.current.style.scrollBehavior);
+
+			containerRef.current.style.userSelect = "none";
+			containerRef.current.style.scrollBehavior = "auto";
+			window.addEventListener("wheel", handleWheel);
+
+			const handleMouseUp = () => {
+				const handleClick = event => {
+					event.preventDefault();
+					event.stopImmediatePropagation();
+				};
+
+				if (isScrolling.current) {
+					containerRef.current.addEventListener("click", handleClick, {
+						once: true,
+						capture: true
+					});
+
+					setTimeout(() => {
+						containerRef.current.removeEventListener("click", handleClick, {
+							capture: true
+						});
+					});
+				}
+
+				containerRef.current.style.removeProperty("user-select");
+				window.removeEventListener("mousemove", handleMouseMove);
+				cancelAnimationFrame(requestAnimationFrameRef.current);
+				window.removeEventListener("wheel", handleWheel, { once: true });
+			};
+
+			const handleMouseMove = event => {
+				const target = event.currentTarget;
+				const deltaX = event.clientX - startX;
+				if (Math.abs(deltaX) > 10) {
+					isScrolling.current = true;
+				}
+
+				const scrollLeft = target.scrollLeft;
+				target.scrollLeft = startScrollLeft - deltaX;
+				delta = target.scrollLeft - scrollLeft;
+			};
+
+			const startX = event.clientX;
+			const startScrollLeft = containerRef.current.scrollLeft;
+			let delta = 0;
+
+			window.addEventListener("mousemove", handleMouseMove);
+			window.addEventListener("mouseup", handleMouseUp, { once: true });
+		}, []);
+
+		const handleButtonClick = direction => {
+			const multiplier = direction * (containerRef.current.clientWidth / 2);
+			containerRef.current.scrollBy({
+				left: multiplier
+			});
+			handleResize();
+		};
 
 		return Spicetify.React.createElement(
 			"div",
@@ -551,7 +703,10 @@ torefactor:
 			},
 			Spicetify.React.createElement(
 				"div",
-				{ className: "search-searchCategory-container contentSpacing", style: { padding: "0", width: "100%" } },
+				{
+					className: "search-searchCategory-container contentSpacing",
+					style: { padding: "0", width: "100%" }
+				},
 				Spicetify.React.createElement(
 					"div",
 					{
@@ -566,7 +721,7 @@ torefactor:
 					Spicetify.React.createElement(
 						"div",
 						{
-							className: "search-searchCategory-contentArea",
+							className: Spicetify.classnames("search-searchCategory-contentArea", className),
 							style: {
 								overflow: "hidden",
 								position: "relative"
@@ -575,16 +730,22 @@ torefactor:
 						Spicetify.React.createElement(
 							"div",
 							{
-								className: `search-searchCategory-catergoryGrid ${
-									isOverflowing ? "FjMPyh7lOujDVYQRvp0H OlnSvEViCZ_vVdnc3mSQ MUloQuW1xQawwVs0mDp4" : ""
-								}`,
+								ref: containerRef,
+								className: Spicetify.classnames("search-searchCategory-catergoryGrid", {
+									MUloQuW1xQawwVs0mDp4: showLeftButton,
+									OlnSvEViCZ_vVdnc3mSQ: showRightButton,
+									FjMPyh7lOujDVYQRvp0H: showRightButton && showLeftButton
+								}),
+								onScroll: handleScroll,
+								onKeyDown: handleKeyDown,
+								onMouseDown: handleMouseDown,
 								role: "list",
-								tabIndex: "0",
-								ref: carouselRef
+								"aria-label": ariaLabel,
+								tabIndex: 0
 							},
 							Spicetify.React.createElement(
 								"div",
-								{ role: "presentation" },
+								{ ref: wrapperRef, role: "presentation" },
 								chips.map((chip, index) =>
 									Spicetify.React.createElement(
 										"a",
@@ -630,70 +791,78 @@ torefactor:
 								)
 							)
 						),
-						Spicetify.React.createElement(
-							"div",
-							{ className: "search-searchCategory-carousel" },
-							isOverflowing &&
+						showButtons &&
+							Spicetify.React.createElement(
+								"div",
+								{
+									className: "search-searchCategory-carousel",
+									dir: "ltr"
+								},
 								Spicetify.React.createElement(
 									"button",
 									{
-										className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonVisible",
-										onClick: () => scrollCarousel("left")
+										className: Spicetify.classnames("search-searchCategory-carouselButton", {
+											"search-searchCategory-carouselButtonVisible": showLeftButton
+										}),
+										tabIndex: -1,
+										onClick: () => handleButtonClick(Direction.LEFT),
+										"aria-hidden": "true"
 									},
-									Spicetify.React.createElement(
-										"svg",
-										{
-											className: "Svg-sc-ytk21e-0 Svg-img-icon-small-textBase",
-											style: {
-												fill: "var(--text-base, #000000)",
-												width: "var(--encore-graphic-size-decorative-smaller, 16px)",
-												height: "var(--encore-graphic-size-decorative-smaller, 16px)"
-											}
+									Spicetify.React.createElement("svg", {
+										autoMirror: false,
+										semanticColor: "textBase",
+										size: "small",
+										dangerouslySetInnerHTML: {
+											__html: Spicetify.SVGIcons["chevron-left"]
 										},
-										Spicetify.React.createElement("path", {
-											d: "M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
-										})
-									)
+										style: {
+											fill: "var(--text-base, #000000)",
+											width: "var(--encore-graphic-size-decorative-smaller, 16px)",
+											height: "var(--encore-graphic-size-decorative-smaller, 16px)"
+										}
+									})
 								),
-							isOverflowing &&
 								Spicetify.React.createElement(
 									"button",
 									{
-										className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonVisible",
-										onClick: () => scrollCarousel("right")
+										className: Spicetify.classnames("search-searchCategory-carouselButton", {
+											"search-searchCategory-carouselButtonVisible": showRightButton
+										}),
+										tabIndex: -1,
+										onClick: () => handleButtonClick(Direction.RIGHT),
+										"aria-hidden": "true"
 									},
-									Spicetify.React.createElement(
-										"svg",
-										{
-											className: "Svg-sc-ytk21e-0 Svg-img-icon-small-textBase",
-											style: {
-												fill: "var(--text-base, #000000)",
-												width: "var(--encore-graphic-size-decorative-smaller, 16px)",
-												height: "var(--encore-graphic-size-decorative-smaller, 16px)"
-											}
+									Spicetify.React.createElement("svg", {
+										autoMirror: false,
+										semanticColor: "textBase",
+										size: "small",
+										dangerouslySetInnerHTML: {
+											__html: Spicetify.SVGIcons["chevron-right"]
 										},
-										Spicetify.React.createElement("path", {
-											d: "M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
-										})
-									)
+										style: {
+											fill: "var(--text-base, #000000)",
+											width: "var(--encore-graphic-size-decorative-smaller, 16px)",
+											height: "var(--encore-graphic-size-decorative-smaller, 16px)"
+										}
+									})
 								)
-						)
+							)
 					)
 				)
 			)
 		);
-	});
+	};
 
 	const Content = () => {
 		const defaultFilter = sessionStorage.getItem("comfy-settings-filter") ? JSON.parse(sessionStorage.getItem("comfy-settings-filter")) : null;
-		const [checked, setChecked] = Spicetify.React.useState(defaultFilter ?? { index: 0, label: "All" });
+		const [filter, setFilter] = Spicetify.React.useState(defaultFilter ?? { index: 0, label: "All" });
 
 		Spicetify.React.useEffect(() => {
 			if (startup) {
 				return;
 			}
-			sessionStorage.setItem("comfy-settings-filter", JSON.stringify(checked));
-		}, [checked]);
+			sessionStorage.setItem("comfy-settings-filter", JSON.stringify(filter));
+		}, [filter]);
 
 		return Spicetify.React.createElement(
 			"div",
@@ -708,10 +877,11 @@ torefactor:
 					{ label: "Interface" },
 					{ label: "Colorscheme" }
 				],
-				checked,
-				setChecked
+				className: "comfy",
+				checked: filter,
+				setChecked: setFilter
 			}),
-			Spicetify.React.createElement(Section, { name: "Colorscheme", checked }, [
+			Spicetify.React.createElement(Section, { name: "Colorscheme", filter }, [
 				{
 					type: Dropdown,
 					name: "Color-Scheme",
@@ -817,7 +987,7 @@ torefactor:
 					}
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Interface", checked }, [
+			Spicetify.React.createElement(Section, { name: "Interface", filter }, [
 				{
 					type: Input,
 					inputType: "text",
@@ -1024,7 +1194,7 @@ torefactor:
 					defaultVal: false
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Tracklist", checked }, [
+			Spicetify.React.createElement(Section, { name: "Tracklist", filter }, [
 				{
 					type: Slider,
 					name: "Remove-Tracklist-Index",
@@ -1098,7 +1268,7 @@ torefactor:
 					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-opacity", value || "")
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Playbar", checked }, [
+			Spicetify.React.createElement(Section, { name: "Playbar", filter }, [
 				{
 					type: Slider,
 					name: "Custom-Playbar-Snippet",
@@ -1138,7 +1308,7 @@ torefactor:
 					defaultVal: false
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Cover Art", checked }, [
+			Spicetify.React.createElement(Section, { name: "Cover Art", filter }, [
 				{
 					type: SubSection,
 					name: "Custom-Cover-Art-Dimensions",
@@ -1203,7 +1373,7 @@ torefactor:
 					]
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "Banner Image", checked }, [
+			Spicetify.React.createElement(Section, { name: "Banner Image", filter }, [
 				{
 					type: Slider,
 					name: "Banner-Enabled",
