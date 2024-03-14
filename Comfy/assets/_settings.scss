@@ -8,6 +8,36 @@
 
 // Comfy settings
 .GenericModal__overlay:has(.comfy-settings) {
+	// Header Section Styling
+	.main-trackCreditsModal-header {
+		padding: 20px 32px 20px;
+
+		.main-trackCreditsModal-closeBtn {
+			background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+			height: 34px;
+			cursor: pointer;
+
+			&:hover {
+				transform: scale(1.1) !important;
+			}
+			&:focus {
+				transform: scale(1);
+			}
+			&:active {
+				transform: scale(0.9) !important;
+			}
+
+			&:first-of-type {
+				margin-left: auto;
+			}
+
+			&:not(:last-of-type) {
+				margin-right: 8px;
+			}
+		}
+	}
+
+	// Scrollbars
 	.GenericModal ::-webkit-scrollbar,
 	.main-trackCreditsModal-mainSection ::-webkit-scrollbar,
 	.main-trackCreditsModal-originalCredits ::-webkit-scrollbar {
@@ -31,6 +61,7 @@
 	}
 }
 
+// Main Section Styling
 .comfy-settings {
 	// Carousel Styling
 	.search-searchCategory-SearchCategory {
@@ -99,6 +130,10 @@
 							padding: 4px 12px;
 							background-color: var(--background-tinted-base);
 							overflow-wrap: anywhere;
+
+							&:hover {
+								background-color: var(--background-tinted-highlight);
+							}
 						}
 					}
 				}
@@ -112,7 +147,7 @@
 		}
 	}
 
-	// Section Styling
+	// Contents Styling
 	.setting-header {
 		text-align: center;
 		padding: 5px 0;
