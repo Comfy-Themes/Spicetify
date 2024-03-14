@@ -4,6 +4,8 @@ tofix:
 - fix carousel css when loading playlist page with no expanded sidebar
 - fix carousel mouse scrolling (drag / scroll)
 - fix carousel keyboard scrolling (arrow keys)
+- fix images on preview tippy
+- fix negative values
 
 todo:
 - seperate chip logic from carousel logic - maybe use spicetify component for chip
@@ -564,7 +566,7 @@ torefactor:
 		}
 	}
 
-	const Carousel = ({ chips, className, showButtons = true, ariaLabel, applyLightThemeControls = true, checked, setChecked }) => {
+	const Carousel = ({ chips, checked, setChecked }) => {
 		const containerRef = Spicetify.React.useRef(null);
 		const wrapperRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
@@ -691,42 +693,22 @@ torefactor:
 		return Spicetify.React.createElement(
 			"div",
 			{
-				className: "search-searchCategory-SearchCategory encore-dark-theme",
-				style: {
-					paddingTop: "8px",
-					top: "-16px",
-					background: "var(--background-base)",
-					gridColumn: "1 / -1",
-					height: "48px",
-					position: "sticky",
-					zIndex: 1
-				}
+				className: "search-searchCategory-SearchCategory encore-dark-theme"
 			},
 			Spicetify.React.createElement(
 				"div",
 				{
-					className: "search-searchCategory-container contentSpacing",
-					style: { padding: "0", width: "100%" }
+					className: "search-searchCategory-container contentSpacing"
 				},
 				Spicetify.React.createElement(
 					"div",
 					{
-						className: "search-searchCategory-wrapper",
-						style: {
-							display: "flex",
-							"-webkit-box-align": "center",
-							"align-items": "center",
-							overflow: "hidden"
-						}
+						className: "search-searchCategory-wrapper"
 					},
 					Spicetify.React.createElement(
 						"div",
 						{
-							className: Spicetify.classnames("search-searchCategory-contentArea", className),
-							style: {
-								overflow: "hidden",
-								position: "relative"
-							}
+							className: "search-searchCategory-contentArea"
 						},
 						Spicetify.React.createElement(
 							"div",
@@ -741,7 +723,6 @@ torefactor:
 								onKeyDown: handleKeyDown,
 								onMouseDown: handleMouseDown,
 								role: "list",
-								"aria-label": ariaLabel,
 								tabIndex: 0
 							},
 							Spicetify.React.createElement(
@@ -755,11 +736,7 @@ torefactor:
 											draggable: "false",
 											className: "search-searchCategory-categoryGridItem",
 											tabIndex: "-1",
-											onClick: () => clickCallback(index, chip.label),
-											style: {
-												cursor: "pointer",
-												padding: "2px"
-											}
+											onClick: () => clickCallback(index, chip.label)
 										},
 										Spicetify.React.createElement(
 											"button",
@@ -770,13 +747,7 @@ torefactor:
 												"data-encore-id": "chip",
 												className: `Chip__ChipComponent-sc-ry3uox-0 ChipComponent-checkbox-chip${
 													checked.index === index ? "-selected" : ""
-												}-useBrowserDefaultFocusStyle`,
-												style: {
-													"-webkit-margin-end": "8px",
-													"margin-inline-end": "8px",
-													"-webkit-margin-after": "0",
-													"margin-block-end": "0"
-												}
+												}-useBrowserDefaultFocusStyle`
 											},
 											Spicetify.React.createElement(
 												"span",
@@ -792,62 +763,51 @@ torefactor:
 								)
 							)
 						),
-						showButtons &&
+						Spicetify.React.createElement(
+							"div",
+							{
+								className: "search-searchCategory-carousel",
+								dir: "ltr"
+							},
 							Spicetify.React.createElement(
-								"div",
+								"button",
 								{
-									className: "search-searchCategory-carousel",
-									dir: "ltr"
+									className: Spicetify.classnames("search-searchCategory-carouselButton", {
+										"search-searchCategory-carouselButtonVisible": showLeftButton
+									}),
+									tabIndex: -1,
+									onClick: () => handleButtonClick(Direction.LEFT),
+									"aria-hidden": "true"
 								},
-								Spicetify.React.createElement(
-									"button",
-									{
-										className: Spicetify.classnames("search-searchCategory-carouselButton", {
-											"search-searchCategory-carouselButtonVisible": showLeftButton
-										}),
-										tabIndex: -1,
-										onClick: () => handleButtonClick(Direction.LEFT),
-										"aria-hidden": "true"
-									},
-									Spicetify.React.createElement("svg", {
-										autoMirror: false,
-										semanticColor: "textBase",
-										size: "small",
-										dangerouslySetInnerHTML: {
-											__html: Spicetify.SVGIcons["chevron-left"]
-										},
-										style: {
-											fill: "var(--text-base, #000000)",
-											width: "var(--encore-graphic-size-decorative-smaller, 16px)",
-											height: "var(--encore-graphic-size-decorative-smaller, 16px)"
-										}
-									})
-								),
-								Spicetify.React.createElement(
-									"button",
-									{
-										className: Spicetify.classnames("search-searchCategory-carouselButton", {
-											"search-searchCategory-carouselButtonVisible": showRightButton
-										}),
-										tabIndex: -1,
-										onClick: () => handleButtonClick(Direction.RIGHT),
-										"aria-hidden": "true"
-									},
-									Spicetify.React.createElement("svg", {
-										autoMirror: false,
-										semanticColor: "textBase",
-										size: "small",
-										dangerouslySetInnerHTML: {
-											__html: Spicetify.SVGIcons["chevron-right"]
-										},
-										style: {
-											fill: "var(--text-base, #000000)",
-											width: "var(--encore-graphic-size-decorative-smaller, 16px)",
-											height: "var(--encore-graphic-size-decorative-smaller, 16px)"
-										}
-									})
-								)
+								Spicetify.React.createElement("svg", {
+									autoMirror: false,
+									semanticColor: "textBase",
+									size: "small",
+									dangerouslySetInnerHTML: {
+										__html: Spicetify.SVGIcons["chevron-left"]
+									}
+								})
+							),
+							Spicetify.React.createElement(
+								"button",
+								{
+									className: Spicetify.classnames("search-searchCategory-carouselButton", {
+										"search-searchCategory-carouselButtonVisible": showRightButton
+									}),
+									tabIndex: -1,
+									onClick: () => handleButtonClick(Direction.RIGHT),
+									"aria-hidden": "true"
+								},
+								Spicetify.React.createElement("svg", {
+									autoMirror: false,
+									semanticColor: "textBase",
+									size: "small",
+									dangerouslySetInnerHTML: {
+										__html: Spicetify.SVGIcons["chevron-right"]
+									}
+								})
 							)
+						)
 					)
 				)
 			)
@@ -878,7 +838,6 @@ torefactor:
 					{ label: "Interface" },
 					{ label: "Colorscheme" }
 				],
-				className: "comfy",
 				checked: filter,
 				setChecked: setFilter
 			}),
