@@ -38,7 +38,7 @@
 		"description": "Not recommended, purely for development purposes",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
-		"usercss": "Comfy/app.css",
+		"usercss": "Comfy/user.css",
 		"schemes": "Comfy/color.ini",
 		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/beta/Comfy/theme.script.js"],
 		"branch": "beta"
