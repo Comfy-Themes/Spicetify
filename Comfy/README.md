@@ -92,6 +92,21 @@
 ![png](../images/color-schemes/nord.png)
 
 </details>
+<details><summary>Everforest</summary>
+
+![png](../images/color-schemes/everforest.png)
+
+</details>
+<details><summary>Kanagawa</summary>
+
+![png](../images/color-schemes/kanagawa.png)
+
+</details>
+<details><summary>Houjicha</summary>
+
+![png](../images/color-schemes/Houjicha.png)
+
+</details>
 <details><summary>Kitty</summary>
 
 ![png](../images/color-schemes/kitty.png)
@@ -110,11 +125,6 @@
 <details><summary>Velvet</summary>
 
 ![png](../images/color-schemes/velvet.png)
-
-</details>
-<details><summary>Kanagawa</summary>
-
-![png](../images/color-schemes/kanagawa.png)
 
 </details>
 <details><summary>Yami</summary>
