@@ -2,7 +2,6 @@
 tofix:
 - carousel mouse scrolling (drag / scroll)
 - carousel keyboard scrolling (arrow keys)
-- images on preview tippy
 - negative values
 
 todo:
@@ -1044,25 +1043,32 @@ torefactor:
 							{
 								style: {
 									// tippy doesnt like loading images
-									height: "300px"
+									height: "300px",
+									display: "flex",
+									"align-items": "center"
 								}
 							},
 							Spicetify.React.createElement("img", {
-								src: "https://media.discordapp.net/attachments/811648374687399988/1139576978924642425/image.png?width=1069&height=520",
+								src: "https://raw.githubusercontent.com/Tetrax-10/Nord-Spotify/master/assets/font/font-url.png",
 								alt: "preview",
 								style: {
-									width: "100%"
+									height: "300px"
 								}
 							}),
 							Spicetify.React.createElement(
-								"h4",
-								{ style: { fontWeight: "normal" } },
-								"If you have the font installed on your PC, then just enter the fonts name"
-							),
-							Spicetify.React.createElement(
-								"h4",
-								{ style: { fontWeight: "normal" } },
-								"Otherwise, you can use a Google Font by entering the URL of the font"
+								"div",
+								{
+									style: {
+										"padding-left": "10px",
+										background: "transparent",
+										height: "300px"
+									}
+								},
+
+								Spicetify.React.createElement("h4", null, "Usage:"),
+								Spicetify.React.createElement("li", null, "Font Name (if installed)"),
+								Spicetify.React.createElement("li", null, "URL (Google Fonts)"),
+								Spicetify.React.createElement("li", null, "see attatched image for google fonts url format")
 							)
 						)
 					),

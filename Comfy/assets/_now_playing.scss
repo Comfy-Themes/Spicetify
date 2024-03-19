@@ -21,11 +21,15 @@
 						bottom: var(--cover-art-bottom);
 						border-radius: var(--cover-art-radius);
 
-						.cover-art {
+						.cover-art,
+						.VideoPlayer__container video {
 							width: var(--cover-art-width) !important;
 							height: var(--cover-art-height) !important;
 							border-radius: var(--cover-art-radius);
 							overflow: hidden;
+							object-fit: cover;
+							max-height: none;
+							max-width: none;
 						}
 					}
 				}
