@@ -1043,9 +1043,8 @@ torefactor:
 							{
 								style: {
 									// tippy doesnt like loading images
-									height: "300px",
-									display: "flex",
-									"align-items": "center"
+									height: "375px",
+									width: "242px"
 								}
 							},
 							Spicetify.React.createElement("img", {
@@ -1055,21 +1054,10 @@ torefactor:
 									height: "300px"
 								}
 							}),
-							Spicetify.React.createElement(
-								"div",
-								{
-									style: {
-										"padding-left": "10px",
-										background: "transparent",
-										height: "300px"
-									}
-								},
 
-								Spicetify.React.createElement("h4", null, "Usage:"),
-								Spicetify.React.createElement("li", null, "Font Name (if installed)"),
-								Spicetify.React.createElement("li", null, "URL (Google Fonts)"),
-								Spicetify.React.createElement("li", null, "see attatched image for google fonts url format")
-							)
+							Spicetify.React.createElement("h4", null, "Usage:"),
+							Spicetify.React.createElement("li", null, "Font Name (if installed)"),
+							Spicetify.React.createElement("li", null, "URL (Google Fonts)")
 						)
 					),
 					items: [
