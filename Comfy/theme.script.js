@@ -517,59 +517,16 @@ torefactor:
 		});
 	});
 
-	const Direction = {
-		LEFT: -1,
-		RIGHT: 1
-	};
-
-	function scrollTo(element, target, container) {
-		const offsetLeft = element.offsetLeft;
-		const elementWidth = element.offsetWidth;
-		const rightBound = offsetLeft + elementWidth;
-		const containerScrollLeft = container.scrollLeft;
-		const containerWidth = container.offsetWidth;
-
-		if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
-			container.scroll({
-				left: elementWidth / 2 + offsetLeft - containerWidth / 2
-			});
-		}
-	}
-
-	function focusElement(container, direction) {
-		const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
-
-		if (firstElement && firstElement instanceof HTMLElement) {
-			if (direction === Direction.RIGHT) {
-				if (document.activeElement === container || !firstElement.nextElementSibling) {
-					scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
-					return;
-				}
-
-				if (firstElement.nextElementSibling instanceof HTMLElement) {
-					scrollTo(firstElement.nextElementSibling, container, container);
-				}
-			} else if (direction === Direction.LEFT) {
-				if (document.activeElement === container || !firstElement.previousElementSibling) {
-					const links = container.querySelectorAll("a[href], button");
-					if (!links || !links.length) return;
-					scrollTo(firstElement, links[links.length - 1] || container, container);
-					return;
-				}
-
-				if (firstElement.previousElementSibling instanceof HTMLElement) {
-					scrollTo(firstElement.previousElementSibling, container, container);
-				}
-			}
-		}
-	}
-
 	const Carousel = ({ chips, checked, setChecked }) => {
 		const containerRef = Spicetify.React.useRef(null);
 		const wrapperRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
 		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
 		const section = document.querySelector(".main-trackCreditsModal-mainSection");
+		const Direction = {
+			LEFT: -1,
+			RIGHT: 1
+		};
 
 		const handleResize = Spicetify.React.useCallback(() => {
 			if (!containerRef.current || !wrapperRef.current) return;
@@ -599,6 +556,48 @@ torefactor:
 		}, [handleResize]);
 
 		const handleKeyDown = Spicetify.React.useCallback(event => {
+			function scrollTo(element, target, container) {
+				const offsetLeft = element.offsetLeft;
+				const elementWidth = element.offsetWidth;
+				const rightBound = offsetLeft + elementWidth;
+				const containerScrollLeft = container.scrollLeft;
+				const containerWidth = container.offsetWidth;
+
+				if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
+					container.scroll({
+						left: elementWidth / 2 + offsetLeft - containerWidth / 2
+					});
+				}
+			}
+
+			function focusElement(container, direction) {
+				const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
+
+				if (firstElement && firstElement instanceof HTMLElement) {
+					if (direction === Direction.RIGHT) {
+						if (document.activeElement === container || !firstElement.nextElementSibling) {
+							scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
+							return;
+						}
+
+						if (firstElement.nextElementSibling instanceof HTMLElement) {
+							scrollTo(firstElement.nextElementSibling, container, container);
+						}
+					} else if (direction === Direction.LEFT) {
+						if (document.activeElement === container || !firstElement.previousElementSibling) {
+							const links = container.querySelectorAll("a[href], button");
+							if (!links || !links.length) return;
+							scrollTo(firstElement, links[links.length - 1] || container, container);
+							return;
+						}
+
+						if (firstElement.previousElementSibling instanceof HTMLElement) {
+							scrollTo(firstElement.previousElementSibling, container, container);
+						}
+					}
+				}
+			}
+
 			if (event.key === "ArrowLeft") {
 				event.preventDefault();
 				focusElement(containerRef.current, Direction.RIGHT);
@@ -731,6 +730,7 @@ torefactor:
 										"a",
 										{
 											key: index,
+											draggable: "false",
 											className: "search-searchCategory-categoryGridItem",
 											tabIndex: "-1",
 											onClick: () => clickCallback(index, chip.label)
