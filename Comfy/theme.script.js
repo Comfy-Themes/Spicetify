@@ -5,7 +5,6 @@ tofix:
 - negative values
 
 todo:
-- seperate chip logic from carousel logic - maybe use spicetify component for chip
 - remove uneeded stuff / simplify carousel
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
@@ -732,31 +731,19 @@ torefactor:
 										"a",
 										{
 											key: index,
-											draggable: "false",
 											className: "search-searchCategory-categoryGridItem",
 											tabIndex: "-1",
 											onClick: () => clickCallback(index, chip.label)
 										},
 										Spicetify.React.createElement(
-											"button",
+											Spicetify.ReactComponent.Chip,
 											{
-												role: "checkbox",
-												"aria-checked": checked.index === index ? "true" : "false",
-												tabIndex: "-1",
-												"data-encore-id": "chip",
-												className: `Chip__ChipComponent-sc-ry3uox-0 ChipComponent-checkbox-chip${
-													checked.index === index ? "-selected" : ""
-												}-useBrowserDefaultFocusStyle`
+												isUsingKeyboard: false,
+												onClick: () => clickCallback(index, chip.label),
+												selected: checked.index === index,
+												selectedColorSet: "invertedLight"
 											},
-											Spicetify.React.createElement(
-												"span",
-												{
-													className: `ChipInner__ChipInnerComponent-sc-1ly6j4j-0 ChipInnerComponent${
-														checked.index === index ? "-selected encore-inverted-light-set" : ""
-													}`
-												},
-												chip.label
-											)
+											chip.label
 										)
 									)
 								)
