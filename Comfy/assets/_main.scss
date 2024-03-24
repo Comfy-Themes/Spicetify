@@ -24,6 +24,7 @@
 		background: none !important;
 	}
 
+	// gradient noise gets stretched vertically with this approach - but no black lines
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
 		background-image: linear-gradient(
