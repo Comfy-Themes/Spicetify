@@ -1323,21 +1323,6 @@ torefactor:
 					desc: "Show current playing song / custom banner images instead of gradients (all settings in this category will be ignored if disabled)"
 				},
 				{
-					type: Input,
-					inputType: "number",
-					name: "Image-Blur",
-					title: "Image Blur",
-					defaultVal: "4",
-					min: "0",
-					tippy: Spicetify.React.createElement(
-						Spicetify.React.Fragment,
-						null,
-						Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
-						Spicetify.React.createElement("li", null, "Comfy default: 4px")
-					),
-					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
-				},
-				{
 					type: Slider,
 					name: "Prefer-Playlist-Image",
 					title: "Prefer Playlist Image",
@@ -1476,6 +1461,21 @@ torefactor:
 							callback: updateBanner
 						}
 					]
+				},
+				{
+					type: Input,
+					inputType: "number",
+					name: "Image-Blur",
+					title: "Image Blur",
+					defaultVal: "4",
+					min: "0",
+					tippy: Spicetify.React.createElement(
+						Spicetify.React.Fragment,
+						null,
+						Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
+						Spicetify.React.createElement("li", null, "Comfy default: 4px")
+					),
+					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "" }, [
