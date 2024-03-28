@@ -2,11 +2,9 @@
 tofix:
 - carousel mouse scrolling (drag / scroll)
 - carousel keyboard scrolling (arrow keys)
-- images on preview tippy
 - negative values
 
 todo:
-- seperate chip logic from carousel logic - maybe use spicetify component for chip
 - remove uneeded stuff / simplify carousel
 - more consistent coloring - sliders etc
 - add warning message if using unsupported versions
@@ -519,59 +517,16 @@ torefactor:
 		});
 	});
 
-	const Direction = {
-		LEFT: -1,
-		RIGHT: 1
-	};
-
-	function scrollTo(element, target, container) {
-		const offsetLeft = element.offsetLeft;
-		const elementWidth = element.offsetWidth;
-		const rightBound = offsetLeft + elementWidth;
-		const containerScrollLeft = container.scrollLeft;
-		const containerWidth = container.offsetWidth;
-
-		if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
-			container.scroll({
-				left: elementWidth / 2 + offsetLeft - containerWidth / 2
-			});
-		}
-	}
-
-	function focusElement(container, direction) {
-		const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
-
-		if (firstElement && firstElement instanceof HTMLElement) {
-			if (direction === Direction.RIGHT) {
-				if (document.activeElement === container || !firstElement.nextElementSibling) {
-					scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
-					return;
-				}
-
-				if (firstElement.nextElementSibling instanceof HTMLElement) {
-					scrollTo(firstElement.nextElementSibling, container, container);
-				}
-			} else if (direction === Direction.LEFT) {
-				if (document.activeElement === container || !firstElement.previousElementSibling) {
-					const links = container.querySelectorAll("a[href], button");
-					if (!links || !links.length) return;
-					scrollTo(firstElement, links[links.length - 1] || container, container);
-					return;
-				}
-
-				if (firstElement.previousElementSibling instanceof HTMLElement) {
-					scrollTo(firstElement.previousElementSibling, container, container);
-				}
-			}
-		}
-	}
-
 	const Carousel = ({ chips, checked, setChecked }) => {
 		const containerRef = Spicetify.React.useRef(null);
 		const wrapperRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
 		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
 		const section = document.querySelector(".main-trackCreditsModal-mainSection");
+		const Direction = {
+			LEFT: -1,
+			RIGHT: 1
+		};
 
 		const handleResize = Spicetify.React.useCallback(() => {
 			if (!containerRef.current || !wrapperRef.current) return;
@@ -601,6 +556,48 @@ torefactor:
 		}, [handleResize]);
 
 		const handleKeyDown = Spicetify.React.useCallback(event => {
+			function scrollTo(element, target, container) {
+				const offsetLeft = element.offsetLeft;
+				const elementWidth = element.offsetWidth;
+				const rightBound = offsetLeft + elementWidth;
+				const containerScrollLeft = container.scrollLeft;
+				const containerWidth = container.offsetWidth;
+
+				if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
+					container.scroll({
+						left: elementWidth / 2 + offsetLeft - containerWidth / 2
+					});
+				}
+			}
+
+			function focusElement(container, direction) {
+				const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
+
+				if (firstElement && firstElement instanceof HTMLElement) {
+					if (direction === Direction.RIGHT) {
+						if (document.activeElement === container || !firstElement.nextElementSibling) {
+							scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
+							return;
+						}
+
+						if (firstElement.nextElementSibling instanceof HTMLElement) {
+							scrollTo(firstElement.nextElementSibling, container, container);
+						}
+					} else if (direction === Direction.LEFT) {
+						if (document.activeElement === container || !firstElement.previousElementSibling) {
+							const links = container.querySelectorAll("a[href], button");
+							if (!links || !links.length) return;
+							scrollTo(firstElement, links[links.length - 1] || container, container);
+							return;
+						}
+
+						if (firstElement.previousElementSibling instanceof HTMLElement) {
+							scrollTo(firstElement.previousElementSibling, container, container);
+						}
+					}
+				}
+			}
+
 			if (event.key === "ArrowLeft") {
 				event.preventDefault();
 				focusElement(containerRef.current, Direction.RIGHT);
@@ -739,25 +736,14 @@ torefactor:
 											onClick: () => clickCallback(index, chip.label)
 										},
 										Spicetify.React.createElement(
-											"button",
+											Spicetify.ReactComponent.Chip,
 											{
-												role: "checkbox",
-												"aria-checked": checked.index === index ? "true" : "false",
-												tabIndex: "-1",
-												"data-encore-id": "chip",
-												className: `Chip__ChipComponent-sc-ry3uox-0 ChipComponent-checkbox-chip${
-													checked.index === index ? "-selected" : ""
-												}-useBrowserDefaultFocusStyle`
+												isUsingKeyboard: false,
+												onClick: () => clickCallback(index, chip.label),
+												selected: checked.index === index,
+												selectedColorSet: "invertedLight"
 											},
-											Spicetify.React.createElement(
-												"span",
-												{
-													className: `ChipInner__ChipInnerComponent-sc-1ly6j4j-0 ChipInnerComponent${
-														checked.index === index ? "-selected encore-inverted-light-set" : ""
-													}`
-												},
-												chip.label
-											)
+											chip.label
 										)
 									)
 								)
@@ -1044,26 +1030,21 @@ torefactor:
 							{
 								style: {
 									// tippy doesnt like loading images
-									height: "300px"
+									height: "375px",
+									width: "242px"
 								}
 							},
 							Spicetify.React.createElement("img", {
-								src: "https://media.discordapp.net/attachments/811648374687399988/1139576978924642425/image.png?width=1069&height=520",
+								src: "https://raw.githubusercontent.com/Tetrax-10/Nord-Spotify/master/assets/font/font-url.png",
 								alt: "preview",
 								style: {
-									width: "100%"
+									height: "300px"
 								}
 							}),
-							Spicetify.React.createElement(
-								"h4",
-								{ style: { fontWeight: "normal" } },
-								"If you have the font installed on your PC, then just enter the fonts name"
-							),
-							Spicetify.React.createElement(
-								"h4",
-								{ style: { fontWeight: "normal" } },
-								"Otherwise, you can use a Google Font by entering the URL of the font"
-							)
+
+							Spicetify.React.createElement("h4", null, "Usage:"),
+							Spicetify.React.createElement("li", null, "Font Name (if installed)"),
+							Spicetify.React.createElement("li", null, "URL (Google Fonts)")
 						)
 					),
 					items: [
@@ -1355,6 +1336,14 @@ torefactor:
 						Spicetify.React.createElement("li", null, "Comfy default: 4px")
 					),
 					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
+				},
+				{
+					type: Slider,
+					name: "Prefer-Playlist-Image",
+					title: "Prefer Playlist Image",
+					defaultVal: false,
+					desc: "If available, use the playlists image instead of the current playing song",
+					callback: updateBanner
 				},
 				{
 					type: SubSection,
@@ -1738,9 +1727,7 @@ torefactor:
 		const pathname = Spicetify.Platform.History.location.pathname;
 		let source;
 
-		if (getConfig("Custom-Image")) {
-			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
-		} else if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
+		if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
 			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
 
 			if (isPlaylist || isArtist) {
@@ -1757,8 +1744,17 @@ torefactor:
 			}
 		}
 
-		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
+		if (!source && getConfig("Custom-Image")) {
+			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
+		}
 
+		if (!source && getConfig("Prefer-Playlist-Image") && Spicetify.URI.isPlaylistV1OrV2(pathname)) {
+			const uri = `spotify:playlist:${pathname.split("/").pop()}`;
+			const playlist = await Spicetify.Platform.PlaylistAPI.getMetadata(uri);
+			source = playlist.images[0]?.url;
+		}
+
+		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
 		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
 		mainImage.src = secondaryImage.src = source;
 		mainImage.style.display = source ? "" : "none";

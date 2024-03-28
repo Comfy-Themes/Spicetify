@@ -1338,6 +1338,14 @@ torefactor:
 					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
 				},
 				{
+					type: Slider,
+					name: "Prefer-Playlist-Image",
+					title: "Prefer Playlist Image",
+					defaultVal: false,
+					desc: "If available, use the playlists image instead of the current playing song",
+					callback: updateBanner
+				},
+				{
 					type: SubSection,
 					name: "Apple-Music-Gradient-Snippet",
 					title: "Apple Music Gradient",
@@ -1719,9 +1727,7 @@ torefactor:
 		const pathname = Spicetify.Platform.History.location.pathname;
 		let source;
 
-		if (getConfig("Custom-Image")) {
-			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
-		} else if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
+		if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
 			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
 
 			if (isPlaylist || isArtist) {
@@ -1738,8 +1744,17 @@ torefactor:
 			}
 		}
 
-		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
+		if (!source && getConfig("Custom-Image")) {
+			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
+		}
 
+		if (!source && getConfig("Prefer-Playlist-Image") && Spicetify.URI.isPlaylistV1OrV2(pathname)) {
+			const uri = `spotify:playlist:${pathname.split("/").pop()}`;
+			const playlist = await Spicetify.Platform.PlaylistAPI.getMetadata(uri);
+			source = playlist.images[0]?.url;
+		}
+
+		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
 		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
 		mainImage.src = secondaryImage.src = source;
 		mainImage.style.display = source ? "" : "none";
