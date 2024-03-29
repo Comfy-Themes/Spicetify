@@ -191,8 +191,8 @@
 			font-size: 0;
 		}
 		.lyrics-lyricsContainer-LyricsContainer {
-			position: fixed !important;
-			overflow: auto;
+			height: calc(100vh - 140px);
+			margin-top: -64px;
 
 			&::-webkit-scrollbar {
 				width: 0;
