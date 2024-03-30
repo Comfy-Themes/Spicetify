@@ -38,16 +38,6 @@
 	}
 
 	// Scrollbars
-	.GenericModal ::-webkit-scrollbar,
-	.main-trackCreditsModal-mainSection ::-webkit-scrollbar,
-	.main-trackCreditsModal-originalCredits ::-webkit-scrollbar {
-		width: 7px !important;
-	}
-	.GenericModal ::-webkit-scrollbar-thumb,
-	.main-trackCreditsModal-mainSection ::-webkit-scrollbar-thumb,
-	.main-trackCreditsModal-originalCredits ::-webkit-scrollbar-thumb {
-		border-radius: 2rem !important;
-	}
 	.main-embedWidgetGenerator-container {
 		height: 75vh !important;
 		max-height: 800px !important;
@@ -55,6 +45,7 @@
 	}
 	.main-trackCreditsModal-mainSection {
 		padding: 16px 16px 0;
+		scrollbar-width: thin;
 	}
 	.GenericModal {
 		border-radius: 10px;

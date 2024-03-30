@@ -117,18 +117,15 @@
 		display: none !important;
 	}
 
-	.os-scrollbar-track,
-	::-webkit-scrollbar {
-		width: calc(var(--scrollbar-vertical-size) / 2);
+	.os-scrollbar-handle {
+		border-radius: 1em;
+		--os-handle-perpendicular-size-active: 8px;
+		--os-handle-perpendicular-size-hover: 8px;
+		--os-handle-perpendicular-size: 8px;
 	}
 
-	.os-scrollbar-handle,
-	::-webkit-scrollbar-thumb {
-		border-radius: 4.5px;
-	}
-
-	::-webkit-scrollbar-track {
-		margin-bottom: 10px;
+	.os-scrollbar {
+		--os-padding-perpendicular: 4px
 	}
 
 	// Coloured heart

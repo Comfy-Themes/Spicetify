@@ -79,9 +79,12 @@
 		// Main Page Tweaks
 		main {
 			position: sticky;
+
 			.os-host-overflow,
 			.os-padding,
-			.os-viewport {
+			.os-viewport,
+			div[data-overlayscrollbars~="host"],
+			[data-overlayscrollbars-viewport="scrollbarHidden"] {
 				overflow: visible !important; // Override overflow property
 			}
 		}
