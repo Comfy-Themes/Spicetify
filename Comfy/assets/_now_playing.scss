@@ -16,6 +16,7 @@
 				.main-nowPlayingWidget-nowPlaying {
 					height: 0;
 					z-index: 1;
+					left: var(--cover-art-left);
 
 					.main-coverSlotCollapsed-container {
 						bottom: var(--cover-art-bottom);

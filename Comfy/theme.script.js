@@ -1260,6 +1260,7 @@ torefactor:
 							document.documentElement.style.setProperty("--cover-art-width", "");
 							document.documentElement.style.setProperty("--cover-art-height", "");
 							document.documentElement.style.setProperty("--cover-art-radius", "");
+							document.documentElement.style.setProperty("--cover-art-left", "");
 							document.documentElement.style.setProperty("--cover-art-bottom", "");
 						}
 					},
@@ -1299,16 +1300,25 @@ torefactor:
 						{
 							type: Input,
 							inputType: "number",
+							name: "Cover-Art-Left",
+							title: "Left Margin",
+							defaultVal: "0px",
+							desc: "Change the distance between the cover art and the left of the playbar",
+							callback: value => document.documentElement.style.setProperty("--cover-art-left", value ? value + "px" : "")
+						},
+						{
+							type: Input,
+							inputType: "number",
 							name: "Cover-Art-Bottom",
 							title: "Bottom Margin",
 							defaultVal: "20px",
 							tippy: Spicetify.React.createElement(
 								Spicetify.React.Fragment,
 								null,
-								Spicetify.React.createElement("h4", null, "Change the distance between the cover art and the bottom of the playbar:"),
 								Spicetify.React.createElement("li", null, "Comfy default: 20px"),
 								Spicetify.React.createElement("li", null, "Spotify default: 0px")
 							),
+							desc: "Change the distance between the cover art and the bottom of the playbar",
 							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", value ? value + "px" : "")
 						}
 					]
