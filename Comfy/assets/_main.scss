@@ -194,7 +194,7 @@
 			font-size: 0;
 		}
 		.lyrics-lyricsContainer-LyricsContainer {
-			height: calc(100vh - 140px);
+			height: calc(100vh - max(var(--comfy-topbar-height, 40px), 8px) - 100px);
 			margin-top: -64px;
 
 			&::-webkit-scrollbar {
