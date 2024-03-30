@@ -2,6 +2,7 @@
 .x-settings-container {
 	max-width: unset;
 }
+
 .x-toggle-indicatorWrapper {
 	border-radius: var(--button-radius);
 }
@@ -10,7 +11,11 @@
 .GenericModal__overlay:has(.comfy-settings) {
 	// Header Section Styling
 	.main-trackCreditsModal-header {
-		padding: 20px 32px 20px;
+		padding: 12px 8px 12px 20px;
+
+		.main-type-alto {
+			font-size: 25px;
+		}
 
 		.main-trackCreditsModal-closeBtn {
 			background-color: rgba(var(--spice-rgb-selected-row), 0.1);
@@ -44,7 +49,7 @@
 		width: clamp(550px, 50vw, 680px) !important;
 	}
 	.main-trackCreditsModal-mainSection {
-		padding: 16px 16px 0;
+		padding: 0px 16px 0;
 		scrollbar-width: thin;
 	}
 	.GenericModal {
@@ -56,11 +61,11 @@
 .comfy-settings {
 	// Carousel Styling
 	.search-searchCategory-SearchCategory {
-		padding-top: 8px;
-		top: -16px;
+		padding-top: 9px;
+		top: 0;
 		background: var(--spice-player);
 		grid-column: 1 / -1;
-		height: 48px;
+		height: 50px;
 		position: sticky;
 		z-index: 1;
 
@@ -149,7 +154,7 @@
 	}
 
 	.setting-card {
-		background-color: var(--spice-highlight-elevated);
+		background-color: var(--background-tinted-highlight);
 		border-radius: 10px;
 		margin: 8px 0;
 
@@ -217,12 +222,17 @@
 
 				.x-toggle-indicatorWrapper {
 					transition: background-color 0.2s;
+					--spice-button-disabled: var(--background-tinted-base);
+				}
+
+				input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
+					background-color: var(--background-tinted-highlight);
 				}
 			}
 
 			button.switch {
 				border: 0px;
-				background-color: var(--spice-sidebar);
+				background-color: var(--background-tinted-base);
 				cursor: pointer;
 				display: flex;
 				padding: 10px;
@@ -242,7 +252,8 @@
 			input {
 				padding-inline: 10px;
 				text-align: center;
-				background-color: var(--spice-sidebar);
+				background-color: var(--background-tinted-base);
+				color: var(--spice-text);
 				border: none;
 				height: 32px;
 				width: 120px;
@@ -291,7 +302,7 @@
 
 				.dropdown-button {
 					position: relative;
-					background-color: var(--spice-sidebar);
+					background-color: var(--background-tinted-base);
 					border: 0;
 					border-radius: var(--button-radius);
 					box-sizing: border-box;
@@ -303,8 +314,8 @@
 					height: 36px;
 
 					&:hover {
-						color: rgb(var(--spice-rgb-text));
-						background-color: var(--spice-button-disabled);
+						color: var(--spice-rgb-text);
+						background-color: var(--background-tinted-highlight);
 					}
 
 					.dropdown-selection {
@@ -327,7 +338,8 @@
 					width: 0;
 				}
 				.dropdown-menu {
-					background-color: var(--spice-sidebar);
+					background-color: var(--background-tinted-highlight);
+					opacity: 1;
 					border: 0;
 					border-radius: 8px;
 					box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -368,6 +380,9 @@
 	.setting-subSection {
 		&#enabled {
 			.setting-card {
+				border-radius: 0;
+				margin: 0;
+
 				&:first-child {
 					border-radius: 10px 10px 0px 0px;
 					background-color: var(--spice-sidebar);
@@ -379,10 +394,11 @@
 						transition: background-color 0.2s;
 						cursor: pointer;
 					}
-				}
 
-				border-radius: 0;
-				margin: 0;
+					.setting-title {
+						cursor: pointer !important;
+					}
+				}
 
 				&:last-child {
 					border-radius: 0 0 10px 10px;
@@ -398,6 +414,10 @@
 
 				&:hover {
 					background-color: var(--spice-button-disabled);
+				}
+
+				.setting-title {
+					cursor: pointer !important;
 				}
 			}
 		}

@@ -3,13 +3,12 @@ tofix:
 - carousel mouse scrolling (drag / scroll)
 - carousel keyboard scrolling (arrow keys)
 - negative values
+- dropdowns weird colour now
 
 todo:
 - remove uneeded stuff / simplify carousel
-- more consistent coloring - sliders etc
 - add warning message if using unsupported versions
 - update image tippy sizes / fix tippy height
-- add more main-type-mestoBold
 - create color picker
 - add more font settings
 - add custom colour schemes 
