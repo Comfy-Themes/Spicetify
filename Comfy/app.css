@@ -142,7 +142,7 @@
   font-size: 0;
 }
 :root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer {
-  height: calc(100vh - 140px);
+  height: calc(100vh - max(var(--comfy-topbar-height, 40px), 8px) - 100px);
   margin-top: -64px;
 }
 :root .Root__main-view .main-view-container .lyrics-lyricsContainer-LyricsContainer::-webkit-scrollbar {
@@ -203,6 +203,7 @@
 :root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying {
   height: 0;
   z-index: 1;
+  left: var(--cover-art-left);
 }
 :root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) .Root__now-playing-bar .main-nowPlayingBar-container .main-nowPlayingBar-nowPlayingBar .main-nowPlayingWidget-nowPlaying .main-coverSlotCollapsed-container {
   bottom: var(--cover-art-bottom);
@@ -280,7 +281,10 @@
 }
 
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header {
-  padding: 20px 32px 20px;
+  padding: 12px 12px 12px 16px;
+}
+.GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-type-alto {
+  font-size: 25px;
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn {
   background-color: rgba(var(--spice-rgb-selected-row), 0.1);
@@ -288,13 +292,15 @@
   cursor: pointer;
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.04) !important;
+  color: var(--spice-text);
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:focus {
   transform: scale(1);
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:active {
-  transform: scale(0.9) !important;
+  transform: scale(0.98) !important;
+  color: var(--spice-text);
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:first-of-type {
   margin-left: auto;
@@ -302,25 +308,29 @@
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:not(:last-of-type) {
   margin-right: 8px;
 }
+.GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-header .main-trackCreditsModal-closeBtn:last-of-type svg {
+  scale: 0.8;
+}
 .GenericModal__overlay:has(.comfy-settings) .main-embedWidgetGenerator-container {
   height: 75vh !important;
   max-height: 800px !important;
   width: clamp(550px, 50vw, 680px) !important;
 }
 .GenericModal__overlay:has(.comfy-settings) .main-trackCreditsModal-mainSection {
-  padding: 16px 16px 0;
+  padding: 0px 16px 0;
   scrollbar-width: thin;
+  min-height: calc(100% - 60px);
 }
 .GenericModal__overlay:has(.comfy-settings) .GenericModal {
   border-radius: 10px;
 }
 
 .comfy-settings .search-searchCategory-SearchCategory {
-  padding-top: 8px;
-  top: -16px;
+  padding-top: 9px;
+  top: 0;
   background: var(--spice-player);
   grid-column: 1/-1;
-  height: 48px;
+  height: 50px;
   position: sticky;
   z-index: 1;
 }
@@ -341,6 +351,15 @@
 .comfy-settings .search-searchCategory-SearchCategory .search-searchCategory-container .search-searchCategory-wrapper .search-searchCategory-contentArea .search-searchCategory-categoryGridItem {
   cursor: pointer;
   padding: 2px;
+}
+.comfy-settings .search-searchCategory-SearchCategory .search-searchCategory-container .search-searchCategory-wrapper .search-searchCategory-contentArea .search-searchCategory-categoryGridItem:first-of-type {
+  padding-left: 0px;
+}
+.comfy-settings .search-searchCategory-SearchCategory .search-searchCategory-container .search-searchCategory-wrapper .search-searchCategory-contentArea .search-searchCategory-categoryGridItem:last-of-type {
+  padding-right: 0px;
+}
+.comfy-settings .search-searchCategory-SearchCategory .search-searchCategory-container .search-searchCategory-wrapper .search-searchCategory-contentArea .search-searchCategory-categoryGridItem:last-of-type button {
+  margin-inline-end: 0;
 }
 .comfy-settings .search-searchCategory-SearchCategory .search-searchCategory-container .search-searchCategory-wrapper .search-searchCategory-contentArea .search-searchCategory-categoryGridItem button {
   margin-inline-end: 8px;
@@ -400,7 +419,7 @@
   padding: 5px 0;
 }
 .comfy-settings .setting-card {
-  background-color: var(--spice-highlight-elevated);
+  background-color: var(--background-tinted-highlight);
   border-radius: 10px;
   margin: 8px 0;
 }
@@ -455,15 +474,21 @@
 }
 .comfy-settings .setting-card .setting-action .x-toggle-wrapper .x-toggle-indicatorWrapper {
   transition: background-color 0.2s;
+  --spice-button-disabled: var(--background-tinted-base);
+}
+.comfy-settings .setting-card .setting-action .x-toggle-wrapper input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
+  background-color: var(--background-tinted-highlight);
+}
+.comfy-settings .setting-card .setting-action .x-toggle-wrapper input:checked:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
+  background-color: var(--spice-button-active);
 }
 .comfy-settings .setting-card .setting-action button.switch {
   border: 0px;
-  background-color: var(--spice-sidebar);
+  background-color: var(--background-tinted-base);
   cursor: pointer;
   display: flex;
-  padding: 10px;
+  padding: 8px;
   margin-inline-end: 12px;
-  transition: all 0.2s;
 }
 .comfy-settings .setting-card .setting-action button.switch:hover {
   transform: scale(1.04);
@@ -471,12 +496,13 @@
 }
 .comfy-settings .setting-card .setting-action button.switch:active {
   transform: scale(0.98);
-  color: var(--spice-subtext);
+  color: var(--spice-text);
 }
 .comfy-settings .setting-card .setting-action input {
   padding-inline: 10px;
   text-align: center;
-  background-color: var(--spice-sidebar);
+  background-color: var(--background-tinted-base);
+  color: var(--spice-text);
   border: none;
   height: 32px;
   width: 120px;
@@ -514,7 +540,7 @@
 }
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-button {
   position: relative;
-  background-color: var(--spice-sidebar);
+  background-color: var(--background-tinted-base);
   border: 0;
   border-radius: var(--button-radius);
   box-sizing: border-box;
@@ -523,16 +549,17 @@
   outline: 0;
   padding: 0 36px 0 16px;
   transition: all 0.2s ease;
-  height: 36px;
+  height: 32px;
+  cursor: pointer !important;
 }
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-button:hover {
-  color: rgb(var(--spice-rgb-text));
-  background-color: var(--spice-button-disabled);
+  color: var(--spice-rgb-text);
+  background-color: var(--background-tinted-highlight);
 }
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-button .dropdown-selection {
   display: flex;
   align-items: center;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-arrow {
   border-color: rgba(var(--spice-rgb-text), 0.7) transparent transparent;
@@ -544,11 +571,13 @@
   margin-top: -ceil(2.5);
   position: absolute;
   right: 16px;
-  top: 16px;
+  top: 14px;
   width: 0;
 }
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-menu {
-  background-color: var(--spice-sidebar);
+  scrollbar-width: thin;
+  background-color: var(--spice-card);
+  opacity: 1;
   border: 0;
   border-radius: 8px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -566,6 +595,7 @@
 .comfy-settings .setting-card .setting-action .dropdown-wrapper .dropdown-option {
   box-sizing: border-box;
   color: rgba(var(--spice-rgb-text), 0.7);
+  background-color: var(--background-tinted-highlight);
   cursor: pointer;
   display: block;
   padding: 8px 10px;
@@ -594,6 +624,9 @@
   transition: background-color 0.2s;
   cursor: pointer;
 }
+.comfy-settings .setting-subSection#enabled .setting-card:first-child .setting-title {
+  cursor: pointer !important;
+}
 .comfy-settings .setting-subSection#enabled .setting-card:last-child {
   border-radius: 0 0 10px 10px;
   margin-bottom: 8px;
@@ -605,6 +638,9 @@
 }
 .comfy-settings .setting-subSection#collapsed .setting-card:hover {
   background-color: var(--spice-button-disabled);
+}
+.comfy-settings .setting-subSection#collapsed .setting-card .setting-title {
+  cursor: pointer !important;
 }
 .comfy-settings .setting-button-row {
   display: flex;
@@ -1041,6 +1077,7 @@
   --cover-art-width: 84px;
   --cover-art-height: 84px;
   --cover-art-radius: 8px;
+  --cover-art-left: 0px;
   --cover-art-bottom: 20px;
   --tracklist-gradient-height: 232px;
   --tracklist-gradient-opacity: 0.6;
@@ -1179,4 +1216,4 @@
   transition: 150ms background-color;
 }
 
-/*# sourceMappingURL=user.css.map */
+/*# sourceMappingURL=app.css.map */
