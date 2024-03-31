@@ -11,7 +11,7 @@
 .GenericModal__overlay:has(.comfy-settings) {
 	// Header Section Styling
 	.main-trackCreditsModal-header {
-		padding: 12px 8px 12px 20px;
+		padding: 12px 12px 12px 20px;
 
 		.main-type-alto {
 			font-size: 25px;
@@ -51,6 +51,7 @@
 	.main-trackCreditsModal-mainSection {
 		padding: 0px 16px 0;
 		scrollbar-width: thin;
+		min-height: calc(100% - 60px);
 	}
 	.GenericModal {
 		border-radius: 10px;
