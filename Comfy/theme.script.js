@@ -9,11 +9,6 @@ todo:
 - add warning message if using unsupported versions
 - create color picker
 - add custom colour schemes 
-
-torefactor:
-- simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
-- once props are simplified convert all callback events to be "name - ...props"
-- fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
 (async function comfy() {
