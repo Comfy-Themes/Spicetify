@@ -7,14 +7,13 @@ tofix:
 todo:
 - remove uneeded stuff / simplify carousel
 - add warning message if using unsupported versions
-- update image tippy sizes / fix tippy height
 - create color picker
 - add custom colour schemes 
 
 torefactor:
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
 - once props are simplified convert all callback events to be "name - ...props"
-- create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
+- create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage
 - fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
@@ -87,7 +86,7 @@ torefactor:
 	const mainImage = document.createElement("img");
 	const secondaryImage = document.createElement("img");
 
-	frame.className = "frame";
+	frame.className = "comfy-banner";
 	mainImage.className = "mainImage";
 	secondaryImage.className = "secondaryImage";
 	frame.append(mainImage, secondaryImage);
