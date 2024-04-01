@@ -3,21 +3,18 @@ tofix:
 - carousel mouse scrolling (drag / scroll)
 - carousel keyboard scrolling (arrow keys)
 - negative values
-- dropdowns weird colour now
 
 todo:
 - remove uneeded stuff / simplify carousel
 - add warning message if using unsupported versions
 - update image tippy sizes / fix tippy height
 - create color picker
-- add more font settings
 - add custom colour schemes 
 
 torefactor:
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
 - once props are simplified convert all callback events to be "name - ...props"
 - create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage, also rename frame to be more descriptive e.g comfyBanner or something
-- use Spicetify slider component
 - fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
@@ -346,21 +343,13 @@ torefactor:
 			title,
 			desc,
 			tippy,
-			action: Spicetify.React.createElement(
-				"label",
-				{ className: "x-toggle-wrapper" },
-				Spicetify.React.createElement("input", {
-					className: "x-toggle-input",
-					type: "checkbox",
-					defaultChecked: state,
-					onClick: () => setState(!state)
-				}),
-				Spicetify.React.createElement(
-					"span",
-					{ className: "x-toggle-indicatorWrapper" },
-					Spicetify.React.createElement("span", { className: "x-toggle-indicator" })
-				)
-			),
+			action: Spicetify.React.createElement(Spicetify.ReactComponent.Toggle, {
+				value: state,
+				disabled: false,
+				onSelected: () => {
+					setState(!state);
+				}
+			}),
 			onClick
 		});
 	});
