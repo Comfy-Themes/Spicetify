@@ -1,22 +1,24 @@
 :root #main.Banner-Enabled {
-	.comfy-banner {
+	.comfy-banner-frame {
 		display: block;
 
-		.mainImage {
-			position: absolute; // Positioned absolutely to cover the entire viewport
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			object-fit: cover;
-			object-position: top;
-			filter: blur(var(--image-blur));
-			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-		}
+		.comfy-banner-image {
+			&:first-of-type {
+				position: absolute; // Positioned absolutely to cover the entire viewport
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				object-fit: cover;
+				object-position: top;
+				filter: blur(var(--image-blur));
+				-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+				mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			}
 
-		.secondaryImage {
-			display: none;
+			&:last-of-type {
+				display: none;
+			}
 		}
 	}
 
@@ -71,7 +73,7 @@
 }
 
 :root .Root__main-view {
-	.comfy-banner {
+	.comfy-banner-frame {
 		display: none;
 	}
 

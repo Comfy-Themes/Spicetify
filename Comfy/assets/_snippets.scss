@@ -288,7 +288,7 @@
 		}
 
 		&.Apple-Music-Gradient-Snippet {
-			.comfy-banner {
+			.comfy-banner-frame {
 				position: absolute;
 				width: 100%;
 				height: 100%;
@@ -296,36 +296,33 @@
 				filter: blur(calc(var(--image-blur) * 10));
 				background-image: var(--gradient-background-image);
 
-				.mainImage,
-				.secondaryImage {
-					position: absolute;
-					width: var(--gradient-width);
+				.comfy-banner-image {
+					position: absolute !important;
+					width: var(--gradient-width) !important;
 					aspect-ratio: 1;
 					animation: rotate var(--gradient-speed) linear infinite;
 					border-radius: var(--gradient-radius) !important;
 					mix-blend-mode: var(--gradient-blend-mode);
 					object-fit: cover !important;
-				}
 
-				.mainImage {
-					/* Nullify all the values */
-					height: revert;
-					left: unset;
-					object-fit: unset;
-					object-position: unset;
-					filter: none;
-					-webkit-mask-image: none;
-					mask-image: none;
-					right: 0;
-					top: 0;
-					z-index: 10;
-				}
-
-				.secondaryImage {
-					display: revert;
-					left: 0;
-					bottom: 0;
-					animation-direction: reverse;
+					&:first-of-type {
+						height: revert;
+						left: unset;
+						object-fit: unset;
+						object-position: unset;
+						filter: none;
+						-webkit-mask-image: none;
+						mask-image: none;
+						right: 0;
+						top: 0;
+						z-index: 10;
+					}
+					&:last-of-type {
+						display: revert;
+						left: 0;
+						bottom: 0;
+						animation-direction: reverse;
+					}
 				}
 			}
 

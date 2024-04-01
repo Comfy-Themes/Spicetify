@@ -13,7 +13,6 @@ todo:
 torefactor:
 - simplify props - Section -> cardLayout -> title, action, etc - basically just move everything up one level / have the components not always be cards
 - once props are simplified convert all callback events to be "name - ...props"
-- create a singular div for banner image and use cloning, then first-child second-child in css, no longer a need for mainImage secondaryImage
 - fix subSection logic, manually defining the logic for all types of callbacks is dumb maybe make a pseudo element for each subcall
 */
 
@@ -83,13 +82,13 @@ torefactor:
 	];
 
 	const frame = document.createElement("div");
-	const mainImage = document.createElement("img");
-	const secondaryImage = document.createElement("img");
+	const banner = [document.createElement("img"), document.createElement("img")];
 
-	frame.className = "comfy-banner";
-	mainImage.className = "mainImage";
-	secondaryImage.className = "secondaryImage";
-	frame.append(mainImage, secondaryImage);
+	frame.className = "comfy-banner-frame";
+	banner.forEach(image => {
+		image.className = "comfy-banner-image";
+		frame.append(image);
+	});
 
 	waitForDeps(
 		".under-main-view",
@@ -1752,13 +1751,16 @@ torefactor:
 		}
 
 		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
-		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
-		mainImage.src = secondaryImage.src = source;
-		mainImage.style.display = source ? "" : "none";
 
-		if (mainImage.src !== source) {
-			console.debug(`[Comfy-Event]: Banner Source = ${(mainImage.src, source)}`);
+		if (banner[0].src !== source) {
+			console.debug(`[Comfy-Event]: Banner Source = ${banner[0].src} -> ${source}`);
 		}
+
+		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
+		banner.forEach(image => {
+			image.src = source;
+			image.style.display = source ? "" : "none";
+		});
 	}
 
 	function updateScheme(scheme, message) {
