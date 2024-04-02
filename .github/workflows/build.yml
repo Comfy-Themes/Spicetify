@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main]
+    branches: [main, beta]
 
 name: Build
 
@@ -18,7 +18,7 @@ jobs:
 
       - name: Push Changes
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ github.repository == 'Comfy-Themes/Spicetify' && github.ref == 'refs/heads/main' }}
+        if: ${{ github.repository == 'Comfy-Themes/Spicetify' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta') }}
         with:
           commit_message: "chore: compile sass"
           commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
