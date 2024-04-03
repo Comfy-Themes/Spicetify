@@ -344,10 +344,11 @@ todo:
 	});
 
 	const Input = Spicetify.React.memo(
-		({ inputType, includePicker, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
+		({ inputType, includePicker, throttleLimit = 100, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
 			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
 			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 			const isFirstRender = Spicetify.React.useRef(true);
+			const throttleCallback = Spicetify.React.useMemo(() => throttle(callback, throttleLimit), [callback]);
 
 			const textFieldRef = Spicetify.React.useRef(null);
 			Spicetify.React.useEffect(() => {
@@ -373,9 +374,9 @@ todo:
 				setConfig(name, value);
 				if (value !== "" || !startup) {
 					console.debug(`[Comfy-Callback]: ${name} =`, value);
-					callback?.(value, name);
+					throttleCallback(value, name);
 				}
-			}, [value]);
+			}, [value, name, throttleCallback]);
 
 			if (condition === false) return null;
 
@@ -510,6 +511,7 @@ todo:
 		const containerRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
 		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
+		const section = document.querySelector(".main-trackCreditsModal-mainSection");
 
 		const handleResize = Spicetify.React.useCallback(() => {
 			if (!containerRef.current) return;
@@ -578,6 +580,10 @@ todo:
 
 		const clickCallback = (index, label) => {
 			setChecked({ index, label });
+
+			if (section) {
+				section.scrollTo(null, 0);
+			}
 		};
 
 		return Spicetify.React.createElement(
@@ -992,10 +998,11 @@ todo:
 								waitForDeps(
 									"main",
 									main => {
-										main.classList.remove(name);
-										document.documentElement.style.setProperty("--home-header-color", "");
-										if (value !== "") {
-											document.documentElement.style.setProperty("--home-header-color", value);
+										document.documentElement.style.setProperty("--home-header-color", value);
+
+										if (value === "") {
+											main.classList.remove(name);
+										} else {
 											main.classList.add(name);
 										}
 									},
@@ -1567,6 +1574,27 @@ todo:
 		} catch (e) {
 			return false;
 		}
+	}
+
+	function throttle(func, limit) {
+		let lastFunc;
+		let lastRan;
+		return function () {
+			const context = this;
+			const args = arguments;
+			if (!lastRan) {
+				func.apply(context, args);
+				lastRan = Date.now();
+			} else {
+				clearTimeout(lastFunc);
+				lastFunc = setTimeout(function () {
+					if (Date.now() - lastRan >= limit) {
+						func.apply(context, args);
+						lastRan = Date.now();
+					}
+				}, limit - (Date.now() - lastRan));
+			}
+		};
 	}
 
 	async function waitForDeps(dependencies, callback, element = false, elementType = "querySelector", timeout = 5000) {
