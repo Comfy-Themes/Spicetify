@@ -1,7 +1,6 @@
 /* 
 tofix:
-- carousel mouse scrolling (drag / scroll)
-- carousel keyboard scrolling (arrow keys)
+- carousel mouse scrolling (drag)
 - negative values
 
 todo:
@@ -511,27 +510,15 @@ todo:
 
 	const Carousel = ({ chips, checked, setChecked }) => {
 		const containerRef = Spicetify.React.useRef(null);
-		const wrapperRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
 		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
-		const section = document.querySelector(".main-trackCreditsModal-mainSection");
-		const Direction = {
-			LEFT: -1,
-			RIGHT: 1
-		};
 
 		const handleResize = Spicetify.React.useCallback(() => {
-			if (!containerRef.current || !wrapperRef.current) return;
+			if (!containerRef.current) return;
 
 			const container = containerRef.current;
-			const wrapper = wrapperRef.current;
-			const scrollWidth = container.scrollWidth - container.clientWidth;
-			const scrollLeft = Math.abs(container.scrollLeft);
-			const roundedScroll = scrollLeft < 1 ? Math.floor(scrollLeft) : Math.ceil(scrollLeft);
-			const hasOverflow = wrapper.offsetWidth > container.clientWidth;
-
-			setShowLeftButton(hasOverflow && scrollLeft !== 0);
-			setShowRightButton(hasOverflow && roundedScroll < scrollWidth);
+			setShowLeftButton(container.scrollLeft > 0);
+			setShowRightButton(container.scrollLeft < container.scrollWidth - container.clientWidth);
 		}, []);
 
 		Spicetify.React.useEffect(() => {
@@ -541,164 +528,43 @@ todo:
 			};
 		}, [handleResize]);
 
-		Spicetify.React.useEffect(handleResize, [chips.length, handleResize]);
+		Spicetify.React.useEffect(handleResize, [chips.length]);
 
 		const handleScroll = Spicetify.React.useCallback(() => {
 			handleResize();
 		}, [handleResize]);
 
 		const handleKeyDown = Spicetify.React.useCallback(event => {
-			function scrollTo(element, target, container) {
-				const offsetLeft = element.offsetLeft;
-				const elementWidth = element.offsetWidth;
-				const rightBound = offsetLeft + elementWidth;
-				const containerScrollLeft = container.scrollLeft;
-				const containerWidth = container.offsetWidth;
-
-				if (containerScrollLeft > 0 || (containerScrollLeft + containerWidth) / 2 <= rightBound) {
-					container.scroll({
-						left: elementWidth / 2 + offsetLeft - containerWidth / 2
-					});
-				}
-			}
-
-			function focusElement(container, direction) {
-				const firstElement = container.querySelector('[tabindex="0"]') || container.firstElementChild;
-
-				if (firstElement && firstElement instanceof HTMLElement) {
-					if (direction === Direction.RIGHT) {
-						if (document.activeElement === container || !firstElement.nextElementSibling) {
-							scrollTo(firstElement, container.querySelector("a[href], button") || container, container);
-							return;
-						}
-
-						if (firstElement.nextElementSibling instanceof HTMLElement) {
-							scrollTo(firstElement.nextElementSibling, container, container);
-						}
-					} else if (direction === Direction.LEFT) {
-						if (document.activeElement === container || !firstElement.previousElementSibling) {
-							const links = container.querySelectorAll("a[href], button");
-							if (!links || !links.length) return;
-							scrollTo(firstElement, links[links.length - 1] || container, container);
-							return;
-						}
-
-						if (firstElement.previousElementSibling instanceof HTMLElement) {
-							scrollTo(firstElement.previousElementSibling, container, container);
-						}
-					}
-				}
-			}
-
 			if (event.key === "ArrowLeft") {
 				event.preventDefault();
-				focusElement(containerRef.current, Direction.RIGHT);
+				containerRef.current.scrollBy({ left: -50, behavior: "smooth" });
 			} else if (event.key === "ArrowRight") {
 				event.preventDefault();
-				focusElement(containerRef.current, Direction.LEFT);
+				containerRef.current.scrollBy({ left: 50, behavior: "smooth" });
 			}
-		}, []);
-		function clickCallback(index, label) {
-			setChecked({ index, label });
-
-			if (section) {
-				section.scrollTo(null, 0);
-			}
-		}
-		const handleMouseDown = Spicetify.React.useCallback(() => {
-			const handleWheel = event => {
-				if (!event.deltaY) return;
-
-				const target = event.currentTarget;
-				containerRef.current.scrollLeft += event.deltaY + event.deltaX;
-				clearTimeout(timeoutRef.current);
-				timeoutRef.current = setTimeout(() => {
-					target.style.scrollBehavior = scrollBehavior.current ?? "";
-					isScrolling.current = true;
-				}, 100);
-			};
-
-			const timeoutRef = Spicetify.React.useRef(null);
-			const isScrolling = Spicetify.React.useRef(true);
-			const scrollBehavior = Spicetify.React.useRef(containerRef.current.style.scrollBehavior);
-
-			containerRef.current.style.userSelect = "none";
-			containerRef.current.style.scrollBehavior = "auto";
-			window.addEventListener("wheel", handleWheel);
-
-			const handleMouseUp = () => {
-				const handleClick = event => {
-					event.preventDefault();
-					event.stopImmediatePropagation();
-				};
-
-				if (isScrolling.current) {
-					containerRef.current.addEventListener("click", handleClick, {
-						once: true,
-						capture: true
-					});
-
-					setTimeout(() => {
-						containerRef.current.removeEventListener("click", handleClick, {
-							capture: true
-						});
-					});
-				}
-
-				containerRef.current.style.removeProperty("user-select");
-				window.removeEventListener("mousemove", handleMouseMove);
-				cancelAnimationFrame(requestAnimationFrameRef.current);
-				window.removeEventListener("wheel", handleWheel, { once: true });
-			};
-
-			const handleMouseMove = event => {
-				const target = event.currentTarget;
-				const deltaX = event.clientX - startX;
-				if (Math.abs(deltaX) > 10) {
-					isScrolling.current = true;
-				}
-
-				const scrollLeft = target.scrollLeft;
-				target.scrollLeft = startScrollLeft - deltaX;
-				delta = target.scrollLeft - scrollLeft;
-			};
-
-			const startX = event.clientX;
-			const startScrollLeft = containerRef.current.scrollLeft;
-			let delta = 0;
-
-			window.addEventListener("mousemove", handleMouseMove);
-			window.addEventListener("mouseup", handleMouseUp, { once: true });
 		}, []);
 
 		const handleButtonClick = direction => {
-			const multiplier = direction * (containerRef.current.clientWidth / 2);
-			containerRef.current.scrollBy({
-				left: multiplier
-			});
-			handleResize();
+			const multiplier = direction === "LEFT" ? -1 : 1;
+			containerRef.current.scrollBy({ left: multiplier * (containerRef.current.clientWidth / 2), behavior: "smooth" });
+		};
+
+		const clickCallback = (index, label) => {
+			setChecked({ index, label });
 		};
 
 		return Spicetify.React.createElement(
 			"div",
-			{
-				className: "search-searchCategory-SearchCategory encore-dark-theme"
-			},
+			{ className: "search-searchCategory-SearchCategory encore-dark-theme" },
 			Spicetify.React.createElement(
 				"div",
-				{
-					className: "search-searchCategory-container contentSpacing"
-				},
+				{ className: "search-searchCategory-container contentSpacing" },
 				Spicetify.React.createElement(
 					"div",
-					{
-						className: "search-searchCategory-wrapper"
-					},
+					{ className: "search-searchCategory-wrapper" },
 					Spicetify.React.createElement(
 						"div",
-						{
-							className: "search-searchCategory-contentArea"
-						},
+						{ className: "search-searchCategory-contentArea" },
 						Spicetify.React.createElement(
 							"div",
 							{
@@ -710,13 +576,12 @@ todo:
 								}),
 								onScroll: handleScroll,
 								onKeyDown: handleKeyDown,
-								onMouseDown: handleMouseDown,
 								role: "list",
 								tabIndex: 0
 							},
 							Spicetify.React.createElement(
 								"div",
-								{ ref: wrapperRef, role: "presentation" },
+								{ role: "presentation" },
 								chips.map((chip, index) =>
 									Spicetify.React.createElement(
 										"a",
@@ -743,10 +608,7 @@ todo:
 						),
 						Spicetify.React.createElement(
 							"div",
-							{
-								className: "search-searchCategory-carousel",
-								dir: "ltr"
-							},
+							{ className: "search-searchCategory-carousel", dir: "ltr" },
 							Spicetify.React.createElement(
 								"button",
 								{
@@ -754,16 +616,14 @@ todo:
 										"search-searchCategory-carouselButtonVisible": showLeftButton
 									}),
 									tabIndex: -1,
-									onClick: () => handleButtonClick(Direction.LEFT),
+									onClick: () => handleButtonClick("LEFT"),
 									"aria-hidden": "true"
 								},
 								Spicetify.React.createElement("svg", {
 									autoMirror: false,
 									semanticColor: "textBase",
 									size: "small",
-									dangerouslySetInnerHTML: {
-										__html: Spicetify.SVGIcons["chevron-left"]
-									}
+									dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-left"] }
 								})
 							),
 							Spicetify.React.createElement(
@@ -773,16 +633,14 @@ todo:
 										"search-searchCategory-carouselButtonVisible": showRightButton
 									}),
 									tabIndex: -1,
-									onClick: () => handleButtonClick(Direction.RIGHT),
+									onClick: () => handleButtonClick("RIGHT"),
 									"aria-hidden": "true"
 								},
 								Spicetify.React.createElement("svg", {
 									autoMirror: false,
 									semanticColor: "textBase",
 									size: "small",
-									dangerouslySetInnerHTML: {
-										__html: Spicetify.SVGIcons["chevron-right"]
-									}
+									dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-right"] }
 								})
 							)
 						)
