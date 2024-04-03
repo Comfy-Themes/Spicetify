@@ -347,7 +347,7 @@ todo:
 		({ inputType, includePicker, throttleLimit = 100, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
 			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
 			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
-			const [color, setColor] = Spicetify.React.useState(value);
+			const [color, setColor] = Spicetify.React.useState(cssVarToHex(value));
 			const isFirstRender = Spicetify.React.useRef(true);
 			const throttleCallback = Spicetify.React.useMemo(() => throttle(callback, throttleLimit), [callback]);
 
