@@ -4,9 +4,9 @@
 		"description": "Stay comfy while listening to music",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
-		"usercss": "Comfy/user.css",
+		"usercss": "Comfy/app.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.js"],
+		"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.script.js"],
 		"authors": [
 			{
 				"name": "NYRI4",
@@ -38,7 +38,7 @@
 		"description": "Not recommended, purely for development purposes",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
-		"usercss": "Comfy/user.css",
+		"usercss": "Comfy/app.css",
 		"schemes": "Comfy/color.ini",
 		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/beta/Comfy/theme.script.js"],
 		"branch": "beta"
