@@ -304,6 +304,29 @@
 						}
 					}
 				}
+
+				&[type="color"] {
+					width: 32px;
+					padding: 0;
+					transition: scale 0.2s ease;
+					cursor: pointer;
+					margin-left: 8px;
+
+					&:hover,
+					&:focus,
+					&:active {
+						scale: 1.04;
+					}
+
+					&::-webkit-color-swatch-wrapper {
+						padding: 0;
+					}
+
+					&::-webkit-color-swatch {
+						border: none;
+						border-radius: var(--border-radius);
+					}
+				}
 			}
 
 			.dropdown-wrapper {

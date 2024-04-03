@@ -7,7 +7,6 @@ tofix:
 todo:
 - remove uneeded stuff / simplify carousel
 - add warning message if using unsupported versions
-- create color picker
 - add custom colour schemes 
 */
 
@@ -347,58 +346,70 @@ todo:
 		});
 	});
 
-	const Input = Spicetify.React.memo(({ inputType, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
-		const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
-		const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
-		const isFirstRender = Spicetify.React.useRef(true);
+	const Input = Spicetify.React.memo(
+		({ inputType, includePicker, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
+			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
+			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
+			const isFirstRender = Spicetify.React.useRef(true);
 
-		const textFieldRef = Spicetify.React.useRef(null);
-		Spicetify.React.useEffect(() => {
-			if (textFieldRef.current) {
-				textFieldRef.current.addEventListener("wheel", e => {
-					if (document.focusedElement === textFieldRef.current) {
-						e.preventDefault();
-					}
-				});
-			}
-		}, []);
+			const textFieldRef = Spicetify.React.useRef(null);
+			Spicetify.React.useEffect(() => {
+				if (textFieldRef.current) {
+					textFieldRef.current.addEventListener("wheel", e => {
+						if (document.focusedElement === textFieldRef.current) {
+							e.preventDefault();
+						}
+					});
+				}
+			}, []);
 
-		Spicetify.React.useEffect(() => {
-			if (isPromise(defaultVal)) defaultVal.then(val => setDefaultState(val));
-		}, [defaultVal]);
+			Spicetify.React.useEffect(() => {
+				if (isPromise(defaultVal)) defaultVal.then(val => setDefaultState(val));
+			}, [defaultVal]);
 
-		Spicetify.React.useEffect(() => {
-			if (isFirstRender.current) {
-				isFirstRender.current = false;
-				if (!startup) return;
-			}
+			Spicetify.React.useEffect(() => {
+				if (isFirstRender.current) {
+					isFirstRender.current = false;
+					if (!startup) return;
+				}
 
-			setConfig(name, value);
-			if (value !== "" || !startup) {
-				console.debug(`[Comfy-Callback]: ${name} =`, value);
-				callback?.(value, name);
-			}
-		}, [value]);
+				setConfig(name, value);
+				if (value !== "" || !startup) {
+					console.debug(`[Comfy-Callback]: ${name} =`, value);
+					callback?.(value, name);
+				}
+			}, [value]);
 
-		if (condition === false) return null;
+			if (condition === false) return null;
 
-		return Spicetify.React.createElement(CardLayout, {
-			title,
-			desc,
-			tippy,
-			action: Spicetify.React.createElement("input", {
-				type: inputType,
-				className: "input",
-				ref: textFieldRef,
-				value,
-				min,
-				max,
-				step,
-				placeholder: defaultState,
-				onChange: e => setValue(e.target.value)
-			})
-		});
-	});
+			return Spicetify.React.createElement(CardLayout, {
+				title,
+				desc,
+				tippy,
+				action: [
+					Spicetify.React.createElement("input", {
+						type: inputType,
+						className: "input",
+						ref: textFieldRef,
+						value,
+						min,
+						max,
+						step,
+						placeholder: defaultState,
+						onChange: e => setValue(e.target.value)
+					}),
+					includePicker &&
+						Spicetify.React.createElement("input", {
+							type: "color",
+							className: "input",
+							value,
+							placeholder: defaultState,
+							onChange: e => setValue(e.target.value)
+						})
+				]
+			});
+		}
+	);
 
 	const Dropdown = Spicetify.React.memo(({ name, title, desc, options, defaultVal, condition = true, tippy, callback }) => {
 		if (!condition) return null;
@@ -1079,6 +1090,7 @@ todo:
 						{
 							type: Input,
 							inputType: "text",
+							includePicker: true,
 							name: "Home-Header-Color",
 							title: "Custom Color",
 							defaultVal: "none",
