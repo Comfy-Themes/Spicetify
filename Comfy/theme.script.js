@@ -851,7 +851,7 @@ todo:
 					name: `Scheme-Features`,
 					title: `Additional Features`,
 					description: "Extra tweaks to complete specific color schemes",
-					options: ["nord", "mono", "kitty"],
+					options: ["nord", "nord-flat", "kitty"],
 					callback: (name, value, options, defaultVal) => {
 						waitForDeps(
 							"main",

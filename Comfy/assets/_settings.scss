@@ -9,6 +9,10 @@
 
 // Comfy settings
 .GenericModal__overlay:has(.comfy-settings) {
+	// Failsafe incase spotify's variables are not present
+	--background-tinted-base: rgba(var(--spice-rgb-selected-row), .07);
+    --background-tinted-highlight: rgba(var(--spice-rgb-selected-row), .1);
+	
 	// Header Section Styling
 	.main-trackCreditsModal-header {
 		padding: 12px 12px 12px 16px;

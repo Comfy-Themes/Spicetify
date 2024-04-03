@@ -4,26 +4,31 @@
 			padding-inline: 60px 150px !important;
 		}
 	}
+
 	&.spotify__container--is-desktop.spotify__os--is-linux #main.Topbar-Inside-Titlebar-Snippet {
 		.main-topBar-container {
 			padding-inline: 0px 150px !important;
 		}
 	}
+
 	&.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet {
 		.main-topBar-container {
 			padding-inline: 60px 0px !important;
 		}
 	}
+
 	&:has(#main.Flatten-Colors-normal) {
 		--spice-main: var(--spice-sidebar);
 		--spice-main-transition: var(--spice-sidebar);
 		--spice-rgb-main: var(--spice-rgb-sidebar);
 		--spice-rgb-main-transition: var(--spice-rgb-sidebar);
 	}
+
 	&:has(#main.Flatten-Colors-reverse) {
 		--spice-sidebar: var(--spice-main);
 		--spice-rgb-sidebar: var(--spice-rgb-main);
 	}
+
 	&:has(#main.Comfy-Dark-Modals-Snippet) {
 		.ABD0FGjBGqGZG33bP7Lc,
 		.main-duplicateTrackModal-container {
@@ -33,19 +38,8 @@
 	}
 
 	#main {
-		&.Comfy-mono-Snippet {
-			.cover-art {
-				box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
-			}
-
-			.main-coverSlotCollapsed-expandButton,
-			.main-editImageButton-icon.icon,
-			svg.main-coverSlotExpandedCollapseButton-chevron {
-				color: #000000;
-			}
-		}
-
-		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
+		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
+		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
 			.Root__now-playing-bar.LibraryX {
 				--cover-ambience-background: var(--spice-player, var(--spice-sidebar)) !important;
 			}
@@ -96,6 +90,17 @@
 				}
 			}
 		}
+
+		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
+			.Root__now-playing-bar.LibraryX {
+				--cover-ambience-background: var(--spice-main) !important;
+			}
+
+			.main-nowPlayingBar-nowPlayingBar {
+				background: var(--bg-img, var(--spice-main));
+			}
+		}
+
 		&.Comfy-kitty-Snippet {
 			.Root__main-view {
 				background-image: url("https://media0.giphy.com/media/lVHOm4nZ0yfFXI8cgd/giphy.gif?cid=790b7611hvc1po0u3gn3yrlgmhu5gqhjv9cve7hp84f9aoox&ep=v1_gifs_search&rid=giphy.gif") !important;
@@ -105,6 +110,7 @@
 				background-repeat: no-repeat !important;
 			}
 		}
+
 		&.Remove-Column-Bar-Snippet {
 			.main-trackList-trackListHeader {
 				display: none;
@@ -116,6 +122,7 @@
 				display: block !important;
 			}
 		}
+
 		&.Home-Header-Color {
 			.main-home-homeHeader {
 				background-color: var(--home-header-color) !important;
