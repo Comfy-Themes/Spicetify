@@ -1,10 +1,8 @@
 /* 
 tofix:
-- carousel mouse scrolling (drag)
 - negative values
 
 todo:
-- remove uneeded stuff / simplify carousel
 - add warning message if using unsupported versions
 - add custom colour schemes 
 */
@@ -534,15 +532,44 @@ todo:
 			handleResize();
 		}, [handleResize]);
 
-		const handleKeyDown = Spicetify.React.useCallback(event => {
-			if (event.key === "ArrowLeft") {
-				event.preventDefault();
-				containerRef.current.scrollBy({ left: -50, behavior: "smooth" });
-			} else if (event.key === "ArrowRight") {
-				event.preventDefault();
-				containerRef.current.scrollBy({ left: 50, behavior: "smooth" });
-			}
-		}, []);
+		const handleKeyDown = Spicetify.React.useCallback(
+			event => {
+				let newIndex;
+				let startingIndex = checked.index;
+
+				if (document.activeElement.classList.contains("search-searchCategory-categoryGridItem")) {
+					startingIndex = Array.from(containerRef.current.querySelectorAll(".search-searchCategory-categoryGridItem")).indexOf(
+						document.activeElement
+					);
+				}
+
+				if (event.key === "ArrowLeft") {
+					event.preventDefault();
+					newIndex = startingIndex - 1;
+					if (newIndex < 0) {
+						newIndex = chips.length - 1;
+					}
+				} else if (event.key === "ArrowRight") {
+					event.preventDefault();
+					newIndex = (startingIndex + 1) % chips.length;
+				} else if (event.key === "Enter") {
+					const focusedChip = document.activeElement;
+					const index = Array.from(containerRef.current.querySelectorAll(".search-searchCategory-categoryGridItem")).indexOf(focusedChip);
+					if (index !== -1) {
+						setChecked({ index, label: chips[index].label });
+						return;
+					}
+				}
+
+				if (newIndex !== undefined) {
+					const chipElement = containerRef.current.querySelector(`.search-searchCategory-categoryGridItem:nth-child(${newIndex + 1})`);
+					if (chipElement) {
+						chipElement.focus();
+					}
+				}
+			},
+			[checked.index, chips, containerRef, setChecked]
+		);
 
 		const handleButtonClick = direction => {
 			const multiplier = direction === "LEFT" ? -1 : 1;
@@ -598,7 +625,8 @@ todo:
 												isUsingKeyboard: false,
 												onClick: () => clickCallback(index, chip.label),
 												selected: checked.index === index,
-												selectedColorSet: "invertedLight"
+												selectedColorSet: "invertedLight",
+												tabIndex: "-1"
 											},
 											chip.label
 										)
