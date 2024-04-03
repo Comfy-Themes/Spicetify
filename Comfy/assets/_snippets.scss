@@ -288,7 +288,8 @@
 			}
 		}
 
-		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled {
+		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
+		&.Replace-Existing-Banners.Banner-Enabled {
 			.under-main-view div:has(.main-entityHeader-gradient) {
 				display: none !important;
 			}

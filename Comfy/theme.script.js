@@ -1321,16 +1321,24 @@ todo:
 				{
 					type: Slider,
 					name: "Banner-Enabled",
-					title: "Banner Image",
+					title: "Custom Banner Images",
 					defaultVal: true,
-					desc: "Show current playing song / custom banner images instead of gradients (all settings in this category will be ignored if disabled)"
+					desc: "(all settings in this category will be ignored if disabled)"
 				},
 				{
 					type: Slider,
-					name: "Prefer-Playlist-Image",
-					title: "Prefer Playlist Image",
+					name: "Replace-Existing-Banners",
+					title: "Replace Existing Banners",
 					defaultVal: false,
-					desc: "If available, use the playlists image instead of the current playing song",
+					desc: "Replace any existing banners with our own - e.g artist banners, playlist banners, etc.",
+					callback: updateBanner
+				},
+				{
+					type: Slider,
+					name: "Prefer-Existing-Image",
+					title: "Prefer Existing Image",
+					defaultVal: false,
+					desc: "If available, use existing images instead of the current playing song - e.g playlist image, album art, etc.",
 					callback: updateBanner
 				},
 				{
@@ -1373,9 +1381,9 @@ todo:
 						{
 							type: Slider,
 							name: "AM-Gradient-Include-Existing-Snippet",
-							title: "Existing Images",
+							title: "Existing Banners",
 							defaultVal: false,
-							desc: "Apply the gradient to existing images on the page (e.g. artist banners)",
+							desc: "Apply the gradient to existing banners on the page (e.g. artist banners)",
 							callback: updateBanner
 						},
 						{
@@ -1751,10 +1759,16 @@ todo:
 			source = getConfig("Custom-Image-URL")?.replace(/"/g, "");
 		}
 
-		if (!source && getConfig("Prefer-Playlist-Image") && Spicetify.URI.isPlaylistV1OrV2(pathname)) {
-			const uri = `spotify:playlist:${pathname.split("/").pop()}`;
-			const playlist = await Spicetify.Platform.PlaylistAPI.getMetadata(uri);
-			source = playlist.images[0]?.url;
+		if (!source && getConfig("Prefer-Existing-Image")) {
+			if (Spicetify.URI.isPlaylistV1OrV2(pathname)) {
+				const uri = `spotify:playlist:${pathname.split("/").pop()}`;
+				const playlist = await Spicetify.Platform.PlaylistAPI.getMetadata(uri);
+				source = playlist.images[0]?.url;
+			} else if (Spicetify.URI.isAlbum(pathname)) {
+				await waitForDeps("Spicetify.CosmosAsync");
+				const album = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${pathname.split("/").pop()}`);
+				source = album.images[0]?.url;
+			}
 		}
 
 		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
