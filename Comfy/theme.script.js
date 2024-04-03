@@ -347,10 +347,13 @@ todo:
 		({ inputType, includePicker, throttleLimit = 100, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
 			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
 			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
+			const [color, setColor] = Spicetify.React.useState(value);
 			const isFirstRender = Spicetify.React.useRef(true);
 			const throttleCallback = Spicetify.React.useMemo(() => throttle(callback, throttleLimit), [callback]);
 
 			const textFieldRef = Spicetify.React.useRef(null);
+			const colorPickerRef = Spicetify.React.useRef(null);
+
 			Spicetify.React.useEffect(() => {
 				if (textFieldRef.current) {
 					textFieldRef.current.addEventListener("wheel", e => {
@@ -378,6 +381,16 @@ todo:
 				}
 			}, [value, name, throttleCallback]);
 
+			function processChange(value, ref) {
+				if (ref.current !== colorPickerRef.current) {
+					setColor(cssVarToHex(value));
+					setValue(value);
+				} else {
+					setColor(value);
+					setValue(value);
+				}
+			}
+
 			if (condition === false) return null;
 
 			return Spicetify.React.createElement(CardLayout, {
@@ -394,15 +407,16 @@ todo:
 						max,
 						step,
 						placeholder: defaultState,
-						onChange: e => setValue(e.target.value)
+						onChange: e => processChange(e.target.value, textFieldRef)
 					}),
 					includePicker &&
 						Spicetify.React.createElement("input", {
 							type: "color",
 							className: "input",
-							value,
+							ref: colorPickerRef,
+							value: color,
 							placeholder: defaultState,
-							onChange: e => setValue(e.target.value)
+							onChange: e => processChange(e.target.value, colorPickerRef)
 						})
 				]
 			});
@@ -1789,5 +1803,30 @@ todo:
 		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
 
 		return aRgb;
+	}
+
+	function cssVarToHex(colorValue) {
+		const tempDiv = document.createElement("div");
+		tempDiv.style.color = colorValue;
+		document.body.appendChild(tempDiv);
+
+		const computedColor = window.getComputedStyle(tempDiv).color;
+		document.body.removeChild(tempDiv);
+
+		const hexTempDiv = document.createElement("div");
+		hexTempDiv.style.color = computedColor;
+		document.body.appendChild(hexTempDiv);
+
+		let hexColor = window.getComputedStyle(hexTempDiv).color;
+		document.body.removeChild(hexTempDiv);
+
+		hexColor = hexColor.replace(/rgb\((\d+), (\d+), (\d+)\)/, (_, r, g, b) => {
+			r = parseInt(r, 10).toString(16).padStart(2, "0");
+			g = parseInt(g, 10).toString(16).padStart(2, "0");
+			b = parseInt(b, 10).toString(16).padStart(2, "0");
+			return `#${r}${g}${b}`;
+		});
+
+		return hexColor;
 	}
 })();
