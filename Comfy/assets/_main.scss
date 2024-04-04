@@ -162,9 +162,14 @@
 			padding: 8px 16px 16px 16px; // Adjust padding
 
 			.main-actionBar-ActionBarRow {
+				&:first-of-type {
+					> div:first-child {
+						margin-top: -24px;
+					}
+				}
+
 				> div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
-					margin-top: -24px;
 				}
 
 				[class*="Button"] {

@@ -1,6 +1,7 @@
 /* 
 tofix:
 - negative values
+- Reloading when filtered causes options to not be applied
 
 todo:
 - add warning message if using unsupported versions

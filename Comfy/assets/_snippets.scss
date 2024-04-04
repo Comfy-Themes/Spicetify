@@ -30,6 +30,7 @@
 	}
 
 	&:has(#main.Comfy-Dark-Modals-Snippet) {
+
 		.ABD0FGjBGqGZG33bP7Lc,
 		.main-duplicateTrackModal-container {
 			background-color: var(--spice-main);
@@ -38,6 +39,7 @@
 	}
 
 	#main {
+
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
 		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
 			.Root__now-playing-bar.LibraryX {
@@ -64,9 +66,11 @@
 						right: 0px;
 						grid-area: none !important;
 					}
+
 					.playback-bar__progress-time-elapsed {
 						transform: translateX(calc(-100% - 20px));
 					}
+
 					.playback-bar__progress-time-elapsed::after {
 						position: absolute;
 						left: calc(100% + 10px);
@@ -82,7 +86,7 @@
 						height: 6px !important;
 					}
 
-					> div,
+					>div,
 					.x-progressBar-fillColor {
 						height: 6px !important;
 						border-radius: 50px !important;
@@ -152,6 +156,7 @@
 				transition-delay: 0ms;
 				transition-timing-function: ease-out;
 			}
+
 			.progress-bar__slider {
 				transition: 250ms;
 				transition-delay: 0ms;
@@ -170,6 +175,7 @@
 		}
 
 		&.Remove-Connect-Bar-Snippet {
+
 			.main-connectBar-connectBar,
 			.main-devicePicker-indicator {
 				display: none !important;
@@ -184,12 +190,12 @@
 
 		&.Hoverable-Timers-Snippet {
 			.playback-bar {
-				> div {
+				>div {
 					transition: all 0.3s ease;
 					opacity: 0;
 				}
 
-				&:hover > div {
+				&:hover>div {
 					transition: all 0.3s ease;
 					opacity: 1 !important;
 				}
@@ -217,14 +223,16 @@
 					padding-block: 8px;
 
 					.main-topBar-topbarContentWrapper {
-						> *:not(.main-topBar-searchBar):not(:has(ul)) {
+						>*:not(.main-topBar-searchBar):not(:has(ul)) {
 							justify-content: center;
 							display: flex;
 						}
+
 						ul {
 							text-align: center !important;
 							justify-content: center;
 						}
+
 						.queue-tabBar-headerItemLink {
 							padding: 5px 16px;
 						}
@@ -270,7 +278,8 @@
 			.search-searchCategory-SearchCategory,
 			.artist-artistDiscography-topBar,
 			.marketplace-header,
-			.f59DF4qQ_FphIrVeRYkI {
+			.f59DF4qQ_FphIrVeRYkI,
+			.main-trackList-trackListHeader {
 				margin-top: 0 !important;
 				top: 0 !important;
 			}
@@ -325,6 +334,7 @@
 						top: 0;
 						z-index: 10;
 					}
+
 					&:last-of-type {
 						display: revert;
 						left: 0;
