@@ -43,17 +43,15 @@
 
 	// Custom Fonts
 	* {
-		font-family: var(
-			--font-family,
-			CircularSp,
-			CircularSp-Arab,
-			CircularSp-Hebr,
-			CircularSp-Cyrl,
-			CircularSp-Grek,
-			CircularSp-Deva,
-			var(--fallback-fonts, sans-serif),
-			sans-serif
-		) !important;
+		font-family: var(--font-family,
+				CircularSp,
+				CircularSp-Arab,
+				CircularSp-Hebr,
+				CircularSp-Cyrl,
+				CircularSp-Grek,
+				CircularSp-Deva,
+				var(--fallback-fonts, sans-serif),
+				sans-serif) !important;
 	}
 
 	// Remove Overflow
@@ -65,7 +63,8 @@
 	.Root__top-container {
 		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
 	}
-	&.spotify__container--is-desktop.spotify__os--is-windows body::after {
+
+	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) body::after {
 		content: "";
 		position: absolute;
 		right: 0;
@@ -133,6 +132,7 @@
 	.Button-textBrightAccent-lg-32-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
 	.main-addButton-active {
 		color: var(--spice-heart);
+
 		&:hover {
 			color: rgba(var(--spice-rgb-heart), 0.7);
 		}
@@ -192,6 +192,7 @@
 			&::after {
 				content: none;
 			}
+
 			&:not(.main-contextMenu-disabled):focus,
 			&:not(.main-contextMenu-disabled):hover,
 			&[aria-expanded="true"] {
