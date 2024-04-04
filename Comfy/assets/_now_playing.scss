@@ -4,9 +4,15 @@
 			position: relative;
 			border-top: none;
 			flex-direction: column-reverse !important;
+			background-clip: text;
 
 			&::before {
 				z-index: auto !important;
+			}
+
+			&:has(.main-connectBar-connectBar)::before {
+				height: calc(100% - 40px);
+				top: 40px;
 			}
 
 			.main-nowPlayingBar-nowPlayingBar {
@@ -94,12 +100,13 @@
 				}
 
 				// Timers
-				& > div {
+				&>div {
 					text-align: center;
 
 					&:first-of-type {
 						grid-area: time-left;
 					}
+
 					&:last-of-type {
 						grid-area: time-right;
 					}
