@@ -47,11 +47,17 @@
 				}
 
 				// Miscolored right side button svgs
-				.main-nowPlayingBar-extraControls button:not(.main-genericButton-buttonActive) {
-					color: rgba(var(--spice-rgb-selected-row), 0.7);
+				.main-nowPlayingBar-extraControls {
+					button:not(.main-genericButton-buttonActive) {
+						color: rgba(var(--spice-rgb-selected-row), 0.7);
 
-					&:hover {
-						color: var(--spice-text) !important;
+						&:hover {
+							color: var(--spice-text) !important;
+						}
+					}
+
+					.main-devicePicker-indicator {
+						display: none;
 					}
 				}
 			}
