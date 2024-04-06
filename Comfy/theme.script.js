@@ -345,15 +345,11 @@ todo:
 	});
 
 	const Input = Spicetify.React.memo(
-		({ inputType, includePicker, throttleLimit = 100, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
+		({ inputType, includePicker, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
 			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
 			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
-			const [color, setColor] = Spicetify.React.useState(cssVarToHex(value));
 			const isFirstRender = Spicetify.React.useRef(true);
-			const throttleCallback = Spicetify.React.useMemo(() => throttle(callback, throttleLimit), [callback]);
-
 			const textFieldRef = Spicetify.React.useRef(null);
-			const colorPickerRef = Spicetify.React.useRef(null);
 
 			Spicetify.React.useEffect(() => {
 				if (textFieldRef.current) {
@@ -378,19 +374,9 @@ todo:
 				setConfig(name, value);
 				if (value !== "" || !startup) {
 					console.debug(`[Comfy-Callback]: ${name} =`, value);
-					throttleCallback(value, name);
+					callback?.(value, name);
 				}
-			}, [value, name, throttleCallback]);
-
-			function processChange(value, ref) {
-				if (ref.current !== colorPickerRef.current) {
-					setColor(cssVarToHex(value));
-					setValue(value);
-				} else {
-					setColor(value);
-					setValue(value);
-				}
-			}
+			}, [value, name]);
 
 			if (condition === false) return null;
 
@@ -408,16 +394,15 @@ todo:
 						max,
 						step,
 						placeholder: defaultState,
-						onChange: e => processChange(e.target.value, textFieldRef)
+						onChange: e => setValue(e.target.value)
 					}),
 					includePicker &&
 						Spicetify.React.createElement("input", {
 							type: "color",
 							className: "input",
-							ref: colorPickerRef,
-							value: color,
+							value,
 							placeholder: defaultState,
-							onChange: e => processChange(e.target.value, colorPickerRef)
+							onChange: e => setValue(e.target.value)
 						})
 				]
 			});
