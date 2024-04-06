@@ -60,8 +60,12 @@
 	}
 
 	// Custom Topbar Height + Bg Colour Matching
-	.Root__top-container {
+	&:not(:has(.global-nav)) .Root__top-container {
 		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
+	}
+
+	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen):has(.global-nav) body::after {
+		height: var(--comfy-topbar-height, 64px) !important;
 	}
 
 	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) body::after {
