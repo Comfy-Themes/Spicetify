@@ -1,6 +1,6 @@
 (() => {
 	const themeScript = document.createElement("SCRIPT");
 	themeScript.setAttribute("type", "text/javascript");
-	themeScript.setAttribute("src", "https://rawcdn.githack.com/Comfy-Themes/Spicetify/beta/Comfy/theme.script.js?min=1");
+	themeScript.setAttribute("src", "https://comfy-themes.github.io/Spicetify/Comfy/theme.script.js");
 	document.head.appendChild(themeScript);
 })();
