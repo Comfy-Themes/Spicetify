@@ -19,6 +19,7 @@
 	--cover-art-width: 84px;
 	--cover-art-height: 84px;
 	--cover-art-radius: 8px;
+	--cover-art-left: 0px;
 	--cover-art-bottom: 20px;
 	--tracklist-gradient-height: 232px;
 	--tracklist-gradient-opacity: 0.6;
@@ -42,20 +43,18 @@
 
 	// Custom Fonts
 	* {
-		font-family: var(
-			--font-family,
-			CircularSp,
-			CircularSp-Arab,
-			CircularSp-Hebr,
-			CircularSp-Cyrl,
-			CircularSp-Grek,
-			CircularSp-Deva,
-			var(--fallback-fonts, sans-serif),
-			sans-serif
-		) !important;
+		font-family: var(--font-family,
+				CircularSp,
+				CircularSp-Arab,
+				CircularSp-Hebr,
+				CircularSp-Cyrl,
+				CircularSp-Grek,
+				CircularSp-Deva,
+				var(--fallback-fonts, sans-serif),
+				sans-serif) !important;
 	}
 
-	// remove overflow
+	// Remove Overflow
 	.Root__top-container {
 		overflow: hidden;
 	}
@@ -64,7 +63,8 @@
 	.Root__top-container {
 		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
 	}
-	&.spotify__container--is-desktop.spotify__os--is-windows body::after {
+
+	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) body::after {
 		content: "";
 		position: absolute;
 		right: 0;
@@ -117,24 +117,22 @@
 		display: none !important;
 	}
 
-	.os-scrollbar-track,
-	::-webkit-scrollbar {
-		width: calc(var(--scrollbar-vertical-size) / 2);
+	.os-scrollbar-handle {
+		border-radius: 1em;
+		--os-handle-perpendicular-size-active: 8px;
+		--os-handle-perpendicular-size-hover: 8px;
+		--os-handle-perpendicular-size: 8px;
 	}
 
-	.os-scrollbar-handle,
-	::-webkit-scrollbar-thumb {
-		border-radius: 4.5px;
-	}
-
-	::-webkit-scrollbar-track {
-		margin-bottom: 10px;
+	.os-scrollbar {
+		--os-padding-perpendicular: 4px;
 	}
 
 	// Coloured heart
 	.Button-textBrightAccent-lg-32-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
 	.main-addButton-active {
 		color: var(--spice-heart);
+
 		&:hover {
 			color: rgba(var(--spice-rgb-heart), 0.7);
 		}
@@ -194,6 +192,7 @@
 			&::after {
 				content: none;
 			}
+
 			&:not(.main-contextMenu-disabled):focus,
 			&:not(.main-contextMenu-disabled):hover,
 			&[aria-expanded="true"] {

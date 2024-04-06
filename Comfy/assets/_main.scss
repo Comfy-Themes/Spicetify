@@ -1,22 +1,24 @@
 :root #main.Banner-Enabled {
-	.frame {
+	.comfy-banner-frame {
 		display: block;
 
-		.mainImage {
-			position: absolute; // Positioned absolutely to cover the entire viewport
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			object-fit: cover;
-			object-position: top;
-			filter: blur(var(--image-blur));
-			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-		}
+		.comfy-banner-image {
+			&:first-of-type {
+				position: absolute; // Positioned absolutely to cover the entire viewport
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				object-fit: cover;
+				object-position: top;
+				filter: blur(var(--image-blur));
+				-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+				mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			}
 
-		.secondaryImage {
-			display: none;
+			&:last-of-type {
+				display: none;
+			}
 		}
 	}
 
@@ -24,7 +26,7 @@
 		background: none !important;
 	}
 
-	// weird line on large heights due to the noise, not sure why...
+	// gradient noise gets stretched vertically with this approach - but no black lines
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
 		background-image: linear-gradient(
@@ -37,6 +39,8 @@
 		min-height: calc(
 			100vh - min(30vh, clamp(250px, 250px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 150, 400px)) - 128px
 		);
+		background-size: auto 100%, 300px var(--tracklist-gradient-height);
+		background-repeat: repeat-x;
 	}
 
 	.artist-artistOverview-artistOverviewContent {
@@ -69,7 +73,7 @@
 }
 
 :root .Root__main-view {
-	.frame {
+	.comfy-banner-frame {
 		display: none;
 	}
 
@@ -77,9 +81,12 @@
 		// Main Page Tweaks
 		main {
 			position: sticky;
+
 			.os-host-overflow,
 			.os-padding,
-			.os-viewport {
+			.os-viewport,
+			div[data-overlayscrollbars~="host"],
+			[data-overlayscrollbars-viewport="scrollbarHidden"] {
 				overflow: visible !important; // Override overflow property
 			}
 		}
@@ -155,9 +162,14 @@
 			padding: 8px 16px 16px 16px; // Adjust padding
 
 			.main-actionBar-ActionBarRow {
+				&:first-of-type {
+					> div:first-child {
+						margin-top: -24px;
+					}
+				}
+
 				> div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
-					margin-top: -24px;
 				}
 
 				[class*="Button"] {
@@ -189,8 +201,8 @@
 			font-size: 0;
 		}
 		.lyrics-lyricsContainer-LyricsContainer {
-			position: fixed !important;
-			overflow: auto;
+			height: calc(100vh - max(var(--comfy-topbar-height, 40px), 8px) - 100px);
+			margin-top: -64px;
 
 			&::-webkit-scrollbar {
 				width: 0;

@@ -4,27 +4,33 @@
 			padding-inline: 60px 150px !important;
 		}
 	}
-	&.spotify__container--is-desktop.spotify__os--is-linx #main.Topbar-Inside-Titlebar-Snippet {
+
+	&.spotify__container--is-desktop.spotify__os--is-linux #main.Topbar-Inside-Titlebar-Snippet {
 		.main-topBar-container {
 			padding-inline: 0px 150px !important;
 		}
 	}
+
 	&.spotify__container--is-desktop.spotify__os--is-macos #main.Topbar-Inside-Titlebar-Snippet {
 		.main-topBar-container {
 			padding-inline: 60px 0px !important;
 		}
 	}
+
 	&:has(#main.Flatten-Colors-normal) {
 		--spice-main: var(--spice-sidebar);
 		--spice-main-transition: var(--spice-sidebar);
 		--spice-rgb-main: var(--spice-rgb-sidebar);
 		--spice-rgb-main-transition: var(--spice-rgb-sidebar);
 	}
+
 	&:has(#main.Flatten-Colors-reverse) {
 		--spice-sidebar: var(--spice-main);
 		--spice-rgb-sidebar: var(--spice-rgb-main);
 	}
+
 	&:has(#main.Comfy-Dark-Modals-Snippet) {
+
 		.ABD0FGjBGqGZG33bP7Lc,
 		.main-duplicateTrackModal-container {
 			background-color: var(--spice-main);
@@ -33,19 +39,9 @@
 	}
 
 	#main {
-		&.Comfy-mono-Snippet {
-			.cover-art {
-				box-shadow: 0 0 10px rgba(var(--spice-rgb-shadow), 0.4);
-			}
 
-			.main-coverSlotCollapsed-expandButton,
-			.main-editImageButton-icon.icon,
-			svg.main-coverSlotExpandedCollapseButton-chevron {
-				color: #000000;
-			}
-		}
-
-		&.Comfy-nord-Snippet.Custom-Playbar-Snippet {
+		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
+		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
 			.Root__now-playing-bar.LibraryX {
 				--cover-ambience-background: var(--spice-player, var(--spice-sidebar)) !important;
 			}
@@ -70,9 +66,11 @@
 						right: 0px;
 						grid-area: none !important;
 					}
+
 					.playback-bar__progress-time-elapsed {
 						transform: translateX(calc(-100% - 20px));
 					}
+
 					.playback-bar__progress-time-elapsed::after {
 						position: absolute;
 						left: calc(100% + 10px);
@@ -88,7 +86,7 @@
 						height: 6px !important;
 					}
 
-					> div,
+					>div,
 					.x-progressBar-fillColor {
 						height: 6px !important;
 						border-radius: 50px !important;
@@ -96,6 +94,17 @@
 				}
 			}
 		}
+
+		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
+			.Root__now-playing-bar.LibraryX {
+				--cover-ambience-background: var(--spice-main) !important;
+			}
+
+			.main-nowPlayingBar-nowPlayingBar {
+				background: var(--bg-img, var(--spice-main));
+			}
+		}
+
 		&.Comfy-kitty-Snippet {
 			.Root__main-view {
 				background-image: url("https://media0.giphy.com/media/lVHOm4nZ0yfFXI8cgd/giphy.gif?cid=790b7611hvc1po0u3gn3yrlgmhu5gqhjv9cve7hp84f9aoox&ep=v1_gifs_search&rid=giphy.gif") !important;
@@ -105,6 +114,7 @@
 				background-repeat: no-repeat !important;
 			}
 		}
+
 		&.Remove-Column-Bar-Snippet {
 			.main-trackList-trackListHeader {
 				display: none;
@@ -116,6 +126,7 @@
 				display: block !important;
 			}
 		}
+
 		&.Home-Header-Color {
 			.main-home-homeHeader {
 				background-color: var(--home-header-color) !important;
@@ -128,11 +139,14 @@
 				align-items: center;
 				display: flex;
 				flex-wrap: wrap;
+
+				span {
+					display: none;
+				}
 			}
 
-			span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type,
-			span.Text__TextElement-sc-if376j-0.TextElement-bodyMediumBold-text.encore-text-body-medium-bold {
-				display: none;
+			.main-yourLibraryX-navItem {
+				padding: 4px 8px !important;
 			}
 		}
 
@@ -142,6 +156,7 @@
 				transition-delay: 0ms;
 				transition-timing-function: ease-out;
 			}
+
 			.progress-bar__slider {
 				transition: 250ms;
 				transition-delay: 0ms;
@@ -160,6 +175,7 @@
 		}
 
 		&.Remove-Connect-Bar-Snippet {
+
 			.main-connectBar-connectBar,
 			.main-devicePicker-indicator {
 				display: none !important;
@@ -174,12 +190,12 @@
 
 		&.Hoverable-Timers-Snippet {
 			.playback-bar {
-				> div {
+				>div {
 					transition: all 0.3s ease;
 					opacity: 0;
 				}
 
-				&:hover > div {
+				&:hover>div {
 					transition: all 0.3s ease;
 					opacity: 1 !important;
 				}
@@ -207,14 +223,16 @@
 					padding-block: 8px;
 
 					.main-topBar-topbarContentWrapper {
-						> *:not(.main-topBar-searchBar):not(:has(ul)) {
+						>*:not(.main-topBar-searchBar):not(:has(ul)) {
 							justify-content: center;
 							display: flex;
 						}
+
 						ul {
 							text-align: center !important;
 							justify-content: center;
 						}
+
 						.queue-tabBar-headerItemLink {
 							padding: 5px 16px;
 						}
@@ -260,7 +278,8 @@
 			.search-searchCategory-SearchCategory,
 			.artist-artistDiscography-topBar,
 			.marketplace-header,
-			.f59DF4qQ_FphIrVeRYkI {
+			.f59DF4qQ_FphIrVeRYkI,
+			.main-trackList-trackListHeader {
 				margin-top: 0 !important;
 				top: 0 !important;
 			}
@@ -278,14 +297,15 @@
 			}
 		}
 
-		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled {
+		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
+		&.Replace-Existing-Banners.Banner-Enabled {
 			.under-main-view div:has(.main-entityHeader-gradient) {
 				display: none !important;
 			}
 		}
 
 		&.Apple-Music-Gradient-Snippet {
-			.frame {
+			.comfy-banner-frame {
 				position: absolute;
 				width: 100%;
 				height: 100%;
@@ -293,36 +313,34 @@
 				filter: blur(calc(var(--image-blur) * 10));
 				background-image: var(--gradient-background-image);
 
-				.mainImage,
-				.secondaryImage {
-					position: absolute;
-					width: var(--gradient-width);
+				.comfy-banner-image {
+					position: absolute !important;
+					width: var(--gradient-width) !important;
 					aspect-ratio: 1;
 					animation: rotate var(--gradient-speed) linear infinite;
 					border-radius: var(--gradient-radius) !important;
 					mix-blend-mode: var(--gradient-blend-mode);
 					object-fit: cover !important;
-				}
 
-				.mainImage {
-					/* Nullify all the values */
-					height: revert;
-					left: unset;
-					object-fit: unset;
-					object-position: unset;
-					filter: none;
-					-webkit-mask-image: none;
-					mask-image: none;
-					right: 0;
-					top: 0;
-					z-index: 10;
-				}
+					&:first-of-type {
+						height: revert;
+						left: unset;
+						object-fit: unset;
+						object-position: unset;
+						filter: none;
+						-webkit-mask-image: none;
+						mask-image: none;
+						right: 0;
+						top: 0;
+						z-index: 10;
+					}
 
-				.secondaryImage {
-					display: revert;
-					left: 0;
-					bottom: 0;
-					animation-direction: reverse;
+					&:last-of-type {
+						display: revert;
+						left: 0;
+						bottom: 0;
+						animation-direction: reverse;
+					}
 				}
 			}
 

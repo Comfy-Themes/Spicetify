@@ -17,6 +17,7 @@
 
 	&.main-trackList-selected {
 		background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+
 		&:hover {
 			background-color: rgba(var(--spice-rgb-selected-row), 0.15);
 		}
@@ -33,6 +34,7 @@
 }
 
 :root #main.Remove-Tracklist-Index {
+
 	// Image Tracklist
 	.main-trackList-trackList:has(.main-trackList-rowSectionStart img),
 	.main-trackList-trackList:has(.main-trackList-rowSectionStart .main-trackList-rowImageFallback) {
@@ -43,13 +45,16 @@
 		}
 
 		.main-trackList-trackListRow {
+
 			&:hover,
 			&:focus-within,
 			&.main-trackList-active {
+
 				.main-trackList-rowImagePlayPauseButton,
 				.main-trackList-rowSectionIndex {
 					background: rgba(var(--spice-rgb-play-button), 0.5);
 				}
+
 				.main-trackList-rowImagePlayButton,
 				.main-trackList-rowImagePlayPauseButton {
 					opacity: 1;
@@ -64,7 +69,7 @@
 				transition: 200ms opacity, 200ms background;
 			}
 
-			> .main-trackList-rowSectionIndex {
+			>.main-trackList-rowSectionIndex {
 				position: relative;
 				z-index: 1000;
 				top: 8px;
