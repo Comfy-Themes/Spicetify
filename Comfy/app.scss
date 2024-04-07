@@ -35,10 +35,10 @@
 	}
 
 	button:not(.main-editImageButton-overlay):not([style*="background-image"]):not(.hd6a3g_3QyF8MFL0wWs1),
-	button span:empty:not(.Lyric.Synced.Line),
+	button span:not(.Lyric.Synced.Line),
 	input:not([style*="background-image"]),
 	select {
-		--border-radius: var(--button-radius) !important;
+		border-radius: var(--button-radius) !important;
 	}
 
 	// Custom Fonts
