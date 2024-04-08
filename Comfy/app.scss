@@ -30,12 +30,15 @@
 	button span,
 	input,
 	select,
-	img {
+	img,
+	.profile-userEditDetails-image div:nth-child(2) {
 		border-radius: var(--border-radius) !important;
 	}
 
-	button:not(.main-editImageButton-overlay):not([style*="background-image"]):not(.hd6a3g_3QyF8MFL0wWs1),
-	button span:not(.Lyric.Synced.Line),
+	button:not(.main-editImageButton-overlay):not([style*="background-image"]):not(.main-buddyFeed-overlay),
+	button span:not(.Lyric.Synced.Line):not([data-encore-id="text"]),
+	button figure img,
+	button:has(span:empty),
 	input:not([style*="background-image"]),
 	select {
 		border-radius: var(--button-radius) !important;

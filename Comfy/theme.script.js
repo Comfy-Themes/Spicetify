@@ -2,10 +2,13 @@
 tofix:
 - negative values
 - Reloading when filtered causes options to not be applied
+- fonts titles and stuff css
 
 todo:
 - add warning message if using unsupported versions
 - add custom colour schemes 
+- add overrides for topbar background and padding
+
 */
 
 (async function comfy() {
