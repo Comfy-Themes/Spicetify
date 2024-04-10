@@ -31,6 +31,8 @@
 	input,
 	select,
 	img,
+	.x-entityImage-xsmall,
+	div[style*="background-image"]:has(img),
 	.profile-userEditDetails-image div:nth-child(2) {
 		border-radius: var(--border-radius) !important;
 	}
