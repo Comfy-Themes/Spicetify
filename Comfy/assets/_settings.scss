@@ -161,6 +161,11 @@
 							flex-shrink: 0;
 							z-index: 1;
 
+
+							&::after {
+								border-color: transparent !important;
+							}
+
 							span {
 								@media (min-width: 768px) {
 									font-size: 0.875rem;
