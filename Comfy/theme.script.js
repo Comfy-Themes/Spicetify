@@ -1026,11 +1026,27 @@ todo:
 			]),
 			Spicetify.React.createElement(Section, { name: "Tracklist", filter }, [
 				{
-					type: Slider,
-					name: "Header-Background",
+					type: SubSection,
+					name: "Tracklist-Header-Background",
 					title: "Header Background",
 					desc: "Adds a translucent background that spans all header text and images (the area above the tracklist)",
-					defaultVal: false
+					defaultVal: false,
+					callback: value => {
+						if (!value) {
+							document.documentElement.style.setProperty("--tracklist-header-opacity", "");
+						}
+					},
+					items: [
+						{
+							type: Input,
+							inputType: "number",
+							name: "Tracklist-Header-Background-Opacity",
+							title: "Opacity",
+							defaultVal: "0.6",
+							callback: value => document.documentElement.style.setProperty("--tracklist-header-opacity", value ? value : "")
+						}
+					],
+					collapseItems: false
 				},
 				{
 					type: Slider,

@@ -299,7 +299,7 @@
 			}
 		}
 
-		&.Header-Background {
+		&.Tracklist-Header-Background {
 			.main-entityHeader-imageContainerNew {
 				align-self: center;
 				left: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px)/424*104, 232px) + 24px + var(--content-spacing));
@@ -308,7 +308,7 @@
 			}
 
 			.main-entityHeader-headerText {
-				background-color: rgba(var(--spice-rgb-main-transition), .7);
+				background-color: rgba(var(--spice-rgb-main-transition), var(--tracklist-header-opacity));
 				padding: 24px 32px;
 				border-radius: var(--border-radius);
 				min-width: fit-content;
