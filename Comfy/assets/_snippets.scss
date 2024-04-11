@@ -321,7 +321,7 @@
 				margin-right: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + var(--content-spacing));
 			}
 
-			.main-entityHeader-topbarContentFadeIn>* {
+			&:not(.Topbar-Inside-Titlebar-Snippet) .main-entityHeader-topbarContentFadeIn>* {
 				opacity: var(--top-bar-opacity) !important;
 			}
 		}
