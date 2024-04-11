@@ -299,6 +299,30 @@
 			}
 		}
 
+		&.Header-Background {
+			.main-entityHeader-imageContainerNew {
+				align-self: center;
+				left: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px)/424*104, 232px) + 24px + var(--content-spacing));
+				position: relative;
+				z-index: 1;
+			}
+
+			.main-entityHeader-headerText {
+				background-color: rgba(var(--spice-rgb-main-transition), .7);
+				padding: 0px 32px;
+				border-radius: var(--border-radius);
+				min-width: fit-content;
+				box-shadow: 0 2px 4px rgba(var(--spice-rgb-shadow), 0.1);
+				justify-content: space-evenly !important;
+			}
+
+			.main-entityHeader-imageContainerNew+.main-entityHeader-headerText {
+				padding-left: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px + var(--content-spacing));
+				margin-right: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px + var(--content-spacing));
+			}
+
+		}
+
 		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
 		&.Replace-Existing-Banners.Banner-Enabled {
 			.under-main-view div:has(.main-entityHeader-gradient) {

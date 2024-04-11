@@ -1027,6 +1027,13 @@ todo:
 			Spicetify.React.createElement(Section, { name: "Tracklist", filter }, [
 				{
 					type: Slider,
+					name: "Header-Background",
+					title: "Header Background",
+					desc: "Adds a translucent background that spans all header text and images (the area above the tracklist)",
+					defaultVal: false
+				},
+				{
+					type: Slider,
 					name: "Remove-Tracklist-Index",
 					title: "Remove Tracklist Index",
 					desc: "Hides the numbers / count next to songs",
