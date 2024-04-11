@@ -318,7 +318,7 @@
 
 			.main-entityHeader-imageContainerNew+.main-entityHeader-headerText {
 				padding-left: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px + var(--content-spacing));
-				margin-right: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px + var(--content-spacing));
+				margin-right: calc(clamp(128px, 128px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px);
 			}
 
 		}
