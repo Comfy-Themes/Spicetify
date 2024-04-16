@@ -34,7 +34,8 @@
 	img,
 	.x-entityImage-xsmall,
 	div[style*="background-image"]:has(img),
-	.profile-userEditDetails-image div:nth-child(2) {
+	.profile-userEditDetails-image div:nth-child(2),
+	[data-encore-id="buttonSecondary"] {
 		border-radius: var(--border-radius) !important;
 	}
 
@@ -43,7 +44,8 @@
 	button figure img,
 	button:has(span:empty),
 	input:not([style*="background-image"]),
-	select {
+	select,
+	[data-encore-id="buttonSecondary"] {
 		border-radius: var(--button-radius) !important;
 	}
 
