@@ -1348,7 +1348,7 @@ todo:
 							tippy: Spicetify.React.createElement(
 								Spicetify.React.Fragment,
 								null,
-								Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %):"),
+								Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %)"),
 								Spicetify.React.createElement("li", null, "Comfy default: 150")
 							),
 							callback: value => document.documentElement.style.setProperty("--gradient-width", value ? value + "%" : "")
@@ -1358,10 +1358,10 @@ todo:
 							inputType: "number",
 							name: "Gradient-Radius",
 							title: "Radius",
-							desc: "Radius of circles (in px)",
-							defaultVal: "500",
+							desc: "Radius of circles (in %)",
+							defaultVal: "50",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? value + "%" : "")
 						}
 					],
 					collapseItems: true
