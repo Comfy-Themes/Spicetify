@@ -1,11 +1,12 @@
 :root .Root__nav-bar {
 	.main-rootlist-wrapper {
 		div:nth-child(2) {
-			> li {
+			>li {
 				.main-yourLibraryX-listRowEntityImage {
 					border-radius: var(--border-radius) !important;
 				}
-				> div {
+
+				>div {
 					&:active::after {
 						background-color: var(--spice-highlight-elevated);
 						top: 0;
@@ -13,6 +14,7 @@
 						left: 0;
 						right: 0;
 					}
+
 					.x-entityImage-imageContainer {
 						box-shadow: none !important;
 					}

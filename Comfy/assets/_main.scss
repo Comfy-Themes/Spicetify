@@ -29,16 +29,12 @@
 	// gradient noise gets stretched vertically with this approach - but no black lines
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
-		background-image: linear-gradient(
-				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
-				var(--spice-main) var(--tracklist-gradient-height)
-			),
+		background-image: linear-gradient(rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
+				var(--spice-main) var(--tracklist-gradient-height)),
 			var(--tracklist-gradient-noise) !important;
 		background-color: transparent !important;
 		height: calc(100% - 232px);
-		min-height: calc(
-			100vh - min(30vh, clamp(250px, 250px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 150, 400px)) - 128px
-		);
+		min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--left-sidebar-width, 0px) - var(--panel-width, 0px) - 600px) / 424 * 150, 400px)) - 128px);
 		background-size: auto 100%, 300px var(--tracklist-gradient-height);
 		background-repeat: repeat-x;
 	}
@@ -78,6 +74,7 @@
 	}
 
 	.main-view-container {
+
 		// Main Page Tweaks
 		main {
 			position: sticky;
@@ -92,7 +89,7 @@
 		}
 
 		// Radio Button Coloring
-		input:checked ~ .x-toggle-indicatorWrapper {
+		input:checked~.x-toggle-indicatorWrapper {
 			background-color: var(--spice-radio-btn-active);
 		}
 
@@ -130,8 +127,11 @@
 		}
 
 		// Headers
-		.rX_OmqCngvY5ZCoYBZgb.zyeJ9w99yrvGokL3BsMc:after {
-			background-color: var(--spice-main);
+		.rX_OmqCngvY5ZCoYBZgb.zyeJ9w99yrvGokL3BsMc,
+		.mjZrvVI3CxfHJXu7y0Lg {
+			:after {
+				background-color: var(--spice-main);
+			}
 		}
 
 		.main-home-homeHeader {
@@ -142,11 +142,11 @@
 			padding: 32px;
 			justify-content: center;
 
-			& > div:nth-last-of-type(2),
+			&>div:nth-last-of-type(2),
 			.main-entityHeader-imageContainer {
 				align-self: center;
 
-				& + .main-entityHeader-headerText {
+				&+.main-entityHeader-headerText {
 					flex: unset;
 					justify-content: center;
 
@@ -163,12 +163,12 @@
 
 			.main-actionBar-ActionBarRow {
 				&:first-of-type {
-					> div:first-child {
+					>div:first-child {
 						margin-top: -24px;
 					}
 				}
 
-				> div:first-child {
+				>div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
 				}
 
@@ -180,7 +180,7 @@
 		}
 
 		// Artist Page
-		.artist-artistOverview-artistOverviewContent .contentSpacing > .main-gridContainer-gridContainer {
+		.artist-artistOverview-artistOverviewContent .contentSpacing>.main-gridContainer-gridContainer {
 			padding-bottom: var(--grid-gap);
 		}
 
@@ -191,6 +191,7 @@
 			.view-homeShortcutsGrid-imageWrapper {
 				border-radius: calc(var(--border-radius) + 15px);
 			}
+
 			.main-playButton-PlayButton {
 				background: none !important;
 			}
@@ -200,6 +201,7 @@
 		.lyrics-lyricsContainer-Provider {
 			font-size: 0;
 		}
+
 		.lyrics-lyricsContainer-LyricsContainer {
 			height: calc(100vh - max(var(--comfy-topbar-height, 40px), 8px) - 100px);
 			margin-top: -64px;
@@ -228,6 +230,7 @@
 		section[data-testid="episode"] {
 			.main-actionBar-ActionBar {
 				flex-direction: column-reverse;
+
 				.main-actionBar-ActionBarRow {
 					margin-top: 0 !important;
 

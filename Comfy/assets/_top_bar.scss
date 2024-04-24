@@ -1,9 +1,10 @@
 :root .main-topBar-container {
 	.main-topBar-searchBar {
-		> form input {
+		>form input {
 			&::placeholder {
 				color: rgba(var(--spice-rgb-selected-row), 0.7);
 			}
+
 			height: 32px;
 			background-color: rgba(var(--spice-rgb-shadow), 0.7);
 		}
@@ -12,12 +13,15 @@
 	.main-topBar-historyButtons button:hover {
 		transform: scale(1.1);
 	}
-	.main-topBar-topbarContent > div:has([data-encore-id="buttonPrimary"]):first-child {
+
+	.main-topBar-topbarContent>div:has([data-encore-id="buttonPrimary"]):first-child {
 		display: none !important;
 	}
+
 	.main-topBar-background {
 		background-color: var(--spice-main) !important;
 	}
+
 	.main-topBar-overlay {
 		background-color: transparent !important;
 	}
