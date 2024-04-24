@@ -69,11 +69,11 @@
 
 	// Custom Topbar Height + Bg Colour Matching
 	&:not(:has(.global-nav)) .Root__top-container {
-		padding-top: max(var(--comfy-topbar-height, 40px), 8px) !important;
+		padding-top: max(calc(var(--comfy-topbar-height, 40px) / var(--zoom, 1)), 8px) !important;
 	}
 
 	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen):has(.global-nav) body::after {
-		height: var(--comfy-topbar-height, 64px) !important;
+		height: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1)) !important;
 	}
 
 	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) body::after {
@@ -82,8 +82,8 @@
 		right: 0;
 		z-index: 999;
 		backdrop-filter: brightness(2.12);
-		width: 135px;
-		height: var(--comfy-topbar-height, 40px);
+		width: calc(135px / var(--zoom, 1));
+		height: calc(var(--comfy-topbar-height, 40px) / var(--zoom, 1));
 	}
 
 	// Filtering

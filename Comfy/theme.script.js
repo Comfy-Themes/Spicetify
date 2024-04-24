@@ -60,6 +60,14 @@ todo:
 			console.warn("[Comfy-Warning]: Failed to update color schemes:", error);
 		});
 
+	// Window Zoom Variable
+	function updateZoomVariable() {
+        var devicePixelRatio = window.devicePixelRatio || 1;
+        document.documentElement.style.setProperty('--zoom', devicePixelRatio);
+    }
+    updateZoomVariable();
+    window.addEventListener('resize', updateZoomVariable);
+
 	// Banner Image(s)
 	const channels = [
 		/^\/playlist\//,
