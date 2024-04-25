@@ -61,12 +61,16 @@ todo:
 		});
 
 	// Window Zoom Variable
-	function updateZoomVariable() {
-        var devicePixelRatio = window.devicePixelRatio || 1;
-        document.documentElement.style.setProperty('--zoom', devicePixelRatio);
-    }
-    updateZoomVariable();
-    window.addEventListener('resize', updateZoomVariable);
+	let cache = devicePixelRatio;
+	function updateZoomVariable(override) {
+		const initial = devicePixelRatio;
+		if (initial !== cache || override === true) {
+			cache = initial;
+			document.documentElement.style.setProperty("--zoom", window.outerWidth / window.innerWidth || 1);
+		}
+	}
+	updateZoomVariable(true);
+	window.addEventListener("resize", updateZoomVariable);
 
 	// Banner Image(s)
 	const channels = [
