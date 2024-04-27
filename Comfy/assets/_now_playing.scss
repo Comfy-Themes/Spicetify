@@ -1,3 +1,28 @@
+:root .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
+	// Cover-art
+	.main-nowPlayingWidget-nowPlaying {
+		height: 0;
+		z-index: 1;
+		left: var(--cover-art-left);
+
+		.main-coverSlotCollapsed-container {
+			bottom: var(--cover-art-bottom);
+			border-radius: var(--cover-art-radius);
+
+			.cover-art,
+			.VideoPlayer__container video {
+				width: var(--cover-art-width) !important;
+				height: var(--cover-art-height) !important;
+				border-radius: var(--cover-art-radius);
+				overflow: hidden;
+				object-fit: cover;
+				max-height: none;
+				max-width: none;
+			}
+		}
+	}
+}
+
 :root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
 	.Root__now-playing-bar {
 		.main-nowPlayingBar-container {
@@ -17,29 +42,6 @@
 
 			.main-nowPlayingBar-nowPlayingBar {
 				margin-bottom: 12px;
-
-				// Cover-art
-				.main-nowPlayingWidget-nowPlaying {
-					height: 0;
-					z-index: 1;
-					left: var(--cover-art-left);
-
-					.main-coverSlotCollapsed-container {
-						bottom: var(--cover-art-bottom);
-						border-radius: var(--cover-art-radius);
-
-						.cover-art,
-						.VideoPlayer__container video {
-							width: var(--cover-art-width) !important;
-							height: var(--cover-art-height) !important;
-							border-radius: var(--cover-art-radius);
-							overflow: hidden;
-							object-fit: cover;
-							max-height: none;
-							max-width: none;
-						}
-					}
-				}
 
 				// Controls
 				.player-controls__buttons--new-icons {
