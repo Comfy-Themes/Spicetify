@@ -1,4 +1,5 @@
 :root .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
+
 	// Cover-art
 	.main-nowPlayingWidget-nowPlaying {
 		height: 0;
@@ -94,6 +95,16 @@
 						--fg-color: var(--spice-progress-fg);
 						--progress-bar-height: 12px;
 						--progress-bar-radius: 0;
+
+						.x-progressBar-progressBarBg {
+							&:after {
+								content: "";
+								padding: 8px;
+								position: absolute;
+								top: -6px;
+								width: calc(100% - 16px);
+							}
+						}
 
 						.x-progressBar-fillColor {
 							width: 107%;
