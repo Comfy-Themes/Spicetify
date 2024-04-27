@@ -1168,6 +1168,51 @@ todo:
 				},
 				{
 					type: Slider,
+					name: "Playbar-Above-Right-Panel-Snippet",
+					title: "Above Right Panel",
+					desc: "Moves the playbar above the right panel",
+					defaultVal: false,
+					callback: value => {
+						waitForDeps(
+							".Root__top-container",
+							topContainer => {
+								const playbar = topContainer.querySelector(".Root__now-playing-bar");
+
+								if (value) {
+									const rightbar = topContainer.querySelector(".Root__right-sidebar");
+									const resizeObserver = new ResizeObserver(entries => {
+										if (getConfig("Playbar-Above-Right-Panel-Snippet")) {
+											for (let entry of entries) {
+												if (entry.target === rightbar) {
+													let newWidth = entry.contentRect.width;
+													if (newWidth == 0) {
+														const localStorageWidth = localStorage.getItem("223ni6f2epqcidhx5etjafeai:panel-width-saved");
+														if (localStorageWidth) {
+															newWidth = localStorageWidth;
+														} else {
+															newWidth = 420;
+														}
+													}
+													playbar.style.width = `${newWidth}px`;
+													break;
+												}
+											}
+										} else {
+											resizeObserver.disconnect();
+										}
+									});
+
+									resizeObserver.observe(rightbar);
+								} else {
+									playbar.style.width = "";
+								}
+							},
+							true
+						);
+					}
+				},
+				{
+					type: Slider,
 					name: "Smooth-Progress-Bar-Snippet",
 					title: "Smooth Progress Bar",
 					desc: "Makes the progress bar ease its movement giving the appearance of a smoother transition",

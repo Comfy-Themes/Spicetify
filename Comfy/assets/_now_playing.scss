@@ -24,7 +24,7 @@
 	}
 }
 
-:root #main.Custom-Playbar-Snippet .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
+:root #main.Custom-Playbar-Snippet:not(.Playbar-Above-Right-Panel-Snippet) .Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
 	.Root__now-playing-bar {
 		.main-nowPlayingBar-container {
 			position: relative;
