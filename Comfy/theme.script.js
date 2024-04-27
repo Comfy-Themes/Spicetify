@@ -62,7 +62,6 @@ todo:
 
 	// Window Zoom Variable
 	// todo: improve this? seems unoptimal but spotify messes with window.outerWidth on minimize so this is required currently
-
 	function updateZoomVariable() {
 		let prevOuterWidth = window.outerWidth;
 		let prevInnerWidth = window.innerWidth;
