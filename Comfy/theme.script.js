@@ -65,8 +65,10 @@ todo:
 	function updateZoomVariable(override) {
 		const initial = devicePixelRatio;
 		if (initial !== cache || override === true) {
+			const modified = window.outerWidth / window.innerWidth || 1;
+			document.documentElement.style.setProperty("--zoom", modified);
+			console.debug(`[Comfy-Event]: Zoom Updated: ${modified}`);
 			cache = initial;
-			document.documentElement.style.setProperty("--zoom", window.outerWidth / window.innerWidth || 1);
 		}
 	}
 	updateZoomVariable(true);
