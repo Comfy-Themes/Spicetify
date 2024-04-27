@@ -424,9 +424,9 @@ todo:
 						className: "input",
 						ref: textFieldRef,
 						value,
-						min,
-						max,
-						step,
+						min: inputType === "number" ? Number(min) : null,
+						max: inputType === "number" ? Number(max) : null,
+						step: inputType === "number" ? Number(step) : null,
 						placeholder: defaultState,
 						onChange: e => setValue(e.target.value)
 					}),
@@ -873,6 +873,7 @@ todo:
 					name: "App-Titlebar-Height",
 					title: "Titlebar Height",
 					defaultVal: "40",
+					min: "0",
 					condition: Spicetify.Config.version >= "2.33.2",
 					callback: value => {
 						waitForDeps(["Spicetify.CosmosAsync"], async () => {
@@ -891,6 +892,7 @@ todo:
 					name: "Button-Radius",
 					title: "Button Radius",
 					defaultVal: "8",
+					min: "0",
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
 						null,
@@ -1129,6 +1131,7 @@ todo:
 					name: "Tracklist-Gradient-Height",
 					title: "Gradient Height",
 					defaultVal: "232",
+					min: "0",
 					desc: "Change the height of the gradient (the transparent part of the tracklist)",
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
@@ -1143,6 +1146,9 @@ todo:
 					name: "Tracklist-Gradient-Opacity",
 					title: "Gradient Opacity",
 					defaultVal: "0.6",
+					min: "0",
+					max: "1",
+					step: "0.1",
 					desc: "Change the opacity of the gradient (0 -> 1)",
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
@@ -1222,6 +1228,7 @@ todo:
 							name: "Cover-Art-Width",
 							title: "Width",
 							defaultVal: "84px",
+							min: "0",
 							callback: value => document.documentElement.style.setProperty("--cover-art-width", value ? value + "px" : "")
 						},
 						{
@@ -1230,6 +1237,7 @@ todo:
 							name: "Cover-Art-Height",
 							title: "Height",
 							defaultVal: "84px",
+							min: "0",
 							callback: value => document.documentElement.style.setProperty("--cover-art-height", value ? value + "px" : "")
 						},
 						{
@@ -1238,6 +1246,7 @@ todo:
 							name: "Cover-Art-Radius",
 							title: "Border Radius",
 							defaultVal: "8px",
+							min: "0",
 							callback: value => document.documentElement.style.setProperty("--cover-art-radius", value ? value + "px" : "")
 						},
 						{
