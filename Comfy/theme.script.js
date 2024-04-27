@@ -387,11 +387,15 @@ todo:
 
 			Spicetify.React.useEffect(() => {
 				if (textFieldRef.current) {
-					textFieldRef.current.addEventListener("wheel", e => {
-						if (document.focusedElement === textFieldRef.current) {
-							e.preventDefault();
-						}
-					});
+					textFieldRef.current.addEventListener(
+						"wheel",
+						e => {
+							if (document.focusedElement === textFieldRef.current) {
+								e.preventDefault();
+							}
+						},
+						{ passive: true }
+					);
 				}
 			}, []);
 
