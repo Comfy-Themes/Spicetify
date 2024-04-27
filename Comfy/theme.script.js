@@ -61,18 +61,36 @@ todo:
 		});
 
 	// Window Zoom Variable
-	let cache = devicePixelRatio;
-	function updateZoomVariable(override) {
-		const initial = devicePixelRatio;
-		if (initial !== cache || override === true) {
-			const modified = window.outerWidth / window.innerWidth || 1;
-			document.documentElement.style.setProperty("--zoom", modified);
-			console.debug(`[Comfy-Event]: Zoom Updated: ${modified}`);
-			cache = initial;
+	// todo: improve this? seems unoptimal but spotify messes with window.outerWidth on minimize so this is required currently
+
+	function updateZoomVariable() {
+		let prevOuterWidth = window.outerWidth;
+		let prevInnerWidth = window.innerWidth;
+		let prevRatio = window.devicePixelRatio;
+		let startup = true;
+
+		function checkChanges() {
+			const newOuterWidth = window.outerWidth;
+			const newInnerWidth = window.innerWidth;
+			const newRatio = window.devicePixelRatio;
+			if (startup || ((prevOuterWidth <= 160 || prevRatio !== newRatio) && (prevOuterWidth !== newOuterWidth || prevInnerWidth !== newInnerWidth))) {
+				const modified = newOuterWidth / newInnerWidth || 1;
+				document.documentElement.style.setProperty("--zoom", modified);
+				console.debug(`[Comfy-Event]: Zoom Updated: ${newOuterWidth} / ${newInnerWidth} = ${modified}`);
+
+				prevOuterWidth = newOuterWidth;
+				prevInnerWidth = newInnerWidth;
+				prevRatio = newRatio;
+			}
+
+			requestAnimationFrame(checkChanges);
 		}
+
+		checkChanges();
+		startup = false;
 	}
-	updateZoomVariable(true);
-	window.addEventListener("resize", updateZoomVariable);
+
+	updateZoomVariable();
 
 	// Banner Image(s)
 	const channels = [
