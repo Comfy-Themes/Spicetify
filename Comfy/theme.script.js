@@ -1610,11 +1610,24 @@ todo:
 				startup = false;
 				preloadedScheme = false;
 
-				// Trigger Modal
+				// Trigger Modal + Modal Styling
+				document.getElementById("main").classList.add("Settings-Open");
+
 				Spicetify.PopupModal.display({
 					title: "Comfy Settings",
 					content: Spicetify.React.createElement(Content),
 					isLarge: true
+				});
+
+				document.querySelector(".main-trackCreditsModal-closeBtn[aria-label='Close']").addEventListener("click", function () {
+					document.getElementById("main").classList.remove("Settings-Open");
+				});
+
+				document.querySelector("generic-modal").addEventListener("click", event => {
+					if (event.target.className === "GenericModal__overlay") {
+						event.preventDefault();
+						document.getElementById("main").classList.remove("Settings-Open");
+					}
 				});
 
 				// Social Buttons

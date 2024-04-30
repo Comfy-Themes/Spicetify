@@ -42,7 +42,7 @@
 
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
 		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
-			.Root__top-container:not(:has(.BeautifulLyricsPage.Fullscreen)) {
+			.Root__top-container {
 				.Root__now-playing-bar.LibraryX {
 					--cover-ambience-background: var(--spice-player, var(--spice-sidebar));
 				}
