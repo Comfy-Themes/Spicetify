@@ -1774,11 +1774,19 @@ todo:
 				const uri = `spotify:${isPlaylist ? "playlist" : "artist"}:${pathname.split("/").pop()}`;
 				const metadata = isPlaylist
 					? await Spicetify.Platform.PlaylistAPI.getMetadata(uri)
-					: await Spicetify.GraphQL.Request(Spicetify.GraphQL.QueryDefinitions.queryArtistOverview, {
-							uri: uri,
-							includePrerelease: true,
-							locale: null
-					  });
+					: await Spicetify.GraphQL.Request(
+							{
+								name: "queryArtistOverview",
+								operation: "query",
+								sha256Hash: "35648a112beb1794e39ab931365f6ae4a8d45e65396d641eeda94e4003d41497",
+								value: null
+							},
+							{
+								uri: uri,
+								includePrerelease: true,
+								locale: null
+							}
+					  );
 
 				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage?.sources?.[0]?.url;
 			}
