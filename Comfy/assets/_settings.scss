@@ -8,7 +8,7 @@
 }
 
 // Comfy settings
-#main.Settings-Open ~ generic-modal .GenericModal__overlay {
+#main.Settings-Open~generic-modal .GenericModal__overlay {
 	// Failsafe incase spotify's variables are not present
 	--background-tinted-base: rgba(var(--spice-rgb-selected-row), 0.07);
 	--background-tinted-highlight: rgba(var(--spice-rgb-selected-row), 0.1);
@@ -110,95 +110,99 @@
 				align-items: center;
 				overflow: hidden;
 
-				.search-searchCategory-contentArea {
-					width: 100%;
+				.search-searchCategory-catergoryGrid {
+					overflow-y: hidden;
 
-					.search-searchCategory-categoryGridItem {
-						cursor: pointer;
-						padding: 2px;
+					.search-searchCategory-contentArea {
+						width: 100%;
 
-						&:first-of-type {
-							padding-left: 0px;
-						}
-
-						&:last-of-type {
-							padding-right: 0px;
-						}
-
-						&:last-of-type button {
-							margin-inline-end: 0;
-						}
-
-						&:focus-visible {
-							outline: none;
-							text-decoration: none;
-						}
-
-						&:focus-visible>* {
-							outline: 5px auto #3673d4;
-						}
-
-						button {
-							margin-inline-end: 8px;
-							margin-block-end: 0 !important;
-							margin-block-end: 8px;
-							box-sizing: border-box;
-							-webkit-tap-highlight-color: transparent;
-							background-color: transparent;
-							border: 0px;
-							color: inherit;
+						.search-searchCategory-categoryGridItem {
 							cursor: pointer;
-							line-height: 1;
-							letter-spacing: inherit;
-							padding: 0px;
-							border-radius: 9999px;
-							display: inline-flex;
-							vertical-align: middle;
-							max-inline-size: 100%;
-							text-decoration: none;
-							overflow-wrap: break-word;
-							position: relative;
-							flex-shrink: 0;
-							z-index: 1;
+							padding: 2px;
 
-
-							&::after {
-								border-color: transparent !important;
+							&:first-of-type {
+								padding-left: 0px;
 							}
 
-							span {
-								@media (min-width: 768px) {
-									font-size: 0.875rem;
-								}
+							&:last-of-type {
+								padding-right: 0px;
+							}
 
-								font-size: 0.8125rem;
-								font-weight: 400;
+							&:last-of-type button {
+								margin-inline-end: 0;
+							}
+
+							&:focus-visible {
+								outline: none;
+								text-decoration: none;
+							}
+
+							&:focus-visible>* {
+								outline: 5px auto #3673d4;
+							}
+
+							button {
+								margin-inline-end: 8px;
+								margin-block-end: 0 !important;
+								margin-block-end: 8px;
 								box-sizing: border-box;
 								-webkit-tap-highlight-color: transparent;
+								background-color: transparent;
+								border: 0px;
+								color: inherit;
+								cursor: pointer;
+								line-height: 1;
+								letter-spacing: inherit;
+								padding: 0px;
 								border-radius: 9999px;
-								color: var(--text-base);
-								transition: background-color 0.2s ease 0s,
-								color 0.2s ease 0s;
 								display: inline-flex;
-								min-inline-size: 0px;
-								min-block-size: 32px;
-								-webkit-box-align: center;
-								align-items: center;
-								padding: 4px 12px;
-								background-color: var(--background-tinted-base);
-								overflow-wrap: anywhere;
+								vertical-align: middle;
+								max-inline-size: 100%;
+								text-decoration: none;
+								overflow-wrap: break-word;
+								position: relative;
+								flex-shrink: 0;
+								z-index: 1;
 
-								&:hover {
-									background-color: var(--background-tinted-highlight);
+
+								&::after {
+									border-color: transparent !important;
+								}
+
+								span {
+									@media (min-width: 768px) {
+										font-size: 0.875rem;
+									}
+
+									font-size: 0.8125rem;
+									font-weight: 400;
+									box-sizing: border-box;
+									-webkit-tap-highlight-color: transparent;
+									border-radius: 9999px;
+									color: var(--text-base);
+									transition: background-color 0.2s ease 0s,
+									color 0.2s ease 0s;
+									display: inline-flex;
+									min-inline-size: 0px;
+									min-block-size: 32px;
+									-webkit-box-align: center;
+									align-items: center;
+									padding: 4px 12px;
+									background-color: var(--background-tinted-base);
+									overflow-wrap: anywhere;
+
+									&:hover {
+										background-color: var(--background-tinted-highlight);
+									}
 								}
 							}
 						}
-					}
 
-					.search-searchCategory-carouselButton svg {
-						fill: var(--text-base);
-						width: 16px;
-						height: 16px;
+						.search-searchCategory-carouselButton svg {
+							fill: var(--text-base);
+							width: 16px;
+							height: 16px;
+						}
 					}
 				}
 			}
