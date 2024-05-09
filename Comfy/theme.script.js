@@ -556,7 +556,7 @@ todo:
 
 			const container = containerRef.current;
 			setShowLeftButton(container.scrollLeft > 0);
-			setShowRightButton(container.scrollLeft < container.scrollWidth - container.clientWidth);
+			setShowRightButton(container.scrollLeft <= container.scrollWidth - container.clientWidth - 32);
 		}, []);
 
 		Spicetify.React.useEffect(() => {
