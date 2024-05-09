@@ -110,11 +110,11 @@
 				align-items: center;
 				overflow: hidden;
 
-				.search-searchCategory-catergoryGrid {
-					overflow-y: hidden;
+				.search-searchCategory-contentArea {
+					width: 100%;
 
-					.search-searchCategory-contentArea {
-						width: 100%;
+					.search-searchCategory-catergoryGrid {
+						overflow-y: hidden;
 
 						.search-searchCategory-categoryGridItem {
 							cursor: pointer;
@@ -197,12 +197,12 @@
 								}
 							}
 						}
+					}
 
-						.search-searchCategory-carouselButton svg {
-							fill: var(--text-base);
-							width: 16px;
-							height: 16px;
-						}
+					.search-searchCategory-carouselButton svg {
+						fill: var(--text-base);
+						width: 16px;
+						height: 16px;
 					}
 				}
 			}
