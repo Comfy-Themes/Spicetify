@@ -164,6 +164,21 @@
 								flex-shrink: 0;
 								z-index: 1;
 
+								&[aria-checked="true"]:hover>span {
+									background-color: var(--background-highlight);
+								}
+
+								&:hover>span {
+									background-color: var(--background-tinted-highlight);
+								}
+
+								&[aria-checked="true"]:active>span {
+									background-color: var(--background-press);
+								}
+
+								&:active>span {
+									background-color: var(--background-tinted-press);
+								}
 
 								&::after {
 									border-color: transparent !important;
@@ -191,9 +206,6 @@
 									background-color: var(--background-tinted-base);
 									overflow-wrap: anywhere;
 
-									&:hover {
-										background-color: var(--background-tinted-highlight);
-									}
 								}
 							}
 						}
