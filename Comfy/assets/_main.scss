@@ -1,3 +1,11 @@
+// Temp fix for new global nav layout
+:root #main .global-nav {
+	main>*:has(.main-entityHeader-container),
+	main>*:has(.main-entityHeader-container)>* {
+		margin-top: 0 !important;
+	}
+}
+
 :root #main.Banner-Enabled {
 	.comfy-banner-frame {
 		display: block;
