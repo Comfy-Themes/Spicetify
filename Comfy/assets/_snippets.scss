@@ -270,18 +270,20 @@
 		}
 
 		&.Smooth-Progress-Bar-Snippet {
-			.x-progressBar-fillColor,
-			.progress-bar__slider {
-				-webkit-transition-delay: 0s;
-				transition-delay: 0s;
-				-webkit-transition-duration: 1000ms;
-				transition-duration: 1000ms;
-				-webkit-transition-property: left, -webkit-transform;
-				transition-property: left, -webkit-transform;
-				transition-property: transform, left;
-				transition-property: transform, left, -webkit-transform;
-				-webkit-transition-timing-function: linear;
-				transition-timing-function: linear
+			.playback-bar .x-progressBar-sliderArea {
+				>div,
+				~div {
+					-webkit-transition-delay: 0s;
+					transition-delay: 0s;
+					-webkit-transition-duration: 1000ms;
+					transition-duration: 1000ms;
+					-webkit-transition-property: left, -webkit-transform;
+					transition-property: left, -webkit-transform;
+					transition-property: transform, left;
+					transition-property: transform, left, -webkit-transform;
+					-webkit-transition-timing-function: linear;
+					transition-timing-function: linear
+				}
 			}
 		}
 
