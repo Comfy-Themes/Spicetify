@@ -1905,29 +1905,4 @@ todo:
 
 		return aRgb;
 	}
-
-	function cssVarToHex(colorValue) {
-		const tempDiv = document.createElement("div");
-		tempDiv.style.color = colorValue;
-		document.body.appendChild(tempDiv);
-
-		const computedColor = window.getComputedStyle(tempDiv).color;
-		document.body.removeChild(tempDiv);
-
-		const hexTempDiv = document.createElement("div");
-		hexTempDiv.style.color = computedColor;
-		document.body.appendChild(hexTempDiv);
-
-		let hexColor = window.getComputedStyle(hexTempDiv).color;
-		document.body.removeChild(hexTempDiv);
-
-		hexColor = hexColor.replace(/rgb\((\d+), (\d+), (\d+)\)/, (_, r, g, b) => {
-			r = parseInt(r, 10).toString(16).padStart(2, "0");
-			g = parseInt(g, 10).toString(16).padStart(2, "0");
-			b = parseInt(b, 10).toString(16).padStart(2, "0");
-			return `#${r}${g}${b}`;
-		});
-
-		return hexColor;
-	}
 })();
