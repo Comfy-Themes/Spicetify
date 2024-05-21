@@ -1513,7 +1513,8 @@ todo:
 								},
 								body: JSON.stringify({
 									uri: await hashString(user.uri),
-									spotify_version: value ? Spicetify.Platform.version : ""
+									spotify_version: value ? Spicetify.Platform.version : "",
+									recaptcha_token: "6LesCeQpAAAAALwd6y8AWUocR0wNXtiTdXjtL2uv"
 								})
 							})
 								.then(response => response.json())
