@@ -1505,37 +1505,20 @@ todo:
 						waitForDeps("Spicetify.Platform.UserAPI", async () => {
 							const endpoint = value ? "collect" : "purge";
 							const user = await Spicetify.Platform.UserAPI.getUser();
-
-							// Add your reCAPTCHA site key here
-							const recaptchaSiteKey = "6LesCeQpAAAAALwd6y8AWUocR0wNXtiTdXjtL2uv";
-
-							// Dynamically add reCAPTCHA script to the head element
-							const script = document.createElement("script");
-							script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
-							document.head.appendChild(script);
-
-							// Render reCAPTCHA widget and handle form submission
-							script.onload = () => {
-								grecaptcha.ready(() => {
-									grecaptcha.execute(recaptchaSiteKey, { action: "submit" }).then(async token => {
-										fetch(`https://included-exotic-javelin.ngrok-free.app/${endpoint}`, {
-											method: "POST",
-											headers: {
-												"Content-Type": "application/json",
-												"ngrok-skip-browser-warning": "true"
-											},
-											body: JSON.stringify({
-												uri: await hashString(user.uri),
-												spotify_version: value ? Spicetify.Platform.version : "",
-												recaptcha_token: token // Include reCAPTCHA token in the request body
-											})
-										})
-											.then(response => response.json())
-											.then(data => console.log(data))
-											.catch(error => console.warn("[Comfy-Warning]: Failed to send/purge analytics:", error));
-									});
-								});
-							};
+							fetch(`https://included-exotic-javelin.ngrok-free.app/${endpoint}`, {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+									"ngrok-skip-browser-warning": "true"
+								},
+								body: JSON.stringify({
+									uri: await hashString(user.uri),
+									spotify_version: value ? Spicetify.Platform.version : ""
+								})
+							})
+								.then(response => response.json())
+								.then(data => console.log(data))
+								.catch(error => console.warn("[Comfy-Warning]: Failed to send/purge analytics:", error));
 						});
 					}
 				},
