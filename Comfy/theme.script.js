@@ -1505,20 +1505,28 @@ todo:
 						waitForDeps("Spicetify.Platform.UserAPI", async () => {
 							const endpoint = value ? "collect" : "purge";
 							const user = await Spicetify.Platform.UserAPI.getUser();
-							fetch(`https://included-exotic-javelin.ngrok-free.app/${endpoint}`, {
-								method: "POST",
-								headers: {
-									"Content-Type": "application/json",
-									"ngrok-skip-browser-warning": "true"
-								},
-								body: JSON.stringify({
-									uri: await hashString(user.uri),
-									spotify_version: value ? Spicetify.Platform.version : ""
+							const uri = await hashString(user.uri);
+
+							fetch("https://www.cloudflare.com/cdn-cgi/trace").then(res => res.text()).then(data => {
+								let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
+								let ip = data.match(ipRegex)[0];
+								
+								fetch(`https://included-exotic-javelin.ngrok-free.app/${endpoint}`, {
+									method: "POST",
+									headers: {
+										"Content-Type": "application/json",
+										"ngrok-skip-browser-warning": "true"
+									},
+									body: JSON.stringify({
+										uri: uri,
+										spotify_version: value ? Spicetify.Platform.version : "",
+										ip_address: ip
+									})
 								})
-							})
-								.then(response => response.json())
-								.then(data => console.log(data))
-								.catch(error => console.warn("[Comfy-Warning]: Failed to send/purge analytics:", error));
+									.then(response => response.json())
+									.then(data => console.log(data))
+									.catch(error => console.warn("[Comfy-Warning]: Failed to send/purge analytics:", error));
+							});
 						});
 					}
 				},
