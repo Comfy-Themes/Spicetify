@@ -205,7 +205,7 @@ todo:
 		return Spicetify.React.createElement(
 			"button",
 			{
-				className: "main-buttons-button main-button-secondary",
+				className: "main-buttons-button",
 				id: name,
 				onClick: () => {
 					callback(state, setState);
@@ -735,6 +735,7 @@ todo:
 			Spicetify.React.createElement(Carousel, {
 				chips: [
 					{ label: "All" },
+					{ label: "Settings" },
 					{ label: "Banner Image" },
 					{ label: "Cover Art" },
 					{ label: "Playbar" },
@@ -1493,10 +1494,37 @@ todo:
 					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
 				}
 			]),
-			Spicetify.React.createElement(Section, { name: "" }, [
+			Spicetify.React.createElement(Section, { name: "Settings", filter }, [
+				{
+					type: Slider,
+					name: "Version-Analytics",
+					title: "Send Version Analytics",
+					defaultVal: true,
+					desc: "Help us improve by sharing your Spotify version anonymously",
+					callback: async value => {
+						waitForDeps("Spicetify.Platform.UserAPI", async () => {
+							const endpoint = value ? "collect" : "purge";
+							const user = await Spicetify.Platform.UserAPI.getUser();
+							fetch(`https://included-exotic-javelin.ngrok-free.app/${endpoint}`, {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+									"ngrok-skip-browser-warning": "true"
+								},
+								body: JSON.stringify({
+									uri: await hashString(user.uri),
+									spotify_version: value ? Spicetify.Platform.version : ""
+								})
+							})
+								.then(response => response.json())
+								.then(data => console.log(data))
+								.catch(error => console.warn("[Comfy-Warning]: Failed to send/purge analytics:", error));
+						});
+					}
+				},
 				{
 					type: Row,
-					name: "setting-button-row",
+					name: "setting-card setting-button-row",
 					items: [
 						{
 							type: Button,
@@ -1900,5 +1928,14 @@ todo:
 		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
 
 		return aRgb;
+	}
+
+	async function hashString(str) {
+		const encoder = new TextEncoder();
+		const data = encoder.encode(str);
+		const buffer = await crypto.subtle.digest("SHA-256", data);
+		return Array.from(new Uint8Array(buffer))
+			.map(b => b.toString(16).padStart(2, "0"))
+			.join("");
 	}
 })();
