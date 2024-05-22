@@ -92,20 +92,20 @@ todo:
 	updateZoomVariable();
 
 	// Banner Image(s)
-	const channels = [
-		/^\/playlist\//,
-		/^\/station\/playlist\//,
-		/^\/artist\/(?!artists\b)\w+$/,
-		/^\/album\//,
-		/^\/collection\/tracks$/,
-		/^\/collection\/your-episodes$/,
-		/^\/collection\/local-files$/,
-		/^\/show\//,
-		/^\/episode\//,
-		/^\/lyrics-plus$/,
-		/^\/user\/(?!users\b)\w+$/,
-		/^\/genre\//
-	];
+	let channels = {
+		Playlist: { regex: /^\/playlist\//, enabled: getConfig("Playlist") ?? true },
+		Station: { regex: /^\/station\/playlist\//, enabled: getConfig("Station") ?? true },
+		Artist: { regex: /^\/artist\/(?!artists\b)\w+$/, enabled: getConfig("Artist") ?? true },
+		Album: { regex: /^\/album\//, enabled: getConfig("Album") ?? true },
+		Collection: { regex: /^\/collection\/tracks$/, enabled: getConfig("Collection") ?? true },
+		"Your-Episodes": { regex: /^\/collection\/your-episodes$/, enabled: getConfig("Your-Episodes") ?? true },
+		"Local-Files": { regex: /^\/collection\/local-files$/, enabled: getConfig("Local-Files") ?? true },
+		Show: { regex: /^\/show\//, enabled: getConfig("Show") ?? true },
+		Episode: { regex: /^\/episode\//, enabled: getConfig("Episode") ?? true },
+		"Lyrics-Plus": { regex: /^\/lyrics-plus$/, enabled: getConfig("Lyrics-Plus") ?? true },
+		User: { regex: /^\/user\/(?!users\b)\w+$/, enabled: getConfig("User") ?? true },
+		Genre: { regex: /^\/genre\//, enabled: getConfig("Genre") ?? true }
+	};
 
 	const frame = document.createElement("div");
 	const banner = [document.createElement("img"), document.createElement("img")];
@@ -1324,11 +1324,24 @@ todo:
 			]),
 			Spicetify.React.createElement(Section, { name: "Banner Image", filter }, [
 				{
-					type: Slider,
+					type: SubSection,
 					name: "Banner-Enabled",
 					title: "Custom Banner Images",
 					defaultVal: true,
-					desc: "(all settings in this category will be ignored if disabled)"
+					desc: "(all settings in this category will be ignored if disabled)",
+					items: Object.keys(channels).map(channel => ({
+						type: Slider,
+						name: channel,
+						title: `${channel.replace("-", " ")} Page`,
+						defaultVal: true,
+						callback: value => {
+							if (value !== channels[channel]["enabled"]) {
+								channels[channel]["enabled"] = value;
+								updateBanner();
+							}
+						}
+					})),
+					collapseItems: true
 				},
 				{
 					type: Slider,
@@ -1831,7 +1844,16 @@ todo:
 			console.debug(`[Comfy-Event]: Banner Source = ${banner[0].src} -> ${source}`);
 		}
 
-		frame.style.display = channels.some(channel => channel.test(pathname)) ? "" : "none";
+		const validChannel = Object.values(channels).some(channel => channel.enabled && channel.regex.test(pathname));
+		frame.style.display = validChannel ? "" : "none";
+		if (getConfig("Banner-Enabled")) {
+			if (!validChannel) {
+				document.getElementById("main").classList.remove("Banner-Enabled");
+			} else {
+				document.getElementById("main").classList.add("Banner-Enabled");
+			}
+		}
+
 		banner.forEach(image => {
 			image.src = source;
 			image.style.display = source ? "" : "none";
