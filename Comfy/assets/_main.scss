@@ -1,7 +1,8 @@
-// Temp fix for new global nav layout
-:root #main .global-nav {
-	main>*:has(.main-entityHeader-container),
-	main>*:has(.main-entityHeader-container)>* {
+// Fix for new global nav layout
+:root .global-nav {
+
+	main>div[class*="GlueDropTarget"]:first-of-type,
+	main>div[class*="GlueDropTarget"]:first-of-type>* {
 		margin-top: 0 !important;
 	}
 }
