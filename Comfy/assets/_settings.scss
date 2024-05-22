@@ -66,6 +66,20 @@
 		padding: 0px 16px 0;
 		scrollbar-width: thin;
 		min-height: calc(100% - 60px);
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			width: calc(100% - 12px);
+			left: 0;
+			height: 25px;
+			background: linear-gradient(to bottom, transparent, rgba(var(--spice-rgb-player), 0.5));
+			pointer-events: none;
+			border-radius: 8px;
+			z-index: 0;
+			border-bottom-right-radius: 0;
+		}
 	}
 
 	.GenericModal ::-webkit-scrollbar,
