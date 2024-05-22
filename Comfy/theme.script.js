@@ -1499,7 +1499,7 @@ todo:
 					type: Slider,
 					name: "Version-Analytics",
 					title: "Send Version Analytics",
-					defaultVal: true,
+					defaultVal: false,
 					desc: "Help us improve by sharing your Spotify version anonymously",
 					callback: async value => {
 						waitForDeps("Spicetify.Platform.UserAPI", async () => {
