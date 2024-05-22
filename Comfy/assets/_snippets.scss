@@ -271,6 +271,7 @@
 
 		&.Smooth-Progress-Bar-Snippet {
 			.playback-bar .x-progressBar-sliderArea {
+
 				>div,
 				~div {
 					-webkit-transition-delay: 0s;
@@ -453,6 +454,12 @@
 		&.Replace-Existing-Banners.Banner-Enabled {
 			.under-main-view div:has(.main-entityHeader-gradient) {
 				display: none !important;
+			}
+		}
+
+		&.Lyrics {
+			main>div>div:empty {
+				--lyrics-color-background: transparent !important;
 			}
 		}
 

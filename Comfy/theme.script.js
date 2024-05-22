@@ -93,6 +93,7 @@ todo:
 
 	// Banner Image(s)
 	let channels = {
+		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
 		Playlist: { regex: /^\/playlist\//, enabled: getConfig("Playlist") ?? true },
 		Station: { regex: /^\/station\/playlist\//, enabled: getConfig("Station") ?? true },
 		Artist: { regex: /^\/artist\/(?!artists\b)\w+$/, enabled: getConfig("Artist") ?? true },
@@ -1333,7 +1334,7 @@ todo:
 						type: Slider,
 						name: channel,
 						title: `${channel.replace("-", " ")} Page`,
-						defaultVal: true,
+						defaultVal: channels[channel]["enabled"],
 						callback: value => {
 							if (value !== channels[channel]["enabled"]) {
 								channels[channel]["enabled"] = value;
