@@ -91,6 +91,23 @@ todo:
 
 	updateZoomVariable();
 
+	// Layout Variables
+	let panelWidth = document.documentElement.style.getPropertyValue("--panel-width");
+	let sidebarWidth = document.documentElement.style.getPropertyValue("--left-sidebar-width");
+	
+	new MutationObserver(mutations => {
+		const newPanelWidth = mutations[0].target.style.getPropertyValue("--panel-width");
+		const newSidebarWidth = mutations[0].target.style.getPropertyValue("--left-sidebar-width");
+		if (newPanelWidth !== panelWidth || newSidebarWidth !== sidebarWidth) {
+			const trimmedPanelWidth = parseInt(newPanelWidth);
+			const trimmedSidebarWidth = parseInt(newSidebarWidth);
+			document.documentElement.style.setProperty("--comfy-panel-width", `${trimmedPanelWidth}px`);
+			document.documentElement.style.setProperty("--comfy-left-sidebar-width", `${trimmedSidebarWidth}px`);
+			panelWidth = newPanelWidth;
+			sidebarWidth = newSidebarWidth;
+		}
+	}).observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
+
 	// Banner Image(s)
 	let channels = {
 		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
