@@ -94,7 +94,7 @@ todo:
 	// Layout Variables
 	let panelWidth = document.documentElement.style.getPropertyValue("--panel-width");
 	let sidebarWidth = document.documentElement.style.getPropertyValue("--left-sidebar-width");
-	
+
 	new MutationObserver(mutations => {
 		const newPanelWidth = mutations[0].target.style.getPropertyValue("--panel-width");
 		const newSidebarWidth = mutations[0].target.style.getPropertyValue("--left-sidebar-width");
@@ -582,6 +582,24 @@ todo:
 
 		Spicetify.React.useEffect(handleResize, [chips.length]);
 
+		Spicetify.React.useEffect(() => {
+			if (containerRef.current) {
+				const activeItem = containerRef.current.querySelector(`.search-searchCategory-categoryGridItem:nth-child(${checked.index + 1})`);
+				if (activeItem) {
+					const container = containerRef.current;
+					const containerScrollLeft = container.scrollLeft;
+					const containerWidth = container.clientWidth;
+					const itemOffsetLeft = activeItem.offsetLeft;
+					const itemWidth = activeItem.clientWidth;
+
+					if (itemOffsetLeft < containerScrollLeft + 32 || itemOffsetLeft + itemWidth > containerScrollLeft + containerWidth - 32) {
+						const scrollPosition = itemOffsetLeft - (containerWidth / 2 - itemWidth / 2);
+						container.scrollTo({ left: scrollPosition, behavior: "instant" });
+					}
+				}
+			}
+		}, []);
+
 		const handleScroll = Spicetify.React.useCallback(() => {
 			handleResize();
 		}, [handleResize]);
@@ -654,11 +672,12 @@ todo:
 							"div",
 							{
 								ref: containerRef,
-								className: Spicetify.classnames("search-searchCategory-catergoryGrid", {
-									MUloQuW1xQawwVs0mDp4: showLeftButton,
-									OlnSvEViCZ_vVdnc3mSQ: showRightButton,
-									FjMPyh7lOujDVYQRvp0H: showRightButton && showLeftButton
-								}),
+								className: `search-searchCategory-catergoryGrid
+								${showLeftButton ? "MUloQuW1xQawwVs0mDp4" : ""}
+								${showRightButton ? "OlnSvEViCZ_vVdnc3mSQ" : ""}
+								${showRightButton && showLeftButton ? "FjMPyh7lOujDVYQRvp0H" : ""}`
+									.trim()
+									.replace(/\s+/g, " "),
 								onScroll: handleScroll,
 								onKeyDown: handleKeyDown,
 								role: "list",
@@ -698,9 +717,7 @@ todo:
 							Spicetify.React.createElement(
 								"button",
 								{
-									className: Spicetify.classnames("search-searchCategory-carouselButton", {
-										"search-searchCategory-carouselButtonVisible": showLeftButton
-									}),
+									className: `search-searchCategory-carouselButton ${showLeftButton ? "search-searchCategory-carouselButtonVisible" : ""}`.trim(),
 									tabIndex: -1,
 									onClick: () => handleButtonClick("LEFT"),
 									"aria-hidden": "true"
@@ -715,9 +732,7 @@ todo:
 							Spicetify.React.createElement(
 								"button",
 								{
-									className: Spicetify.classnames("search-searchCategory-carouselButton", {
-										"search-searchCategory-carouselButtonVisible": showRightButton
-									}),
+									className: `search-searchCategory-carouselButton ${showRightButton ? "search-searchCategory-carouselButtonVisible" : ""}`.trim(),
 									tabIndex: -1,
 									onClick: () => handleButtonClick("RIGHT"),
 									"aria-hidden": "true"
