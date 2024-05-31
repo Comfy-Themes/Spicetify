@@ -380,6 +380,11 @@
 				height: 48px;
 			}
 
+			// 1.2.37 forward, idk this code sucks lol
+			.main-view-container > [data-overlayscrollbars-initialize] > [data-overlayscrollbars-viewport] {
+				padding-top: 49px;
+			}
+
 			.main-view-container__scroll-node-child-spacer {
 				height: 15px;
 			}
