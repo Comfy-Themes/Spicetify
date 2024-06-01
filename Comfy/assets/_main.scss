@@ -87,7 +87,7 @@
 	.main-view-container {
 
 		// Main Page Tweaks
-		main {
+		main:not(:has(.lyrics-lyricsContainer-LyricsContainer)) {
 			position: sticky;
 
 			.os-host-overflow,
@@ -214,12 +214,9 @@
 		}
 
 		.lyrics-lyricsContainer-LyricsContainer {
-			height: calc(100vh - max(var(--comfy-topbar-height, 40px), 8px) - 100px);
-			margin-top: -64px;
-
 			&::-webkit-scrollbar {
-				width: 0;
-				height: 0;
+				width: 0 !important;
+				height: 0 !important;
 			}
 
 			.lyrics-lyricsContainer-LyricsBackground {
