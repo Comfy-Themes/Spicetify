@@ -36,6 +36,14 @@
 	}
 
 	// gradient noise gets stretched vertically with this approach - but no black lines
+	&.Custom-Playbar-Snippet:not(.Comfy-nord-Snippet, .Comfy-nord-flat-Snippet, .Playbar-Above-Right-Panel-Snippet) {
+
+		.artist-artistOverview-artistOverviewContent,
+		.main-actionBarBackground-background {
+			min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px - 12px) !important;
+		}
+	}
+
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
 		background-image: linear-gradient(rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
@@ -43,7 +51,7 @@
 			var(--tracklist-gradient-noise) !important;
 		background-color: transparent !important;
 		height: calc(100% - 232px);
-		min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px - 12px);
+		min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px);
 		background-size: auto 100%, 300px var(--tracklist-gradient-height);
 		background-repeat: repeat-x;
 	}

@@ -157,6 +157,12 @@
 		}
 
 		&.Playbar-Above-Right-Panel-Snippet {
+
+			.artist-artistOverview-artistOverviewContent,
+			.main-actionBarBackground-background {
+				min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 150, 400px)) - 50px) !important;
+			}
+
 			.Root__top-container {
 				grid-template-areas:
 					"left-sidebar    main-view         now-playing-bar"
@@ -401,7 +407,7 @@
 				padding-top: 15px !important;
 			}
 
-			main:not(:has(.cj6vRk3nFAi80HSVqX91))>section:first-of-type {
+			main:not(:has(.cj6vRk3nFAi80HSVqX91))>section:first-of-type:not(:has(.main-entityHeader-container)) {
 				margin-top: 15px;
 			}
 
