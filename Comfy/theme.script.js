@@ -1409,24 +1409,10 @@ todo:
 					tippy: Spicetify.React.createElement(
 						Spicetify.React.Fragment,
 						null,
-						Spicetify.React.createElement(
-							"div",
-							{
-								style: {
-									// tippy doesnt like loading images
-									height: "315px"
-								}
-							},
-							Spicetify.React.createElement("img", {
-								src: "https://github.com/Comfy-Themes/Spicetify/blob/main/images/settings/am-blur.gif?raw=true",
-								alt: "preview",
-								style: {
-									width: "100%"
-								}
-							}),
-							Spicetify.React.createElement("h4", null, "Blur (10x Value):"),
-							Spicetify.React.createElement("li", null, "Recommended: 4px")
-						)
+						Spicetify.React.createElement("h4", null, "MacOS Note:"),
+						Spicetify.React.createElement("li", null, "Disable Reduced Motion in System Preferences"),
+						Spicetify.React.createElement("h4", null, "Blur (10x Value):"),
+						Spicetify.React.createElement("li", null, "Recommended: 4px")
 					),
 					items: [
 						{
