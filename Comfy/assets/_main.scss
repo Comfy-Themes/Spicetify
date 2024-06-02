@@ -102,7 +102,7 @@
 			.os-padding,
 			.os-viewport,
 			div[data-overlayscrollbars~="host"],
-			[data-overlayscrollbars-viewport="scrollbarHidden"] {
+			[data-overlayscrollbars-viewport~="scrollbarHidden"] {
 				overflow: visible !important; // Override overflow property
 			}
 		}
