@@ -444,7 +444,7 @@
 				min-width: fit-content;
 				box-shadow: 0 2px 4px rgba(var(--spice-rgb-shadow), 0.1);
 				justify-content: space-evenly !important;
-				min-height: calc(128px + (100vw - var(--left-sidebar-width, 0px)* 1px - var(--panel-width, 0px)* 1px - 600px) / 424* 104 + 48px);
+				min-height: calc(128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424* 104 + 48px);
 				max-height: calc(250px - 64px);
 			}
 
