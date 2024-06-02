@@ -429,7 +429,7 @@
 			}
 		}
 
-		&.Tracklist-Header-Background {
+		&.Header-Background {
 			.main-entityHeader-imageContainerNew {
 				align-self: center;
 				left: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*104, 232px) + 24px + var(--content-spacing));
