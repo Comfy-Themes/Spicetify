@@ -147,7 +147,8 @@
 
 		// Headers
 		.rX_OmqCngvY5ZCoYBZgb.zyeJ9w99yrvGokL3BsMc,
-		.hIFR8WDm_54EEIa1gwpC.fIvMht6B9HdROywMNJZ4 {
+		.hIFR8WDm_54EEIa1gwpC.fIvMht6B9HdROywMNJZ4,
+		.main-home-filterChipsContainer > div:first-child {
 			&:after {
 				background-color: var(--spice-main);
 			}
