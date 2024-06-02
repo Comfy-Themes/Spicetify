@@ -1574,7 +1574,7 @@ todo:
 										location.reload();
 									});
 								} catch (e) {
-									setState("Invalid Format!");
+									setState("Invalid!");
 									new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
 										setState(state);
 									});
