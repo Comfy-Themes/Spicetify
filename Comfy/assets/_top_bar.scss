@@ -1,4 +1,10 @@
 :root .main-topBar-container {
+	.main-topBar-topbarContent *,
+	.main-topBar-topbarContentWrapper * {
+		justify-content: center;
+		text-align: center;
+	}
+
 	.main-topBar-searchBar {
 		>form input {
 			&::placeholder {
