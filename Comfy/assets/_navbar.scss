@@ -14,12 +14,12 @@
 						left: 0;
 						right: 0;
 					}
-
-					.x-entityImage-imageContainer {
-						box-shadow: none !important;
-					}
 				}
 			}
+		}
+
+		[role="presentation"]>li>div>div>div>div>.x-entityImage-imageContainer {
+			box-shadow: 0 4px 60px rgba(var(--spice-rgb-shadow), .0) !important;
 		}
 	}
 
