@@ -1,9 +1,9 @@
 // Fix for new global nav layout
 :root .global-nav {
-
-	main>div[class*="GlueDropTarget"]:first-of-type,
-	main>div[class*="GlueDropTarget"]:first-of-type>* {
-		margin-top: 0 !important;
+	.Root__main-view .main-view-container .main-entityHeader-container {
+		padding: 32px;
+		align-items: center;
+		margin-top: 64px;
 	}
 }
 
