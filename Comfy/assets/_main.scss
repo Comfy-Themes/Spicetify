@@ -200,6 +200,10 @@
 					margin-left: calc(var(--content-spacing) + 3px);
 				}
 
+				>:first-child:not(:only-child) {
+					margin-right: calc(var(--content-spacing) + 4px);
+				}
+
 				[class*="Button"] {
 					min-block-size: 32px;
 					padding-block: 0;
