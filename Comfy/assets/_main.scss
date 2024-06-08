@@ -50,7 +50,7 @@
 				var(--spice-main) var(--tracklist-gradient-height)),
 			var(--tracklist-gradient-noise) !important;
 		background-color: transparent !important;
-		height: calc(100% - 232px);
+		height: calc(100% - 250px);
 		min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px);
 		background-size: auto 100%, 300px var(--tracklist-gradient-height);
 		background-repeat: repeat-x;
@@ -97,6 +97,7 @@
 		// Main Page Tweaks
 		main:not(:has(.lyrics-lyricsContainer-LyricsContainer)) {
 			position: sticky;
+			padding-bottom: 32px;
 
 			.os-host-overflow,
 			.os-padding,
