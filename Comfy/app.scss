@@ -185,6 +185,16 @@
 	#context-menu {
 		overflow: hidden;
 
+		.main-userWidget-dropDownMenu .main-contextMenu-menuItemButton:has(span + svg)::before {
+			border-bottom: 1px solid rgba(var(--spice-rgb-selected-row), .1);
+			content: "";
+			left: 0;
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
 		.main-popper-arrow,
 		.main-popper-arrow::before {
 			background-color: var(--spice-player) !important;

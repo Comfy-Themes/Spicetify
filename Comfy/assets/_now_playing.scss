@@ -44,93 +44,99 @@
 			.main-nowPlayingBar-nowPlayingBar {
 				margin-bottom: 12px;
 
-				// Controls
-				.player-controls__buttons--new-icons {
-					margin-bottom: 0px !important;
-				}
+				// Center
+				.main-nowPlayingBar-center {
 
-				// Miscolored right side button svgs
-				.main-nowPlayingBar-extraControls {
-					button:not(.main-genericButton-buttonActive) {
-						color: rgba(var(--spice-rgb-selected-row), 0.7);
+					// Player Controls
+					.player-controls__buttons--new-icons {
+						margin-bottom: 0px !important;
+					}
 
-						&:hover {
-							color: var(--spice-text) !important;
+					// Playback Area
+					.playback-bar {
+						position: fixed;
+						display: grid;
+						grid-template-columns: auto auto;
+						grid-template-areas:
+							"time-left time-right"
+							"bar bar";
+						bottom: 0;
+						right: 0;
+						gap: 0;
+
+						.saber-hilt {
+							height: 0;
 						}
-					}
 
-					.main-devicePicker-indicator {
-						display: none;
-					}
-				}
-			}
+						// Timers
+						&>div:not(.playback-progressbar-container) {
+							text-align: center;
 
-			// Volume Bar
-			.main-nowPlayingBar-volumeBar .progress-bar {
-				--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
-			}
+							&:first-of-type {
+								grid-area: time-left;
+							}
 
-			.playback-bar {
-				position: fixed;
-				display: grid;
-				grid-template-columns: auto auto;
-				grid-template-areas:
-					"time-left time-right"
-					"bar bar";
-				bottom: 0;
-				right: 0;
-				gap: 0;
-
-				.saber-hilt {
-					height: 0;
-				}
-
-				.playback-progressbar {
-					grid-column: 1/3;
-					grid-area: bar;
-					height: 10px;
-
-					.progress-bar {
-						--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
-						--fg-color: var(--spice-progress-fg);
-						--progress-bar-height: 12px;
-						--progress-bar-radius: 0;
-
-						.x-progressBar-progressBarBg {
-							&:after {
-								content: "";
-								padding: 8px;
-								position: absolute;
-								top: -6px;
-								width: calc(100% - 16px);
+							&:last-of-type {
+								grid-area: time-right;
 							}
 						}
 
-						.x-progressBar-fillColor {
-							width: 107%;
-							background-color: transparent;
-							background-image: linear-gradient(90deg, var(--spice-progress-fg) 93%, transparent 100%);
+						// Progess Bar
+						.playback-progressbar-container {
+							display: contents;
 						}
 
-						.progress-bar__slider {
+						.playback-progressbar {
+							grid-column: 1/3;
+							grid-area: bar;
+							height: 11px;
+
+							.progress-bar {
+								--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
+								--fg-color: var(--spice-progress-fg);
+								--progress-bar-height: 12px;
+								--progress-bar-radius: 0;
+
+								.x-progressBar-fillColor {
+									width: 107%;
+									background-color: transparent;
+									background-image: linear-gradient(90deg, var(--spice-progress-fg) 93%, transparent 100%);
+								}
+
+								.progress-bar__slider {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+
+				// Right
+				.main-nowPlayingBar-right {
+
+					// Volume Bar
+					.main-nowPlayingBar-volumeBar .progress-bar {
+						--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
+					}
+
+					// Miscolored right side button svgs
+					.main-nowPlayingBar-extraControls {
+						button:not(.main-genericButton-buttonActive) {
+							color: rgba(var(--spice-rgb-selected-row), 0.7);
+
+							&:hover {
+								color: var(--spice-text) !important;
+							}
+						}
+
+						.main-devicePicker-indicator {
 							display: none;
 						}
 					}
 				}
 
-				// Timers
-				&>div {
-					text-align: center;
-
-					&:first-of-type {
-						grid-area: time-left;
-					}
-
-					&:last-of-type {
-						grid-area: time-right;
-					}
-				}
 			}
+
 		}
 	}
 }

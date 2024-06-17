@@ -65,18 +65,20 @@
 						position: absolute !important;
 
 						.playback-bar__progress-time-elapsed,
-						.main-playbackBarRemainingTime-container {
-							position: absolute;
-							bottom: 18px;
-							right: 0px;
-							grid-area: none !important;
+						.main-playbackBarRemainingTime-container,
+						.encore-text {
+							position: fixed;
+							bottom: 14px;
+							right: 8px;
 						}
 
-						.playback-bar__progress-time-elapsed {
+						.playback-bar__progress-time-elapsed,
+						.encore-text:first-of-type {
 							transform: translateX(calc(-100% - 20px));
 						}
 
-						.playback-bar__progress-time-elapsed::after {
+						.playback-bar__progress-time-elapsed::after,
+						.encore-text:first-of-type::after {
 							position: absolute;
 							left: calc(100% + 10px);
 							font-weight: bold;
@@ -91,7 +93,17 @@
 							height: 6px !important;
 						}
 
-						>div,
+						.x-progressBar-progressBarBg {
+							&:after {
+								content: "";
+								padding: 8px;
+								position: absolute;
+								top: -6px;
+								width: calc(100% - 16px);
+							}
+						}
+
+						.playback-progressbar,
 						.x-progressBar-fillColor {
 							height: 6px !important;
 							border-radius: 50px !important;
@@ -207,7 +219,8 @@
 								order: 2;
 							}
 
-							.playback-bar {
+							.playback-bar,
+							.pn5V0OzovI9p6b8nWq8p.gglUjikTBtMzCZFgSmpS {
 								order: 1;
 							}
 
@@ -280,7 +293,9 @@
 		}
 
 		&.Smooth-Progress-Bar-Snippet {
-			.playback-bar .x-progressBar-sliderArea {
+
+			.playback-bar,
+			.pn5V0OzovI9p6b8nWq8p.gglUjikTBtMzCZFgSmpS .x-progressBar-sliderArea {
 
 				>div,
 				~div {
@@ -323,7 +338,9 @@
 		}
 
 		&.Hoverable-Timers-Snippet {
-			.playback-bar {
+
+			.playback-bar,
+			.pn5V0OzovI9p6b8nWq8p.gglUjikTBtMzCZFgSmpS {
 				>div {
 					transition: all 0.3s ease;
 					opacity: 0;
