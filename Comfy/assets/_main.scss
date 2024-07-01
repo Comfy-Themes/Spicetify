@@ -92,6 +92,11 @@
 		display: none;
 	}
 
+	// Ad containers
+	.main-leaderboardComponent-container {
+		display: none !important;
+	}
+
 	.main-view-container {
 
 		// Main Page Tweaks
@@ -144,11 +149,6 @@
 			.main-card-cardMetadata {
 				padding: 16px;
 			}
-		}
-
-		// Ad containers
-		.main-leaderboardComponent-container {
-			display: none !important;
 		}
 
 		// Headers
