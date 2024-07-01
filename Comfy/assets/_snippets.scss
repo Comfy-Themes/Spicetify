@@ -403,7 +403,7 @@
 				}
 			}
 
-			main,
+			main:not(:has(.main-home-filterChipsContainer)),
 			.queue-queuePage-queuePage,
 			.search-searchCategory-SearchCategory,
 			.artist-artistDiscography-topBar,
@@ -425,8 +425,9 @@
 				padding-top: 8px;
 			}
 
-			.artist-artistDiscography-topBar.contentSpacing {
+			.artist-artistDiscography-topBar {
 				height: 64px !important;
+				box-shadow: none;
 			}
 
 			.artist-artistDiscography-headerContainer.artist-artistDiscography-firstAlbum {
