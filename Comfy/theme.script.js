@@ -1,4 +1,4 @@
-/* 
+/*
 tofix:
 - negative values
 - Reloading when filtered causes options to not be applied
@@ -6,7 +6,7 @@ tofix:
 
 todo:
 - add warning message if using unsupported versions
-- add custom colour schemes 
+- add custom colour schemes
 - add overrides for topbar background and padding
 
 */
@@ -1527,6 +1527,17 @@ todo:
 						Spicetify.React.createElement("li", null, "Comfy default: 4px")
 					),
 					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
+				},
+				{
+					type: Input,
+					inputType: "number",
+					name: "Crossfade-Duration",
+					title: "Crossfade Duration",
+					desc: "Duration of the crossfade effect in seconds (0 to disable)",
+					defaultVal: "0.5",
+					min: "0",
+					step: "0.1",
+					callback: value => document.documentElement.style.setProperty("--crossfade-duration", value ? value + "s" : "")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Settings", filter }, [
@@ -1876,10 +1887,35 @@ todo:
 			}
 		}
 
-		banner.forEach(image => {
-			image.src = source;
-			image.style.display = source ? "" : "none";
-		});
+		// Crossfade
+		if (!source) {
+			banner.forEach(image => {
+				image.src = "";
+				image.classList.remove("active");
+				image.classList.add("inactive");
+			});
+		} else {
+			const crossfadeBanner = banner.find(image => !image.src || image.classList.contains("inactive"));
+			const activeBanner = banner.find(image => image.classList.contains("active"));
+
+			crossfadeBanner.src = source;
+			crossfadeBanner.addEventListener(
+				"load",
+				() => {
+					// Wait 2 frames for render
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => {
+							crossfadeBanner.classList.add("active");
+							crossfadeBanner.classList.remove("inactive");
+
+							activeBanner?.classList.remove("active");
+							activeBanner?.classList.add("inactive");
+						});
+					});
+				},
+				{ once: true }
+			);
+		}
 	}
 
 	function updateScheme(scheme, message) {
