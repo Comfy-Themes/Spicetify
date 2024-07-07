@@ -127,6 +127,7 @@ todo:
 
 	const frame = document.createElement("div");
 	const banner = [document.createElement("img"), document.createElement("img")];
+	let bannerLock = false;
 
 	frame.className = "comfy-banner-frame";
 	banner.forEach(image => {
@@ -1898,6 +1899,17 @@ todo:
 			const crossfadeBanner = banner.find(image => !image.src || image.classList.contains("inactive"));
 			const activeBanner = banner.find(image => image.classList.contains("active"));
 
+			if (activeBanner?.src === source) {
+				console.debug("[Comfy-Warning]: Same source, skipping crossfade");
+				return;
+			}
+
+			if (bannerLock) {
+				console.debug("[Comfy-Warning]: Crossfade in progress, skipping");
+				return;
+			}
+			bannerLock = true;
+
 			crossfadeBanner.src = source;
 			crossfadeBanner.addEventListener(
 				"load",
@@ -1910,11 +1922,18 @@ todo:
 
 							activeBanner?.classList.remove("active");
 							activeBanner?.classList.add("inactive");
+
+							bannerLock = false;
 						});
 					});
 				},
 				{ once: true }
 			);
+
+			crossfadeBanner.addEventListener("error", () => {
+				crossfadeBanner.src = "";
+				bannerLock = false;
+			});
 		}
 	}
 
