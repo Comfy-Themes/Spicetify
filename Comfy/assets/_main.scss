@@ -12,24 +12,25 @@
 		display: block;
 
 		.comfy-banner-image {
-			&:first-of-type {
-				position: absolute; // Positioned absolutely to cover the entire viewport
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				object-fit: cover;
-				object-position: top;
-				filter: blur(var(--image-blur));
-				-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-				mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-			}
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-size: cover;
+			background-position: top;
+			background-image: var(--image-url);
+			filter: blur(var(--image-blur));
+			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			transition: background 0.5s ease;
+		}
 
-			&:last-of-type {
-				display: none;
-			}
+		.comfy-banner-image:last-of-type {
+			display: none;
 		}
 	}
+
 
 	.main-entityHeader-backgroundColor {
 		background: none !important;

@@ -126,7 +126,7 @@ todo:
 	};
 
 	const frame = document.createElement("div");
-	const banner = [document.createElement("img"), document.createElement("img")];
+	const banner = [document.createElement("div"), document.createElement("div")];
 
 	frame.className = "comfy-banner-frame";
 	banner.forEach(image => {
@@ -1862,10 +1862,6 @@ todo:
 
 		source = source ?? Spicetify.Player.data.item?.metadata?.image_xlarge_url ?? Spicetify.Player.data.track.metadata.image_xlarge_url;
 
-		if (banner[0].src !== source) {
-			console.debug(`[Comfy-Event]: Banner Source = ${banner[0].src} -> ${source}`);
-		}
-
 		const validChannel = Object.values(channels).some(channel => channel.enabled && channel.regex.test(pathname));
 		frame.style.display = validChannel ? "" : "none";
 		if (getConfig("Banner-Enabled")) {
@@ -1876,8 +1872,21 @@ todo:
 			}
 		}
 
+		if (document.documentElement.style.getPropertyValue("--image-url") !== `url(${source})`) {
+			console.debug(`[Comfy-Event]: Banner Source = ${source}`);
+
+			const preloadImage = new Image();
+			preloadImage.src = source;
+			if (preloadImage.complete) {
+				document.documentElement.style.setProperty("--image-url", `url(${source})`);
+			} else {
+				img.onload = () => {
+					document.documentElement.style.setProperty("--image-url", `url(${source})`);
+				};
+			}
+		}
+
 		banner.forEach(image => {
-			image.src = source;
 			image.style.display = source ? "" : "none";
 		});
 	}

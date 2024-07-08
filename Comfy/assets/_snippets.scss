@@ -504,13 +504,13 @@
 					animation: rotate var(--gradient-speed) linear infinite;
 					border-radius: var(--gradient-radius) !important;
 					mix-blend-mode: var(--gradient-blend-mode);
-					object-fit: cover !important;
+					background-size: cover !important;
 
 					&:first-of-type {
 						height: revert;
 						left: unset;
-						object-fit: unset;
-						object-position: unset;
+						background-size: unset;
+						background-position: unset;
 						filter: none;
 						-webkit-mask-image: none;
 						mask-image: none;
