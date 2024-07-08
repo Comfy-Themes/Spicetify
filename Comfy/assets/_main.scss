@@ -12,21 +12,25 @@
 		display: block;
 
 		.comfy-banner-image {
-			&:first-of-type {
-				position: absolute; // Positioned absolutely to cover the entire viewport
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				object-fit: cover;
-				object-position: top;
-				filter: blur(var(--image-blur));
-				-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-				mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			position: absolute; // Positioned absolutely to cover the entire viewport
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			object-position: top;
+			filter: blur(var(--image-blur));
+			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			mask-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+			opacity: 0;
+			transition: opacity var(--crossfade-duration) ease-in-out;
+
+			&.active {
+				opacity: 1;
 			}
 
-			&:last-of-type {
-				display: none;
+			&.inactive {
+				opacity: 0;
 			}
 		}
 	}
@@ -37,21 +41,29 @@
 
 	// gradient noise gets stretched vertically with this approach - but no black lines
 	&.Custom-Playbar-Snippet:not(.Comfy-nord-Snippet, .Comfy-nord-flat-Snippet, .Playbar-Above-Right-Panel-Snippet) {
-
 		.artist-artistOverview-artistOverviewContent,
 		.main-actionBarBackground-background {
-			min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px - 12px) !important;
+			min-height: calc(
+				100vh -
+					min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 150, 400px)) -
+					128px - 12px
+			) !important;
 		}
 	}
 
 	.artist-artistOverview-artistOverviewContent,
 	.main-actionBarBackground-background {
-		background-image: linear-gradient(rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
-				var(--spice-main) var(--tracklist-gradient-height)),
+		background-image: linear-gradient(
+				rgba(var(--spice-rgb-main-transition), var(--tracklist-gradient-opacity)) 0,
+				var(--spice-main) var(--tracklist-gradient-height)
+			),
 			var(--tracklist-gradient-noise) !important;
 		background-color: transparent !important;
 		height: calc(100% - 250px);
-		min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*150, 400px)) - 128px);
+		min-height: calc(
+			100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 150, 400px)) -
+				128px
+		);
 		background-size: auto 100%, 300px var(--tracklist-gradient-height);
 		background-repeat: repeat-x;
 	}
@@ -99,7 +111,6 @@
 	}
 
 	.main-view-container {
-
 		// Main Page Tweaks
 		main:not(:has(.lyrics-lyricsContainer-LyricsContainer)) {
 			position: sticky;
@@ -115,7 +126,7 @@
 		}
 
 		// Radio Button Coloring
-		input:checked~.x-toggle-indicatorWrapper {
+		input:checked ~ .x-toggle-indicatorWrapper {
 			background-color: var(--spice-radio-btn-active);
 		}
 
@@ -155,7 +166,7 @@
 		// Headers
 		.rX_OmqCngvY5ZCoYBZgb.zyeJ9w99yrvGokL3BsMc,
 		.hIFR8WDm_54EEIa1gwpC.fIvMht6B9HdROywMNJZ4,
-		.main-home-filterChipsContainer>div:first-child {
+		.main-home-filterChipsContainer > div:first-child {
 			&:after {
 				background-color: var(--spice-main);
 			}
@@ -169,13 +180,13 @@
 			padding: 32px;
 			justify-content: center;
 
-			&>div:nth-last-of-type(2),
-			&>div.contentSpacing,
+			& > div:nth-last-of-type(2),
+			& > div.contentSpacing,
 			.main-entityHeader-imageContainer {
 				align-self: center;
 				justify-content: center;
 
-				&+.main-entityHeader-headerText {
+				& + .main-entityHeader-headerText {
 					flex: unset;
 					justify-content: center;
 
@@ -192,16 +203,16 @@
 
 			.main-actionBar-ActionBarRow {
 				&:first-of-type {
-					>div:first-child {
+					> div:first-child {
 						margin-top: -24px;
 					}
 				}
 
-				>div:first-child {
+				> div:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
 				}
 
-				>:first-child:not(:only-child) {
+				> :first-child:not(:only-child) {
 					margin-right: calc(var(--content-spacing) + 4px);
 				}
 
@@ -213,7 +224,7 @@
 		}
 
 		// Artist Page
-		.artist-artistOverview-artistOverviewContent .contentSpacing>.main-gridContainer-gridContainer {
+		.artist-artistOverview-artistOverviewContent .contentSpacing > .main-gridContainer-gridContainer {
 			padding-bottom: var(--grid-gap);
 		}
 
