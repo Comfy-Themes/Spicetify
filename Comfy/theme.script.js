@@ -1876,14 +1876,10 @@ todo:
 			console.debug(`[Comfy-Event]: Banner Source = ${source}`);
 
 			const preloadImage = new Image();
-			preloadImage.src = source;
-			if (preloadImage.complete) {
+			preloadImage.onload = function () {
 				document.documentElement.style.setProperty("--image-url", `url(${source})`);
-			} else {
-				img.onload = () => {
-					document.documentElement.style.setProperty("--image-url", `url(${source})`);
-				};
-			}
+			};
+			preloadImage.src = source;
 		}
 
 		banner.forEach(image => {
