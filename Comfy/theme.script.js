@@ -1819,7 +1819,7 @@ todo:
 		const pathname = Spicetify.Platform.History.location.pathname;
 		let source;
 
-		if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
+		if (getConfig("Apple-Music-Gradient-Snippet") && getConfig("AM-Gradient-Include-Existing-Snippet")) {
 			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
 
 			if (isPlaylist || isArtist) {

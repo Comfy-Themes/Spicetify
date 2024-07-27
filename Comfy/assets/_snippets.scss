@@ -477,7 +477,7 @@
 
 		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
 		&.Replace-Existing-Banners.Banner-Enabled {
-			.under-main-view div:not(.comfy-banner-frame) {
+			.under-main-view > div:not(.comfy-banner-frame) {
 				display: none !important;
 			}
 		}
