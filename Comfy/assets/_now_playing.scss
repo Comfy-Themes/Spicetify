@@ -10,6 +10,10 @@
 			bottom: var(--cover-art-bottom);
 			border-radius: var(--cover-art-radius);
 
+			>div>button {
+				border-radius: var(--cover-art-radius) !important;
+			}
+
 			.cover-art,
 			.VideoPlayer__container video {
 				width: var(--cover-art-width) !important;

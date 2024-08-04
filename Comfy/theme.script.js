@@ -974,7 +974,6 @@ todo:
 					defaultVal: false,
 					callback: value => {
 						if (!value) {
-							document.documentElement.style.setProperty("--font-family", "");
 							document.documentElement.style.setProperty("--encore-title-font-stack", "");
 							document.documentElement.style.setProperty("--encore-body-font-stack", "");
 						}
@@ -1026,7 +1025,6 @@ todo:
 										document.getElementById("custom-font").href = value;
 									}
 								}
-								document.documentElement.style.setProperty("--font-family", fontFamily);
 								document.documentElement.style.setProperty("--encore-title-font-stack", fontFamily);
 								document.documentElement.style.setProperty("--encore-body-font-stack", fontFamily);
 							}
@@ -1819,12 +1817,11 @@ todo:
 		const pathname = Spicetify.Platform.History.location.pathname;
 		let source;
 
-		if (getConfig("Apple-Music-Gradient-Snippet") && getConfig("AM-Gradient-Include-Existing-Snippet")) {
+		if (getConfig("AM-Gradient-Include-Existing-Snippet")) {
 			const [isPlaylist, isArtist] = [Spicetify.URI.isPlaylistV1OrV2(pathname), Spicetify.URI.isArtist(pathname)];
 
 			if (isPlaylist || isArtist) {
-				const id = pathname.match(/\/(?:playlist|artist)\/([^/]+)/)[1];
-				const uri = `spotify:${isPlaylist ? "playlist" : "artist"}:${id}`;
+				const uri = `spotify:${isPlaylist ? "playlist" : "artist"}:${pathname.split("/").pop()}`;
 				const metadata = isPlaylist
 					? await Spicetify.Platform.PlaylistAPI.getMetadata(uri)
 					: await Spicetify.GraphQL.Request(
@@ -1840,6 +1837,7 @@ todo:
 								locale: null
 							}
 					  );
+
 				source = isPlaylist ? metadata.images[3]?.url : metadata.data.artistUnion.visuals.headerImage?.sources?.[0]?.url;
 			}
 		}

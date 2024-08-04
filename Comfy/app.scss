@@ -50,19 +50,6 @@
 		border-radius: var(--button-radius) !important;
 	}
 
-	// Custom Fonts
-	* {
-		font-family: var(--font-family,
-				CircularSp,
-				CircularSp-Arab,
-				CircularSp-Hebr,
-				CircularSp-Cyrl,
-				CircularSp-Grek,
-				CircularSp-Deva,
-				var(--fallback-fonts, sans-serif),
-				sans-serif) !important;
-	}
-
 	// Remove Overflow
 	.Root__top-container {
 		overflow: hidden;
@@ -112,6 +99,11 @@
 	}
 
 	// Base Sets
+	.encore-dark-theme, .encore-dark-theme .encore-base-set {
+		--background-elevated-base: var(--spice-main-elevated);
+		--background-highlight: var(--spice-highlight);
+	}
+
 	.encore-bright-accent-set {
 		--background-base: var(--spice-play-button);
 		--background-highlight: var(--spice-play-button-active);
