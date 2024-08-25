@@ -716,7 +716,7 @@ todo:
 						),
 						Spicetify.React.createElement(
 							"div",
-							{ className: "search-searchCategory-carousel", dir: "ltr" },
+							{ className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A", dir: "ltr" },
 							Spicetify.React.createElement(
 								"button",
 								{
