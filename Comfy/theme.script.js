@@ -400,7 +400,7 @@ todo:
 	});
 
 	const Input = Spicetify.React.memo(
-		({ inputType, includePicker, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback }) => {
+		({ inputType, includePicker, name, title, desc, min, max, step, tippy, defaultVal, condition = true, callback, callbackOverride }) => {
 			const [value, setValue] = Spicetify.React.useState(getConfig(name) ?? "");
 			const [defaultState, setDefaultState] = Spicetify.React.useState(defaultVal);
 			const isFirstRender = Spicetify.React.useRef(true);
@@ -427,7 +427,7 @@ todo:
 				}
 
 				setConfig(name, value);
-				if (value !== "" || !startup) {
+				if (value !== "" || !startup || callbackOverride) {
 					console.debug(`[Comfy-Callback]: ${name} =`, value);
 					callback?.(value, name);
 				}
@@ -921,7 +921,8 @@ todo:
 
 							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
 						});
-					}
+					},
+					callbackOverride: true
 				},
 				{
 					type: Input,
