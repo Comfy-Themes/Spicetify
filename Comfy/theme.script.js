@@ -675,7 +675,7 @@ todo:
 							"div",
 							{
 								ref: containerRef,
-								className: `search-searchCategory-catergoryGrid
+								className: `search-searchCategory-categoryGrid
 								${showLeftButton ? "MUloQuW1xQawwVs0mDp4" : ""}
 								${showRightButton ? "OlnSvEViCZ_vVdnc3mSQ" : ""}
 								${showRightButton && showLeftButton ? "FjMPyh7lOujDVYQRvp0H" : ""}`
