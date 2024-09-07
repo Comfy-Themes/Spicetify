@@ -267,7 +267,7 @@ todo:
 			Spicetify.React.createElement(
 				"div",
 				{ className: "setting-subSection", id: state ? (collapseItems ? "collapsed" : "enabled") : "disabled" },
-				Spicetify.React.createElement(Slider, {
+				Spicetify.React.createElement(Toggle, {
 					name,
 					callback: value => {
 						callback?.(value);
@@ -278,7 +278,7 @@ todo:
 							const state = getConfig(item.name) ?? both();
 
 							setConfig(item.name, state);
-							if (item.type === Slider) {
+							if (item.type === Toggle) {
 								if (state || !value)
 									waitForDeps(
 										"main",
@@ -357,7 +357,7 @@ todo:
 		);
 	};
 
-	const Slider = Spicetify.React.memo(({ name, title, desc, tippy, defaultVal, condition = true, callback, onClick }) => {
+	const Toggle = Spicetify.React.memo(({ name, title, desc, tippy, defaultVal, condition = true, callback, onClick }) => {
 		const [state, setState] = Spicetify.React.useState(getConfig(name) ?? defaultVal);
 		const isFirstRender = Spicetify.React.useRef(true);
 
@@ -388,13 +388,21 @@ todo:
 			title,
 			desc,
 			tippy,
-			action: Spicetify.React.createElement(Spicetify.ReactComponent.Toggle, {
-				value: state,
-				disabled: false,
-				onSelected: () => {
-					setState(!state);
-				}
-			}),
+			action: Spicetify.React.createElement(
+				"label",
+				{ className: "x-toggle-wrapper" },
+				Spicetify.React.createElement("input", {
+					className: "x-toggle-input",
+					type: "checkbox",
+					defaultChecked: state,
+					onClick: () => setState(!state)
+				}),
+				Spicetify.React.createElement(
+					"span",
+					{ className: "x-toggle-indicatorWrapper" },
+					Spicetify.React.createElement("span", { className: "x-toggle-indicator" })
+				)
+			),
 			onClick
 		});
 	});
@@ -960,7 +968,7 @@ todo:
 					},
 					items: [
 						{
-							type: Slider,
+							type: Toggle,
 							name: "Collapse-Topbar-Snippet",
 							title: "Collapse List Items",
 							defaultVal: true
@@ -1087,7 +1095,7 @@ todo:
 					collapseItems: true
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Horizontal-pageLinks-Snippet",
 					title: "Horizontal Page Links",
 					defaultVal: false
@@ -1095,14 +1103,14 @@ todo:
 			]),
 			Spicetify.React.createElement(Section, { name: "Tracklist", filter }, [
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Tracklist-Index",
 					title: "Remove Tracklist Index",
 					desc: "Hides the numbers / count next to songs",
 					defaultVal: true
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Column-Bar-Snippet",
 					title: "Remove Column Bar",
 					desc: "Hides the column bar above tracklist",
@@ -1129,7 +1137,7 @@ todo:
 					)
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Tracklist-Gradient-Noise",
 					title: "Remove Gradient Noise",
 					defaultVal: false,
@@ -1173,14 +1181,14 @@ todo:
 			]),
 			Spicetify.React.createElement(Section, { name: "Playbar", filter }, [
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Custom-Playbar-Snippet",
 					title: "Custom Playbar Layout",
 					defaultVal: true,
 					desc: "Comfy's out of box playbar design"
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Playbar-Above-Right-Panel-Snippet",
 					title: "Above Right Panel",
 					desc: "Moves the playbar above the right panel",
@@ -1225,32 +1233,32 @@ todo:
 					}
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Smooth-Progress-Bar-Snippet",
 					title: "Smooth Progress Bar",
 					desc: "Makes the progress bar ease its movement giving the appearance of a smoother transition",
 					defaultVal: true
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Hoverable-Timers-Snippet",
 					title: "Hoverable Playback Timers",
 					defaultVal: false
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Connect-Bar-Snippet",
 					title: "Remove Connect Bar",
 					defaultVal: false
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Progress-Bar-Gradient-Snippet",
 					title: "Remove Progress Bar Gradient",
 					defaultVal: false
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Remove-Lyrics-Button-Snippet",
 					title: "Remove Lyrics Button",
 					defaultVal: false
@@ -1365,7 +1373,7 @@ todo:
 					defaultVal: true,
 					desc: "(all settings in this category will be ignored if disabled)",
 					items: Object.keys(channels).map(channel => ({
-						type: Slider,
+						type: Toggle,
 						name: channel,
 						title: `${channel.replace("-", " ")} Page`,
 						defaultVal: channels[channel]["enabled"],
@@ -1379,7 +1387,7 @@ todo:
 					collapseItems: true
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Replace-Existing-Banners",
 					title: "Replace Existing Banners",
 					defaultVal: false,
@@ -1387,7 +1395,7 @@ todo:
 					callback: updateBanner
 				},
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Prefer-Existing-Image",
 					title: "Prefer Existing Image",
 					defaultVal: false,
@@ -1418,7 +1426,7 @@ todo:
 					),
 					items: [
 						{
-							type: Slider,
+							type: Toggle,
 							name: "AM-Gradient-Include-Existing-Snippet",
 							title: "Existing Banners",
 							defaultVal: false,
@@ -1530,7 +1538,7 @@ todo:
 			]),
 			Spicetify.React.createElement(Section, { name: "Settings", filter }, [
 				{
-					type: Slider,
+					type: Toggle,
 					name: "Version-Analytics",
 					title: "Send Version Analytics",
 					defaultVal: false,
