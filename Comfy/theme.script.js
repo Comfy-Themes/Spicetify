@@ -574,27 +574,31 @@ todo:
 		const containerRef = Spicetify.React.useRef(null);
 		const [showLeftButton, setShowLeftButton] = Spicetify.React.useState(false);
 		const [showRightButton, setShowRightButton] = Spicetify.React.useState(false);
+		const [startX, setStartX] = Spicetify.React.useState(0);
+		const [scrollLeft, setScrollLeft] = Spicetify.React.useState(0);
+		const [mouseDown, setMouseDown] = Spicetify.React.useState(false);
+		const isFirstRender = Spicetify.React.useRef(true);
+
 		const section = document.querySelector(".main-trackCreditsModal-mainSection");
 
+		// Handle resizing and scroll visibility
 		const handleResize = Spicetify.React.useCallback(() => {
-			if (!containerRef.current) return;
-
-			const container = containerRef.current;
-			setShowLeftButton(container.scrollLeft > 0);
-			setShowRightButton(container.scrollLeft <= container.scrollWidth - container.clientWidth - 32);
+			if (containerRef.current) {
+				const container = containerRef.current;
+				setShowLeftButton(container.scrollLeft > 0);
+				setShowRightButton(container.scrollLeft < container.scrollWidth - container.clientWidth - 2);
+			}
 		}, []);
 
 		Spicetify.React.useEffect(() => {
+			handleResize(); // Initial call
 			window.addEventListener("resize", handleResize);
-			return () => {
-				window.removeEventListener("resize", handleResize);
-			};
+			return () => window.removeEventListener("resize", handleResize);
 		}, [handleResize]);
 
-		Spicetify.React.useEffect(handleResize, [chips.length]);
-
+		// Scroll to active item on first render
 		Spicetify.React.useEffect(() => {
-			if (containerRef.current) {
+			if (containerRef.current && isFirstRender.current) {
 				const activeItem = containerRef.current.querySelector(`.search-searchCategory-categoryGridItem:nth-child(${checked.index + 1})`);
 				if (activeItem) {
 					const container = containerRef.current;
@@ -607,14 +611,52 @@ todo:
 						const scrollPosition = itemOffsetLeft - (containerWidth / 2 - itemWidth / 2);
 						container.scrollTo({ left: scrollPosition, behavior: "instant" });
 					}
+
+					isFirstRender.current = false;
 				}
 			}
-		}, []);
+		}, [checked.index]);
 
-		const handleScroll = Spicetify.React.useCallback(() => {
-			handleResize();
-		}, [handleResize]);
+		// Handle dragging
+		const handleMouseDown = event => {
+			setStartX(event.pageX - containerRef.current.offsetLeft);
+			setScrollLeft(containerRef.current.scrollLeft);
+			setMouseDown(true);
+			containerRef.current.style.cursor = "grabbing";
+			containerRef.current.style.userSelect = "none";
+			containerRef.current.style.scrollBehavior = "auto";
+		};
 
+		const handleMouseMove = event => {
+			if (!mouseDown) return;
+			event.preventDefault();
+			const x = event.pageX - containerRef.current.offsetLeft;
+			const walk = (x - startX) * 1; // Adjust scrolling speed
+			containerRef.current.scrollLeft = scrollLeft - walk;
+		};
+
+		const handleMouseUpOrLeave = () => {
+			if (mouseDown) {
+				containerRef.current.style.cursor = "";
+				containerRef.current.style.userSelect = "";
+				containerRef.current.style.scrollBehavior = "";
+				setMouseDown(false);
+			}
+		};
+
+		Spicetify.React.useEffect(() => {
+			document.addEventListener("mouseup", handleMouseUpOrLeave);
+			document.addEventListener("mousemove", handleMouseMove);
+			document.addEventListener("mouseleave", handleMouseUpOrLeave);
+
+			return () => {
+				document.removeEventListener("mouseup", handleMouseUpOrLeave);
+				document.removeEventListener("mousemove", handleMouseMove);
+				document.removeEventListener("mouseleave", handleMouseUpOrLeave);
+			};
+		}, [mouseDown]);
+
+		// Handle arrow key navigation
 		const handleKeyDown = Spicetify.React.useCallback(
 			event => {
 				let newIndex;
@@ -629,9 +671,7 @@ todo:
 				if (event.key === "ArrowLeft") {
 					event.preventDefault();
 					newIndex = startingIndex - 1;
-					if (newIndex < 0) {
-						newIndex = chips.length - 1;
-					}
+					if (newIndex < 0) newIndex = chips.length - 1;
 				} else if (event.key === "ArrowRight") {
 					event.preventDefault();
 					newIndex = (startingIndex + 1) % chips.length;
@@ -646,25 +686,25 @@ todo:
 
 				if (newIndex !== undefined) {
 					const chipElement = containerRef.current.querySelector(`.search-searchCategory-categoryGridItem:nth-child(${newIndex + 1})`);
-					if (chipElement) {
-						chipElement.focus();
-					}
+					if (chipElement) chipElement.focus();
 				}
 			},
-			[checked.index, chips, containerRef, setChecked]
+			[checked.index, chips, setChecked]
 		);
 
+		// Handle button clicks
 		const handleButtonClick = direction => {
 			const multiplier = direction === "LEFT" ? -1 : 1;
-			containerRef.current.scrollBy({ left: multiplier * (containerRef.current.clientWidth / 2), behavior: "smooth" });
+			containerRef.current.scrollBy({
+				left: multiplier * (containerRef.current.clientWidth / 2),
+				behavior: "smooth"
+			});
 		};
 
 		const clickCallback = (index, label) => {
-			setChecked({ index, label });
+			if (scrollLeft === containerRef.current.scrollLeft) setChecked({ index, label });
 
-			if (section) {
-				section.scrollTo(null, 0);
-			}
+			if (section) section.scrollTo(null, 0);
 		};
 
 		return Spicetify.React.createElement(
@@ -672,89 +712,86 @@ todo:
 			{ className: "search-searchCategory-SearchCategory encore-dark-theme" },
 			Spicetify.React.createElement(
 				"div",
-				{ className: "search-searchCategory-container contentSpacing" },
+				{ className: "search-searchCategory-wrapper contentSpacing" },
 				Spicetify.React.createElement(
 					"div",
-					{ className: "search-searchCategory-wrapper" },
+					{
+						className: `search-searchCategory-contentArea
+						${showLeftButton ? "sbdtp9NBYCnW1lw4uyA4" : ""}
+						${showRightButton ? "vtK4LGTA_YdTF8p6SIu_" : ""}
+						${showRightButton && showLeftButton ? "sbdtp9NBYCnW1lw4uyA4 vtK4LGTA_YdTF8p6SIu_" : ""}`
+							.trim()
+							.replace(/\s+/g, " ")
+					},
 					Spicetify.React.createElement(
 						"div",
-						{ className: "search-searchCategory-contentArea" },
+						{
+							ref: containerRef,
+							className: "search-searchCategory-categoryGrid J4qD2RoZgGLbOdpfs63w",
+							onScroll: handleResize, // Adjust this if you find that `handleResize` is still not being optimized
+							onKeyDown: handleKeyDown,
+							role: "list",
+							tabIndex: 0,
+							onMouseDown: handleMouseDown
+						},
 						Spicetify.React.createElement(
 							"div",
-							{
-								ref: containerRef,
-								className: `search-searchCategory-categoryGrid
-								${showLeftButton ? "MUloQuW1xQawwVs0mDp4" : ""}
-								${showRightButton ? "OlnSvEViCZ_vVdnc3mSQ" : ""}
-								${showRightButton && showLeftButton ? "FjMPyh7lOujDVYQRvp0H" : ""}`
-									.trim()
-									.replace(/\s+/g, " "),
-								onScroll: handleScroll,
-								onKeyDown: handleKeyDown,
-								role: "list",
-								tabIndex: 0
-							},
-							Spicetify.React.createElement(
-								"div",
-								{ role: "presentation" },
-								chips.map((chip, index) =>
+							{ role: "presentation", className: "aKOZdeebnsaeeMTiugmO" },
+							chips.map((chip, index) =>
+								Spicetify.React.createElement(
+									"a",
+									{
+										key: index,
+										draggable: "false",
+										className: "search-searchCategory-categoryGridItem",
+										tabIndex: "-1",
+										onClick: () => clickCallback(index, chip.label)
+									},
 									Spicetify.React.createElement(
-										"a",
+										Spicetify.ReactComponent.Chip,
 										{
-											key: index,
-											draggable: "false",
-											className: "search-searchCategory-categoryGridItem",
-											tabIndex: "-1",
-											onClick: () => clickCallback(index, chip.label)
+											isUsingKeyboard: false,
+											onClick: () => clickCallback(index, chip.label),
+											selected: checked.index === index,
+											selectedColorSet: "invertedLight",
+											tabIndex: "-1"
 										},
-										Spicetify.React.createElement(
-											Spicetify.ReactComponent.Chip,
-											{
-												isUsingKeyboard: false,
-												onClick: () => clickCallback(index, chip.label),
-												selected: checked.index === index,
-												selectedColorSet: "invertedLight",
-												tabIndex: "-1"
-											},
-											chip.label
-										)
+										chip.label
 									)
 								)
 							)
+						)
+					),
+					Spicetify.React.createElement(
+						"div",
+						{ className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A", dir: "ltr" },
+						Spicetify.React.createElement(
+							"button",
+							{
+								className: `search-searchCategory-carouselButton ZbimwwLeKzV0_OVbLg0e`,
+								tabIndex: -1,
+								onClick: () => handleButtonClick("LEFT"),
+								inert: true
+							},
+							Spicetify.React.createElement("svg", {
+								viewBox: "0 0 16 16",
+								className: "Svg-img-icon-small-textBase",
+								dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-left"] }
+							})
 						),
 						Spicetify.React.createElement(
-							"div",
-							{ className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A", dir: "ltr" },
-							Spicetify.React.createElement(
-								"button",
-								{
-									className: `search-searchCategory-carouselButton ${showLeftButton ? "search-searchCategory-carouselButtonVisible" : ""}`.trim(),
-									tabIndex: -1,
-									onClick: () => handleButtonClick("LEFT"),
-									"aria-hidden": "true"
-								},
-								Spicetify.React.createElement("svg", {
-									autoMirror: false,
-									semanticColor: "textBase",
-									size: "small",
-									dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-left"] }
-								})
-							),
-							Spicetify.React.createElement(
-								"button",
-								{
-									className: `search-searchCategory-carouselButton ${showRightButton ? "search-searchCategory-carouselButtonVisible" : ""}`.trim(),
-									tabIndex: -1,
-									onClick: () => handleButtonClick("RIGHT"),
-									"aria-hidden": "true"
-								},
-								Spicetify.React.createElement("svg", {
-									autoMirror: false,
-									semanticColor: "textBase",
-									size: "small",
-									dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-right"] }
-								})
-							)
+							"button",
+							{
+								className: `search-searchCategory-carouselButton P0I0a36y0BWbeGseMsmE`,
+								tabIndex: -1,
+								onClick: () => handleButtonClick("RIGHT"),
+								inert: true
+							},
+							Spicetify.React.createElement("svg", {
+								viewBox: "0 0 16 16",
+								className: "Svg-img-icon-small-textBase",
+								dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-right"] }
+							})
 						)
 					)
 				)
@@ -983,6 +1020,7 @@ todo:
 					defaultVal: false,
 					callback: value => {
 						if (!value) {
+							document.documentElement.style.setProperty("--font-family", "");
 							document.documentElement.style.setProperty("--encore-title-font-stack", "");
 							document.documentElement.style.setProperty("--encore-body-font-stack", "");
 						}
@@ -1034,6 +1072,7 @@ todo:
 										document.getElementById("custom-font").href = value;
 									}
 								}
+								document.documentElement.style.setProperty("--font-family", fontFamily);
 								document.documentElement.style.setProperty("--encore-title-font-stack", fontFamily);
 								document.documentElement.style.setProperty("--encore-body-font-stack", fontFamily);
 							}
