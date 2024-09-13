@@ -8,7 +8,7 @@
 }
 
 // Comfy settings
-#main.Settings-Open~generic-modal .GenericModal__overlay {
+#main.Settings-Open ~ generic-modal .GenericModal__overlay {
 	// Failsafe incase spotify's variables are not present
 	--background-tinted-base: rgba(var(--spice-rgb-selected-row), 0.07);
 	--background-tinted-highlight: rgba(var(--spice-rgb-selected-row), 0.1);
@@ -68,7 +68,7 @@
 		min-height: calc(100% - 60px);
 
 		&::after {
-			content: '';
+			content: "";
 			position: absolute;
 			bottom: 0;
 			width: calc(100% - 12px);
@@ -101,7 +101,6 @@
 
 // Main Section Styling
 .comfy-settings {
-
 	// Carousel Styling
 	.search-searchCategory-SearchCategory {
 		background: var(--spice-player);
@@ -151,12 +150,12 @@
 						outline: none;
 						text-decoration: none;
 
-						&>* {
+						& > * {
 							outline: 5px auto #3673d4;
 						}
 					}
 
-					&>* {
+					& > * {
 						margin-inline-end: 8px;
 						margin-block-end: 0 !important;
 					}
@@ -244,11 +243,11 @@
 					--spice-button-disabled: var(--background-tinted-base);
 				}
 
-				input:hover:not([disabled], :active)~.x-toggle-indicatorWrapper {
+				input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
 					background-color: var(--background-tinted-highlight);
 				}
 
-				input:checked:hover:not([disabled], :active)~.x-toggle-indicatorWrapper {
+				input:checked:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
 					background-color: var(--spice-button-active);
 				}
 			}
@@ -518,5 +517,4 @@
 			filter: brightness(0.8);
 		}
 	}
-
 }
