@@ -28,16 +28,10 @@
 	}
 
 	// Connect bar
-	.compact-connect-bar {
-		.main-nowPlayingBar-container {
-			.main-connectBar-connectBar {
-				position: absolute;
-				margin-left: auto;
-				padding: 0.75rem 1rem;
-				top: -45%;
-				// bottom: calc(100% + 0.75rem); // can use this too
-				right: 0;
-			}
+	.main-nowPlayingBar-container {
+		.main-connectBar-connectBar {
+			margin-left: auto;
+			width: 92vw;
 		}
 	}
 }
