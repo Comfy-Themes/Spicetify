@@ -1344,7 +1344,8 @@
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1181%) hue-rotate(346deg) brightness(101%) contrast(105%) !important;
   border-radius: 0 !important;
 }
-:root .encore-dark-theme, :root .encore-dark-theme .encore-base-set {
+:root .encore-dark-theme,
+:root .encore-dark-theme .encore-base-set {
   --background-elevated-base: var(--spice-main-elevated);
   --background-highlight: var(--spice-highlight);
 }
