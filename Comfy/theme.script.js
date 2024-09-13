@@ -1343,6 +1343,13 @@ todo:
 				},
 				{
 					type: Toggle,
+					name: "Compact-Connect-Bar-Snippet",
+					title: "Compact Connect Bar",
+					desc: "Makes the connect bar compact.",
+					defaultVal: false
+				},
+				{
+					type: Toggle,
 					name: "Remove-Connect-Bar-Snippet",
 					title: "Remove Connect Bar",
 					defaultVal: false
