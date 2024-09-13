@@ -29,15 +29,15 @@ todo:
 			console.log(JSON.parse(localStorage.getItem("comfy:config") || "{}"));
 		}
 	};
-	console.debug(`[Comfy-Event]: Global Functions Added`);
+	console.debug("[Comfy-Event]: Global Functions Added");
 
 	// Initialize Config
-	let config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
+	const config = JSON.parse(localStorage.getItem("comfy:config") || "{}");
 	let configScheme = Spicetify.Config?.color_scheme || "Comfy";
 	let preloadedScheme = false;
 	let startup = true;
-	let preloadContainer = document.createElement("div");
-	console.debug(`[Comfy-Event]: Config Initialized`);
+	const preloadContainer = document.createElement("div");
+	console.debug("[Comfy-Event]: Config Initialized");
 
 	// Preload Applied Colorscheme
 	const colorScheme = getConfig("Color-Scheme");
@@ -99,8 +99,8 @@ todo:
 		const newPanelWidth = mutations[0].target.style.getPropertyValue("--panel-width");
 		const newSidebarWidth = mutations[0].target.style.getPropertyValue("--left-sidebar-width");
 		if (newPanelWidth !== panelWidth || newSidebarWidth !== sidebarWidth) {
-			const trimmedPanelWidth = parseInt(newPanelWidth);
-			const trimmedSidebarWidth = parseInt(newSidebarWidth);
+			const trimmedPanelWidth = Number.parseInt(newPanelWidth);
+			const trimmedSidebarWidth = Number.parseInt(newSidebarWidth);
 			document.documentElement.style.setProperty("--comfy-panel-width", `${trimmedPanelWidth}px`);
 			document.documentElement.style.setProperty("--comfy-left-sidebar-width", `${trimmedSidebarWidth}px`);
 			panelWidth = newPanelWidth;
@@ -109,7 +109,7 @@ todo:
 	}).observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
 
 	// Banner Image(s)
-	let channels = {
+	const channels = {
 		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
 		Playlist: { regex: /^\/playlist\//, enabled: getConfig("Playlist") ?? true },
 		Station: { regex: /^\/station\/playlist\//, enabled: getConfig("Station") ?? true },
@@ -129,10 +129,10 @@ todo:
 	const banner = [document.createElement("div"), document.createElement("div")];
 
 	frame.className = "comfy-banner-frame";
-	banner.forEach(image => {
+	for (const image of banner) {
 		image.className = "comfy-banner-image";
 		frame.append(image);
-	});
+	}
 
 	waitForDeps(
 		".under-main-view",
@@ -273,7 +273,7 @@ todo:
 						callback?.(value);
 						setState(value);
 
-						items.forEach(item => {
+						for (const item of items) {
 							const both = () => (item.type === Input ? "" : item.defaultVal);
 							const state = getConfig(item.name) ?? both();
 
@@ -294,7 +294,7 @@ todo:
 								console.debug(`[Comfy-subCallback]: ${item.name}`, state);
 								item.callback?.(state, item.name);
 							}
-						});
+						}
 					},
 					onClick: () => {
 						if (state) {
@@ -514,7 +514,7 @@ todo:
 					Spicetify.React.createElement(
 						"button",
 						{
-							className: `switch`,
+							className: "switch",
 							onClick: event => {
 								event.stopPropagation(); // Prevent event from propagating up
 								setSelectedValue(defaultVal);
@@ -768,7 +768,7 @@ todo:
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton ZbimwwLeKzV0_OVbLg0e`,
+								className: "search-searchCategory-carouselButton ZbimwwLeKzV0_OVbLg0e",
 								tabIndex: -1,
 								onClick: () => handleButtonClick("LEFT"),
 								inert: true
@@ -782,7 +782,7 @@ todo:
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton P0I0a36y0BWbeGseMsmE`,
+								className: "search-searchCategory-carouselButton P0I0a36y0BWbeGseMsmE",
 								tabIndex: -1,
 								onClick: () => handleButtonClick("RIGHT"),
 								inert: true
@@ -831,13 +831,11 @@ todo:
 				{
 					type: Dropdown,
 					name: "Color-Scheme",
-					title: `Color Scheme`,
-					desc: "For faster loadtimes use cli to change color schemes",
+					title: "Color Scheme",
+					desc: "For faster load times use cli to change color schemes",
 					options: () => {
 						const schemes = Object.keys(getConfig("Color-Schemes"));
-						const decapSchemes = schemes.map(function (x) {
-							return x.toLowerCase();
-						});
+						const decapSchemes = schemes.map(x => x.toLowerCase());
 
 						if (!decapSchemes.includes(configScheme.toLowerCase())) {
 							schemes.unshift(configScheme);
@@ -845,10 +843,12 @@ todo:
 
 						return schemes;
 					},
-					defaultVal: (configScheme =
-						(getConfig("Color-Schemes") &&
-							Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())) ||
-						configScheme),
+					defaultVal: (() => {
+						const foundScheme = getConfig("Color-Schemes")
+							? Object.keys(getConfig("Color-Schemes")).find(scheme => scheme.toLowerCase() === configScheme.toLowerCase())
+							: null;
+						return foundScheme || configScheme;
+					})(),
 					condition: getConfig("Color-Schemes") && !preloadedScheme && !document.querySelector("body > style.marketplaceCSS.marketplaceScheme"),
 					callback: (name, value) => {
 						updateScheme(value);
@@ -856,8 +856,8 @@ todo:
 				},
 				{
 					type: Dropdown,
-					name: `Scheme-Features`,
-					title: `Additional Features`,
+					name: "Scheme-Features",
+					title: "Additional Features",
 					description: "Extra tweaks to complete specific color schemes",
 					options: ["nord", "nord-flat", "kitty"],
 					callback: (name, value, options, defaultVal) => {
@@ -964,7 +964,7 @@ todo:
 								height: `${(value === "0" ? "1" : value) || "40"}px`
 							});
 
-							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
+							document.documentElement.style.setProperty("--comfy-topbar-height", value ? `${value}px` : "");
 						});
 					},
 					callbackOverride: true
@@ -983,7 +983,7 @@ todo:
 						Spicetify.React.createElement("li", null, "Comfy default: 8px"),
 						Spicetify.React.createElement("li", null, "Spotify default: 50px")
 					),
-					callback: value => document.documentElement.style.setProperty("--button-radius", value ? value + "px" : "")
+					callback: value => document.documentElement.style.setProperty("--button-radius", value ? `${value}px` : "")
 				},
 				{
 					type: SubSection,
@@ -1198,7 +1198,7 @@ todo:
 						null,
 						Spicetify.React.createElement("h4", null, "Set to 0 to disable the gradient!")
 					),
-					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? value + "px" : "")
+					callback: value => document.documentElement.style.setProperty("--tracklist-gradient-height", value ? `${value}px` : "")
 				},
 				{
 					type: Input,
@@ -1242,10 +1242,10 @@ todo:
 									const rightbar = topContainer.querySelector(".Root__right-sidebar");
 									const resizeObserver = new ResizeObserver(entries => {
 										if (getConfig("Playbar-Above-Right-Panel-Snippet")) {
-											for (let entry of entries) {
+											for (const entry of entries) {
 												if (entry.target === rightbar) {
 													let newWidth = entry.contentRect.width;
-													if (newWidth == 0) {
+													if (newWidth === 0) {
 														const localStorageWidth = localStorage.getItem("223ni6f2epqcidhx5etjafeai:panel-width-saved");
 														if (localStorageWidth) {
 															newWidth = localStorageWidth;
@@ -1334,7 +1334,7 @@ todo:
 							title: "Width",
 							defaultVal: "84px",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--cover-art-width", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--cover-art-width", value ? `${value}px` : "")
 						},
 						{
 							type: Input,
@@ -1343,7 +1343,7 @@ todo:
 							title: "Height",
 							defaultVal: "84px",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--cover-art-height", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--cover-art-height", value ? `${value}px` : "")
 						},
 						{
 							type: Input,
@@ -1352,7 +1352,7 @@ todo:
 							title: "Border Radius",
 							defaultVal: "8px",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--cover-art-radius", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--cover-art-radius", value ? `${value}px` : "")
 						},
 						{
 							type: Input,
@@ -1361,7 +1361,7 @@ todo:
 							title: "Left Margin",
 							defaultVal: "0px",
 							desc: "Change the distance between the cover art and the left of the playbar",
-							callback: value => document.documentElement.style.setProperty("--cover-art-left", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--cover-art-left", value ? `${value}px` : "")
 						},
 						{
 							type: Input,
@@ -1376,7 +1376,7 @@ todo:
 								Spicetify.React.createElement("li", null, "Spotify default: 0px")
 							),
 							desc: "Change the distance between the cover art and the bottom of the playbar",
-							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", value ? value + "px" : "")
+							callback: value => document.documentElement.style.setProperty("--cover-art-bottom", value ? `${value}px` : "")
 						}
 					]
 				}
@@ -1415,10 +1415,10 @@ todo:
 						type: Toggle,
 						name: channel,
 						title: `${channel.replace("-", " ")} Page`,
-						defaultVal: channels[channel]["enabled"],
+						defaultVal: channels[channel].enabled,
 						callback: value => {
-							if (value !== channels[channel]["enabled"]) {
-								channels[channel]["enabled"] = value;
+							if (value !== channels[channel].enabled) {
+								channels[channel].enabled = value;
 								updateBanner();
 							}
 						}
@@ -1503,7 +1503,7 @@ todo:
 								Spicetify.React.createElement("h4", null, "Seconds per full rotation (360°):"),
 								Spicetify.React.createElement("li", null, "Comfy default: 50")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-speed", value ? value + "s" : "")
+							callback: value => document.documentElement.style.setProperty("--gradient-speed", value ? `${value}s` : "")
 						},
 						{
 							type: Input,
@@ -1518,7 +1518,7 @@ todo:
 								Spicetify.React.createElement("h4", null, "Width of circles in relation to viewport (in %)"),
 								Spicetify.React.createElement("li", null, "Comfy default: 150")
 							),
-							callback: value => document.documentElement.style.setProperty("--gradient-width", value ? value + "%" : "")
+							callback: value => document.documentElement.style.setProperty("--gradient-width", value ? `${value}%` : "")
 						},
 						{
 							type: Input,
@@ -1528,7 +1528,7 @@ todo:
 							desc: "Radius of circles (in %)",
 							defaultVal: "50",
 							min: "0",
-							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? value + "%" : "")
+							callback: value => document.documentElement.style.setProperty("--gradient-radius", value ? `${value}%` : "")
 						}
 					],
 					collapseItems: true
@@ -1572,7 +1572,7 @@ todo:
 						Spicetify.React.createElement("h4", null, "Amount of banner blur in pixels:"),
 						Spicetify.React.createElement("li", null, "Comfy default: 4px")
 					),
-					callback: value => document.documentElement.style.setProperty("--image-blur", value ? value + "px" : "")
+					callback: value => document.documentElement.style.setProperty("--image-blur", value ? `${value}px` : "")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Settings", filter }, [
@@ -1725,7 +1725,7 @@ todo:
 					isLarge: true
 				});
 
-				document.querySelector(".main-trackCreditsModal-closeBtn[aria-label='Close']").addEventListener("click", function () {
+				document.querySelector(".main-trackCreditsModal-closeBtn[aria-label='Close']").addEventListener("click", () => {
 					document.getElementById("main").classList.remove("Settings-Open");
 				});
 
@@ -1789,7 +1789,7 @@ todo:
 
 	function setConfig(key, value, message, silent) {
 		if (value !== getConfig(key)) {
-			if (!silent) console.debug(`[Comfy-Config]: ${message ?? key + " ="}`, value);
+			if (!silent) console.debug(`[Comfy-Config]: ${message ?? `${key} =`}`, value);
 			config[key] = value;
 			localStorage.setItem("comfy:config", JSON.stringify(config));
 		}
@@ -1813,7 +1813,7 @@ todo:
 	async function waitForDeps(dependencies, callback, element = false, elementType = "querySelector", timeout = 5000) {
 		return new Promise(resolve => {
 			let allDependenciesLoaded = false;
-			let startTime = Date.now();
+			const startTime = Date.now();
 
 			async function checkElements() {
 				const check = () =>
@@ -1839,7 +1839,7 @@ todo:
 						if (Date.now() - startTime < timeout) {
 							setTimeout(checkDependencies, 10);
 						} else {
-							console.error(`[Comfy-Error]: Dependency Timeout -`, dependencies);
+							console.error("[Comfy-Error]: Dependency Timeout -", dependencies);
 							resolve();
 						}
 						return;
@@ -1922,41 +1922,48 @@ todo:
 			console.debug(`[Comfy-Event]: Banner Source = ${source}`);
 
 			const preloadImage = new Image();
-			preloadImage.onload = function () {
+			preloadImage.onload = () => {
 				document.documentElement.style.setProperty("--image-url", `url(${source})`);
 			};
 			preloadImage.src = source;
 		}
 
-		banner.forEach(image => {
+		for (const image of banner) {
 			image.style.display = source ? "" : "none";
-		});
+		}
 	}
 
-	function updateScheme(scheme, message) {
+	function updateScheme(schemeName, message) {
 		const marketplace = document.querySelector("body > style.marketplaceCSS.marketplaceScheme");
 		const colorSchemes = getConfig("Color-Schemes");
 		const existingScheme = document.querySelector("style.comfyScheme");
 
 		existingScheme?.remove();
-		if (colorSchemes[scheme] && !marketplace && scheme !== configScheme) {
-			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${scheme}`);
-			scheme = colorSchemes[scheme];
+
+		let activeScheme = null;
+
+		if (colorSchemes[schemeName] && !marketplace && schemeName !== configScheme) {
+			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${schemeName}`);
+			activeScheme = colorSchemes[schemeName];
+		} else if (colorSchemes[schemeName]) {
+			console.warn("[Comfy-Event]: Scheme found but not applied", schemeName);
 		} else {
-			return;
+			console.warn("[Comfy-Event]: Scheme not found", schemeName);
 		}
 
-		const schemeTag = document.createElement("style");
-		schemeTag.classList.add("comfyScheme");
-		let injectStr = ":root {";
-		const themeIniKeys = Object.keys(scheme);
-		themeIniKeys.forEach(key => {
-			injectStr += `--spice-${key}: #${scheme[key]};`;
-			injectStr += `--spice-rgb-${key}: ${hexToRGB(scheme[key])};`;
-		});
-		injectStr += "}";
-		schemeTag.innerHTML = injectStr;
-		document.body.appendChild(schemeTag);
+		if (activeScheme) {
+			const schemeTag = document.createElement("style");
+			schemeTag.classList.add("comfyScheme");
+			let injectStr = ":root {";
+			const themeIniKeys = Object.keys(activeScheme);
+			for (const key of themeIniKeys) {
+				injectStr += `--spice-${key}: #${activeScheme[key]};`;
+				injectStr += `--spice-rgb-${key}: ${hexToRGB(activeScheme[key])};`;
+			}
+			injectStr += "}";
+			schemeTag.innerHTML = injectStr;
+			document.body.appendChild(schemeTag);
+		}
 	}
 
 	function parseIni(data) {
@@ -1970,10 +1977,11 @@ todo:
 
 		const lines = data.split(/[\r\n]+/);
 
-		lines.forEach(function (line) {
+		for (const line of lines) {
 			if (regex.comment.test(line)) {
 				return;
-			} else if (regex.param.test(line)) {
+			}
+			if (regex.param.test(line)) {
 				if (line.includes("xrdb")) {
 					delete value[section || ""];
 					section = null;
@@ -1999,29 +2007,31 @@ todo:
 			} else if (line.length === 0 && section) {
 				section = null;
 			}
-		});
+		}
 
 		return value;
 	}
 
 	function hexToRGB(hex) {
-		if (hex.length === 3) {
-			hex = hex
+		let normalizedHex = hex;
+
+		if (normalizedHex.length === 3) {
+			normalizedHex = normalizedHex
 				.split("")
 				.map(char => char + char)
 				.join("");
-		} else if (hex.length != 6) {
+		} else if (normalizedHex.length !== 6) {
 			throw "Only 3- or 6-digit hex colours are allowed";
-		} else if (hex.match(/[^0-9a-f]/i)) {
+		} else if (normalizedHex.match(/[^0-9a-f]/i)) {
 			throw "Only hex colours are allowed";
 		}
 
-		const aRgbHex = hex.match(/.{1,2}/g);
+		const aRgbHex = normalizedHex.match(/.{1,2}/g);
 		if (!aRgbHex || aRgbHex.length !== 3) {
 			throw "Could not parse hex colour";
 		}
 
-		const aRgb = [parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16)];
+		const aRgb = [Number.parseInt(aRgbHex[0], 16), Number.parseInt(aRgbHex[1], 16), Number.parseInt(aRgbHex[2], 16)];
 
 		return aRgb;
 	}
