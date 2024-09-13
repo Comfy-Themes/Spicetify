@@ -6,13 +6,15 @@
 	}
 
 	.main-topBar-searchBar {
-		>form input {
-			&::placeholder {
-				color: rgba(var(--spice-rgb-selected-row), 0.7);
-			}
-
+		> form input {
 			height: 32px;
 			background-color: rgba(var(--spice-rgb-shadow), 0.7);
+
+			& {
+				::placeholder {
+					color: rgba(var(--spice-rgb-selected-row), 0.7);
+				}
+			}
 		}
 	}
 
@@ -20,7 +22,7 @@
 		transform: scale(1.1);
 	}
 
-	.main-topBar-topbarContent>div:has([data-encore-id="buttonPrimary"]):first-child {
+	.main-topBar-topbarContent > div:has([data-encore-id="buttonPrimary"]):first-child {
 		display: none !important;
 	}
 
