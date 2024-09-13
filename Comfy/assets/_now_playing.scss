@@ -1,5 +1,4 @@
 :root .Root__top-container {
-
 	// Cover-art
 	.main-nowPlayingWidget-nowPlaying {
 		height: 0;
@@ -10,7 +9,7 @@
 			bottom: var(--cover-art-bottom);
 			border-radius: var(--cover-art-radius);
 
-			>div button {
+			> div button {
 				border-radius: var(--cover-art-radius) !important;
 				background: none;
 			}
@@ -25,6 +24,18 @@
 				max-height: none;
 				max-width: none;
 			}
+		}
+	}
+
+	// Connect bar
+	.main-nowPlayingBar-container {
+		.main-connectBar-connectBar {
+			position: absolute;
+			margin-left: auto;
+			padding: 0.75rem 1rem;
+			top: -45%;
+			// bottom: calc(100% + 0.75rem); // can use this too
+			right: 0;
 		}
 	}
 }
@@ -51,7 +62,6 @@
 
 				// Center
 				.main-nowPlayingBar-center {
-
 					// Player Controls
 					.player-controls__buttons--new-icons {
 						margin-bottom: 0px !important;
@@ -74,7 +84,7 @@
 						}
 
 						// Timers
-						&>div:not(.playback-progressbar-container) {
+						& > div:not(.playback-progressbar-container) {
 							text-align: center;
 
 							&:first-of-type {
@@ -118,7 +128,6 @@
 
 				// Right
 				.main-nowPlayingBar-right {
-
 					// Volume Bar
 					.main-nowPlayingBar-volumeBar .progress-bar {
 						--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
@@ -139,9 +148,7 @@
 						}
 					}
 				}
-
 			}
-
 		}
 	}
 }
