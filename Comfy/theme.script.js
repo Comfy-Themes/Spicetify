@@ -106,22 +106,49 @@ todo:
 			panelWidth = newPanelWidth;
 			sidebarWidth = newSidebarWidth;
 		}
-	}).observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
+	}).observe(document.documentElement, {
+		attributes: true,
+		attributeFilter: ["style"]
+	});
 
 	// Banner Image(s)
 	const channels = {
 		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
-		Playlist: { regex: /^\/playlist\//, enabled: getConfig("Playlist") ?? true },
-		Station: { regex: /^\/station\/playlist\//, enabled: getConfig("Station") ?? true },
-		Artist: { regex: /^\/artist\/(?!artists\b)\w+$/, enabled: getConfig("Artist") ?? true },
+		Playlist: {
+			regex: /^\/playlist\//,
+			enabled: getConfig("Playlist") ?? true
+		},
+		Station: {
+			regex: /^\/station\/playlist\//,
+			enabled: getConfig("Station") ?? true
+		},
+		Artist: {
+			regex: /^\/artist\/(?!artists\b)\w+$/,
+			enabled: getConfig("Artist") ?? true
+		},
 		Album: { regex: /^\/album\//, enabled: getConfig("Album") ?? true },
-		Collection: { regex: /^\/collection\/tracks$/, enabled: getConfig("Collection") ?? true },
-		"Your-Episodes": { regex: /^\/collection\/your-episodes$/, enabled: getConfig("Your-Episodes") ?? true },
-		"Local-Files": { regex: /^\/collection\/local-files$/, enabled: getConfig("Local-Files") ?? true },
+		Collection: {
+			regex: /^\/collection\/tracks$/,
+			enabled: getConfig("Collection") ?? true
+		},
+		"Your-Episodes": {
+			regex: /^\/collection\/your-episodes$/,
+			enabled: getConfig("Your-Episodes") ?? true
+		},
+		"Local-Files": {
+			regex: /^\/collection\/local-files$/,
+			enabled: getConfig("Local-Files") ?? true
+		},
 		Show: { regex: /^\/show\//, enabled: getConfig("Show") ?? true },
 		Episode: { regex: /^\/episode\//, enabled: getConfig("Episode") ?? true },
-		"Lyrics-Plus": { regex: /^\/lyrics-plus$/, enabled: getConfig("Lyrics-Plus") ?? true },
-		User: { regex: /^\/user\/(?!users\b)\w+$/, enabled: getConfig("User") ?? true },
+		"Lyrics-Plus": {
+			regex: /^\/lyrics-plus$/,
+			enabled: getConfig("Lyrics-Plus") ?? true
+		},
+		User: {
+			regex: /^\/user\/(?!users\b)\w+$/,
+			enabled: getConfig("User") ?? true
+		},
 		Genre: { regex: /^\/genre\//, enabled: getConfig("Genre") ?? true }
 	};
 
@@ -193,7 +220,9 @@ todo:
 					children.map(child =>
 						Spicetify.React.createElement(child.type, {
 							...child,
-							tippy: Spicetify.React.createElement(Tippy, { label: child.tippy })
+							tippy: Spicetify.React.createElement(Tippy, {
+								label: child.tippy
+							})
 						})
 					)
 				)
@@ -250,7 +279,10 @@ todo:
 					Spicetify.React.createElement("div", { className: "setting-action" }, action)
 				),
 				Spicetify.React.createElement("div", { className: "setting-description" }, desc),
-				desc && Spicetify.React.createElement("div", { className: "setting-description-spacer" })
+				desc &&
+					Spicetify.React.createElement("div", {
+						className: "setting-description-spacer"
+					})
 			)
 		);
 	});
@@ -266,7 +298,10 @@ todo:
 			null,
 			Spicetify.React.createElement(
 				"div",
-				{ className: "setting-subSection", id: state ? (collapseItems ? "collapsed" : "enabled") : "disabled" },
+				{
+					className: "setting-subSection",
+					id: state ? (collapseItems ? "collapsed" : "enabled") : "disabled"
+				},
 				Spicetify.React.createElement(Toggle, {
 					name,
 					callback: value => {
@@ -310,7 +345,9 @@ todo:
 					items.map(item =>
 						Spicetify.React.createElement(item.type, {
 							...item,
-							tippy: Spicetify.React.createElement(Tippy, { label: item.tippy })
+							tippy: Spicetify.React.createElement(Tippy, {
+								label: item.tippy
+							})
 						})
 					)
 			)
@@ -400,7 +437,9 @@ todo:
 				Spicetify.React.createElement(
 					"span",
 					{ className: "x-toggle-indicatorWrapper" },
-					Spicetify.React.createElement("span", { className: "x-toggle-indicator" })
+					Spicetify.React.createElement("span", {
+						className: "x-toggle-indicator"
+					})
 				)
 			),
 			onClick
@@ -532,15 +571,23 @@ todo:
 					),
 				Spicetify.React.createElement(
 					"div",
-					{ className: `dropdown-wrapper main-type-mestoBold ${menuOpen ? "menu-open" : ""}`, id: name },
+					{
+						className: `dropdown-wrapper main-type-mestoBold ${menuOpen ? "menu-open" : ""}`,
+						id: name
+					},
 					Spicetify.React.createElement(
 						"div",
-						{ className: "dropdown-button", onClick: () => setMenuOpen(!menuOpen) },
+						{
+							className: "dropdown-button",
+							onClick: () => setMenuOpen(!menuOpen)
+						},
 						Spicetify.React.createElement("div", { className: "dropdown-selection" }, selectedValue),
 						Spicetify.React.createElement(
 							"div",
 							{ className: "dropdown-arrow-wrapper" },
-							Spicetify.React.createElement("span", { className: "dropdown-arrow" })
+							Spicetify.React.createElement("span", {
+								className: "dropdown-arrow"
+							})
 						)
 					),
 					menuOpen &&
@@ -764,7 +811,10 @@ todo:
 					),
 					Spicetify.React.createElement(
 						"div",
-						{ className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A", dir: "ltr" },
+						{
+							className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A",
+							dir: "ltr"
+						},
 						Spicetify.React.createElement(
 							"button",
 							{
@@ -776,7 +826,9 @@ todo:
 							Spicetify.React.createElement("svg", {
 								viewBox: "0 0 16 16",
 								className: "Svg-img-icon-small-textBase",
-								dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-left"] }
+								dangerouslySetInnerHTML: {
+									__html: Spicetify.SVGIcons["chevron-left"]
+								}
 							})
 						),
 						Spicetify.React.createElement(
@@ -790,7 +842,9 @@ todo:
 							Spicetify.React.createElement("svg", {
 								viewBox: "0 0 16 16",
 								className: "Svg-img-icon-small-textBase",
-								dangerouslySetInnerHTML: { __html: Spicetify.SVGIcons["chevron-right"] }
+								dangerouslySetInnerHTML: {
+									__html: Spicetify.SVGIcons["chevron-right"]
+								}
 							})
 						)
 					)
@@ -945,7 +999,10 @@ todo:
 						waitForDeps("Spicetify.Platform.UserAPI", async () => {
 							const productState = Spicetify.Platform.UserAPI._product_state || Spicetify.Platform.UserAPI._product_state_service;
 							await productState.delOverridesValues({ keys: ["name"] });
-							if (value) await productState.putOverridesValues({ pairs: { name: value } });
+							if (value)
+								await productState.putOverridesValues({
+									pairs: { name: value }
+								});
 						});
 					}
 				},
@@ -1829,7 +1886,10 @@ todo:
 							resolve();
 						}
 					});
-					observer.observe(document.documentElement, { childList: true, subtree: true });
+					observer.observe(document.documentElement, {
+						childList: true,
+						subtree: true
+					});
 				}
 			}
 
@@ -1942,13 +2002,15 @@ todo:
 
 		let activeScheme = null;
 
-		if (colorSchemes[schemeName] && !marketplace && schemeName !== configScheme) {
-			console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${schemeName}`);
-			activeScheme = colorSchemes[schemeName];
-		} else if (colorSchemes[schemeName]) {
-			console.warn("[Comfy-Event]: Scheme found but not applied", schemeName);
-		} else {
-			console.warn("[Comfy-Event]: Scheme not found", schemeName);
+		if (colorSchemes?.[schemeName]) {
+			if (!marketplace && schemeName !== configScheme) {
+				console.debug(`[Comfy-Event]: Scheme ${message ? message : "applied"} - ${schemeName}`);
+				activeScheme = colorSchemes[schemeName];
+			} else if (colorSchemes[schemeName]) {
+				console.warn("[Comfy-Event]: Scheme found but not applied", schemeName);
+			} else {
+				console.warn("[Comfy-Event]: Scheme not found", schemeName);
+			}
 		}
 
 		if (activeScheme) {
