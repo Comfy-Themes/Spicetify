@@ -42,6 +42,55 @@
 		}
 	}
 
+
+	&:has(#main.Compact-Context-Menu) {
+
+		.main-rootlist-rootlistDivider,
+		.main-contextMenu-dividerBefore::before,
+		.main-contextMenu-dividerAfter::after,
+		.show-episodeList-divider,
+		.main-rootlist-rootlistDividerContainer {
+			display: none;
+		}
+
+		.main-contextMenu-menuItemButton,
+		.main-userWidget-dropDownMenuItemButton {
+			border-radius: 8px;
+			color: var(--spice-text);
+			height: 32px;
+			padding-left: 8px;
+		}
+
+		.main-contextMenu-menuItem,
+		._60cb742e518d084c3c959007b9463b51-scss>li {
+			margin: 2px 6px;
+		}
+
+		.main-contextMenu-menuItem:first-child,
+		._60cb742e518d084c3c959007b9463b51-scss> :first-child {
+			margin: 6px 6px 2px;
+		}
+
+		.main-contextMenu-menuItem:last-child {
+			margin: 2px 6px 6px;
+		}
+
+		._60cb742e518d084c3c959007b9463b51-scss> :last-child {
+			margin: 2px 6px 8px;
+		}
+
+		.main-contextMenu-menu,
+		._60cb742e518d084c3c959007b9463b51-scss {
+			border-radius: 8px;
+			border: 1px solid var(--spice-button-disabled);
+		}
+
+		.main-userWidget-dropDownMenu li.main-contextMenu-menuItem>div {
+			left: calc(225px + 185px) !important;
+			width: 225px;
+		}
+	}
+
 	#main {
 
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
@@ -130,53 +179,6 @@
 				background-position-y: center !important;
 				background-size: 610px !important;
 				background-repeat: no-repeat !important;
-			}
-		}
-
-		&.Compact-Context-Menu {
-			.main-rootlist-rootlistDivider,
-			.main-contextMenu-dividerBefore::before,
-			.main-contextMenu-dividerAfter::after,
-			.show-episodeList-divider,
-			.main-rootlist-rootlistDividerContainer {
-				display: none;
-			}
-
-			.main-contextMenu-menuItemButton,
-			.main-userWidget-dropDownMenuItemButton {
-				border-radius: 8px;
-				color: var(--spice-text);
-				height: 32px;
-				padding-left: 8px;
-			}
-
-			.main-contextMenu-menuItem,
-			._60cb742e518d084c3c959007b9463b51-scss>li {
-				margin: 2px 6px;
-			}
-
-			.main-contextMenu-menuItem:first-child,
-			._60cb742e518d084c3c959007b9463b51-scss> :first-child {
-				margin: 6px 6px 2px;
-			}
-
-			.main-contextMenu-menuItem:last-child {
-				margin: 2px 6px 6px;
-			}
-
-			._60cb742e518d084c3c959007b9463b51-scss> :last-child {
-				margin: 2px 6px 8px;
-			}
-
-			.main-contextMenu-menu,
-			._60cb742e518d084c3c959007b9463b51-scss {
-				border-radius: 8px;
-				border: 1px solid var(--spice-button-disabled);
-			}
-
-			.main-userWidget-dropDownMenu li.main-contextMenu-menuItem>div {
-				left: calc(225px + 185px) !important;
-				width: 225px;
 			}
 		}
 
@@ -524,7 +526,7 @@
 
 		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
 		&.Replace-Existing-Banners.Banner-Enabled {
-			.under-main-view > div:not(.comfy-banner-frame) {
+			.under-main-view>div:not(.comfy-banner-frame) {
 				display: none !important;
 			}
 		}
