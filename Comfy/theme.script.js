@@ -805,7 +805,7 @@ todo:
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton search-searchCategory-carouselButtonLeft`,
+								className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonLeft",
 								tabIndex: -1,
 								onClick: () => handleButtonClick("LEFT"),
 								inert: true
@@ -821,7 +821,7 @@ todo:
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton search-searchCategory-carouselButtonRight`,
+								className: "search-searchCategory-carouselButton search-searchCategory-carouselButtonRight",
 								tabIndex: -1,
 								onClick: () => handleButtonClick("RIGHT"),
 								inert: true
