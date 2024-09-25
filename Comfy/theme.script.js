@@ -2039,13 +2039,13 @@ todo:
 
 		for (const line of lines) {
 			if (regex.comment.test(line)) {
-				return;
+				continue;
 			}
 			if (regex.param.test(line)) {
 				if (line.includes("xrdb")) {
 					delete value[section || ""];
 					section = null;
-					return;
+					continue;
 				}
 
 				const match = line.match(regex.param);
