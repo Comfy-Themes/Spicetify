@@ -1031,6 +1031,12 @@ todo:
 					collapseItems: true
 				},
 				{
+					type: Toggle,
+					name: "Compact-Context-Menu",
+					title: "Compact Context Menu",
+					defaultVal: true
+				},
+				{
 					type: SubSection,
 					name: "Custom-Font",
 					title: "Custom Font",
