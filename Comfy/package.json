@@ -11,10 +11,7 @@
 		"type": "git",
 		"url": "git+https://github.com/Comfy-Themes/Spicetify.git"
 	},
-	"keywords": [
-		"comfy",
-		"spicetify"
-	],
+	"keywords": ["comfy", "spicetify"],
 	"author": "Comfy-Themes",
 	"license": "WTFPL",
 	"bugs": {
@@ -22,6 +19,6 @@
 	},
 	"homepage": "https://github.com/Comfy-Themes/Spicetify#readme",
 	"dependencies": {
-		"sass": "^1.78.0"
+		"node-sass": "^7.0.3"
 	}
 }

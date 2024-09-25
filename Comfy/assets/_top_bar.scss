@@ -11,10 +11,8 @@
 			height: 32px;
 			background-color: rgba(var(--spice-rgb-shadow), 0.7);
 
-			& {
-				::placeholder {
-					color: rgba(var(--spice-rgb-selected-row), 0.7);
-				}
+			&::placeholder {
+				color: rgba(var(--spice-rgb-selected-row), 0.7);
 			}
 		}
 	}
