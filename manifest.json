@@ -4,7 +4,7 @@
 		"description": "Stay comfy while listening to music",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
-		"usercss": "Comfy/user.css",
+		"usercss": "Comfy/app.css",
 		"schemes": "Comfy/color.ini",
 		"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.script.js"],
 		"authors": [
