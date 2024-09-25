@@ -34,6 +34,7 @@
 	}
 
 	&:has(#main.Comfy-Dark-Modals-Snippet) {
+
 		.ABD0FGjBGqGZG33bP7Lc,
 		.main-duplicateTrackModal-container {
 			background-color: var(--spice-main);
@@ -42,6 +43,7 @@
 	}
 
 	#main {
+
 		&.Comfy-nord-Snippet.Custom-Playbar-Snippet,
 		&.Comfy-nord-flat-Snippet.Custom-Playbar-Snippet {
 			.Root__top-container {
@@ -167,13 +169,10 @@
 		}
 
 		&.Playbar-Above-Right-Panel-Snippet {
+
 			.artist-artistOverview-artistOverviewContent,
 			.main-actionBarBackground-background {
-				min-height: calc(
-					100vh -
-						min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 150, 400px)) -
-						50px
-				) !important;
+				min-height: calc(100vh - min(30vh, clamp(250px, 250px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 150, 400px)) - 50px) !important;
 			}
 
 			.Root__top-container {
@@ -294,10 +293,12 @@
 		}
 
 		&.Smooth-Progress-Bar-Snippet {
+
 			.playback-bar,
 			.pn5V0OzovI9p6b8nWq8p.gglUjikTBtMzCZFgSmpS .x-progressBar-sliderArea {
-				> div,
-				~ div {
+
+				>div,
+				~div {
 					-webkit-transition-delay: 0s;
 					transition-delay: 0s;
 					-webkit-transition-duration: 1000ms;
@@ -323,6 +324,7 @@
 		}
 
 		&.Remove-Connect-Bar-Snippet {
+
 			.main-connectBar-connectBar,
 			.main-devicePicker-indicator {
 				display: none !important;
@@ -350,14 +352,15 @@
 		}
 
 		&.Hoverable-Timers-Snippet {
+
 			.playback-bar,
 			.pn5V0OzovI9p6b8nWq8p.gglUjikTBtMzCZFgSmpS {
-				> div {
+				>div {
 					transition: all 0.3s ease;
 					opacity: 0;
 				}
 
-				&:hover > div {
+				&:hover>div {
 					transition: all 0.3s ease;
 					opacity: 1 !important;
 				}
@@ -385,7 +388,7 @@
 					padding-block: 8px;
 
 					.main-topBar-topbarContentWrapper {
-						> *:not(.main-topBar-searchBar):not(:has(ul)) {
+						>*:not(.main-topBar-searchBar):not(:has(ul)) {
 							justify-content: center;
 							display: flex;
 						}
@@ -461,10 +464,7 @@
 		&.Header-Background {
 			.main-entityHeader-imageContainerNew {
 				align-self: center;
-				left: calc(
-					clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 24px +
-						var(--content-spacing)
-				);
+				left: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 24px + var(--content-spacing));
 				position: relative;
 				z-index: 1;
 			}
@@ -476,36 +476,28 @@
 				min-width: fit-content;
 				box-shadow: 0 2px 4px rgba(var(--spice-rgb-shadow), 0.1);
 				justify-content: space-evenly !important;
-				height: calc(
-					clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 48px
-				);
+				height: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 48px);
 			}
 
-			.main-entityHeader-imageContainerNew + .main-entityHeader-headerText {
-				padding-left: calc(
-					clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px +
-						var(--content-spacing)
-				);
-				margin-right: calc(
-					clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 104, 232px) +
-						var(--content-spacing)
-				);
+			.main-entityHeader-imageContainerNew+.main-entityHeader-headerText {
+				padding-left: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 104, 232px) + 32px + var(--content-spacing));
+				margin-right: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px) / 424 * 104, 232px) + var(--content-spacing));
 			}
 
-			&:not(.Topbar-Inside-Titlebar-Snippet) .main-entityHeader-topbarContentFadeIn > * {
+			&:not(.Topbar-Inside-Titlebar-Snippet) .main-entityHeader-topbarContentFadeIn>* {
 				opacity: var(--top-bar-opacity) !important;
 			}
 		}
 
 		&.AM-Gradient-Include-Existing-Snippet.Banner-Enabled,
 		&.Replace-Existing-Banners.Banner-Enabled {
-			.under-main-view > div:not(.comfy-banner-frame) {
+			.under-main-view>div:not(.comfy-banner-frame) {
 				display: none !important;
 			}
 		}
 
 		&.Lyrics {
-			main > div > div:empty {
+			main>div>div:empty {
 				--lyrics-color-background: transparent !important;
 			}
 		}
