@@ -128,41 +128,17 @@ todo:
 	// Banner Image(s)
 	const channels = {
 		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
-		Playlist: {
-			regex: /^\/playlist\//,
-			enabled: getConfig("Playlist") ?? true
-		},
-		Station: {
-			regex: /^\/station\/playlist\//,
-			enabled: getConfig("Station") ?? true
-		},
-		Artist: {
-			regex: /^\/artist\/(?!artists\b)\w+$/,
-			enabled: getConfig("Artist") ?? true
-		},
+		Playlist: { regex: /^\/playlist\//, enabled: getConfig("Playlist") ?? true },
+		Station: { regex: /^\/station\/playlist\//, enabled: getConfig("Station") ?? true },
+		Artist: { regex: /^\/artist\/(?!artists\b)\w+$/, enabled: getConfig("Artist") ?? true },
 		Album: { regex: /^\/album\//, enabled: getConfig("Album") ?? true },
-		Collection: {
-			regex: /^\/collection\/tracks$/,
-			enabled: getConfig("Collection") ?? true
-		},
-		"Your-Episodes": {
-			regex: /^\/collection\/your-episodes$/,
-			enabled: getConfig("Your-Episodes") ?? true
-		},
-		"Local-Files": {
-			regex: /^\/collection\/local-files$/,
-			enabled: getConfig("Local-Files") ?? true
-		},
+		Collection: { regex: /^\/collection\/tracks$/, enabled: getConfig("Collection") ?? true },
+		"Your-Episodes": { regex: /^\/collection\/your-episodes$/, enabled: getConfig("Your-Episodes") ?? true },
+		"Local-Files": { regex: /^\/collection\/local-files$/, enabled: getConfig("Local-Files") ?? true },
 		Show: { regex: /^\/show\//, enabled: getConfig("Show") ?? true },
 		Episode: { regex: /^\/episode\//, enabled: getConfig("Episode") ?? true },
-		"Lyrics-Plus": {
-			regex: /^\/lyrics-plus$/,
-			enabled: getConfig("Lyrics-Plus") ?? true
-		},
-		User: {
-			regex: /^\/user\/(?!users\b)\w+$/,
-			enabled: getConfig("User") ?? true
-		},
+		"Lyrics-Plus": { regex: /^\/lyrics-plus$/, enabled: getConfig("Lyrics-Plus") ?? true },
+		User: { regex: /^\/user\/(?!users\b)\w+$/, enabled: getConfig("User") ?? true },
 		Genre: { regex: /^\/genre\//, enabled: getConfig("Genre") ?? true }
 	};
 
