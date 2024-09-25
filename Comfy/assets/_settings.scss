@@ -130,40 +130,68 @@
 			width: 100%;
 			padding-inline: 0px;
 
-			.search-searchCategory-categoryGrid {
-				overflow-y: hidden;
+			.search-searchCategory-contentArea {
 
-				&Item {
-					cursor: pointer;
-					padding: 2px;
+				&.search-searchCategory-showLeftButton .search-searchCategory-categoryGrid {
+					-webkit-mask-image: linear-gradient(90deg, transparent, var(--spice-sidebar) 120px);
+					mask-image: linear-gradient(90deg, transparent, var(--spice-sidebar) 120px);
+				}
 
-					button::after {
-						border: none !important;
-					}
+				&.search-searchCategory-showRightButton .search-searchCategory-categoryGrid {
+					-webkit-mask-image: linear-gradient(90deg, var(--spice-sidebar) calc(100% - 120px), transparent);
+					mask-image: linear-gradient(90deg, var(--spice-sidebar) calc(100% - 120px), transparent);
+				}
 
-					&:active,
-					&:focus,
-					&:hover {
-						text-decoration: none;
-					}
+				&.search-searchCategory-showLeftButton.search-searchCategory-showRightButton .search-searchCategory-categoryGrid {
+					-webkit-mask-image: linear-gradient(90deg, transparent, var(--spice-sidebar) 120px, var(--spice-sidebar) calc(100% - 120px), transparent);
+					mask-image: linear-gradient(90deg, transparent, var(--spice-sidebar) 120px, var(--spice-sidebar) calc(100% - 120px), transparent);
+				}
 
-					&:focus-visible {
-						outline: none;
-						text-decoration: none;
+				.search-searchCategory-categoryGrid {
+					overflow-y: hidden;
+
+					&Item {
+						cursor: pointer;
+						padding: 2px;
+
+						button::after {
+							border: none !important;
+						}
+
+						&:active,
+						&:focus,
+						&:hover {
+							text-decoration: none;
+						}
+
+						&:focus-visible {
+							outline: none;
+							text-decoration: none;
+
+							&>* {
+								outline: 5px auto #3673d4;
+							}
+						}
 
 						&>* {
-							outline: 5px auto #3673d4;
+							margin-inline-end: 8px;
+							margin-block-end: 0 !important;
 						}
-					}
-
-					&>* {
-						margin-inline-end: 8px;
-						margin-block-end: 0 !important;
 					}
 				}
 			}
 		}
+
+		.search-searchCategory-showRightButton .search-searchCategory-carouselButtonRight,
+		.search-searchCategory-showRightButton:hover .search-searchCategory-carouselButtonRight,
+		.search-searchCategory-showLeftButton .search-searchCategory-carouselButtonLeft,
+		.search-searchCategory-showLeftButton:hover .search-searchCategory-carouselButtonLeft {
+			cursor: pointer;
+			opacity: 1;
+			pointer-events: auto;
+		}
 	}
+
 
 	// Contents Styling
 	.setting-header {
