@@ -1359,7 +1359,6 @@ todo:
 					type: Toggle,
 					name: "Compact-Connect-Bar-Snippet",
 					title: "Compact Connect Bar",
-					desc: "Makes the connect bar compact.",
 					defaultVal: false
 				},
 				{
