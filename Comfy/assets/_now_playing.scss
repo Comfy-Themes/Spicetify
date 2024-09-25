@@ -32,7 +32,7 @@
 	.main-nowPlayingBar-container {
 		.main-connectBar-connectBar {
 			margin-left: auto;
-			width: 92vw;
+			width: calc(100vw - var(--cover-art-width) - 32px);
 		}
 	}
 }
