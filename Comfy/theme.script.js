@@ -1295,7 +1295,11 @@ todo:
 												if (entry.target === rightbar) {
 													let newWidth = entry.contentRect.width;
 													if (newWidth === 0) {
-														const localStorageWidth = localStorage.getItem("223ni6f2epqcidhx5etjafeai:panel-width-saved");
+														const localStorageWidth =
+															Spicetify.Platform?.LocalStorageAPI?.getItem("panel-width") ||
+															localStorage.getItem(
+																`${Spicetify.Platform?.LocalStorageAPI?.namespace || Spicetify.Platform?.username || ""}:panel-width-saved`
+															);
 														if (localStorageWidth) {
 															newWidth = localStorageWidth;
 														} else {
