@@ -108,6 +108,20 @@ todo:
 		}
 	}).observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
 
+	waitForDeps("Spicetify.Platform.version", version => {
+		if (version >= "1.2.46.462") {
+			waitForDeps(
+				":root .global-nav",
+				root => {
+					if (!root.classList.contains("global-nav-centered")) {
+						root.classList.add("global-nav-centered");
+					}
+				},
+				true
+			);
+		}
+	});
+
 	// Banner Image(s)
 	let channels = {
 		Lyrics: { regex: /^\/lyrics$/, enabled: getConfig("Lyrics") ?? false },
@@ -437,7 +451,7 @@ todo:
 				setConfig(name, value);
 				if (value !== "" || !startup || callbackOverride) {
 					console.debug(`[Comfy-Callback]: ${name} =`, value);
-					callback?.(value, name);
+					callback?.(value, name, defaultVal);
 				}
 			}, [value, name]);
 
@@ -954,14 +968,14 @@ todo:
 					inputType: "number",
 					name: "App-Titlebar-Height",
 					title: "Titlebar Height",
-					defaultVal: "40",
+					defaultVal: Spicetify.Platform.version >= "1.2.46.462" ? "64" : "40",
 					min: "0",
-					condition: Spicetify.Config.version >= "2.33.2",
-					callback: value => {
+					condition: Spicetify.Platform.version >= "1.2.32.997",
+					callback: (value, name, defaultVal) => {
 						waitForDeps(["Spicetify.CosmosAsync"], async () => {
 							await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
 								type: "update_titlebar",
-								height: `${(value === "0" ? "1" : value) || "40"}px`
+								height: `${(value === "0" ? "1" : value) || defaultVal}px`
 							});
 
 							document.documentElement.style.setProperty("--comfy-topbar-height", value ? value + "px" : "");
