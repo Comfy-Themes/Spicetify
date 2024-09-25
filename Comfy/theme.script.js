@@ -1004,7 +1004,10 @@ todo:
 					name: "Topbar-Inside-Titlebar-Snippet",
 					title: "Move Topbar Inside Titlebar",
 					defaultVal: false,
+					condition: Spicetify.Platform.version <= "1.2.46.462" && !document.querySelector(":root .global-nav"),
 					callback: value => {
+						if (document.querySelector(":root .global-nav")) return;
+
 						waitForDeps(
 							[".Root__top-container", ".main-topBar-container"],
 							elements => {
@@ -1151,7 +1154,8 @@ todo:
 					type: Toggle,
 					name: "Horizontal-pageLinks-Snippet",
 					title: "Horizontal Page Links",
-					defaultVal: false
+					defaultVal: false,
+					condition: Spicetify.Platform.version <= "1.2.46.462" && !document.querySelector(":root .global-nav")
 				}
 			]),
 			Spicetify.React.createElement(Section, { name: "Tracklist", filter }, [
@@ -1246,6 +1250,7 @@ todo:
 					title: "Above Right Panel",
 					desc: "Moves the playbar above the right panel",
 					defaultVal: false,
+					condition: Spicetify.Platform.version <= "1.2.46.462" && !document.querySelector(":root .global-nav"),
 					callback: value => {
 						waitForDeps(
 							".Root__top-container",
