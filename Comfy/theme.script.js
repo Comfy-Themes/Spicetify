@@ -731,9 +731,9 @@ todo:
 					"div",
 					{
 						className: `search-searchCategory-contentArea
-						${showLeftButton ? "sbdtp9NBYCnW1lw4uyA4" : ""}
-						${showRightButton ? "vtK4LGTA_YdTF8p6SIu_" : ""}
-						${showRightButton && showLeftButton ? "sbdtp9NBYCnW1lw4uyA4 vtK4LGTA_YdTF8p6SIu_" : ""}`
+						${showLeftButton ? "search-searchCategory-showLeftButton" : ""}
+						${showRightButton ? "search-searchCategory-showRightButton" : ""}
+						${showRightButton && showLeftButton ? "search-searchCategory-showLeftButton search-searchCategory-showRightButton" : ""}`
 							.trim()
 							.replace(/\s+/g, " ")
 					},
@@ -741,8 +741,8 @@ todo:
 						"div",
 						{
 							ref: containerRef,
-							className: "search-searchCategory-categoryGrid J4qD2RoZgGLbOdpfs63w",
-							onScroll: handleResize, // Adjust this if you find that `handleResize` is still not being optimized
+							className: "search-searchCategory-categoryGrid",
+							onScroll: handleResize,
 							onKeyDown: handleKeyDown,
 							role: "list",
 							tabIndex: 0,
@@ -750,7 +750,7 @@ todo:
 						},
 						Spicetify.React.createElement(
 							"div",
-							{ role: "presentation", className: "aKOZdeebnsaeeMTiugmO" },
+							{ role: "presentation" },
 							chips.map((chip, index) =>
 								Spicetify.React.createElement(
 									"a",
@@ -778,11 +778,11 @@ todo:
 					),
 					Spicetify.React.createElement(
 						"div",
-						{ className: "search-searchCategory-carousel e1CGifl7UjMqePPNhj5A", dir: "ltr" },
+						{ className: "search-searchCategory-carousel" },
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton ZbimwwLeKzV0_OVbLg0e`,
+								className: `search-searchCategory-carouselButton search-searchCategory-carouselButtonLeft`,
 								tabIndex: -1,
 								onClick: () => handleButtonClick("LEFT"),
 								inert: true
@@ -796,7 +796,7 @@ todo:
 						Spicetify.React.createElement(
 							"button",
 							{
-								className: `search-searchCategory-carouselButton P0I0a36y0BWbeGseMsmE`,
+								className: `search-searchCategory-carouselButton search-searchCategory-carouselButtonRight`,
 								tabIndex: -1,
 								onClick: () => handleButtonClick("RIGHT"),
 								inert: true
