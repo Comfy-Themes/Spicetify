@@ -44,7 +44,16 @@
 
 
 	&:has(#main.Compact-Context-Menu) {
-
+		.main-popper-arrow {
+			width: 13px !important;
+			height: 13px !important;
+			z-index: 0 !important;
+			border-top: 1px solid var(--spice-card) !important;
+			border-right: 1px solid var(--spice-button-disabled) !important;
+			border-bottom: 1px solid var(--spice-button-disabled) !important;
+			border-left: 1px solid var(--spice-card) !important;
+		}
+		
 		.main-rootlist-rootlistDivider,
 		.main-contextMenu-dividerBefore::before,
 		.main-contextMenu-dividerAfter::after,
@@ -55,7 +64,7 @@
 
 		.main-contextMenu-menuItemButton,
 		.main-userWidget-dropDownMenuItemButton {
-			border-radius: 8px;
+			border-radius: 8px !important;
 			color: var(--spice-text);
 			height: 32px;
 			padding-left: 8px;
