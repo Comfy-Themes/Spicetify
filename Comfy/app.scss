@@ -64,9 +64,17 @@
 		grid-template-rows: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1) - 16px) 1fr auto;
 	}
 
-	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen):has(.global-nav) body::after {
-		height: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1)) !important;
+	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) {
+		&:has(.global-nav) body::after {
+			height: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1)) !important;
+		}
+
+		&:has(.global-nav-centered) body::after {
+			height: min(calc(32px / var(--zoom, 1)), calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1))) !important;
+			top: calc((var(--comfy-topbar-height, 64px) / var(--zoom, 1) - min(calc(32px / var(--zoom, 1)), var(--comfy-topbar-height, 64px))) / 2);
+		}
 	}
+
 
 	&.spotify__container--is-desktop.spotify__os--is-windows .Root__globalNav {
 		padding-block: calc(var(--comfy-topbar-height, 64px) / 2 - 8px);
