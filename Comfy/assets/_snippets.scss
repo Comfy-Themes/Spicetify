@@ -44,7 +44,7 @@
 
 
 	&:has(#main.Compact-Context-Menu) {
-		.main-popper-arrow {
+		.main-contextMenu-menu .main-popper-arrow {
 			width: 13px !important;
 			height: 13px !important;
 			z-index: 0 !important;
