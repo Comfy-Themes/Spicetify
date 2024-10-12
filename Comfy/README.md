@@ -104,7 +104,7 @@
 </details>
 <details><summary>Houjicha</summary>
 
-![png](../images/color-schemes/Houjicha.png)
+![png](../images/color-schemes/houjicha.png)
 
 </details>
 <details><summary>Kitty</summary>
