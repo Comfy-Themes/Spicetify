@@ -102,7 +102,7 @@
 	.main-view-container {
 
 		// Main Page Tweaks
-		main:not(:has(.lyrics-lyricsContainer-LyricsContainer)) {
+		main:not(:has(.lyrics-lyricsContainer-LyricsContainer)):not(:has(> .visualizer-container)) {
 			position: sticky;
 			padding-bottom: 32px;
 
