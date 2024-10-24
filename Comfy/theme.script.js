@@ -94,6 +94,8 @@ todo:
 	// Layout Variables
 	let panelWidth = document.documentElement.style.getPropertyValue("--panel-width");
 	let sidebarWidth = document.documentElement.style.getPropertyValue("--left-sidebar-width");
+	document.documentElement.style.setProperty("--comfy-panel-width", `${panelWidth}px`);
+	document.documentElement.style.setProperty("--comfy-left-sidebar-width", `${sidebarWidth}px`);
 
 	new MutationObserver(mutations => {
 		const newPanelWidth = mutations[0].target.style.getPropertyValue("--panel-width");
