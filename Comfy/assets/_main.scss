@@ -75,7 +75,7 @@
 	}
 
 	.main-entityHeader-background {
-		height: calc(clamp(340px, 30vh, 400px) + var(--tracklist-gradient-height));
+		height: calc(40vh + var(--tracklist-gradient-height));
 		max-height: 100%;
 
 		&.main-entityHeader-overlay {
@@ -84,7 +84,7 @@
 	}
 
 	.main-entityHeader-withBackgroundImage {
-		height: clamp(340px, 30vh, 400px) !important;
+		height: 40vh !important;
 	}
 }
 
@@ -193,12 +193,12 @@
 
 			.main-actionBar-ActionBarRow {
 				&:first-of-type {
-					>div:first-child {
+					>*:first-child {
 						margin-top: -24px;
 					}
 				}
 
-				>div:first-child {
+				>*:first-child {
 					margin-left: calc(var(--content-spacing) + 3px);
 				}
 
