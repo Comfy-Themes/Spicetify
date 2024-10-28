@@ -32,4 +32,14 @@
 	.os-scrollbar {
 		display: none;
 	}
+
+	// Forcing line-breaking on long text;
+	#Desktop_LeftSidebar_Id {
+		.main-yourLibraryX-entryPoints {
+			span.LineClamp {
+				-webkit-line-clamp: 1 !important;
+				line-clamp: 1 !important;
+			}
+		}
+	}
 }
