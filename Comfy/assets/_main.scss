@@ -77,20 +77,22 @@
 	.main-entityHeader-background {
 		height: calc(40vh + var(--tracklist-gradient-height));
 		max-height: 100%;
-
 		&.main-entityHeader-overlay {
 			--bgColor: unset !important;
 		}
 	}
 
-	.main-entityHeader-withBackgroundImage {
-		height: 40vh !important;
-	}
 }
 
 :root .Root__main-view {
+
+	// Banner
 	.comfy-banner-frame {
 		display: none;
+	}
+
+	.main-entityHeader-withBackgroundImage {
+		height: 40vh !important;
 	}
 
 	// Ad containers
