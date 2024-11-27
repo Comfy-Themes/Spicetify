@@ -1034,6 +1034,13 @@ todo:
 				},
 				{
 					type: Toggle,
+					name: "Remove-DJ-Prompt",
+					title: "Remove your DJ prompt",
+					desc: "Hides the prompt 'Click to start listening' in the library",
+					defaultVal: true
+				},
+				{
+					type: Toggle,
 					name: "Compact-Context-Menu",
 					title: "Compact Context Menu",
 					defaultVal: true

@@ -42,6 +42,11 @@
 		}
 	}
 
+	&:has(#main.Remove-DJ-Prompt) {
+		._EFIA9HjgZxxgTSZzQcg>*:not(:first-child) {
+			display: none;
+		}
+	}
 
 	&:has(#main.Compact-Context-Menu) {
 		.main-contextMenu-menu .main-popper-arrow {
@@ -51,7 +56,7 @@
 			border-right: 1px solid var(--spice-button-disabled) !important;
 			border-bottom: 1px solid var(--spice-button-disabled) !important;
 		}
-		
+
 		.main-rootlist-rootlistDivider,
 		.main-contextMenu-dividerBefore::before,
 		.main-contextMenu-dividerAfter::after,
