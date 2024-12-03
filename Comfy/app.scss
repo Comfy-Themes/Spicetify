@@ -184,6 +184,10 @@
 	}
 
 	// Menus
+	.main-contextMenu-tippy.main-contextMenu-tippyEnterActive {
+		box-shadow: none !important;
+	}
+
 	#context-menu {
 		overflow: hidden;
 
