@@ -50,6 +50,10 @@
 		border-radius: var(--button-radius) !important;
 	}
 
+	.Card .main-card-imageContainer * {
+		border-radius: var(--border-radius) !important;
+	}
+
 	// Remove Overflow
 	.Root__top-container {
 		overflow: hidden;
