@@ -55,6 +55,16 @@ spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_j
 spicetify apply
 ```
 
+#### choosing color_scheme
+To choose the perfect color for your setup you can look at images [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes)!
+The color schemes with folders like [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes/rose-pine) ussually means you need to combine 
+
+{folder_name}-{file_name}
+you can find all available color_schemes in the [colot.ini](https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/color.ini) file.
+```powershell
+spicetify config color_scheme rose-pine-moon
+```
+
 ### ⚠️️ Warning
 
 ---
