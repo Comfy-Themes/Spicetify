@@ -1,4 +1,5 @@
 :root .main-topBar-container {
+
 	.main-topBar-topbarContent *,
 	.main-topBar-topbarContentWrapper * {
 		justify-content: center;
@@ -7,12 +8,12 @@
 
 	.main-topBar-searchBar {
 		>form input {
+			height: 32px;
+			background-color: rgba(var(--spice-rgb-shadow), 0.7);
+
 			&::placeholder {
 				color: rgba(var(--spice-rgb-selected-row), 0.7);
 			}
-
-			height: 32px;
-			background-color: rgba(var(--spice-rgb-shadow), 0.7);
 		}
 	}
 

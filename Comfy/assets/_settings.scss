@@ -68,7 +68,7 @@
 		min-height: calc(100% - 60px);
 
 		&::after {
-			content: '';
+			content: "";
 			position: absolute;
 			bottom: 0;
 			width: calc(100% - 12px);
@@ -546,5 +546,4 @@
 			filter: brightness(0.8);
 		}
 	}
-
 }
