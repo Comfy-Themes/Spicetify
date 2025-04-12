@@ -369,7 +369,7 @@
 					transition-property: transform, left;
 					transition-property: transform, left, -webkit-transform;
 					-webkit-transition-timing-function: linear;
-					transition-timing-function: linear
+					transition-timing-function: linear;
 				}
 			}
 		}
@@ -389,6 +389,19 @@
 			.main-connectBar-connectBar,
 			.main-devicePicker-indicator {
 				display: none !important;
+			}
+		}
+
+		&.Compact-Connect-Bar-Snippet {
+			.main-nowPlayingBar-container {
+				.main-connectBar-connectBar {
+					position: absolute;
+					margin-left: auto;
+					padding: 0.75rem 1rem;
+					top: -40%;
+					right: 0;
+					width: auto;
+				}
 			}
 		}
 
@@ -511,7 +524,7 @@
 		&.Header-Background {
 			.main-entityHeader-imageContainerNew {
 				align-self: center;
-				left: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*104, 232px) + 24px + var(--content-spacing));
+				left: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 24px + var(--content-spacing));
 				position: relative;
 				z-index: 1;
 			}
@@ -523,7 +536,7 @@
 				min-width: fit-content;
 				box-shadow: 0 2px 4px rgba(var(--spice-rgb-shadow), 0.1);
 				justify-content: space-evenly !important;
-				height: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424*104, 232px) + 48px);
+				height: calc(clamp(128px, 128px + (100vw - var(--comfy-left-sidebar-width, 0px) - var(--comfy-panel-width, 0px) - 600px)/424 * 104, 232px) + 48px);
 			}
 
 			.main-entityHeader-imageContainerNew+.main-entityHeader-headerText {

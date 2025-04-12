@@ -196,7 +196,7 @@
 		overflow: hidden;
 
 		.main-userWidget-dropDownMenu .main-contextMenu-menuItemButton:has(span + svg)::before {
-			border-bottom: 1px solid rgba(var(--spice-rgb-selected-row), .1);
+			border-bottom: 1px solid rgba(var(--spice-rgb-selected-row), 0.1);
 			content: "";
 			left: 0;
 			pointer-events: none;

@@ -27,6 +27,14 @@
 			}
 		}
 	}
+
+	// Connect bar
+	.main-nowPlayingBar-container {
+		.main-connectBar-connectBar {
+			margin-left: auto;
+			width: calc(100vw - var(--cover-art-width) - 32px);
+		}
+	}
 }
 
 :root #main.Custom-Playbar-Snippet:not(.Playbar-Above-Right-Panel-Snippet) .Root__top-container {
@@ -139,9 +147,7 @@
 						}
 					}
 				}
-
 			}
-
 		}
 	}
 }
