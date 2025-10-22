@@ -65,7 +65,7 @@
 	}
 
 	.global-nav .Root__top-container {
-		grid-template-rows: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1) - 16px) 1fr auto;
+		grid-template-rows: calc(var(--comfy-topbar-height, 64px) / var(--zoom, 1) - 16px) 0px 1fr;
 	}
 
 	&.spotify__container--is-desktop.spotify__os--is-windows:not(.fullscreen) {
