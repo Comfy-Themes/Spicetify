@@ -10,7 +10,14 @@
         <a href="Comfy/README.md">Preview images</a>
       </div>
       <hr>
-      <h4> ✅ Recommended</h4>
+      <h4> ⚠️ UNOFFICIAL BRANCH</h4>
+        <p>This is an <strong>unofficial experimental branch</strong> targeting the latest Spicetify and Spotify versions. Use at your own risk!</p>
+      <hr>
+      <h4> 🎯 Target Versions</h4>
+        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.42.7">2.42.7</a></code> (and newer)</li>
+        <li>🟢 Spotify: <code>1.2.14 - 1.2.80</code> (and newer)</li>
+      <hr>
+      <h4> 📝 Original Recommended Versions (Stable)</h4>
         <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.3">2.38.5</a></code></li>
         <li>🟢 Spotify: <code><a href="https://docs.google.com/spreadsheets/d/1wztO1L4zvNykBRw7X4jxP8pvo11oQjT0O5DvZ_-S4Ok/edit#gid=803394557&range=D2">1.2.51</a></code></li>
       <hr>
@@ -55,6 +62,16 @@ spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_j
 spicetify apply
 ```
 
+#### For Unofficial/Latest Branch
+
+To use the unofficial branch targeting latest Spicetify/Spotify versions:
+
+```sh
+git checkout unofficial
+```
+
+Then apply the same configuration commands above.
+
 #### choosing color_scheme
 To choose the perfect color for your setup you can look at images [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes)!
 The color schemes with folders like [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes/rose-pine) ussually means you need to combine 
@@ -68,6 +85,13 @@ spicetify config color_scheme rose-pine-moon
 ### ⚠️️ Warning
 
 ---
+
+**IMPORTANT:** This `unofficial` branch is experimental and targets the latest versions of Spicetify and Spotify. 
+
+- ✅ **For stable experience:** Use the `main` branch with recommended versions above
+- ⚡ **For bleeding edge:** Use this `unofficial` branch with latest versions
+- 🐛 **Expect issues:** This branch may have bugs or compatibility issues
+- 📝 **Report problems:** [Open an issue](https://github.com/Comfy-Themes/Spicetify/issues) if you encounter problems
 
 The theme automatically updates for users using the version of Spicetify equals or greater than `2.8.2`, however, for the users that don't want to update Spicetify to the newest version:
 
