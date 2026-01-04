@@ -1,7 +1,7 @@
 [
 	{
-		"name": "Comfy",
-		"description": "Stay comfy while listening to music",
+		"name": "Comfy (Unofficial - Latest)",
+		"description": "Stay comfy while listening to music - Unofficial build for latest Spicetify/Spotify",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/app.css",
@@ -21,7 +21,8 @@
 				"url": "https://github.com/kyrie25"
 			}
 		],
-		"tags": ["Nord", "Catppuccin", "Rosé Pine", "Everforest"]
+		"tags": ["Nord", "Catppuccin", "Rosé Pine", "Everforest", "Unofficial", "Latest"],
+		"branch": "unofficial"
 	},
 	{
 		"name": "Comfy (Legacy)",

@@ -10,7 +10,14 @@
         <a href="Comfy/README.md">Preview images</a>
       </div>
       <hr>
-      <h4> ✅ Recommended</h4>
+      <h4> ⚠️ UNOFFICIAL BRANCH</h4>
+        <p>This is an <strong>unofficial experimental branch</strong> targeting the latest Spicetify and Spotify versions. Use at your own risk!</p>
+      <hr>
+      <h4> 🎯 Target Versions</h4>
+        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.42.7">2.42.7</a></code> (and newer)</li>
+        <li>🟢 Spotify: <code>1.2.14 - 1.2.80</code> (and newer)</li>
+      <hr>
+      <h4> 📝 Original Recommended Versions (Stable)</h4>
         <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.3">2.38.5</a></code></li>
         <li>🟢 Spotify: <code><a href="https://docs.google.com/spreadsheets/d/1wztO1L4zvNykBRw7X4jxP8pvo11oQjT0O5DvZ_-S4Ok/edit#gid=803394557&range=D2">1.2.51</a></code></li>
       <hr>
