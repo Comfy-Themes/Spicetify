@@ -96,11 +96,12 @@
 							grid-area: bar;
 							height: 11px;
 
-							.progress-bar {
+							.x-progressBar-progressBarBg {
 								--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
 								--fg-color: var(--spice-progress-fg);
 								--progress-bar-height: 12px;
 								--progress-bar-radius: 0;
+
 
 								.x-progressBar-fillColor {
 									width: 107%;
@@ -108,6 +109,7 @@
 									background-image: linear-gradient(90deg, var(--spice-progress-fg) 93%, transparent 100%);
 								}
 
+								.x-progressBar-progressFillColor,
 								.progress-bar__slider {
 									display: none;
 								}
