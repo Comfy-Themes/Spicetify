@@ -91,26 +91,26 @@
 							display: contents;
 						}
 
-						.x-progressBar-wrapper {
+						.playback-progressbar {
 							grid-column: 1/3;
 							grid-area: bar;
 							height: 11px;
 
-							.x-progressBar-progressBar {
+							.x-progressBar-progressBarBg {
 								--bg-color: rgba(var(--spice-rgb-progress-bg), 0.5);
 								--fg-color: var(--spice-progress-fg);
 								--progress-bar-height: 12px;
 								--progress-bar-radius: 0;
 
 
-								.x-progressBar-foreground {
+								.x-progressBar-fillColor {
 									width: 107%;
 									background-color: transparent;
 									background-image: linear-gradient(90deg, var(--spice-progress-fg) 93%, transparent 100%);
 								}
 
-								.x-progressBar-middleground,
-								.x-progressBar-handle {
+								.x-progressBar-progressFillColor,
+								.progress-bar__slider {
 									display: none;
 								}
 							}
