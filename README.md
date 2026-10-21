@@ -46,7 +46,7 @@ CD into your `Themes` folder in `.spicetify` and run :
 git clone https://github.com/Comfy-Themes/Spicetify
 ```
 
-Rename the folder to `Comfy` and run these commands to apply :
+Drag the `Comfy` folder into your `Themes` folder and run these commands to apply :
 
 ```powershell
 spicetify config current_theme Comfy
