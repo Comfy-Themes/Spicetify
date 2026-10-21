@@ -56,11 +56,11 @@ spicetify apply
 ```
 
 #### choosing color_scheme
-To choose the perfect color for your setup you can look at images [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes)!
-The color schemes with folders like [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes/rose-pine) ussually means you need to combine 
+To choose the perfect color for your setup you can look at images [here](/images/color-schemes)!
+The color schemes with folders like [here](/images/color-schemes/rose-pine) ussually means you need to combine 
 
 {folder_name}-{file_name}
-you can find all available color_schemes in the [colot.ini](https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/color.ini) file.
+you can find all available color_schemes in the [color.ini](/Comfy/color.ini) file.
 ```powershell
 spicetify config color_scheme rose-pine-moon
 ```
