@@ -14,6 +14,12 @@
         <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.3">2.38.5</a></code></li>
         <li>🟢 Spotify: <code><a href="https://docs.google.com/spreadsheets/d/1wztO1L4zvNykBRw7X4jxP8pvo11oQjT0O5DvZ_-S4Ok/edit#gid=803394557&range=D2">1.2.51</a></code></li>
       <hr>
+      <h4>🌿 Branch Channels</h4>
+        <li><code>main</code> → Cutting edge (accepts community PRs)</li>
+        <li><code>historical</code> → Maintainer-controlled baseline for the supported versions above</li>
+        <li><code>legacy</code> → Older historical branch for legacy Spotify/Spicetify setups</li>
+        <li><code>beta</code> → Testing branch</li>
+      <hr>
     </td>
   </tr>
 </table>
