@@ -1,12 +1,13 @@
 [
 	{
-		"name": "Comfy",
-		"description": "Stay comfy while listening to music",
+		"name": "Comfy (Cutting Edge)",
+		"description": "Main branch with the latest updates",
 		"preview": "images/preview.png",
 		"readme": "Comfy/README.md",
 		"usercss": "Comfy/app.css",
 		"schemes": "Comfy/color.ini",
-		"include": ["https://comfy-themes.github.io/Spicetify/Comfy/theme.script.js"],
+		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/main/Comfy/theme.script.js"],
+		"branch": "main",
 		"authors": [
 			{
 				"name": "NYRI4",
@@ -22,6 +23,16 @@
 			}
 		],
 		"tags": ["Nord", "Catppuccin", "Rosé Pine", "Everforest"]
+	},
+	{
+		"name": "Comfy (Historical)",
+		"description": "Maintainer baseline branch for supported versions in README",
+		"preview": "images/preview.png",
+		"readme": "Comfy/README.md",
+		"usercss": "Comfy/app.css",
+		"schemes": "Comfy/color.ini",
+		"include": ["https://raw.githubusercontent.com/Comfy-Themes/Spicetify/historical/Comfy/theme.script.js"],
+		"branch": "historical"
 	},
 	{
 		"name": "Comfy (Legacy)",
