@@ -11,14 +11,8 @@
       </div>
       <hr>
       <h4> ✅ Recommended</h4>
-        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.3">2.38.5</a></code></li>
-        <li>🟢 Spotify: <code><a href="https://docs.google.com/spreadsheets/d/1wztO1L4zvNykBRw7X4jxP8pvo11oQjT0O5DvZ_-S4Ok/edit#gid=803394557&range=D2">1.2.51</a></code></li>
-      <hr>
-      <h4>🌿 Branch Channels</h4>
-        <li><code>main</code> → Cutting edge (accepts community PRs)</li>
-        <li><code>historical</code> → Maintainer-controlled baseline for the supported versions above</li>
-        <li><code>legacy</code> → Older historical branch for legacy Spotify/Spicetify setups</li>
-        <li><code>beta</code> → Testing branch</li>
+        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.5">2.38.5</a></code></li>
+        <li>🟢 Spotify: <code><a href="https://loadspot.pages.dev/">1.2.51</a></code></li>
       <hr>
     </td>
   </tr>
@@ -52,7 +46,7 @@ CD into your `Themes` folder in `.spicetify` and run :
 git clone https://github.com/Comfy-Themes/Spicetify
 ```
 
-Drag the `Comfy` folder into your `Themes` folder and run these commands to apply :
+Rename the folder to `Comfy` and run these commands to apply :
 
 ```powershell
 spicetify config current_theme Comfy
@@ -62,11 +56,11 @@ spicetify apply
 ```
 
 #### choosing color_scheme
-To choose the perfect color for your setup you can look at images [here](/images/color-schemes)!
-The color schemes with folders like [here](/images/color-schemes/rose-pine) ussually means you need to combine 
+To choose the perfect color for your setup you can look at images [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes)!
+The color schemes with folders like [here](https://github.com/Comfy-Themes/Spicetify/tree/main/images/color-schemes/rose-pine) usually means you need to combine 
 
 {folder_name}-{file_name}
-you can find all available color_schemes in the [color.ini](/Comfy/color.ini) file.
+you can find all available color_schemes in the [color.ini](https://github.com/Comfy-Themes/Spicetify/blob/main/Comfy/color.ini) file.
 ```powershell
 spicetify config color_scheme rose-pine-moon
 ```
