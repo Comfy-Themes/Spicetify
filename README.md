@@ -9,11 +9,22 @@
         <a href="https://github.com/Comfy-Themes/Spicetify/issues">Report an issue</a> ・ <a href="https://discord.gg/comfy-camp-811203761619337259">Join the support server</a> ・
         <a href="Comfy/README.md">Preview images</a>
       </div>
-      <hr>
-      <h4> ✅ Recommended</h4>
-        <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.5">2.38.5</a></code></li>
-        <li>🟢 Spotify: <code><a href="https://loadspot.pages.dev/">1.2.51</a></code></li>
-      <hr>
+        <hr>
+        <h4> ✅ Recommended</h4>
+        <ul>
+          <li>🔥 Spicetify: <code><a href="https://github.com/spicetify/spicetify-cli/releases/tag/v2.38.5">2.38.5</a></code></li>
+          <li>🟢 Spotify: <code><a href="https://loadspot.pages.dev/">1.2.51</a></code></li>
+        </ul>
+        <hr>
+        <h4>🌿 Branch Channels</h4>
+        <ul>
+          <li><code>main</code> → Cutting edge (accepts community PRs)</li>
+          <li><code>historical</code> → Maintainer-controlled baseline for the supported versions above</li>
+          <li><code>legacy</code> → Older historical branch for legacy Spotify/Spicetify setups</li>
+          <li><code>beta</code> → Testing branch</li>
+        </ul>
+        <hr>
+      </ul>
     </td>
   </tr>
 </table>
